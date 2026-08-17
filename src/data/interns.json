@@ -1,0 +1,35 @@
+[
+  {
+    "applicationId": "INT-2024-001",
+    "name": "John Doe",
+    "email": "john.doe@university.edu",
+    "phone": "+1 (555) 123-4567",
+    "university": "Stanford University",
+    "program": "AI Research Intern",
+    "status": "Under Review",
+    "submittedDate": "March 15, 2024",
+    "expectedDecision": "March 30, 2024"
+  },
+  {
+    "applicationId": "INT-2024-002",
+    "name": "Jane Smith",
+    "email": "jane.smith@oxford.edu",
+    "phone": "+44 20 7946 0958",
+    "university": "Oxford University",
+    "program": "Data Science Intern",
+    "status": "Accepted",
+    "submittedDate": "March 10, 2024",
+    "expectedDecision": "March 25, 2024"
+  },
+  {
+    "applicationId": "INT-2024-003",
+    "name": "Ali Khan",
+    "email": "ali.khan@lums.edu.pk",
+    "phone": "+92 300 1234567",
+    "university": "LUMS",
+    "program": "Backend Developer Intern",
+    "status": "Rejected",
+    "submittedDate": "March 12, 2024",
+    "expectedDecision": "March 27, 2024"
+  }
+]

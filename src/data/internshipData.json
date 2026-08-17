@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Full Stack Web Development Internship",
+    "department": "Web Development",
+    "duration": "3 months",
+    "location": "Remote/Hybrid",
+    "description": "Work on cutting-edge web applications using React, Node.js, and modern frameworks.",
+    "requirements": ["JavaScript", "React", "Node.js", "Database knowledge"],
+    "stipend": "$500/month",
+    "startDate": "2024-02-01",
+    "applicationDeadline": "2024-01-25",
+    "openings": 5,
+    "applied": 12
+  },
+  {
+    "id": 2,
+    "title": "AI/ML Research Internship",
+    "department": "Artificial Intelligence",
+    "duration": "6 months",
+    "location": "On-site",
+    "description": "Research and develop machine learning models for real-world applications.",
+    "requirements": ["Python", "TensorFlow/PyTorch", "Statistics", "Research experience"],
+    "stipend": "$800/month",
+    "startDate": "2024-03-01",
+    "applicationDeadline": "2024-02-15",
+    "openings": 3,
+    "applied": 8
+  },
+  {
+    "id": 3,
+    "title": "Robotics Engineering Internship",
+    "department": "Robotics",
+    "duration": "4 months",
+    "location": "On-site",
+    "description": "Design and develop robotic systems for automation and space exploration.",
+    "requirements": ["C++", "ROS", "Hardware design", "Control systems"],
+    "stipend": "$600/month",
+    "startDate": "2024-02-15",
+    "applicationDeadline": "2024-02-01",
+    "openings": 4,
+    "applied": 6
+  }
+]

@@ -1,0 +1,1 @@
+const d=(t,a={})=>{var n,i,w;if(!(typeof window>"u"))try{(n=window.gtag)==null||n.call(window,"event",t,a),(i=window.plausible)==null||i.call(window,t,{props:a}),(w=window.dataLayer)==null||w.push({event:t,...a}),window.dispatchEvent(new CustomEvent("anx:analytics",{detail:{event:t,props:a}}))}catch{}},e=(t,a={})=>d(`auth_${t}`,a);export{d as a,e as t};

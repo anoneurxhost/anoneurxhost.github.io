@@ -1,0 +1,57 @@
+
+{
+  "papers": [
+    {
+      "id": 1,
+      "title": "Advanced Neural Networks for Autonomous Vehicle Navigation",
+      "authors": ["Dr. Sarah Chen", "Prof. Michael Rodriguez", "Dr. Emily Watson"],
+      "abstract": "This paper presents a novel approach to autonomous vehicle navigation using advanced neural network architectures...",
+      "journal": "IEEE Transactions on Intelligent Transportation",
+      "date": "2024-03-15",
+      "category": "AI Research",
+      "status": "Published",
+      "tags": ["Neural Networks", "Autonomous Vehicles", "Deep Learning"],
+      "downloads": 1247,
+      "views": 3456,
+      "rating": 4.8,
+      "citationCount": 23,
+      "pdfPath": "/papers/neural-networks-autonomous-vehicles.pdf",
+      "fullContent": {
+        "introduction": "Autonomous vehicle navigation represents one of the most challenging applications of artificial intelligence...",
+        "methodology": "Our approach utilizes a hierarchical neural network architecture that combines convolutional layers...",
+        "results": "Experimental results demonstrate a 23% improvement in navigation accuracy compared to existing methods...",
+        "conclusion": "The proposed neural network architecture shows significant promise for real-world autonomous vehicle applications...",
+        "references": [
+          "Smith, J. et al. (2023). Deep Learning in Transportation. Nature AI, 15(3), 234-251.",
+          "Johnson, M. (2023). Autonomous Systems: A Comprehensive Review. IEEE Trans. Robot., 39(2), 112-128."
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "title": "Quantum-Enhanced Machine Learning for Drug Discovery",
+      "authors": ["Dr. David Kim", "Prof. Lisa Zhang", "Dr. Robert Johnson"],
+      "abstract": "We explore the application of quantum computing principles to enhance machine learning algorithms for pharmaceutical research...",
+      "journal": "Nature Quantum Information",
+      "date": "2024-02-28",
+      "category": "Quantum Computing",
+      "status": "Published",
+      "tags": ["Quantum Computing", "Machine Learning", "Drug Discovery"],
+      "downloads": 892,
+      "views": 2134,
+      "rating": 4.6,
+      "citationCount": 18,
+      "pdfPath": "/papers/quantum-ml-drug-discovery.pdf",
+      "fullContent": {
+        "introduction": "The intersection of quantum computing and machine learning presents unprecedented opportunities...",
+        "methodology": "Our quantum-enhanced algorithm leverages superposition and entanglement to explore molecular spaces...",
+        "results": "The quantum approach demonstrated a 40% reduction in computation time for molecular optimization...",
+        "conclusion": "Quantum-enhanced machine learning shows remarkable potential for accelerating drug discovery processes...",
+        "references": [
+          "Chen, A. et al. (2024). Quantum Algorithms in Chemistry. Science, 383(6630), 156-162.",
+          "Williams, K. (2023). Machine Learning in Pharmaceutical Research. Drug Discov. Today, 28(4), 103-115."
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+import ceoPhoto from '@/assets/people/image.png';
+
+export interface TimelineItem { year: string; title: string; description: string; }
+export interface ExperienceItem { company: string; role: string; period: string; description: string; responsibilities: string[]; }
+export interface ProjectItem { title: string; description: string; tech: string[]; image?: string; demo?: string; github?: string; }
+export interface AchievementItem { title: string; year: string; org: string; }
+export interface EducationItem { degree: string; school: string; period: string; }
+export interface PublicationItem { title: string; venue: string; year: string; link?: string; }
+export interface TestimonialItem { name: string; role: string; quote: string; avatar?: string; }
+export interface FaqItem { q: string; a: string; }
+
+export interface TeamPortfolio {
+  slug: string;
+  department: string;
+  name: string;
+  title: string;
+  tagline: string;
+  photo: string;
+  location: string;
+  email: string;
+  phone?: string;
+  linkedin?: string;
+  github?: string;
+  twitter?: string;
+  website?: string;
+  resumeUrl?: string;
+  about: {
+    bio: string;
+    summary: string;
+    interests: string[];
+    mission: string;
+  };
+  experience: ExperienceItem[];
+  skills: {
+    core: string[];
+    languages: string[];
+    frameworks: string[];
+    tools: string[];
+    platforms: string[];
+    databases: string[];
+    cloud: string[];
+  };
+  services: { title: string; description: string; icon?: string }[];
+  projects: ProjectItem[];
+  openSource: { name: string; description: string; stars?: number; url?: string }[];
+  achievements: AchievementItem[];
+  education: EducationItem[];
+  publications: PublicationItem[];
+  leadership: { title: string; description: string }[];
+  testimonials: TestimonialItem[];
+  stats: { label: string; value: string }[];
+  timeline: TimelineItem[];
+  media: { type: 'image' | 'video'; url: string; caption?: string }[];
+  availability: { label: string; status: 'open' | 'limited' | 'closed' }[];
+  faqs: FaqItem[];
+  currentFocus: string[];
+  nowBuilding: string[];
+  ventures: { name: string; description: string }[];
+  philosophy: string;
+  funFacts: string[];
+  favoriteTech: string[];
+  books: { title: string; author: string }[];
+  talks: { title: string; venue: string; year: string }[];
+}
+
+export const teamPortfolios: Record<string, TeamPortfolio> = {
+  muhammadqasim: {
+    slug: 'muhammadqasim',
+    department: 'dep',
+    name: 'Muhammad Qasim',
+    title: 'Founder & Systems Architect',
+    tagline: 'Building operating systems, programming languages, and the future of computing.',
+    photo: ceoPhoto,
+    location: 'Lahore, Pakistan',
+    email: 'itskashie@anoneurx.com',
+    linkedin: 'https://linkedin.com/in/itskashie',
+    github: 'https://github.com/itskashie',
+    twitter: 'https://twitter.com/its__kashie',
+    resumeUrl: '#',
+    about: {
+      bio: 'Founder of Anoneurx, a deep-tech lab building secure operating systems, AI infrastructure, and custom programming languages. Passionate about low-level systems, distributed architectures, and the craft of software.',
+      summary: '7+ years architecting full-stack platforms, distributed systems, and OS-level tooling. Led teams shipping products used by thousands.',
+      interests: ['Operating Systems', 'Compilers', 'AI Infrastructure', 'Cryptography', 'Distributed Systems'],
+      mission: 'Empower developers and organizations with sovereign, secure, and performant computing primitives.',
+    },
+    experience: [
+      { company: 'Anoneurx', role: 'Founder & CEO', period: '2023 — Present', description: 'Leading product, engineering, and research across OS, browser, banking, and cloud divisions.', responsibilities: ['Vision & product strategy', 'Architecture reviews', 'Hiring & mentoring', 'Investor relations'] },
+      { company: 'Independent', role: 'Systems Engineer', period: '2020 — 2023', description: 'Built compilers, low-level tooling, and high-throughput backend services for clients across fintech and AI.', responsibilities: ['Compiler design', 'Rust/Go backends', 'Performance engineering'] },
+    ],
+    skills: {
+      core: ['Systems Design', 'Compilers', 'Distributed Systems', 'Security'],
+      languages: ['Rust', 'TypeScript', 'Go', 'C', 'Python', 'Assembly'],
+      frameworks: ['React', 'Axum', 'Tokio', 'Node.js', 'Vite'],
+      tools: ['Git', 'Docker', 'Kubernetes', 'Nix', 'LLVM'],
+      platforms: ['Linux', 'WebAssembly', 'WebGPU'],
+      databases: ['PostgreSQL', 'Redis', 'MongoDB', 'SQLite'],
+      cloud: ['AWS', 'GCP', 'Cloudflare', 'Self-hosted'],
+    },
+    services: [
+      { title: 'Consulting', description: 'Architecture reviews and system design audits.' },
+      { title: 'Development', description: 'Full-stack delivery from infra to UI.' },
+      { title: 'Research', description: 'Applied research in OS, compilers, and AI.' },
+      { title: 'Management', description: 'Fractional CTO and engineering leadership.' },
+    ],
+    projects: [
+      { title: 'Blackwall OS', description: 'A hardened Linux distribution focused on privacy and developer ergonomics.', tech: ['Rust', 'Linux', 'Wayland'], image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&w=900&q=80', demo: '/blackwall', github: 'https://github.com/anoneurx' },
+      { title: 'ATLAS Language', description: 'A modern UI language for GPU-accelerated apps.', tech: ['Rust', 'WebGPU', 'Compilers'], image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80', demo: '/atlas' },
+      { title: 'Nexora Browser', description: 'A privacy-first browser with built-in zero-trust networking.', tech: ['Chromium', 'Rust', 'TypeScript'], image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80', demo: '/nexora' },
+    ],
+    openSource: [
+      { name: 'atlas-lang', description: 'GPU-accelerated UI language', stars: 1240, url: 'https://github.com/anoneurx/atlas' },
+      { name: 'blackwall', description: 'Hardened Linux distro', stars: 870 },
+    ],
+    achievements: [
+      { title: 'Hackathon Grand Prize', year: '2024', org: 'Global DevFest' },
+      { title: 'Open Source Innovator', year: '2024', org: 'DevConf' },
+      { title: 'Rust Foundation Grant', year: '2025', org: 'Rust Foundation' },
+    ],
+    education: [
+      { degree: 'BSc Computer Science', school: 'NUST', period: '2018 — 2022' },
+      { degree: 'Self-directed Systems Research', school: 'Independent', period: '2022 — Present' },
+    ],
+    publications: [
+      { title: 'Designing Sovereign Operating Systems', venue: 'Anoneurx Journal', year: '2025' },
+      { title: 'A Practical Approach to GPU UI Compilers', venue: 'arXiv', year: '2025' },
+    ],
+    leadership: [
+      { title: 'Mentor', description: 'Mentored 30+ engineers across internships and fellowships.' },
+      { title: 'Speaker', description: 'Spoke at multiple global developer conferences on OS and AI.' },
+      { title: 'Community', description: 'Organizes Anoneurx open-source community meetups.' },
+    ],
+    testimonials: [
+      { name: 'Sarah Lee', role: 'CTO, FintechCo', quote: 'Qasim is one of the rare engineers who can move seamlessly from kernel to UI.' },
+      { name: 'Aman Verma', role: 'Engineering Lead', quote: 'Exceptional clarity of thought and shipping speed. A force multiplier.' },
+    ],
+    stats: [
+      { label: 'Years of Experience', value: '7+' },
+      { label: 'Projects Shipped', value: '40+' },
+      { label: 'Open Source Stars', value: '2.1k' },
+      { label: 'Contributions', value: '3.4k' },
+    ],
+    timeline: [
+      { year: '2018', title: 'Started CS Journey', description: 'Began formal computer science studies at NUST.' },
+      { year: '2020', title: 'First Systems Project', description: 'Built first compiler prototype in Rust.' },
+      { year: '2023', title: 'Founded Anoneurx', description: 'Started Anoneurx as a deep-tech research lab.' },
+      { year: '2025', title: 'Launched Blackwall & ATLAS', description: 'Public releases of OS and language.' },
+    ],
+    media: [
+      { type: 'image', url: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=900&q=80', caption: 'Talk at DevConf 2024' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=900&q=80', caption: 'Lab setup' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80', caption: 'Building Blackwall' },
+    ],
+    availability: [
+      { label: 'Open Source', status: 'open' },
+      { label: 'Speaking', status: 'open' },
+      { label: 'Consulting', status: 'limited' },
+      { label: 'Freelance', status: 'closed' },
+    ],
+    faqs: [
+      { q: 'What stack do you primarily work in?', a: 'Rust for systems, TypeScript/React for UI, and PostgreSQL for data.' },
+      { q: 'Do you take on freelance projects?', a: 'Rarely. Most time goes to Anoneurx, but selective consulting is open.' },
+      { q: 'How can I collaborate?', a: 'Reach out via email or through the careers portal for structured opportunities.' },
+    ],
+    currentFocus: ['Blackwall OS v2', 'ATLAS 0.3 compiler', 'Anoneurx Cloud'],
+    nowBuilding: ['ATLAS GPU renderer', 'Blackwall package manager', 'Sovereign auth gateway'],
+    ventures: [
+      { name: 'Anoneurx', description: 'Deep-tech research lab and product studio.' },
+      { name: 'Blackwall', description: 'Hardened operating system.' },
+      { name: 'Nexora', description: 'Privacy-first browser.' },
+    ],
+    philosophy: 'Build small, sharp tools. Optimize for clarity. Respect the user. Ship.',
+    funFacts: ['Writes Rust at 4am', 'Reads compiler papers for fun', 'Loves mechanical keyboards'],
+    favoriteTech: ['Rust', 'PostgreSQL', 'Linux', 'WebGPU', 'Tokio'],
+    books: [
+      { title: 'Crafting Interpreters', author: 'Robert Nystrom' },
+      { title: 'Designing Data-Intensive Applications', author: 'Martin Kleppmann' },
+    ],
+    talks: [
+      { title: 'Sovereign Operating Systems', venue: 'DevConf', year: '2025' },
+      { title: 'Compilers for UI', venue: 'RustFest', year: '2024' },
+    ],
+  },
+};
+
+
+

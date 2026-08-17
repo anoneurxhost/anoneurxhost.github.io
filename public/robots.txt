@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /auth
+Disallow: /dashboard
+# /share/* are share aliases of /read/* — canonical lives at /read/
+Disallow: /share/
+
+Sitemap: https://anoneurx.com/sitemap.xml

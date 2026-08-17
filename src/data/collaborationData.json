@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "type": "research_paper",
+    "title": "Machine Learning Applications in Healthcare Diagnostics",
+    "author": "John Doe",
+    "email": "john.doe@university.edu",
+    "institution": "Stanford University",
+    "abstract": "This paper explores the use of machine learning algorithms in medical diagnostics, focusing on image recognition for early disease detection.",
+    "status": "Under Review",
+    "submittedDate": "2024-03-15",
+    "reviewedBy": null,
+    "keywords": "machine learning, healthcare, diagnostics, AI",
+    "field": "AI/Healthcare"
+  },
+  {
+    "id": 2,
+    "type": "startup_idea",
+    "title": "EcoTrack: Sustainable Supply Chain Management Platform",
+    "founder": "Jane Smith",
+    "email": "jane.smith@entrepreneur.com",
+    "company": "GreenTech Innovations",
+    "description": "A blockchain-based platform for tracking sustainable practices across global supply chains, providing transparency and verification for eco-friendly products.",
+    "status": "Pending Review",
+    "submittedDate": "2024-03-18",
+    "fundingRequired": "$500,000",
+    "stage": "MVP Development",
+    "category": "Sustainability",
+    "teamSize": 4
+  },
+  {
+    "id": 3,
+    "type": "research_paper",
+    "title": "Quantum Computing Applications in Cryptography",
+    "author": "Dr. Michael Chen",
+    "email": "m.chen@techuniv.edu",
+    "institution": "MIT",
+    "abstract": "An analysis of quantum algorithms for breaking current encryption methods and proposals for quantum-resistant cryptographic systems.",
+    "status": "Approved",
+    "submittedDate": "2024-03-10",
+    "reviewedBy": "Dr. Sarah Johnson",
+    "keywords": "quantum computing, cryptography, security",
+    "field": "Quantum Computing"
+  },
+  {
+    "id": 4,
+    "type": "startup_idea",
+    "title": "MindBridge: AI-Powered Mental Health Assistant",
+    "founder": "Alex Rodriguez",
+    "email": "alex.r@mindbridge.ai",
+    "company": "MindBridge AI",
+    "description": "An AI-powered mobile application that provides personalized mental health support through natural language processing and behavioral analysis.",
+    "status": "Approved for Funding",
+    "submittedDate": "2024-03-12",
+    "fundingRequired": "$750,000",
+    "stage": "Beta Testing",
+    "category": "HealthTech",
+    "teamSize": 6
+  }
+]
