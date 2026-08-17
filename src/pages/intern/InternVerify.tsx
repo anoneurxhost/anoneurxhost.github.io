@@ -93,9 +93,10 @@ const InternVerify: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="Verify an Intern"
-        description="Official Anoneurx Verification Portal — Verify intern credentials, completion certificates, and service records in real time."
+        title="Verify Anoneurx Intern — Internship Verification Portal"
+        description="Verify an Anoneurx intern instantly. Confirm internship credentials, department, batch, status, certificates and service records using an intern ID or email address."
         path="/intern/verify"
+        keywords="anoneurx intern, anoneurx internship, verify intern, internship verification, intern verification, anoneurx intern verify, anoneurx internship certificate, verify internship certificate, anoneurx intern id, intern status check, anoneurx intern records, verify intern credentials, anoneurx internship program, anoneurx intern directory, check intern status, anoneurx intern batch, anoneurx intern department, verify anoneurx employee, anoneurx intern proof, intern badge verification, anoneurx academy intern, anoneurx intern confirmation, internship record lookup, verify intern online, anoneurx intern portal"
       />
       <div className="min-h-screen flex flex-col items-center justify-center px-4 py-16 text-white">
         <div className="w-full max-w-[440px]">

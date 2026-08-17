@@ -10,6 +10,7 @@ interface SEOProps {
   type?: "website" | "article";
   jsonLd?: object | object[];
   noindex?: boolean;
+  keywords?: string;
 }
 
 /**
@@ -24,6 +25,7 @@ const SEO = ({
   type = "website",
   jsonLd,
   noindex,
+  keywords,
 }: SEOProps) => {
   const fullTitle = title ? `Anoneurx | ${title}` : "Anoneurx";
   const url = `${SITE}${path}`;
@@ -35,6 +37,7 @@ const SEO = ({
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      {keywords && <meta name="keywords" content={keywords} />}
 
       {noindex ? (
         <meta name="robots" content="noindex,nofollow" />

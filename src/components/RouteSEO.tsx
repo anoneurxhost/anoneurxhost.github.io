@@ -21,6 +21,7 @@ type Entry = {
   /** Overrides the canonical/og:url path (used by /share/* aliases). */
   canonicalPath?: string;
   noindex?: boolean;
+  keywords?: string;
 };
 
 /** Research paper metadata used to build unique /read and /share head tags. */
@@ -323,7 +324,61 @@ const map: Record<string, Entry> = {
   "/login": { title: "Log in — Anoneurx", description: "Log in to Anoneurx." },
   "/signup": { title: "Create your Anoneurx account", description: "Create a free Anoneurx account." },
   "/reportbug": { title: "Report a Bug — Anoneurx", description: "Report a bug in any Anoneurx product." },
-  "/intern/verify": { title: "Verify an Anoneurx Intern", description: "Verify an Anoneurx internship with an intern ID or email — instant confirmation of department, batch, status and certificates." },
+  "/intern/verify": {
+    title: "Verify Anoneurx Intern — Internship Verification Portal",
+    description: "Verify an Anoneurx intern instantly. Confirm internship credentials, department, batch, status, certificates and service records using an intern ID or email address. Official Anoneurx internship verification tool.",
+    keywords: "anoneurx intern, anoneurx internship, verify intern, internship verification, intern verification, anoneurx intern verify, anoneurx internship certificate, verify internship certificate, anoneurx intern id, intern status check, anoneurx intern records, verify intern credentials, anoneurx internship program, anoneurx intern directory, check intern status, anoneurx intern batch, anoneurx intern department, verify anoneurx employee, anoneurx intern proof, intern badge verification, anoneurx academy intern, anoneurx intern confirmation, internship record lookup, verify intern online, anoneurx intern portal",
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Anoneurx Internship Verification Portal",
+        url: `${SITE}/intern/verify`,
+        applicationCategory: "BusinessApplication",
+        description: "Verify Anoneurx intern credentials, certificates, and service records in real time using an intern ID or email address.",
+        publisher: { "@type": "Organization", name: "Anoneurx", url: SITE },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Anoneurx", item: SITE },
+          { "@type": "ListItem", position: 2, name: "Interns", item: `${SITE}/intern` },
+          { "@type": "ListItem", position: 3, name: "Verify", item: `${SITE}/intern/verify` },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "How do I verify an Anoneurx intern?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Enter the intern's ID (e.g. ANX26INTSE044) or registered email address into the verification form at anoneurx.com/intern/verify to instantly confirm their credentials.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What information does Anoneurx intern verification show?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Verification displays the intern's name, department, intern ID, email, batch, status (active/completed), institution, location, internship history, badges and awards.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Can I verify an Anoneurx internship certificate?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. Use the Anoneurx internship verification portal at anoneurx.com/intern/verify to confirm the authenticity of any Anoneurx internship certificate or credential.",
+            },
+          },
+        ],
+      },
+    ],
+  },
   "/university/programs": { title: "Programs — Anoneurx University", description: "Degree programmes, certificates and short courses at Anoneurx University across engineering, AI, systems and design." },
   "/university/admissions": { title: "Admissions — Anoneurx University", description: "How to apply to Anoneurx University — intakes, requirements, scholarships and the step-by-step admissions timeline." },
   "/university/research": { title: "Research — Anoneurx University", description: "Research labs, groups and publications at Anoneurx University spanning AI, quantum, robotics and secure systems." },
@@ -535,14 +590,14 @@ const RouteSEO = () => {
 
   const exact = map[pathname];
   if (exact) {
-    return <SEO title={exact.title} description={exact.description} path={pathname} type={exact.type} jsonLd={exact.jsonLd} noindex={noindex || exact.noindex} />;
+    return <SEO title={exact.title} description={exact.description} path={pathname} type={exact.type} jsonLd={exact.jsonLd} noindex={noindex || exact.noindex} keywords={exact.keywords} />;
   }
 
   for (const p of patterns) {
     const match = matchPath(p.pattern, pathname);
     if (match) {
       const entry = p.build(match.params as Record<string, string | undefined>);
-      return <SEO title={entry.title} description={entry.description} path={entry.canonicalPath ?? pathname} type={entry.type} jsonLd={entry.jsonLd} noindex={noindex || entry.noindex} />;
+      return <SEO title={entry.title} description={entry.description} path={entry.canonicalPath ?? pathname} type={entry.type} jsonLd={entry.jsonLd} noindex={noindex || entry.noindex} keywords={entry.keywords} />;
 
     }
   }

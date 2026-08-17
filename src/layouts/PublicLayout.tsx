@@ -57,12 +57,13 @@ const PublicLayout = () => {
 
   const isAuthPage = ['/auth', '/login', '/signup'].includes(location.pathname);
   const isPaymentPage = location.pathname.startsWith('/payment');
+  const isVerifyPage = location.pathname === '/intern/verify';
   const isProfilePage = location.pathname === '/ceo'
     || (location.pathname.startsWith('/people/') && location.pathname !== '/people')
     || (location.pathname.startsWith('/faculty/') && location.pathname.split('/').filter(Boolean).length >= 3)
     || (location.pathname.startsWith('/intern/') && location.pathname.split('/').filter(Boolean).length >= 3)
     || location.pathname.startsWith('/read/');
-  const hideNavAndFooter = isAuthPage || isPaymentPage || isProfilePage;
+  const hideNavAndFooter = isAuthPage || isPaymentPage || isProfilePage || isVerifyPage;
 
   return (
     <div className="min-h-screen relative">
