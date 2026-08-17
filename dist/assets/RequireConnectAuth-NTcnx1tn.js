@@ -1,1 +1,0 @@
-import{an as o,aJ as s,j as t,Z as r}from"./index-CDlEK5GC.js";const u=({children:e})=>{const{authenticated:a}=o(),n=s();return a?t.jsx(t.Fragment,{children:e}):t.jsx(r,{to:"/auth?mode=connect",replace:!0,state:{from:n.pathname}})};export{u as default};

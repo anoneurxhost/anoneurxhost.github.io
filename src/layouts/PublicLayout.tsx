@@ -61,7 +61,7 @@ const PublicLayout = () => {
   const isProfilePage = location.pathname === '/ceo'
     || (location.pathname.startsWith('/people/') && location.pathname !== '/people')
     || (location.pathname.startsWith('/faculty/') && location.pathname.split('/').filter(Boolean).length >= 3)
-    || (location.pathname.startsWith('/intern/') && location.pathname.split('/').filter(Boolean).length >= 3)
+    || (location.pathname.startsWith('/intern/') && location.pathname !== '/intern' && location.pathname !== '/intern/verify')
     || location.pathname.startsWith('/read/');
   const hideNavAndFooter = isAuthPage || isPaymentPage || isProfilePage || isVerifyPage;
 

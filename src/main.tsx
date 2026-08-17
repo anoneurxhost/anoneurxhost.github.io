@@ -4,7 +4,7 @@ import { HelmetProvider } from "react-helmet-async";
 import App from "./App.tsx";
 import { ErrorBoundary } from "./pages/other/NotFound.tsx";
 import "./index.css";
-import logo from "./assets/logo.jpeg";
+import logo from "./assets/logo.png";
 
 const container = document.getElementById("root");
 if (!container) {
