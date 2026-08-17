@@ -325,7 +325,7 @@ const map: Record<string, Entry> = {
   "/signup": { title: "Create your Anoneurx account", description: "Create a free Anoneurx account." },
   "/reportbug": { title: "Report a Bug — Anoneurx", description: "Report a bug in any Anoneurx product." },
   "/intern/verify": {
-    title: "Verify Anoneurx Intern — Internship Verification Portal",
+    title: "Verify Anoneurx Intern",
     description: "Verify an Anoneurx intern instantly. Confirm internship credentials, department, batch, status, certificates and service records using an intern ID or email address. Official Anoneurx internship verification tool.",
     keywords: "anoneurx intern, anoneurx internship, verify intern, internship verification, intern verification, anoneurx intern verify, anoneurx internship certificate, verify internship certificate, anoneurx intern id, intern status check, anoneurx intern records, verify intern credentials, anoneurx internship program, anoneurx intern directory, check intern status, anoneurx intern batch, anoneurx intern department, verify anoneurx employee, anoneurx intern proof, intern badge verification, anoneurx academy intern, anoneurx intern confirmation, internship record lookup, verify intern online, anoneurx intern portal",
     jsonLd: [
