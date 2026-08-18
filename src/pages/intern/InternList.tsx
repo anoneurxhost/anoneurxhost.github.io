@@ -35,8 +35,6 @@ const InternList: React.FC = () => {
 
     if (!q.trim()) return scoped;
 
-    // Brand-aware ranking: "anoneurx" / "anoneurx university" surfaces the
-    // whole Anoneurx intern directory, most relevant first.
     return rankRecords(scoped, q, (i) => ({
       name: i.name,
       keywords: [i.department, i.university, i.batch, i.status, i.location, i.bio],
@@ -68,21 +66,20 @@ const InternList: React.FC = () => {
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
             {filtered.map((i) => (
               <Link key={i.internId} to={`/intern/${i.internId}`}>
-                <Card className="bg-white/[0.03] border-white/10 hover:bg-white/[0.06] hover:border-primary/30 transition-all h-full group">
+                <Card className="glass backdrop-blur-2xl bg-white/[0.04] border-white/10 hover:bg-white/[0.08] hover:border-white/20 transition-all h-full group rounded-2xl shadow-lg">
                   <CardContent className="p-5 space-y-3">
                     <div className="flex items-center gap-3">
-                      <img src={i.photo} alt={i.name} className="w-14 h-14 rounded-2xl object-cover border border-white/10" />
+                      <img src={i.photo} alt={i.name} className="w-14 h-14 rounded-2xl object-cover border border-white/10 shadow-md" />
                       <div className="min-w-0">
                         <h3 className="text-sm font-semibold group-hover:text-primary transition-colors truncate">{i.name}</h3>
                         <p className="text-xs text-white/60 truncate">{i.department} · {i.batch}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-1.5 flex-wrap">
-                      <Badge className="bg-white/[0.05] border-white/10 text-white/70 text-[10px]">{i.status}</Badge>
-                      {i.university && <Badge className="bg-white/[0.05] border-white/10 text-white/60 text-[10px]">{i.university}</Badge>}
+                      <Badge className="bg-white/[0.06] border-white/10 text-white/70 text-[10px]">{i.status}</Badge>
+                      {i.university && <Badge className="bg-white/[0.06] border-white/10 text-white/60 text-[10px]">{i.university}</Badge>}
                     </div>
                     <p className="text-xs text-white/55 line-clamp-2">{i.bio}</p>
                     {i.location && (

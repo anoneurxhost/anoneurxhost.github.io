@@ -106,7 +106,7 @@ const DashboardDocuments = () => {
   };
 
   const copyVerifyLink = async (doc: ProgramDocument) => {
-    const url = `${window.location.origin}/intern/verify?doc=${doc.verificationId}`;
+    const url = `${window.location.origin}/verify?mode=internship&doc=${doc.verificationId}`;
     try {
       await navigator.clipboard.writeText(url);
       toast({ title: "Verification link copied", description: doc.verificationId });

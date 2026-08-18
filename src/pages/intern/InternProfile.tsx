@@ -28,7 +28,6 @@ const InternProfile: React.FC = () => {
 
   if (!person) return <Navigate to="/intern" replace />;
 
-  // Canonical URL is always the intern-ID form: /intern/anx-se-44
   if (!internId) return <Navigate to={`/intern/${person.internId}`} replace />;
 
   const path = `/intern/${person.internId}`;
@@ -82,9 +81,9 @@ const InternProfile: React.FC = () => {
           </Link>
 
           <motion.div initial="hidden" animate="visible" variants={fade}>
-            <Card className="bg-white/[0.04] border-white/10 backdrop-blur-xl">
+            <Card className="glass backdrop-blur-2xl bg-white/[0.04] border-white/10 rounded-2xl shadow-2xl">
               <CardContent className="p-6 md:p-10 grid md:grid-cols-[200px_1fr] gap-8 items-start">
-                <img src={person.photo} alt={person.name} className="w-40 h-40 md:w-52 md:h-52 rounded-2xl object-cover border border-white/10 mx-auto md:mx-0" />
+                <img src={person.photo} alt={person.name} className="w-40 h-40 md:w-52 md:h-52 rounded-2xl object-cover border border-white/10 mx-auto md:mx-0 shadow-lg" />
                 <div className="space-y-4">
                   <div className="flex flex-wrap gap-2">
                     <Badge className="bg-primary/15 text-primary border-primary/30">Intern</Badge>
@@ -120,7 +119,7 @@ const InternProfile: React.FC = () => {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-6 mt-8">
-            <Card className="bg-white/[0.03] border-white/10">
+            <Card className="glass backdrop-blur-2xl bg-white/[0.04] border-white/10 rounded-2xl shadow-xl">
               <CardContent className="p-6 space-y-4">
                 <h2 className="text-sm uppercase tracking-widest text-white/50 flex items-center gap-2">
                   <Users className="w-4 h-4" /> Internship History
@@ -137,7 +136,7 @@ const InternProfile: React.FC = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/[0.03] border-white/10">
+            <Card className="glass backdrop-blur-2xl bg-white/[0.04] border-white/10 rounded-2xl shadow-xl">
               <CardContent className="p-6 space-y-4">
                 <h2 className="text-sm uppercase tracking-widest text-white/50 flex items-center gap-2">
                   <GitPullRequest className="w-4 h-4" /> Open Source Contribution
@@ -176,7 +175,7 @@ const InternProfile: React.FC = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/[0.03] border-white/10">
+            <Card className="glass backdrop-blur-2xl bg-white/[0.04] border-white/10 rounded-2xl shadow-xl">
               <CardContent className="p-6 space-y-3">
                 <h2 className="text-sm uppercase tracking-widest text-white/50 flex items-center gap-2">
                   <Award className="w-4 h-4" /> Certifications
@@ -192,7 +191,7 @@ const InternProfile: React.FC = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/[0.03] border-white/10">
+            <Card className="glass backdrop-blur-2xl bg-white/[0.04] border-white/10 rounded-2xl shadow-xl">
               <CardContent className="p-6 space-y-3">
                 <h2 className="text-sm uppercase tracking-widest text-white/50 flex items-center gap-2">
                   <Sparkles className="w-4 h-4" /> Badges

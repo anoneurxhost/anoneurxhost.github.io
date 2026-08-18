@@ -56,7 +56,7 @@ const JoinDevTeam = () => {
                   <Send className="w-5 h-5 mr-2" />
                   Apply Now
                 </Button>
-                <Button variant="outline" size="lg" className="px-8" onClick={() => navigate('/careers/join-dev-team/verify')}>
+                <Button variant="outline" size="lg" className="px-8" onClick={() => navigate('/verify?mode=dev-team')}>
                   <FileCheck className="w-5 h-5 mr-2" />
                   Check Status
                 </Button>

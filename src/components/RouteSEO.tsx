@@ -324,16 +324,33 @@ const map: Record<string, Entry> = {
   "/login": { title: "Log in — Anoneurx", description: "Log in to Anoneurx." },
   "/signup": { title: "Create your Anoneurx account", description: "Create a free Anoneurx account." },
   "/reportbug": { title: "Report a Bug — Anoneurx", description: "Report a bug in any Anoneurx product." },
+  "/verify": {
+    title: "Verify Anoneurx Participation",
+    description: "Verify Anoneurx internship credentials, hackathon participation, developer team applications, and program opportunity records in real time. Official Anoneurx verification portal.",
+    keywords: "anoneurx verify, verify intern, anoneurx internship verification, hackathon verify, dev team verify, opportunity verify, verify certificate, anoneurx identity, verify credentials",
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Anoneurx Verification Portal",
+        url: `${SITE}/verify`,
+        applicationCategory: "BusinessApplication",
+        description: "Verify Anoneurx internship credentials and hackathon participation certificates in real time.",
+        publisher: { "@type": "Organization", name: "Anoneurx", url: SITE },
+      },
+      BREADCRUMB([{ name: "Anoneurx", item: "/" }, { name: "Verify", item: "/verify" }]),
+    ],
+  },
   "/intern/verify": {
     title: "Verify Anoneurx Intern",
-    description: "Verify an Anoneurx intern instantly. Confirm internship credentials, department, batch, status, certificates and service records using an intern ID or email address. Official Anoneurx internship verification tool.",
-    keywords: "anoneurx intern, anoneurx internship, verify intern, internship verification, intern verification, anoneurx intern verify, anoneurx internship certificate, verify internship certificate, anoneurx intern id, intern status check, anoneurx intern records, verify intern credentials, anoneurx internship program, anoneurx intern directory, check intern status, anoneurx intern batch, anoneurx intern department, verify anoneurx employee, anoneurx intern proof, intern badge verification, anoneurx academy intern, anoneurx intern confirmation, internship record lookup, verify intern online, anoneurx intern portal",
+    description: "Verify an Anoneurx intern instantly. Confirm internship credentials, department, batch, status, certificates and service records using an intern ID or email address.",
+    keywords: "anoneurx intern, anoneurx internship, verify intern, internship verification, intern verification, anoneurx intern verify, anoneurx internship certificate, verify internship certificate, anoneurx intern id, intern status check",
     jsonLd: [
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         name: "Anoneurx Internship Verification Portal",
-        url: `${SITE}/intern/verify`,
+        url: `${SITE}/verify?mode=internship`,
         applicationCategory: "BusinessApplication",
         description: "Verify Anoneurx intern credentials, certificates, and service records in real time using an intern ID or email address.",
         publisher: { "@type": "Organization", name: "Anoneurx", url: SITE },
@@ -344,7 +361,7 @@ const map: Record<string, Entry> = {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Anoneurx", item: SITE },
           { "@type": "ListItem", position: 2, name: "Interns", item: `${SITE}/intern` },
-          { "@type": "ListItem", position: 3, name: "Verify", item: `${SITE}/intern/verify` },
+          { "@type": "ListItem", position: 3, name: "Verify", item: `${SITE}/verify?mode=internship` },
         ],
       },
       {
@@ -356,7 +373,7 @@ const map: Record<string, Entry> = {
             name: "How do I verify an Anoneurx intern?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Enter the intern's ID (e.g. ANX26INTSE044) or registered email address into the verification form at anoneurx.com/intern/verify to instantly confirm their credentials.",
+              text: "Enter the intern's ID or registered email address into the verification form at anoneurx.com/verify to instantly confirm their credentials.",
             },
           },
           {
@@ -372,7 +389,7 @@ const map: Record<string, Entry> = {
             name: "Can I verify an Anoneurx internship certificate?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. Use the Anoneurx internship verification portal at anoneurx.com/intern/verify to confirm the authenticity of any Anoneurx internship certificate or credential.",
+              text: "Yes. Use the Anoneurx internship verification portal at anoneurx.com/verify?mode=internship to confirm the authenticity of any Anoneurx internship certificate or credential.",
             },
           },
         ],

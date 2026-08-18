@@ -45,7 +45,7 @@ const OtherOpportunities = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="glass" size="lg" className="px-8" onClick={() => navigate('/careers/other-opportunities/verify')}>
+                <Button variant="glass" size="lg" className="px-8" onClick={() => navigate('/verify?mode=other')}>
                   <FileCheck className="w-5 h-5 mr-2" />
                   Check Status
                 </Button>

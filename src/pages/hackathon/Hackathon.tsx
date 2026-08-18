@@ -58,7 +58,7 @@ const Hackathon = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
                 
                 {/* Verify Card */}
-                <Link to="/hackathon/verify">
+                <Link to="/verify?mode=hackathon">
                   <Card className="bg-white/10 border-white/20 backdrop-blur-sm hover:bg-white/15 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/20 group h-full">
                     <CardHeader className="text-center">
                       <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 flex items-center justify-center text-white">

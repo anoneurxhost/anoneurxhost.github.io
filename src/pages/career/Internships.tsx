@@ -69,7 +69,7 @@ const Internships = () => {
                     Apply Now
                   </Button>
                 </Link>
-                <Link to="/internship-verify">
+                <Link to="/verify?mode=internship">
                   <Button variant="outline" size="lg" className="px-8">
                     <FileCheck className="w-5 h-5 mr-2" />
                     Check Status

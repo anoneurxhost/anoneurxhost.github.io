@@ -63,8 +63,8 @@ const RoboticsSystems = React.lazy(() => import('./pages/marketing/RoboticsSyste
 const SpaceProjects = React.lazy(() => import('./pages/projects/SpaceProjects'));
 const WebDevelopment = React.lazy(() => import('./pages/marketing/WebDevelopment'));
 const InternshipApplyPage = React.lazy(() => import('./pages/career/InternshipApplyPage'));
-const InternshipVerify = React.lazy(() => import('./pages/career/InternshipVerify'));
 const ProtectedInternshipApply = React.lazy(() => import('./pages/career/ProtectedInternshipApply'));
+const Verify = React.lazy(() => import('./pages/verify/Verify'));
 const Community = React.lazy(() => import('./pages/community/Community'));
 const Documentation = React.lazy(() => import('./pages/docs/Documentation'));
 const University = React.lazy(() => import('./pages/courses/University'));
@@ -81,7 +81,6 @@ const Professors = React.lazy(() => import('./pages/courses/Professors'));
 const FacultyProfile = React.lazy(() => import('./pages/faculty/FacultyProfile'));
 const InternList = React.lazy(() => import('./pages/intern/InternList'));
 const InternProfile = React.lazy(() => import('./pages/intern/InternProfile'));
-const InternVerify = React.lazy(() => import('./pages/intern/InternVerify'));
 
 const CEOProfile = React.lazy(() => import('./pages/marketing/CEO'));
 
@@ -182,6 +181,13 @@ const OSPackages = React.lazy(() => import('./pages/opensource/OSPackages'));
 const OSTemplates = React.lazy(() => import('./pages/opensource/OSTemplates'));
 const OSVSCodeExtensions = React.lazy(() => import('./pages/opensource/OSVSCodeExtensions'));
 const OSShowcase = React.lazy(() => import('./pages/opensource/OSShowcase'));
+const OSReleases = React.lazy(() => import('./pages/opensource/OSReleases'));
+const OSRoadmaps = React.lazy(() => import('./pages/opensource/OSRoadmaps'));
+const OSDiscussions = React.lazy(() => import('./pages/opensource/OSDiscussions'));
+const OSRepos = React.lazy(() => import('./pages/opensource/OSRepos'));
+const OSProjectDetail = React.lazy(() => import('./pages/opensource/OSProjectDetail'));
+const OSRepoDetail = React.lazy(() => import('./pages/opensource/OSRepoDetail'));
+const OSSearch = React.lazy(() => import('./pages/opensource/OSSearch'));
 
 // Contributions subpages
 const ContributorsPage = React.lazy(() => import('./pages/contributions/Contributors'));
@@ -207,7 +213,6 @@ const StartupIncubation = React.lazy(() => import('./pages/opportunities/Startup
 const GlobalExchange = React.lazy(() => import('./pages/opportunities/GlobalExchange'));
 const StrategicKPIs = React.lazy(() => import('./pages/research/StrategicKPIs'));
 const Hackathon = React.lazy(() => import('./pages/hackathon/Hackathon'));
-const HackathonVerify = React.lazy(() => import('./pages/hackathon/HackathonVerify'));
 const HackathonEnroll = React.lazy(() => import('./pages/hackathon/HackathonEnroll'));
 const OtherOpportunitiesApply = React.lazy(() => import('./pages/opportunities/OtherOpportunitiesApply'));
 
@@ -249,12 +254,9 @@ const RequireConnectAuth = React.lazy(() => import('./pages/cloud/connect/Requir
 
 // Career Pages
 const CareersHackathon = React.lazy(() => import('./pages/careers/Hackathon'));
-const CareersHackathonVerify = React.lazy(() => import('./pages/careers/HackathonVerify'));
 const CareersHackathonApply = React.lazy(() => import('./pages/careers/HackathonApply'));
 const CareersJoinDevTeam = React.lazy(() => import('./pages/careers/JoinDevTeam'));
-const CareersJoinDevTeamVerify = React.lazy(() => import('./pages/careers/JoinDevTeamVerify'));
 const CareersJoinDevTeamApply = React.lazy(() => import('./pages/careers/JoinDevTeamApply'));
-const CareersOtherOpportunitiesVerify = React.lazy(() => import('./pages/careers/OtherOpportunitiesVerify'));
 
 
 const CourseDetail = React.lazy(() => import('./pages/courses/CourseDetail'));
@@ -386,6 +388,13 @@ function App() {
                   <Route path="templates" element={<OSTemplates />} />
                   <Route path="vscode-extensions" element={<OSVSCodeExtensions />} />
                   <Route path="showcase" element={<OSShowcase />} />
+                  <Route path="releases" element={<OSReleases />} />
+                  <Route path="roadmaps" element={<OSRoadmaps />} />
+                  <Route path="discussions" element={<OSDiscussions />} />
+                  <Route path="repos" element={<OSRepos />} />
+                  <Route path="search" element={<OSSearch />} />
+                  <Route path="projects/:id" element={<OSProjectDetail />} />
+                  <Route path="repos/:id" element={<OSRepoDetail />} />
                   <Route path="sponsors" element={<Sponsors />} />
                   <Route path="sponcers" element={<Navigate to="/opensource/sponsors" replace />} />
                   <Route path="community" element={<Community />} />
@@ -437,18 +446,17 @@ function App() {
 
                 <Route path="careers/submissions" element={<SubmittedProjects />} />
                 <Route path="collaboration" element={<Collaboration />} />
-                <Route path="collaboration/form" element={<Collaboration />} />
+                <Route path="collaboration/form" element={<CollaborationForm />} />
                 <Route path="collaboration/form/:type" element={<RequireAuth><CollaborationForm /></RequireAuth>} />
                 <Route path="dev-team" element={<Navigate to="/people" replace />} />
                 <Route path="careers" element={<CareerHub />} />
                 <Route path="careers/hackathon" element={<CareersHackathon />} />
-                <Route path="careers/hackathon/verify" element={<CareersHackathonVerify />} />
+                <Route path="careers/hackathon/verify" element={<Navigate to="/verify?mode=hackathon" replace />} />
                 <Route path="careers/hackathon/apply" element={<RequireAuth><CareersHackathonApply /></RequireAuth>} />
                 <Route path="careers/join-dev-team" element={<CareersJoinDevTeam />} />
-                <Route path="careers/join-dev-team/verify" element={<CareersJoinDevTeamVerify />} />
+                <Route path="careers/join-dev-team/verify" element={<Navigate to="/verify?mode=dev-team" replace />} />
                 <Route path="careers/join-dev-team/apply" element={<RequireAuth><CareersJoinDevTeamApply /></RequireAuth>} />
-                <Route path="careers/other-opportunities" element={<OtherOpportunities />} />
-                <Route path="careers/other-opportunities/verify" element={<CareersOtherOpportunitiesVerify />} />
+                <Route path="careers/other-opportunities/verify" element={<Navigate to="/verify?mode=other" replace />} />
                 <Route path="careers/join" element={<JoinUs />} />
                 <Route path="blogs/all" element={<BlogsAll />} />
                 <Route path="blog/:id" element={<ReadBlog />} />
@@ -474,9 +482,11 @@ function App() {
                 <Route path="ceo" element={<CEOProfile />} />
                 {/* Faculty */}
                 <Route path="faculty/:department/:name" element={<FacultyProfile />} />
+                {/* Unified Verification Route */}
+                <Route path="verify" element={<Verify />} />
                 {/* Interns (public) */}
                 <Route path="intern" element={<InternList />} />
-                <Route path="intern/verify" element={<InternVerify />} />
+                <Route path="intern/verify" element={<Navigate to="/verify?mode=internship" replace />} />
                 <Route path="intern/:internId" element={<InternProfile />} />
                 <Route path="intern/:department/:name" element={<InternProfile />} />
 
@@ -489,7 +499,7 @@ function App() {
                 <Route path="careers/internship/apply" element={<RequireAuth><InternshipApply /></RequireAuth>} />
                 <Route path="internships/apply/:id" element={<RequireAuth><ProtectedInternshipApply /></RequireAuth>} />
                 <Route path="internship-apply" element={<RequireAuth><InternshipApply /></RequireAuth>} />
-                <Route path="internship-verify" element={<InternshipVerify />} />
+                <Route path="internship-verify" element={<Navigate to="/verify?mode=internship" replace />} />
                 <Route path="auth" element={<Auth />} />
                 <Route path="login" element={<Auth />} />
                 <Route path="signup" element={<Auth />} />
@@ -607,7 +617,7 @@ function App() {
                 <Route path="opportunities/apply" element={<RequireAuth><OtherOpportunitiesApply /></RequireAuth>} />
                 <Route path="strategic-kpis" element={<StrategicKPIs />} />
                 <Route path="hackathon" element={<Hackathon />} />
-                <Route path="hackathon/verify" element={<HackathonVerify />} />
+                <Route path="hackathon/verify" element={<Navigate to="/verify?mode=hackathon" replace />} />
                 <Route path="hackathon/enroll" element={<HackathonEnroll />} />
 
                 <Route path="university" element={<University />} />
@@ -626,8 +636,6 @@ function App() {
                 <Route path="pay/support" element={<ModuleSupportPage configKey="pay-support" />} />
                 <Route path="cloud/contact" element={<ModuleSupportPage configKey="cloud-contact" />} />
                 <Route path="professors" element={<Navigate to="/faculty" replace />} />
-                <Route path="university" element={<University />} />
-                <Route path="courses" element={<Courses />} />
                 <Route path="blockchain-systems" element={<BlockchainSystems />} />
                 <Route path="operating-systems" element={<OperatingSystems />} />
                 <Route path="privacy" element={<PrivacyPolicy />} />

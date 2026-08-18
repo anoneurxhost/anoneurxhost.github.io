@@ -216,7 +216,7 @@ export const generateShareableLink = (internData: InternData): string => {
     program: internData.program
   });
   
-  return `${baseUrl}/internship-verify?${params.toString()}`;
+  return `${baseUrl}/verify?mode=internship&${params.toString()}`;
 };
 
 export const copyToClipboard = async (text: string): Promise<boolean> => {

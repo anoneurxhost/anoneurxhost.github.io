@@ -117,7 +117,7 @@ export const MODULE_SUPPORT: Record<string, ModuleSupportConfig> = {
     ],
     links: [
       { label: "Courses", to: "/courses" },
-      { label: "Verify an intern", to: "/intern/verify" },
+      { label: "Verify an intern", to: "/verify?mode=internship" },
       { label: "Contact", to: "/university/contact" },
     ],
     topics: [

@@ -218,7 +218,7 @@ const Navigation = () => {
                 </Link>
               ) : (
                 <Link
-                  to={isApps ? "/apps/login" : isCloud ? "/cloud/login" : "/auth"}
+                  to={isApps ? "/apps/login" : isCloud ? "/cloud/login" : "/auth?mode=login"}
                   className="relative group text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300"
                 >
                   Login

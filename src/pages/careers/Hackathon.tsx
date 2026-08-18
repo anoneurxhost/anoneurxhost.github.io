@@ -108,7 +108,7 @@ const Hackathon = () => {
                   <Send className="w-5 h-5 mr-2" />
                   Register Now
                 </Button>
-                <Button variant="outline" size="lg" className="px-8" onClick={() => navigate('/careers/hackathon/verify')}>
+                <Button variant="outline" size="lg" className="px-8" onClick={() => navigate('/verify?mode=hackathon')}>
                   <FileCheck className="w-5 h-5 mr-2" />
                   Check Status
                 </Button>

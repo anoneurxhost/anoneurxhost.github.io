@@ -1,8 +1,57 @@
+# Anoneurx robots.txt - Google Search Console Configuration
+
 User-agent: *
 Allow: /
+Allow: /research
+Allow: /intern
+Allow: /faculty
+Allow: /people
+Allow: /courses
+Allow: /blackwall
+Allow: /cloud
+Allow: /pay
+Allow: /opensource
+Allow: /nexora
+Allow: /apps
+Allow: /community
 Disallow: /auth
+Disallow: /login
+Disallow: /signup
 Disallow: /dashboard
+Disallow: /portal
+Disallow: /cloud/connect
+Disallow: /admin
+Disallow: /private
 # /share/* are share aliases of /read/* — canonical lives at /read/
 Disallow: /share/
+Disallow: *.pdf
+Disallow: *.doc
+Disallow: *.docx
 
+Noindex: /auth
+Noindex: /login
+Noindex: /signup
+Noindex: /dashboard/*
+Noindex: /portal/*
+
+# Crawl delay
+Crawl-delay: 2
+Request-rate: 30/60
+
+# Priority crawlers
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+Request-rate: 100/60
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+Request-rate: 50/60
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Sitemap
 Sitemap: https://anoneurx.com/sitemap.xml
