@@ -18,7 +18,7 @@ const DESCRIPTION =
   "Verify an Anoneurx intern instantly. Confirm internship credentials, department, batch, status, certificates and service records using an intern ID or email address. Official Anoneurx internship verification tool.";
 const KEYWORDS =
   "anoneurx intern, anoneurx internship, verify intern, internship verification, intern verification, anoneurx intern verify, anoneurx internship certificate, verify internship certificate, anoneurx intern id, intern status check, anoneurx intern records, verify intern credentials, anoneurx internship program, anoneurx intern directory, check intern status, anoneurx intern batch, anoneurx intern department, verify anoneurx employee, anoneurx intern proof, intern badge verification, anoneurx academy intern, anoneurx intern confirmation, internship record lookup, verify intern online, anoneurx intern portal";
-const CANONICAL = "https://anoneurx.com/intern/verify";
+const CANONICAL = "https://anoneurx.com/verify?mode=internship";
 const URL = CANONICAL;
 
 const JSON_LD = [
@@ -54,7 +54,7 @@ const JSON_LD = [
         name: "How do I verify an Anoneurx intern?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Enter the intern's ID (e.g. ANX26INTSE044) or registered email address into the verification form at anoneurx.com/intern/verify to instantly confirm their credentials.",
+          text: "Enter the intern's ID or registered email address into the verification form at anoneurx.com/verify to instantly confirm their credentials.",
         },
       },
       {
@@ -70,7 +70,7 @@ const JSON_LD = [
         name: "Can I verify an Anoneurx internship certificate?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. Use the Anoneurx internship verification portal at anoneurx.com/intern/verify to confirm the authenticity of any Anoneurx internship certificate or credential.",
+          text: "Yes. Use the Anoneurx internship verification portal at anoneurx.com/verify?mode=internship to confirm the authenticity of any Anoneurx internship certificate or credential.",
         },
       },
     ],
@@ -156,8 +156,12 @@ const result = SRC.replace(
   `<head>${headContent}\n</head>`
 );
 
-const outDir = resolve(dist, "intern/verify");
+const outDir = resolve(dist, "verify");
 mkdirSync(outDir, { recursive: true });
 writeFileSync(resolve(outDir, "index.html"), result, "utf-8");
 
-console.log(`✓ Prerendered /intern/verify → ${outDir}/index.html`);
+const legacyDir = resolve(dist, "intern/verify");
+mkdirSync(legacyDir, { recursive: true });
+writeFileSync(resolve(legacyDir, "index.html"), result, "utf-8");
+
+console.log(`✓ Prerendered /verify & /intern/verify → ${outDir}/index.html`);

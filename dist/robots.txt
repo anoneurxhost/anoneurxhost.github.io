@@ -2,56 +2,66 @@
 
 User-agent: *
 Allow: /
-Allow: /research
+Allow: /about
+Allow: /contact
+Allow: /verify
 Allow: /intern
-Allow: /faculty
+Allow: /intern/
 Allow: /people
-Allow: /courses
-Allow: /blackwall
-Allow: /cloud
-Allow: /pay
+Allow: /careers
+Allow: /research
+Allow: /read/
+Allow: /blogs
 Allow: /opensource
+Allow: /opensource/
+Allow: /blackwall
+Allow: /blackwall/
 Allow: /nexora
+Allow: /nexora/
+Allow: /cloud
+Allow: /cloud/
+Allow: /pay
+Allow: /pay/
+Allow: /university
+Allow: /courses
+Allow: /faculty
 Allow: /apps
-Allow: /community
+Allow: /apps/browse
+
 Disallow: /auth
 Disallow: /login
 Disallow: /signup
 Disallow: /dashboard
+Disallow: /dashboard/
 Disallow: /portal
+Disallow: /portal/
 Disallow: /cloud/connect
+Disallow: /cloud/connect/
+Disallow: /cloud/login
+Disallow: /nexora/login
+Disallow: /blackwall/login
+Disallow: /apps/login
+Disallow: /apps/dashboard
+Disallow: /apps/publisher
+Disallow: /apps/submit
+Disallow: /pay/dashboard
+Disallow: /pay/business
+Disallow: /pay/open-account
+Disallow: /careers/internships/apply
+Disallow: /careers/hackathon/apply
+Disallow: /careers/join-dev-team/apply
+Disallow: /opportunities/apply
+Disallow: /share/
 Disallow: /admin
 Disallow: /private
-# /share/* are share aliases of /read/* — canonical lives at /read/
-Disallow: /share/
-Disallow: *.pdf
-Disallow: *.doc
-Disallow: *.docx
-
-Noindex: /auth
-Noindex: /login
-Noindex: /signup
-Noindex: /dashboard/*
-Noindex: /portal/*
-
-# Crawl delay
-Crawl-delay: 2
-Request-rate: 30/60
 
 # Priority crawlers
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
-Request-rate: 100/60
 
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1
-Request-rate: 50/60
-
-User-agent: Slurp
-Allow: /
-Crawl-delay: 1
 
 # Sitemap
 Sitemap: https://anoneurx.com/sitemap.xml
+

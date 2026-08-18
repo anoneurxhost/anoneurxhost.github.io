@@ -4,7 +4,6 @@
   <url><loc>https://anoneurx.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://anoneurx.com/about</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://anoneurx.com/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://anoneurx.com/sponsors</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://anoneurx.com/artificial-intelligence</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://anoneurx.com/robotics-systems</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://anoneurx.com/web-development</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -14,6 +13,9 @@
   <url><loc>https://anoneurx.com/arcadeum</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://anoneurx.com/partnership-inquiry</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://anoneurx.com/investment-opportunities</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- UNIFIED VERIFICATION PORTAL -->
+  <url><loc>https://anoneurx.com/verify</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
 
   <!-- BLACKWALL OS -->
   <url><loc>https://anoneurx.com/blackwall</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
@@ -49,7 +51,7 @@
   <url><loc>https://anoneurx.com/cloud/storage/backup</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://anoneurx.com/cloud/storage/archive</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
-  <!-- PAY / BANKING -->
+  <!-- PAY & CHECKOUT -->
   <url><loc>https://anoneurx.com/pay</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://anoneurx.com/pay/features</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://anoneurx.com/pay/security</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -74,37 +76,40 @@
   <!-- COMMUNITY & PEOPLE -->
   <url><loc>https://anoneurx.com/people</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://anoneurx.com/ceo</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://anoneurx.com/community</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://anoneurx.com/community/leaderboard</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://anoneurx.com/community/mentorship</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://anoneurx.com/community/forums</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://anoneurx.com/community/events</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://anoneurx.com/community/events/upcoming</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://anoneurx.com/community/events/past</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
 
   <!-- INTERNSHIP -->
   <url><loc>https://anoneurx.com/intern</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://anoneurx.com/intern/verify</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
   <url><loc>https://anoneurx.com/internships</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://anoneurx.com/internship-verify</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://anoneurx.com/careers/internships</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://anoneurx.com/intern/ANX26INTSE044</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- RESEARCH & CONTENT -->
   <url><loc>https://anoneurx.com/research</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://anoneurx.com/blogs</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://anoneurx.com/blogs/all</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/view-in-journal</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://anoneurx.com/collaboration</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://anoneurx.com/documentation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://anoneurx.com/docs/getting-started</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://anoneurx.com/docs/api-reference</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://anoneurx.com/docs/deployment</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
 
+  <!-- RESEARCH PAPERS -->
+  <url><loc>https://anoneurx.com/read/vwxyz</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/read/abcde</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/read/qmzkl</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/read/qcsat</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/read/q6gwn</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/read/ugxyb</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/read/xnnpa</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/read/wsgwb</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
   <!-- CAREERS & OPPORTUNITIES -->
   <url><loc>https://anoneurx.com/careers</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://anoneurx.com/careers/join</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://anoneurx.com/hackathon</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://anoneurx.com/hackathon/verify</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://anoneurx.com/careers/hackathon</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://anoneurx.com/careers/join-dev-team</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://anoneurx.com/careers/other-opportunities</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://anoneurx.com/other-opportunities</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -126,6 +131,7 @@
   <url><loc>https://anoneurx.com/opensource/vscode-extensions</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://anoneurx.com/opensource/showcase</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://anoneurx.com/opensource/contributors</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/sponsors</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://anoneurx.com/opensource/contribute</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://anoneurx.com/opensource/contribute/apply</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://anoneurx.com/opensource/community</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
@@ -171,11 +177,6 @@
   <url><loc>https://anoneurx.com/atlas</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://anoneurx.com/docs/atlas</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
-  <!-- AUTHENTICATION -->
-  <url><loc>https://anoneurx.com/auth</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://anoneurx.com/login</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://anoneurx.com/signup</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-
   <!-- LEGAL & POLICIES -->
   <url><loc>https://anoneurx.com/privacy</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
   <url><loc>https://anoneurx.com/terms</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
@@ -185,12 +186,4 @@
   <!-- NOTES & UTILITIES -->
   <url><loc>https://anoneurx.com/notes</loc><changefreq>daily</changefreq><priority>0.5</priority></url>
   <url><loc>https://anoneurx.com/reportbug</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
-
-  <!-- SAMPLE RESEARCH PAPERS -->
-  <url><loc>https://anoneurx.com/read/ugxyb</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://anoneurx.com/read/xnnpa</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://anoneurx.com/read/wsgwb</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- SAMPLE INTERN PROFILES -->
-  <url><loc>https://anoneurx.com/intern/anx-se-44</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>
