@@ -62,7 +62,7 @@ export const internProfiles: InternProfile[] = [
 
     department: "Software Engineering",
     batch: "2026 Summer",
-    status: "Active",
+    status: "Completed",
     photo: inshaPhoto,
     bio: "Software Engineering student passionate about building modern web applications, creating responsive user interfaces, and continuously learning new technologies through personal and academic projects.",
     university: "Lahore College For Women University Lahore",
