@@ -98,9 +98,8 @@ export const internProfiles: InternProfile[] = [
       ],
     },
     certifications: [
-      { title: "Responsive Web Design", issuer: "freeCodeCamp", date: "2026" },
-      { title: "JavaScript Algorithms and Data Structures", issuer: "freeCodeCamp", date: "2026" },
+      { title:"Internship Certificate", issuer:"CEO",date:"2026-08-15"}
     ],
-    badges: ["Collaboration Award"],
+    badges: ["Collaboration Award", "Outstanding Intern"],
   },
 ];
