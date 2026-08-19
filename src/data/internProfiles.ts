@@ -81,20 +81,27 @@ export const internProfiles: InternProfile[] = [
       status: "Occasional",
       collaborations: ["Personal Projects", "GitHub Portfolio"],
       pullRequests: 0,
-      organizations: [],
+      organizations: ["Anoneurx"],
       timeline: [
+        {
+          date: "2026-8-3",
+          org: "Anoneurx",
+          pr: "-",
+          title: "Anoneurx Pay",
+        },
+         {
+          date: "2026-07-17",
+          org: "GitHub",
+          pr: "-",
+          title: "Released multiple frontend projects",
+        },
         {
           date: "2026-06-15",
           org: "Personal Portfolio",
           pr: "-",
           title: "Published developer portfolio website",
         },
-        {
-          date: "2026-07-15",
-          org: "GitHub",
-          pr: "-",
-          title: "Released multiple frontend projects",
-        },
+       
       ],
     },
     certifications: [
