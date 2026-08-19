@@ -819,10 +819,36 @@ const routes = [
   },
 ];
 
+// Legacy / alias paths that the SPA client-redirects to a canonical page.
+// They are emitted as real 200 documents (so crawlers never hit the 404 fallback)
+// and canonicalised onto the destination page instead of competing with it.
+const aliases = [
+  { path: "/intern/verify", canonical: "/verify" },
+  { path: "/internship-verify", canonical: "/verify" },
+  { path: "/hackathon/verify", canonical: "/verify" },
+  { path: "/careers/hackathon/verify", canonical: "/verify" },
+  { path: "/careers/join-dev-team/verify", canonical: "/verify" },
+  { path: "/careers/other-opportunities/verify", canonical: "/verify" },
+];
+
+const verifyRoute = routes.find((r) => r.path === "/verify");
+for (const alias of aliases) {
+  routes.push({
+    path: alias.path,
+    canonicalPath: alias.canonical,
+    title: verifyRoute.title,
+    description: verifyRoute.description,
+    keywords: verifyRoute.keywords,
+    jsonLd: verifyRoute.jsonLd,
+  });
+}
+
+
 let count = 0;
 
 for (const route of routes) {
-  const canonicalUrl = `${SITE}${route.path === "/" ? "" : route.path}`;
+  const canonicalPath = route.canonicalPath || route.path;
+  const canonicalUrl = `${SITE}${canonicalPath === "/" ? "/" : canonicalPath}`;
   const title = route.title;
   const description = route.description;
   const keywords = route.keywords || "anoneurx, software, cloud, ai, os, open source";
@@ -837,27 +863,29 @@ for (const route of routes) {
     },
   ];
 
+  // data-rh="true" lets react-helmet-async replace these tags after hydration
+  // instead of appending duplicates (duplicate canonicals make Google ignore both).
   const headContent = `
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>${title}</title>
-  <meta name="description" content="${description}" />
+  <title data-rh="true">${title}</title>
+  <meta data-rh="true" name="description" content="${description}" />
   <meta name="author" content="Anoneurx" />
-  <meta name="keywords" content="${keywords}" />
-  <meta name="robots" content="index, follow" />
+  <meta data-rh="true" name="keywords" content="${keywords}" />
+  <meta data-rh="true" name="robots" content="index, follow" />
 
-  <link rel="canonical" href="${canonicalUrl}" />
+  <link data-rh="true" rel="canonical" href="${canonicalUrl}" />
 
   <meta property="og:site_name" content="Anoneurx" />
-  <meta property="og:title" content="${title}" />
-  <meta property="og:description" content="${description}" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="${canonicalUrl}" />
+  <meta data-rh="true" property="og:title" content="${title}" />
+  <meta data-rh="true" property="og:description" content="${description}" />
+  <meta data-rh="true" property="og:type" content="website" />
+  <meta data-rh="true" property="og:url" content="${canonicalUrl}" />
 
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="${title}" />
-  <meta name="twitter:description" content="${description}" />
+  <meta data-rh="true" name="twitter:card" content="summary" />
+  <meta data-rh="true" name="twitter:title" content="${title}" />
+  <meta data-rh="true" name="twitter:description" content="${description}" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -890,11 +918,17 @@ for (const route of routes) {
   if (route.path === "/") {
     writeFileSync(resolve(dist, "index.html"), htmlResult, "utf-8");
   } else {
-    const outDir = resolve(dist, route.path.slice(1));
+    const slug = route.path.slice(1);
+    // /about/index.html serves /about/ ; about.html makes /about itself a 200
+    // instead of a 301 to the trailing-slash URL (sitemap + canonical are slashless).
+    const outDir = resolve(dist, slug);
     mkdirSync(outDir, { recursive: true });
     writeFileSync(resolve(outDir, "index.html"), htmlResult, "utf-8");
+    mkdirSync(dirname(resolve(dist, `${slug}.html`)), { recursive: true });
+    writeFileSync(resolve(dist, `${slug}.html`), htmlResult, "utf-8");
   }
   count++;
 }
+
 
 console.log(`✓ Prerendered ${count} public routes for SEO & HTTP 200 OK indexability!`);

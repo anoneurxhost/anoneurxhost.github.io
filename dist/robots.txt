@@ -2,9 +2,15 @@
 
 User-agent: *
 Allow: /
+Allow: /assets/
 Allow: /about
 Allow: /contact
 Allow: /verify
+Allow: /intern/verify
+Allow: /hackathon/verify
+Allow: /careers/hackathon/verify
+Allow: /careers/join-dev-team/verify
+Allow: /careers/other-opportunities/verify
 Allow: /intern
 Allow: /intern/
 Allow: /people

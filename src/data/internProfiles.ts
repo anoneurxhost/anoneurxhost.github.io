@@ -62,7 +62,7 @@ export const internProfiles: InternProfile[] = [
 
     department: "Software Engineering",
     batch: "2026 Summer",
-    status: "Completed",
+    status: "Active",
     photo: inshaPhoto,
     bio: "Software Engineering student passionate about building modern web applications, creating responsive user interfaces, and continuously learning new technologies through personal and academic projects.",
     university: "Lahore College For Women University Lahore",
@@ -73,7 +73,7 @@ export const internProfiles: InternProfile[] = [
       {
         role: "Frontend Developer",
         department: "Web Development",
-        duration: "2026 – Present",
+        duration: "15 Jun 2026 - 15 Aug 2026",
         mentor: "Self Learning",
       },
     ],
@@ -84,13 +84,13 @@ export const internProfiles: InternProfile[] = [
       organizations: [],
       timeline: [
         {
-          date: "2026-01-15",
+          date: "2026-06-15",
           org: "Personal Portfolio",
           pr: "-",
           title: "Published developer portfolio website",
         },
         {
-          date: "2025-10-08",
+          date: "2026-07-15",
           org: "GitHub",
           pr: "-",
           title: "Released multiple frontend projects",
@@ -98,8 +98,8 @@ export const internProfiles: InternProfile[] = [
       ],
     },
     certifications: [
-      { title: "Responsive Web Design", issuer: "freeCodeCamp", date: "2025" },
-      { title: "JavaScript Algorithms and Data Structures", issuer: "freeCodeCamp", date: "2025" },
+      { title: "Responsive Web Design", issuer: "freeCodeCamp", date: "2026" },
+      { title: "JavaScript Algorithms and Data Structures", issuer: "freeCodeCamp", date: "2026" },
     ],
     badges: ["Collaboration Award"],
   },

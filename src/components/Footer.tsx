@@ -225,6 +225,7 @@ const Footer = () => {
         { name: "Career Hub", path: "/careers" },
         { name: "Research", path: "/research" },
         { name: "Collaboration", path: "/collaboration" },
+        { name: "Verify Credentials", path: "/verify" },
       ]
     },
     {
@@ -233,25 +234,29 @@ const Footer = () => {
         { name: "Robotics", path: "/robotics-systems" },
         { name: "Blockchain", path: "/blockchain-systems" },
         { name: "Operating Systems", path: "/operating-systems" },
+        { name: "Artificial Intelligence", path: "/artificial-intelligence" },
       ]
     },
     {
       title: "Education",
       links: [
         { name: "University", path: "/university" },
-        { name: "Professors", path: "/professors" },
+        { name: "Professors", path: "/faculty" },
         { name: "Interns", path: "/intern" },
+        { name: "Courses", path: "/courses" },
       ]
     },
     {
       title: "Company",
       links: [
+        { name: "About Us", path: "/about" },
         { name: "People", path: "/people" },
         { name: "Our Blogs", path: "/blogs" },
         { name: "Open Source", path: "/opensource" },
       ]
     }
   ];
+
 
   const activeLinks = isNexora
     ? nexoraLinks

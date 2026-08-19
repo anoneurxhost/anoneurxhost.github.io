@@ -138,7 +138,7 @@ const Verify: React.FC = () => {
       <SEO
         title={seoMeta.title}
         description={seoMeta.description}
-        path={`/verify?mode=${mode}`}
+        path="/verify"
         keywords={seoMeta.keywords}
         jsonLd={seoMeta.jsonLd}
       />

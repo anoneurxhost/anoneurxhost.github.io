@@ -4,15 +4,27 @@ import OSToolbar from "./OSToolbar";
 import { discussions, events, projects, releases } from "./data";
 import { useOSSearch } from "./useOSSearch";
 
+interface OSSearchItem {
+  id: string;
+  name: string;
+  title?: string;
+  description: string;
+  type: string;
+  category: string;
+  language: string;
+  project?: string;
+}
+
 const OSSearch = () => {
-  const allItems = [
+  const allItems: OSSearchItem[] = [
     ...projects.map((project) => ({ ...project, type: "Project", category: project.language })),
-    ...releases.map((release) => ({ id: release.id, name: release.project, title: release.version, description: release.notes, type: "Release", category: release.project, language: "Release" })),
+    ...releases.map((release) => ({ id: release.id, name: release.project, title: release.version, description: release.notes, type: "Release", category: release.project, language: "Release", project: release.project })),
     ...discussions.map((discussion) => ({ id: discussion.id, name: discussion.title, title: discussion.category, description: discussion.author, type: "Discussion", category: discussion.category, language: "Discussion" })),
     ...events.map((event) => ({ id: event.id, name: event.name, title: event.type, description: event.location, type: "Event", category: event.type, language: event.type })),
   ];
 
   const { query, setQuery, sort, setSort, filtered, facets, toggleFacet, facetOptions } = useOSSearch(allItems);
+
 
   return (
     <OSPage>
