@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -14,12 +14,13 @@ import {
   Award,
   Briefcase,
   CheckCircle2,
-  X,
   Trophy,
   Download,
+  Loader2,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import { type InternProfile } from "@/data/internProfiles";
 
 export type VerificationResult =
@@ -31,7 +32,7 @@ export type VerificationResult =
 interface VerifyResultOverlayProps {
   isOpen: boolean;
   onClose: () => void;
-  mode: "internship" | "hackathon";
+  mode: "internship" | "hackathon" | "university";
   result: VerificationResult;
 }
 
@@ -41,6 +42,38 @@ export const VerifyResultOverlay: React.FC<VerifyResultOverlayProps> = ({
   mode,
   result,
 }) => {
+  const [downloading, setDownloading] = useState(false);
+
+  const handleDownloadHackathonCertificate = async () => {
+    if (result.kind !== "found" || !result.applicationData) return;
+    setDownloading(true);
+    try {
+      const { generateHackathonCertificateDoc } = await import(
+        "@/pages/portal/Documents/hackathon"
+      );
+      const appData = result.applicationData;
+      const pdf = await generateHackathonCertificateDoc({
+        name: appData.name || appData.applicantData?.fullName || "Participant",
+        type: "hackathon-certificate",
+        status: appData.status || "accepted",
+        issuedOn: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+        description: "Official hackathon achievement certificate",
+        verificationId: appData._id || appData.applicationId,
+        participantName: appData.name || appData.applicantData?.fullName || "Participant",
+        hackathonName: appData.targetTitle || appData.program || "ANONEURX GLOBAL HACKATHON 2026",
+        projectName: appData.applicantData?.projectIdea || appData.project,
+        teamName: appData.applicantData?.teamName || appData.teamName,
+        awardRank: appData.awardRank || "Participant",
+      });
+      pdf.save(`hackathon-certificate-${Date.now()}.pdf`);
+      toast.success("Certificate downloaded!");
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to generate certificate");
+    } finally {
+      setDownloading(false);
+    }
+  };
   if (!isOpen || result.kind === "idle") return null;
 
   const getStatusColor = (status: string) => {
@@ -75,6 +108,13 @@ export const VerifyResultOverlay: React.FC<VerifyResultOverlayProps> = ({
       title: "Verified Hackathon Record",
       badgeColor: "text-purple-400 border-purple-500/20 bg-purple-500/10",
       contactEmail: "hackathon@anoneurx.com",
+    },
+    university: {
+      color: "blue",
+      icon: GraduationCap,
+      title: "Verified University Record",
+      badgeColor: "text-blue-400 border-blue-500/20 bg-blue-500/10",
+      contactEmail: "university@anoneurx.com",
     },
   };
 
@@ -323,11 +363,31 @@ export const VerifyResultOverlay: React.FC<VerifyResultOverlayProps> = ({
                     <span>Hackathon Certificate Verified</span>
                   </div>
                   <p className="text-xs text-gray-300">
-                    Your hackathon submission has been verified in the Anoneurx registry.
+                    Your hackathon submission has been verified in the Anoneurx registry. Download your official PDF certificate.
                   </p>
-                  <Button className="mt-2 bg-purple-600 hover:bg-purple-500 text-white text-xs h-9">
-                    <Download className="w-3.5 h-3.5 mr-1.5" /> Download Certificate
+                  <Button
+                    onClick={handleDownloadHackathonCertificate}
+                    disabled={downloading}
+                    className="mt-2 bg-purple-600 hover:bg-purple-500 text-white text-xs h-9"
+                  >
+                    {downloading ? (
+                      <><Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" /> Generating…</>
+                    ) : (
+                      <><Download className="w-3.5 h-3.5 mr-1.5" /> Download Certificate</>
+                    )}
                   </Button>
+                </div>
+              )}
+
+              {mode === "university" && result.applicationData.status === "accepted" && (
+                <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-2xl space-y-2">
+                  <div className="flex items-center gap-2 text-blue-300 font-semibold text-sm">
+                    <GraduationCap className="h-4 w-4" />
+                    <span>University Record Verified</span>
+                  </div>
+                  <p className="text-xs text-gray-300">
+                    Academic record verified in the Anoneurx University registry.
+                  </p>
                 </div>
               )}
 

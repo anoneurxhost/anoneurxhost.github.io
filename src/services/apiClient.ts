@@ -1,8 +1,10 @@
 /**
  * Central API client for the Anoneurx platform.
- * All internal calls go to api.anoneurx.com (override with VITE_API_URL).
+ * Core domain: api.anoneurx.com (configured via VITE_API_URL).
+ * Integrated with the resilient multi-service API engine.
  */
-const BASE = (import.meta.env.VITE_API_URL as string) || "https://api.anoneurx.com";
+import { apiResilienceClient } from './apiResilienceClient';
+import { MICROSERVICES } from './config';
 
 export class ApiError extends Error {
   status: number;
@@ -13,37 +15,25 @@ export class ApiError extends Error {
   }
 }
 
-async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
-  const token = localStorage.getItem("authToken");
-  const res = await fetch(`${BASE}${path}`, {
-    ...init,
-    headers: {
-      "Content-Type": "application/json",
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-      ...(init.headers || {}),
-    },
-  });
+export const API_BASE = MICROSERVICES.core.baseUrl;
 
-  let body: any = null;
-  try {
-    body = await res.json();
-  } catch {
-    /* empty body */
-  }
-
-  if (!res.ok) {
-    throw new ApiError(body?.message || `Request failed (${res.status})`, res.status);
-  }
-  return body as T;
+async function request<T>(path: string, init: RequestInit = {}, fallback?: T): Promise<T> {
+  const result = await apiResilienceClient.execute<T>(
+    'core',
+    path,
+    init,
+    fallback !== undefined ? () => fallback : undefined
+  );
+  return result.data;
 }
 
 export const apiClient = {
-  get: <T>(path: string) => request<T>(path, { method: "GET" }),
-  post: <T>(path: string, data?: unknown) =>
-    request<T>(path, { method: "POST", body: JSON.stringify(data ?? {}) }),
-  put: <T>(path: string, data?: unknown) =>
-    request<T>(path, { method: "PUT", body: JSON.stringify(data ?? {}) }),
-  del: <T>(path: string) => request<T>(path, { method: "DELETE" }),
+  get: <T>(path: string, fallback?: T) => request<T>(path, { method: "GET" }, fallback),
+  post: <T>(path: string, data?: unknown, fallback?: T) =>
+    request<T>(path, { method: "POST", body: JSON.stringify(data ?? {}) }, fallback),
+  put: <T>(path: string, data?: unknown, fallback?: T) =>
+    request<T>(path, { method: "PUT", body: JSON.stringify(data ?? {}) }, fallback),
+  del: <T>(path: string, fallback?: T) => request<T>(path, { method: "DELETE" }, fallback),
 };
 
 /** Run an API call, falling back to local seed data when the backend is unreachable. */
@@ -54,5 +44,3 @@ export async function withFallback<T>(fn: () => Promise<T>, fallback: T): Promis
     return fallback;
   }
 }
-
-export const API_BASE = BASE;

@@ -2,11 +2,8 @@ import React, { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Badge, ProfileBadge } from "@/components/ui/badge";
 import { Search, Users, ArrowRight, MapPin, BadgeCheck } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import PageTransition from "@/components/PageTransition";
 import SEO from "@/components/SEO";
 import { slugify } from "@/lib/utils";
@@ -52,10 +49,7 @@ const InternList: React.FC = () => {
       <div className="min-h-screen pt-24 pb-20">
         <div className="container-responsive max-w-6xl text-white">
           <motion.div initial="hidden" animate="visible" variants={fade} className="text-center space-y-4 mb-10">
-            <Badge className="bg-white/[0.06] border-white/10 text-white/80">
-              <Users className="w-4 h-4 mr-2" /> Anoneurx Interns
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Interns building the next Anoneurx</h1>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Interns Building The Next Anoneurx</h1>
             <p className="text-white/60 max-w-2xl mx-auto">
               Every intern that has trained, contributed, or graduated from Anoneurx — across AI, Robotics, Cyber Security, Data Science and more.
             </p>
@@ -78,8 +72,8 @@ const InternList: React.FC = () => {
                       </div>
                     </div>
                     <div className="flex items-center gap-1.5 flex-wrap">
-                      <Badge className="bg-white/[0.06] border-white/10 text-white/70 text-[10px]">{i.status}</Badge>
-                      {i.university && <Badge className="bg-white/[0.06] border-white/10 text-white/60 text-[10px]">{i.university}</Badge>}
+                      <ProfileBadge variant="githubPill">{i.status}</ProfileBadge>
+                      {i.university && <ProfileBadge variant="githubPill">{i.university}</ProfileBadge>}
                     </div>
                     <p className="text-xs text-white/55 line-clamp-2">{i.bio}</p>
                     {i.location && (

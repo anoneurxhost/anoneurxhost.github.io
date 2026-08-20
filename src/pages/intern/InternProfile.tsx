@@ -2,7 +2,7 @@ import React from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Badge, ProfileBadge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Award, GitPullRequest, GraduationCap, Users, Sparkles, MapPin, Mail, Github } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
@@ -85,11 +85,11 @@ const InternProfile: React.FC = () => {
               <CardContent className="p-6 md:p-10 grid md:grid-cols-[200px_1fr] gap-8 items-start">
                 <img src={person.photo} alt={person.name} className="w-40 h-40 md:w-52 md:h-52 rounded-2xl object-cover border border-white/10 mx-auto md:mx-0 shadow-lg" />
                 <div className="space-y-4">
-                  <div className="flex flex-wrap gap-2">
-                    <Badge className="bg-primary/15 text-primary border-primary/30">Intern</Badge>
-                    <Badge className="bg-white/[0.06] border-white/10 text-white/70">{person.department}</Badge>
-                    <Badge className="bg-white/[0.06] border-white/10 text-white/70">{person.status}</Badge>
-                    <Badge className="bg-white/[0.06] border-white/10 text-white/70">{person.batch}</Badge>
+                  <div className="flex flex-wrap gap-2.5 items-center">
+                    <ProfileBadge variant="internPill">Intern</ProfileBadge>
+                    <ProfileBadge variant="githubPill">{person.batch}</ProfileBadge>
+                    <ProfileBadge variant="githubPill">{person.department}</ProfileBadge>
+                    <ProfileBadge variant="githubPill">{person.status}</ProfileBadge>
                   </div>
                   <h1 className="text-3xl md:text-4xl font-bold tracking-tight">{person.name}</h1>
                   <p className="text-white/70 leading-relaxed max-w-3xl">{person.bio}</p>
@@ -149,7 +149,7 @@ const InternProfile: React.FC = () => {
                   <div className="text-white/40 text-xs mb-1">Collaboration History</div>
                   <div className="flex flex-wrap gap-2">
                     {person.openSource.collaborations.map((c) => (
-                      <Badge key={c} className="bg-white/[0.06] border-white/10 text-white/80">{c}</Badge>
+                      <ProfileBadge key={c} variant="githubPill">{c}</ProfileBadge>
                     ))}
                   </div>
                 </div>
@@ -157,7 +157,7 @@ const InternProfile: React.FC = () => {
                   <div className="text-white/40 text-xs mb-1">Organizations</div>
                   <div className="flex flex-wrap gap-2">
                     {person.openSource.organizations.map((o) => (
-                      <Badge key={o} className="bg-white/[0.06] border-white/10 text-white/80">{o}</Badge>
+                      <ProfileBadge key={o} variant="githubPill">{o}</ProfileBadge>
                     ))}
                   </div>
                 </div>
@@ -196,11 +196,11 @@ const InternProfile: React.FC = () => {
                 <h2 className="text-sm uppercase tracking-widest text-white/50 flex items-center gap-2">
                   <Sparkles className="w-4 h-4" /> Badges
                 </h2>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2.5">
                   {person.badges.map((b) => (
-                    <Badge key={b} className="bg-gradient-to-r from-primary/25 to-fuchsia-500/20 border-primary/30 text-white">
+                    <ProfileBadge key={b} variant="githubPill">
                       {b}
-                    </Badge>
+                    </ProfileBadge>
                   ))}
                 </div>
               </CardContent>

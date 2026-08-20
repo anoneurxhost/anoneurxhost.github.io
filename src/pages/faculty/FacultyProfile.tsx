@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
+import { Badge, ProfileBadge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, BookOpen, Clock, Mail, ExternalLink, Award, ChevronLeft, MapPin } from "lucide-react";
@@ -83,9 +83,9 @@ const FacultyProfile: React.FC = () => {
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <Badge className="bg-primary/15 text-primary border-primary/30">{person.position}</Badge>
-                    <Badge className="bg-white/[0.06] border-white/10 text-white/70">{person.department}</Badge>
+                  <div className="flex flex-wrap items-center gap-2.5">
+                    <ProfileBadge variant="facultyPill">{person.position}</ProfileBadge>
+                    <ProfileBadge variant="githubPill">{person.department}</ProfileBadge>
                   </div>
                   <h1 className="text-3xl md:text-4xl font-bold tracking-tight">{person.name}</h1>
                   <p className="text-white/70 max-w-3xl leading-relaxed">{person.bio}</p>
@@ -132,9 +132,9 @@ const FacultyProfile: React.FC = () => {
                   <h2 className="text-sm uppercase tracking-widest text-white/50 mb-3 flex items-center gap-2">
                     <Award className="w-4 h-4" /> Research Interests
                   </h2>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2.5">
                     {person.researchInterests.map((r) => (
-                      <Badge key={r} className="bg-white/[0.06] border-white/10 text-white/80">{r}</Badge>
+                      <ProfileBadge key={r} variant="facultyPill">{r}</ProfileBadge>
                     ))}
                   </div>
                 </section>

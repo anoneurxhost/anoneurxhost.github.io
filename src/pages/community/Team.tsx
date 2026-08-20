@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Badge, ProfileBadge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -72,8 +72,6 @@ const Team = () => {
       return true;
     });
 
-    // Brand queries ("anoneurx", "anoneurx university") rank every Anoneurx
-    // person instead of returning nothing; plain queries keep token matching.
     if (query.trim() && isBrandQuery(query)) {
       return rankRecords(scoped, query, (m) => ({
         name: m.name,
@@ -111,9 +109,9 @@ const Team = () => {
         <div className="container-responsive text-white">
           <div className="max-w-6xl mx-auto space-y-12">
             <motion.div initial="hidden" animate="visible" variants={fadeUp} className="text-center space-y-5">
-              <Badge className="bg-white/[0.06] border-white/[0.1] text-white/80 px-4 py-2">
-                <Users className="w-4 h-4 mr-2" /> People
-              </Badge>
+              <ProfileBadge variant="profilePill">
+                <Users className="w-4 h-4 mr-1.5" /> People & Team
+              </ProfileBadge>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Meet the people behind Anoneurx</h1>
               <p className="text-white/60 max-w-2xl mx-auto">
                 Founders, department heads, and engineers building operating systems, AI, robotics, space tech, and the web.
@@ -136,6 +134,9 @@ const Team = () => {
                         />
                       </div>
                       <div className="space-y-3">
+                        <div className="flex flex-wrap gap-2 items-center">
+                          <ProfileBadge variant="profilePill">Executive Leader</ProfileBadge>
+                        </div>
                         <h2 className="text-2xl md:text-3xl font-semibold">{ceo.name}</h2>
                         <p className="text-primary/90">{ceo.title}</p>
                         <p className="text-white/65 max-w-2xl">{ceo.tagline}</p>
@@ -180,8 +181,8 @@ const Team = () => {
                                 </div>
                               </div>
                               <div className="flex items-center gap-1.5 flex-wrap">
-                                <Badge className="bg-white/[0.05] text-white/70 border-white/10 text-[10px]">{m.department}</Badge>
-                                <span className={`inline-flex items-center text-[10px] px-1.5 py-0.5 rounded border ${AVAIL_BADGE[av]}`}>
+                                <ProfileBadge variant="profilePill" className="text-[10px] px-2 py-0.5">{m.department}</ProfileBadge>
+                                <span className={`inline-flex items-center text-[10px] px-1.5 py-0.5 rounded-full border ${AVAIL_BADGE[av]}`}>
                                   {av}
                                 </span>
                               </div>
@@ -191,12 +192,11 @@ const Team = () => {
                                   <MapPin className="w-3 h-3" /> {m.location}
                                 </div>
                               )}
-                              <div className="flex flex-wrap gap-1 pt-1">
+                              <div className="flex flex-wrap gap-1.5 pt-1">
                                 {(m.skills?.core || []).slice(0, 3).map((s) => (
-                                  <span key={s} className="text-[10px] text-white/60 px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/[0.06]">{s}</span>
+                                  <ProfileBadge key={s} variant="githubPill" className="text-[10px] px-2 py-0.5">{s}</ProfileBadge>
                                 ))}
                               </div>
-                              
                             </CardContent>
                           </Card>
                         </Link>

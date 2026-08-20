@@ -6,7 +6,8 @@ export type BadgeKind =
   | "Research Assistant"
   | "Community Mentor"
   | "Outstanding Intern"
-  | "Collaboration Award";
+  | "Collaboration Award"
+  | (string & {});
 
 export interface InternshipHistoryItem {
   role: string;
@@ -107,6 +108,6 @@ export const internProfiles: InternProfile[] = [
     certifications: [
       { title:"Internship Certificate", issuer:"CEO",date:"2026-08-15"}
     ],
-    badges: ["Collaboration Award", "Outstanding Intern"],
+    badges: ["Outstanding Intern", "Frontend Developer"],
   },
 ];

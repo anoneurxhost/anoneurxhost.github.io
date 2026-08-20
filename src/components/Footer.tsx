@@ -223,15 +223,15 @@ const Footer = () => {
       title: "Quick Links",
       links: [
         { name: "Career Hub", path: "/careers" },
-        { name: "Research", path: "/research" },
+        { name: "Interns", path: "/intern" },
         { name: "Collaboration", path: "/collaboration" },
-        { name: "Verify Credentials", path: "/verify" },
+        // { name: "Verify Credentials", path: "/verify" },
       ]
     },
     {
       title: "Technologies",
       links: [
-        { name: "Robotics", path: "/robotics-systems" },
+        // { name: "Robotics", path: "/robotics-systems" },
         { name: "Blockchain", path: "/blockchain-systems" },
         { name: "Operating Systems", path: "/operating-systems" },
         { name: "Artificial Intelligence", path: "/artificial-intelligence" },
@@ -241,15 +241,15 @@ const Footer = () => {
       title: "Education",
       links: [
         { name: "University", path: "/university" },
+        { name: "Research", path: "/research" },
         { name: "Professors", path: "/faculty" },
-        { name: "Interns", path: "/intern" },
-        { name: "Courses", path: "/courses" },
+        // { name: "Courses", path: "/courses" },
       ]
     },
     {
       title: "Company",
       links: [
-        { name: "About Us", path: "/about" },
+        // { name: "About Us", path: "/about" },
         { name: "People", path: "/people" },
         { name: "Our Blogs", path: "/blogs" },
         { name: "Open Source", path: "/opensource" },

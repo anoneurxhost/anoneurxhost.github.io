@@ -5,27 +5,20 @@
  */
 
 export * from "./pdfBase";
-export * from "./OfferLetterDoc";
-export * from "./PolicyHandbookDoc";
-export * from "./CodeOfConductDoc";
-export * from "./NdaDoc";
-export * from "./MidEvaluationDoc";
-export * from "./FinalEvaluationDoc";
-export * from "./ProjectReportDoc";
-export * from "./ExperienceLetterDoc";
-export * from "./CompletionCertificateDoc";
-export * from "./HrPoliciesDoc";
+export * from "./internship";
+export * from "./hackathon";
+export * from "./university";
 
-import { OFFER_LETTER_SPEC, buildOfferLetterPdf } from "./OfferLetterDoc";
-import { POLICY_HANDBOOK_SPEC, buildPolicyHandbookPdf } from "./PolicyHandbookDoc";
-import { CODE_OF_CONDUCT_SPEC, buildCodeOfConductPdf } from "./CodeOfConductDoc";
-import { NDA_SPEC, buildNdaPdf } from "./NdaDoc";
-import { MID_EVALUATION_SPEC, buildMidEvaluationPdf } from "./MidEvaluationDoc";
-import { FINAL_EVALUATION_SPEC, buildFinalEvaluationPdf } from "./FinalEvaluationDoc";
-import { PROJECT_REPORT_SPEC, buildProjectReportPdf } from "./ProjectReportDoc";
-import { EXPERIENCE_LETTER_SPEC, buildExperienceLetterPdf } from "./ExperienceLetterDoc";
-import { COMPLETION_CERTIFICATE_SPEC, buildCompletionCertificatePdf } from "./CompletionCertificateDoc";
-import { HR_POLICIES_SPEC, buildHrPoliciesPdf } from "./HrPoliciesDoc";
+import { OFFER_LETTER_SPEC, buildOfferLetterPdf } from "./internship/OfferLetterDoc";
+import { POLICY_HANDBOOK_SPEC, buildPolicyHandbookPdf } from "./internship/PolicyHandbookDoc";
+import { CODE_OF_CONDUCT_SPEC, buildCodeOfConductPdf } from "./internship/CodeOfConductDoc";
+import { NDA_SPEC, buildNdaPdf } from "./internship/NdaDoc";
+import { MID_EVALUATION_SPEC, buildMidEvaluationPdf } from "./internship/MidEvaluationDoc";
+import { FINAL_EVALUATION_SPEC, buildFinalEvaluationPdf } from "./internship/FinalEvaluationDoc";
+import { PROJECT_REPORT_SPEC, buildProjectReportPdf } from "./internship/ProjectReportDoc";
+import { EXPERIENCE_LETTER_SPEC, buildExperienceLetterPdf } from "./internship/ExperienceLetterDoc";
+import { COMPLETION_CERTIFICATE_SPEC, buildCompletionCertificatePdf } from "./internship/CompletionCertificateDoc";
+import { HR_POLICIES_SPEC, buildHrPoliciesPdf } from "./internship/HrPoliciesDoc";
 import {
   loadMark,
   newDoc,
@@ -37,6 +30,7 @@ import {
   applyFooters,
   type PdfDocumentLike,
 } from "./pdfBase";
+
 
 /** Complete list of all 10 individual document specifications. */
 export const ALL_10_DOCUMENTS = [

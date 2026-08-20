@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 import SEO from "@/components/SEO";
-import { Badge } from "@/components/ui/badge";
+import { Badge, ProfileBadge } from "@/components/ui/badge";
 import { slugify } from "@/lib/utils";
 import { facultyDirectory } from "@/data/faculty";
 import SearchFilterBar from "@/components/site/SearchFilterBar";
@@ -40,7 +40,7 @@ export default function Faculty() {
   return (
     <PageTransition>
       <SEO
-        title="Faculty — Anoneurx University"
+        title="Faculty"
         description="Meet the professors, researchers and academics leading Anoneurx University's departments in AI, Robotics, Cyber Security, and more."
         path="/faculty"
       />
@@ -53,14 +53,11 @@ export default function Faculty() {
         <div className="container-custom relative z-10">
           {/* Hero */}
           <div className="max-w-3xl mb-12">
-            <span className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-white/60 uppercase tracking-widest mb-4">
+            <ProfileBadge variant="facultyPill" className="mb-4 uppercase tracking-widest text-[10px]">
               Anoneurx University
-            </span>
+            </ProfileBadge>
             <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-4">
-              Our{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">
-                Faculty
-              </span>
+              Our Faculty
             </h1>
             <p className="text-gray-400 text-lg max-w-2xl leading-relaxed">
               Learn from industry pioneers and visionary researchers leading the
@@ -70,17 +67,7 @@ export default function Faculty() {
 
           <BreadcrumbTrail items={[{ name: "University", to: "/university" }, { name: "Faculty" }]} />
 
-          <SearchFilterBar
-            query={query}
-            onQueryChange={setQuery}
-            placeholder="Search faculty — try “Anoneurx University”"
-            filters={departments}
-            activeFilter={active}
-            onFilterChange={setActive}
-            resultCount={visible.length}
-            label="Search faculty"
-          />
-
+        
           {/* Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {visible.map((f, i) => (
@@ -105,9 +92,9 @@ export default function Faculty() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute bottom-3 left-3 right-3 z-20">
-                    <Badge className="mb-1.5 bg-primary/20 border-primary/40 text-primary text-[10px]">
+                    <ProfileBadge variant="facultyPill" className="mb-1.5 text-[10px]">
                       {f.position}
-                    </Badge>
+                    </ProfileBadge>
                     <h3 className="text-base font-bold text-white leading-tight">{f.name}</h3>
                     <p className="text-xs text-primary/80 font-medium">{f.department}</p>
                   </div>
@@ -116,14 +103,11 @@ export default function Faculty() {
                 {/* Body */}
                 <div className="p-4">
                   <p className="text-gray-400 text-xs leading-relaxed line-clamp-3 mb-3">{f.bio}</p>
-                  <div className="flex flex-wrap gap-1">
+                  <div className="flex flex-wrap gap-1.5">
                     {f.researchInterests.slice(0, 3).map((r) => (
-                      <span
-                        key={r}
-                        className="px-2 py-0.5 text-[10px] bg-white/5 border border-white/10 rounded text-gray-300 group-hover:border-primary/30 transition-colors"
-                      >
+                      <ProfileBadge key={r} variant="githubPill" className="text-[10px] px-2 py-0.5">
                         {r}
-                      </span>
+                      </ProfileBadge>
                     ))}
                   </div>
                 </div>
@@ -133,13 +117,6 @@ export default function Faculty() {
             {!visible.length && (
               <p className="col-span-full py-10 text-center text-white/50">No faculty match “{query}”.</p>
             )}
-          </div>
-
-          <div className="mt-10 flex flex-wrap gap-4 text-sm">
-            <Link to="/university" className="text-primary hover:underline">Anoneurx University</Link>
-            <Link to="/university/contact" className="text-primary hover:underline">Contact the university</Link>
-            <Link to="/intern" className="text-primary hover:underline">Anoneurx interns</Link>
-            <Link to="/people" className="text-primary hover:underline">Anoneurx team</Link>
           </div>
         </div>
       </div>

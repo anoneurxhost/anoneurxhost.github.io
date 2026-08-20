@@ -72,7 +72,6 @@ const Navigation = () => {
     { name: "University", path: "/university" },
     { name: "Professors", path: "/faculty" },
     { name: "Courses", path: "/courses" },
-    { name: "Interns", path: "/intern" },
   ] : isResearch ? [
     { name: "Research", path: "/research" },
     { name: "View in Journal", path: "/view-in-journal" },

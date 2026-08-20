@@ -9,6 +9,10 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    watch: {
+      usePolling: true,
+      ignored: ["**/node_modules/**", "**/.git/**", "**/dist/**"],
+    },
   },
   define: {
     'process.env': {}
