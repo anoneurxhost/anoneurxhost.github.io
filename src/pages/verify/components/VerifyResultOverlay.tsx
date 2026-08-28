@@ -212,9 +212,6 @@ export const VerifyResultOverlay: React.FC<VerifyResultOverlayProps> = ({
                     alt={result.intern.name}
                     className="h-[72px] w-[72px] rounded-xl border border-white/10 object-cover shadow-lg"
                   />
-                  <div className="absolute -bottom-1 -right-1 bg-emerald-500 rounded-full p-0.5 shadow">
-                    <CheckCircle2 className="h-3 w-3 text-black" />
-                  </div>
                 </div>
                 <div className="min-w-0 flex-1">
                   <h2 className="text-xl font-extrabold text-white tracking-tight leading-snug">
