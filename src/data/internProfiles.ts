@@ -74,7 +74,7 @@ export const internProfiles: InternProfile[] = [
       {
         role: "Frontend Developer",
         department: "Web Development",
-        duration: "15 Jun 2026 - 15 Aug 2026",
+        duration: "06 JUL 2026 - 28 AUG 2026",
         mentor: "Self Learning",
       },
     ],
@@ -85,28 +85,33 @@ export const internProfiles: InternProfile[] = [
       organizations: ["Anoneurx"],
       timeline: [
         {
-          date: "2026-8-3",
+          date: "2026-08-28",
           org: "Anoneurx",
           pr: "-",
-          title: "Anoneurx Pay",
+          title: "Internship Completed",
         },
-         {
+        {
+          date: "2026-08-03",
+          org: "Anoneurx",
+          pr: "-",
+          title: "Anoneurx Authenticator",
+        },
+        {
           date: "2026-07-17",
           org: "GitHub",
           pr: "-",
           title: "Released multiple frontend projects",
         },
         {
-          date: "2026-06-15",
-          org: "Personal Portfolio",
+          date: "2026-07-06",
+          org: "Anoneurx",
           pr: "-",
-          title: "Published developer portfolio website",
+          title: "Joined Anoneurx as React Web Developer Intern",
         },
-       
       ],
     },
     certifications: [
-      { title:"Internship Certificate", issuer:"CEO",date:"2026-08-15"}
+      { title: "Internship Certificate", issuer: "CEO", date: "2026-08-28" },
     ],
     badges: ["Outstanding Intern", "Frontend Developer"],
   },
