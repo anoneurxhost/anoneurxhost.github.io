@@ -18,8 +18,6 @@ Allow: /careers
 Allow: /research
 Allow: /read/
 Allow: /blogs
-Allow: /opensource
-Allow: /opensource/
 Allow: /blackwall
 Allow: /blackwall/
 Allow: /nexora

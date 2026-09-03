@@ -523,11 +523,6 @@ const routes = [
     description: "Meet the faculty behind Anoneurx University — professors, researchers and educators.",
   },
   {
-    path: "/university/opensource",
-    title: "Open Source at Anoneurx University",
-    description: "Earn credit by contributing to real Anoneurx repositories — maintainer mentorship and code reviews.",
-  },
-  {
     path: "/university/blackwall",
     title: "Black Wall OS at Anoneurx University",
     description: "Secure systems education on Black Wall OS — kernels, hardening and lab exercises.",
@@ -566,121 +561,6 @@ const routes = [
     path: "/community/forums",
     title: "Community Forums — Anoneurx",
     description: "Discuss code, releases, roadmaps and ideas with the Anoneurx community.",
-  },
-  {
-    path: "/opensource",
-    title: "Anoneurx Open Source — Projects, Libraries & Templates",
-    description: "Explore Anoneurx open source — projects, libraries, packages, templates and VS Code extensions. Free forever, community-driven.",
-  },
-  {
-    path: "/opensource/about",
-    title: "About Anoneurx Open Source",
-    description: "Why Anoneurx invests in open source and how the community is governed.",
-  },
-  {
-    path: "/opensource/projects",
-    title: "Anoneurx Open Source Projects",
-    description: "Every open source project maintained by Anoneurx and its community.",
-  },
-  {
-    path: "/opensource/organizations",
-    title: "Open Source Organizations",
-    description: "Organizations and working groups inside the Anoneurx open source ecosystem.",
-  },
-  {
-    path: "/opensource/libraries",
-    title: "Open Source Libraries",
-    description: "Reusable Anoneurx libraries you can drop into your project today.",
-  },
-  {
-    path: "/opensource/packages",
-    title: "Open Source Packages",
-    description: "Anoneurx packages across npm, cargo, pip and go registries.",
-  },
-  {
-    path: "/opensource/templates",
-    title: "Open Source Templates",
-    description: "Starter templates for every Anoneurx stack — CLI, web, edge and services.",
-  },
-  {
-    path: "/opensource/vscode-extensions",
-    title: "VS Code Extensions — Anoneurx",
-    description: "Official Anoneurx VS Code extensions — language support, tokens and DevTools.",
-  },
-  {
-    path: "/opensource/showcase",
-    title: "Showcase — Anoneurx Open Source",
-    description: "Real products the community has built using Anoneurx open source projects.",
-  },
-  {
-    path: "/opensource/contributors",
-    title: "Anoneurx Contributors",
-    description: "The engineers, designers and researchers who contribute to Anoneurx open source.",
-  },
-  {
-    path: "/opensource/sponsors",
-    title: "Anoneurx Sponsors",
-    description: "Companies and organizations that sponsor Anoneurx open source and community programs.",
-  },
-  {
-    path: "/opensource/contribute",
-    title: "Contribute to Anoneurx Open Source",
-    description: "Start contributing to Anoneurx open source — workflow, code review and rewards.",
-  },
-  {
-    path: "/opensource/contribute/apply",
-    title: "Apply to Contribute — Anoneurx Open Source",
-    description: "Apply to join the Anoneurx open source contributor program.",
-  },
-  {
-    path: "/opensource/community",
-    title: "Anoneurx Community",
-    description: "Events, forums, mentorship and leaderboards — the Anoneurx developer community.",
-  },
-  {
-    path: "/opensource/events",
-    title: "Events — Anoneurx Open Source",
-    description: "Open source events, sprints and release parties from the Anoneurx community.",
-  },
-  {
-    path: "/opensource/contact",
-    title: "Contact Anoneurx Open Source",
-    description: "Reach the Anoneurx Open Source program team.",
-  },
-  {
-    path: "/opensource/support",
-    title: "Anoneurx Open Source Support",
-    description: "Help with Anoneurx open source projects, packages and builds.",
-  },
-  {
-    path: "/contributions/how-to-contribute",
-    title: "How to Contribute — Anoneurx",
-    description: "Step-by-step guide on contributing code, docs and feedback to Anoneurx.",
-  },
-  {
-    path: "/contributions/review-progress",
-    title: "Review Progress — Anoneurx",
-    description: "Track PR reviews and contribution progress across Anoneurx projects.",
-  },
-  {
-    path: "/contributions/architecture",
-    title: "Architecture — Anoneurx",
-    description: "System architecture and module boundaries across Anoneurx projects.",
-  },
-  {
-    path: "/contributions/security",
-    title: "Security Policy — Anoneurx",
-    description: "Vulnerability reporting, disclosures and security practices at Anoneurx.",
-  },
-  {
-    path: "/contributions/code-of-conduct",
-    title: "Code of Conduct — Anoneurx",
-    description: "Community guidelines and code of conduct for all Anoneurx spaces.",
-  },
-  {
-    path: "/contributions/rewards",
-    title: "Contributor Rewards — Anoneurx",
-    description: "Grants, bounties and swag for top Anoneurx contributors.",
   },
   {
     path: "/apps",

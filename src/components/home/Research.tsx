@@ -67,7 +67,7 @@ export const Research: React.FC = () => {
                 Pioneering Intelligent Systems & Hardware Foundations
               </h3>
               <p className="text-slate-300 text-base leading-relaxed font-light">
-                Our interdisciplinary research teams publish peer-reviewed papers, release benchmark datasets, and contribute formal proofs directly into the open-source software ecosystem.
+                Our interdisciplinary research teams publish peer-reviewed papers, release benchmark datasets, and contribute formal proofs directly into the global software ecosystem.
               </p>
               <div className="pt-2 flex flex-wrap gap-4">
                 <Link

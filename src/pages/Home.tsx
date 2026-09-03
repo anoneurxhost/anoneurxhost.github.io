@@ -4,7 +4,6 @@ import PageTransition from "@/components/PageTransition";
 import Hero from "@/components/home/Hero";
 import ProductSlider from "@/components/home/ProductSlider";
 import Research from "@/components/home/Research";
-import OpenSource from "@/components/home/OpenSource";
 
 export const Home: React.FC = () => {
   useEffect(() => {

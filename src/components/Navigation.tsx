@@ -35,8 +35,6 @@ const Navigation = () => {
   const isApps = location.pathname.startsWith('/apps');
   const isBanking = location.pathname.startsWith('/pay');
   const isResearch = /^\/(research|view-in-journal|strategic-kpis|read|collaboration)(\/|$)/.test(location.pathname);
-  const isOpensource = location.pathname.startsWith('/opensource');
-
   const isUniversity = /^\/(university|professors|courses|intern|faculty)/.test(location.pathname);
 
   const navItems = isNexora ? [
@@ -61,13 +59,6 @@ const Navigation = () => {
     { name: "Home", path: "/pay" },
     { name: "About", path: "/pay/about" },
     { name: "Contact", path: "/contact" },
-  ] : isOpensource ? [
-    { name: "Home", path: "/opensource" },
-    { name: "About", path: "/opensource/about" },
-    { name: "Contact", path: "/contact" },
-    { name: "Projects", path: "/opensource/projects" },
-    { name: "Events", path: "/opensource/events" },
-    { name: "Sponsors", path: "/opensource/sponsors" },
   ] : isUniversity ? [
     { name: "University", path: "/university" },
     { name: "Professors", path: "/faculty" },

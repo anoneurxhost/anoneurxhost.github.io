@@ -1,4 +1,4 @@
-import { Users, Github, ShieldAlert, CreditCard, Server, GraduationCap, LifeBuoy, type LucideIcon } from "lucide-react";
+import { Users, ShieldAlert, CreditCard, Server, GraduationCap, LifeBuoy, type LucideIcon } from "lucide-react";
 import type { ModuleContactChannel } from "@/components/site/ModuleContactSection";
 
 export interface ModuleSupportConfig {
@@ -20,60 +20,6 @@ export interface ModuleSupportConfig {
 const support = (title: string, body: string) => ({ title, body });
 
 export const MODULE_SUPPORT: Record<string, ModuleSupportConfig> = {
-  "opensource-contact": {
-    slug: "/opensource/contact",
-    module: "Anoneurx Open Source",
-    eyebrow: "Open Source",
-    title: "Contact Anoneurx Open Source",
-    intro:
-      "Maintainers, security disclosure, sponsorship and community — reach the people who maintain every Anoneurx repository.",
-    icon: Github,
-    email: "opensource@anoneurx.com",
-    responseTime: "Within 2 business days",
-    escalation: "security@anoneurx.com for vulnerabilities (48h acknowledgement)",
-    channels: [
-      { icon: Users, label: "Community", value: "Discussions & forums", note: "Public questions get answers fastest here." },
-      { icon: ShieldAlert, label: "Security", value: "security@anoneurx.com", href: "mailto:security@anoneurx.com" },
-    ],
-    links: [
-      { label: "Contribute", to: "/opensource/contribute" },
-      { label: "Support", to: "/opensource/support" },
-      { label: "Projects", to: "/opensource/projects" },
-    ],
-    topics: [
-      support("Maintainer requests", "Ask for a repository transfer, a new maintainer seat or triage help."),
-      support("Sponsorship", "Sponsor a project, fund a milestone or arrange corporate backing."),
-      support("Licensing", "Questions about licence compatibility and commercial use."),
-    ],
-    breadcrumb: [{ name: "Open Source", to: "/opensource" }, { name: "Contact" }],
-  },
-  "opensource-support": {
-    slug: "/opensource/support",
-    module: "Anoneurx Open Source",
-    eyebrow: "Open Source",
-    title: "Anoneurx Open Source Support",
-    intro:
-      "Build failures, package installs, contribution reviews, licensing and security reports — all handled by the maintainer team.",
-    icon: LifeBuoy,
-    email: "opensource@anoneurx.com",
-    responseTime: "Within 2 business days",
-    escalation: "security@anoneurx.com for vulnerabilities",
-    channels: [
-      { icon: Github, label: "Issue tracker", value: "Open an issue on the repository", note: "Best for reproducible bugs." },
-      { icon: Users, label: "Review queue", value: "Track your pull request", note: "See the review progress page." },
-    ],
-    links: [
-      { label: "How to contribute", to: "/opensource/contribute" },
-      { label: "Review progress", to: "/opensource/contributions/review-progress" },
-      { label: "Security policy", to: "/opensource/contributions/security" },
-    ],
-    topics: [
-      support("Builds & installs", "Failing builds, package resolution and toolchain versions."),
-      support("Contribution reviews", "Where your PR sits in the queue and what unblocks it."),
-      support("Security reports", "Coordinated disclosure with a 48h acknowledgement target."),
-    ],
-    breadcrumb: [{ name: "Open Source", to: "/opensource" }, { name: "Support" }],
-  },
   "university-contact": {
     slug: "/university/contact",
     module: "Anoneurx University",

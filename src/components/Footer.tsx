@@ -8,7 +8,7 @@ const Footer = () => {
   const isCloud = location.pathname.startsWith('/cloud');
   const isApps = location.pathname.startsWith('/apps');
   const isBanking = location.pathname.startsWith('/pay');
-  const isOpensource = location.pathname.startsWith('/opensource');
+
 
   const cloudLinks = [
     {
@@ -188,36 +188,6 @@ const Footer = () => {
     }
   ];
 
-  const opensourceLinks = [
-    {
-      title: "Ecosystem",
-      links: [
-        { name: "Projects", path: "/opensource/projects" },
-        { name: "Organizations", path: "/opensource/organizations" },
-        { name: "Libraries", path: "/opensource/libraries" },
-        { name: "Packages", path: "/opensource/packages" },
-      ]
-    },
-    {
-      title: "Tools & Showcase",
-      links: [
-        { name: "Templates", path: "/opensource/templates" },
-        { name: "VS Code Extensions", path: "/opensource/vscode-extensions" },
-        { name: "Showcase", path: "/opensource/showcase" },
-        { name: "Blog", path: "/blogs" },
-      ]
-    },
-    {
-      title: "Community",
-      links: [
-        { name: "Events", path: "/community/events" },
-        { name: "Community Hub", path: "/community" },
-        { name: "Sponsors", path: "/sponsors" },
-        { name: "Contributors", path: "/contributors" },
-      ]
-    }
-  ];
-
   const globalLinks = [
     {
       title: "Quick Links",
@@ -252,7 +222,7 @@ const Footer = () => {
         // { name: "About Us", path: "/about" },
         { name: "People", path: "/people" },
         { name: "Our Blogs", path: "/blogs" },
-        { name: "Open Source", path: "/opensource" },
+        { name: "Open Source", href: "https://anoneurx.com/opensource" },
       ]
     }
   ];
@@ -268,8 +238,6 @@ const Footer = () => {
     ? appsLinks
     : isBanking
     ? bankingLinks
-    : isOpensource
-    ? opensourceLinks
     : globalLinks;
 
   return (
@@ -288,13 +256,25 @@ const Footer = () => {
                 <ul className="space-y-2">
                   {section.links.map((link, lIdx) => (
                     <li key={lIdx}>
-                      <Link 
-                        to={link.path} 
-                        className="text-gray-400 text-sm hover:text-white transition-colors duration-300 flex items-center group"
-                      >
-                        <span className="w-0 overflow-hidden transition-all duration-300 mr-0">›</span>
-                        {link.name}
-                      </Link>
+                      {'href' in link && link.href ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-400 text-sm hover:text-white transition-colors duration-300 flex items-center group"
+                        >
+                          <span className="w-0 overflow-hidden transition-all duration-300 mr-0">›</span>
+                          {link.name}
+                        </a>
+                      ) : (
+                        <Link 
+                          to={(link as { path: string }).path} 
+                          className="text-gray-400 text-sm hover:text-white transition-colors duration-300 flex items-center group"
+                        >
+                          <span className="w-0 overflow-hidden transition-all duration-300 mr-0">›</span>
+                          {link.name}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
