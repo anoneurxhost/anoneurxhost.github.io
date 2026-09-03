@@ -10,7 +10,7 @@ export interface MicroserviceConfig {
   description: string;
 }
 
-export type ServiceDomain = 'auth' | 'core' | 'connect';
+export type ServiceDomain = 'auth' | 'opensource' | 'core' | 'connect';
 
 export interface ServiceHealth {
   domain: ServiceDomain;
@@ -32,6 +32,12 @@ export const MICROSERVICES: Record<ServiceDomain, MicroserviceConfig> = {
     domain: 'auth.anoneurx.com',
     baseUrl: (env.VITE_AUTH_API_URL as string) || 'https://auth.anoneurx.com',
     description: 'User authentication, OAuth2, session management, and RBAC security.',
+  },
+  opensource: {
+    name: 'Open Source Ecosystem',
+    domain: 'opensource.anoneurx.com',
+    baseUrl: (env.VITE_OPENSOURCE_API_URL as string) || 'https://opensource.anoneurx.com',
+    description: 'Repositories, libraries, packages, community contributions, and project stats.',
   },
   core: {
     name: 'Core Platform API',

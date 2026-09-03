@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 // Import product wallpapers & screenshots
 import cloudImg from "@/assets/wallpapers/cloud.jpg";
 import payImg from "@/assets/wallpapers/pay.jpg";
+import opensourceImg from "@/assets/opensource/bg.png";
 import blackwallImg from "@/assets/blackwall/bg.png";
 import blackwallServerImg from "@/assets/blackwall/intro.png";
 import appImg from "@/assets/blackwall/screenshot-store.jpg";
@@ -29,6 +30,15 @@ export const ProductSlider: React.FC = () => {
       path: "/pay",
       tag: "Fintech Platform",
       badgeColor: "text-emerald-400 border-emerald-500/30 bg-emerald-500/10",
+    },
+    {
+      id: "opensource",
+      title: "Opensource",
+      subtitle: "Transparent, Community-Driven Repositories & Libraries",
+      image: opensourceImg,
+      path: "/opensource",
+      tag: "Open Ecosystem",
+      badgeColor: "text-sky-400 border-sky-500/30 bg-sky-500/10",
     },
     {
       id: "blackwall",

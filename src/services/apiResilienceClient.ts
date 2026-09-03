@@ -15,6 +15,7 @@ type HealthListener = (healthState: Record<ServiceDomain, ServiceHealth>) => voi
 class ApiResilienceClient {
   private healthState: Record<ServiceDomain, ServiceHealth> = {
     auth: { domain: 'auth', status: 'online', lastChecked: new Date().toISOString(), activeEndpoint: MICROSERVICES.auth.baseUrl },
+    opensource: { domain: 'opensource', status: 'online', lastChecked: new Date().toISOString(), activeEndpoint: MICROSERVICES.opensource.baseUrl },
     core: { domain: 'core', status: 'online', lastChecked: new Date().toISOString(), activeEndpoint: MICROSERVICES.core.baseUrl },
     connect: { domain: 'connect', status: 'online', lastChecked: new Date().toISOString(), activeEndpoint: MICROSERVICES.connect.baseUrl },
   };

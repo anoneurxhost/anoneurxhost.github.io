@@ -1,4 +1,4 @@
-import { ShieldCheck, CreditCard, Server, type LucideIcon } from "lucide-react";
+import { Github, ShieldCheck, CreditCard, Server, type LucideIcon } from "lucide-react";
 
 export interface UniversityModuleConfig {
   key: string;
@@ -16,6 +16,30 @@ export interface UniversityModuleConfig {
 }
 
 export const UNIVERSITY_MODULES: Record<string, UniversityModuleConfig> = {
+  opensource: {
+    key: "opensource",
+    path: "/university/opensource",
+    eyebrow: "Anoneurx University",
+    title: "Open Source at Anoneurx University",
+    intro:
+      "Learn software engineering the way it actually happens — in public repositories, with real reviewers and shipped releases.",
+    icon: Github,
+    about:
+      "The Open Source track pairs students with maintainers of live Anoneurx repositories. Coursework is a contribution history: issues triaged, patches reviewed, releases cut. Every credit maps to work anyone can audit on the public repositories.",
+    programs: [
+      { level: "Certificate", title: "Open Source Engineering", body: "12 weeks of git internals, review etiquette, testing discipline and release management." },
+      { level: "Certificate", title: "Maintainer Track", body: "Issue triage, RFC writing, semantic versioning and community moderation." },
+      { level: "Short course", title: "Your First Contribution", body: "A guided two-week sprint from fork to merged pull request on a real project." },
+    ],
+    engage: [
+      { title: "Contribute for credit", body: "Merged pull requests on approved projects count toward the certificate." },
+      { title: "Maintainer mentorship", body: "A named maintainer reviews your work and signs off on progress." },
+      { title: "Open source rewards", body: "Sustained contributors get sponsorship, swag and reference letters." },
+    ],
+    productLink: { label: "Explore Anoneurx Open Source", to: "/opensource" },
+    contact: { email: "opensource-university@anoneurx.com", responseTime: "Within 2 business days", escalation: "university@anoneurx.com" },
+    breadcrumb: [{ name: "University", to: "/university" }, { name: "Open Source" }],
+  },
   blackwall: {
     key: "blackwall",
     path: "/university/blackwall",

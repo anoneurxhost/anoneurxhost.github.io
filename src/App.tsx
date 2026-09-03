@@ -33,6 +33,7 @@ import StaffHomeRedirect from './layouts/staff/StaffHomeRedirect';
 // Lazy-loaded Public Pages
 import Index from './pages/marketing/Index';
 const About = React.lazy(() => import('./pages/marketing/About'));
+const Sponsors = React.lazy(() => import('./pages/marketing/Sponsors'));
 const BlackwallServer = React.lazy(() => import('./pages/blackwall/BlackwallServer'));
 
 const Collaboration = React.lazy(() => import('./pages/collaboration/Collaboration'));
@@ -64,6 +65,7 @@ const WebDevelopment = React.lazy(() => import('./pages/marketing/WebDevelopment
 const InternshipApplyPage = React.lazy(() => import('./pages/career/InternshipApplyPage'));
 const ProtectedInternshipApply = React.lazy(() => import('./pages/career/ProtectedInternshipApply'));
 const Verify = React.lazy(() => import('./pages/verify/Verify'));
+const Community = React.lazy(() => import('./pages/community/Community'));
 const Documentation = React.lazy(() => import('./pages/docs/Documentation'));
 const University = React.lazy(() => import('./pages/courses/University'));
 const Courses = React.lazy(() => import('./pages/courses/Courses'));
@@ -88,9 +90,16 @@ const DocsApiReference = React.lazy(() => import('./pages/docs/ApiReference'));
 const DocsDeployment = React.lazy(() => import('./pages/docs/Deployment'));
 
 // Community subpages
+const CommunityEvents = React.lazy(() => import('./pages/community/Events'));
 const CommunityLeaderboard = React.lazy(() => import('./pages/community/Leaderboard'));
 const CommunityForums = React.lazy(() => import('./pages/community/Forums'));
 const DiscussionCategory = React.lazy(() => import('./pages/community/DiscussionCategory'));
+const UpcomingEvents = React.lazy(() => import('./pages/community/UpcomingEvents'));
+const EventDetails = React.lazy(() => import('./pages/community/EventDetails'));
+const EventRegister = React.lazy(() => import('./pages/community/EventRegister'));
+const PastEvents = React.lazy(() => import('./pages/community/PastEvents'));
+const PastEventDetails = React.lazy(() => import('./pages/community/PastEventDetails'));
+const HostEvent = React.lazy(() => import('./pages/community/HostEvent'));
 const MentorshipApply = React.lazy(() => import('./pages/community/MentorshipApply'));
 
 // Docs subpages
@@ -160,6 +169,36 @@ const NexoraBlog = React.lazy(() => import('./pages/nexora/NexoraBlog'));
 const NexoraAI = React.lazy(() => import('./pages/nexora/NexoraAI'));
 const NexoraSwitch = React.lazy(() => import('./pages/nexora/NexoraSwitch'));
 const NexoraWhy = React.lazy(() => import('./pages/nexora/NexoraWhy'));
+
+// Open Source module
+const OpenSourceLayout = React.lazy(() => import('./pages/opensource/OpenSourceLayout'));
+const OpenSourceHome = React.lazy(() => import('./pages/opensource/OpenSourceHome'));
+const OSAbout = React.lazy(() => import('./pages/opensource/OSAbout'));
+const OSProjects = React.lazy(() => import('./pages/opensource/OSProjects'));
+const OSOrganizations = React.lazy(() => import('./pages/opensource/OSOrganizations'));
+const OSLibraries = React.lazy(() => import('./pages/opensource/OSLibraries'));
+const OSPackages = React.lazy(() => import('./pages/opensource/OSPackages'));
+const OSTemplates = React.lazy(() => import('./pages/opensource/OSTemplates'));
+const OSVSCodeExtensions = React.lazy(() => import('./pages/opensource/OSVSCodeExtensions'));
+const OSShowcase = React.lazy(() => import('./pages/opensource/OSShowcase'));
+const OSReleases = React.lazy(() => import('./pages/opensource/OSReleases'));
+const OSRoadmaps = React.lazy(() => import('./pages/opensource/OSRoadmaps'));
+const OSDiscussions = React.lazy(() => import('./pages/opensource/OSDiscussions'));
+const OSRepos = React.lazy(() => import('./pages/opensource/OSRepos'));
+const OSProjectDetail = React.lazy(() => import('./pages/opensource/OSProjectDetail'));
+const OSRepoDetail = React.lazy(() => import('./pages/opensource/OSRepoDetail'));
+const OSSearch = React.lazy(() => import('./pages/opensource/OSSearch'));
+
+// Contributions subpages
+const ContributorsPage = React.lazy(() => import('./pages/contributions/Contributors'));
+const RewardsPage = React.lazy(() => import('./pages/contributions/Rewards'));
+const HowToContribute = React.lazy(() => import('./pages/contributions/HowToContribute'));
+const ReviewProgress = React.lazy(() => import('./pages/contributions/ReviewProgress'));
+const ArchitecturePage = React.lazy(() => import('./pages/contributions/Architecture'));
+const SecurityPolicyPage = React.lazy(() => import('./pages/contributions/SecurityPolicy'));
+const CodeOfConductPage = React.lazy(() => import('./pages/contributions/CodeOfConduct'));
+const OSContribute = React.lazy(() => import('./pages/opensource/OSContribute'));
+const OSContributeApply = React.lazy(() => import('./pages/opensource/OSContributeApply'));
 
 // Shared module contact / support + university tracks
 const ModuleSupportPage = React.lazy(() => import('./pages/common/ModuleSupportPage'));
@@ -338,13 +377,72 @@ function App() {
               <Route path="/" element={<PublicLayout />}>
                 <Route index element={<Index />} />
                 
+                {/* Open Source module */}
+                <Route path="opensource" element={<OpenSourceLayout />}>
+                  <Route index element={<OpenSourceHome />} />
+                  <Route path="about" element={<OSAbout />} />
+                  <Route path="projects" element={<OSProjects />} />
+                  <Route path="organizations" element={<OSOrganizations />} />
+                  <Route path="libraries" element={<OSLibraries />} />
+                  <Route path="packages" element={<OSPackages />} />
+                  <Route path="templates" element={<OSTemplates />} />
+                  <Route path="vscode-extensions" element={<OSVSCodeExtensions />} />
+                  <Route path="showcase" element={<OSShowcase />} />
+                  <Route path="releases" element={<OSReleases />} />
+                  <Route path="roadmaps" element={<OSRoadmaps />} />
+                  <Route path="discussions" element={<OSDiscussions />} />
+                  <Route path="repos" element={<OSRepos />} />
+                  <Route path="search" element={<OSSearch />} />
+                  <Route path="projects/:id" element={<OSProjectDetail />} />
+                  <Route path="repos/:id" element={<OSRepoDetail />} />
+                  <Route path="sponsors" element={<Sponsors />} />
+                  <Route path="sponcers" element={<Navigate to="/opensource/sponsors" replace />} />
+                  <Route path="community" element={<Community />} />
+                  <Route path="events" element={<CommunityEvents />} />
+                  <Route path="events/upcoming" element={<UpcomingEvents />} />
+                  <Route path="events/:eventId" element={<EventDetails />} />
+                  <Route path="events/:eventId/register" element={<EventRegister />} />
+                  <Route path="events/past" element={<PastEvents />} />
+                  <Route path="events/past/:eventId" element={<PastEventDetails />} />
+                  <Route path="events/host" element={<HostEvent />} />
+                  <Route path="contributors" element={<ContributorsPage />} />
+                  <Route path="contributers" element={<Navigate to="/opensource/contributors" replace />} />
+                  <Route path="contribute" element={<OSContribute />} />
+                  <Route path="contribute/apply" element={<OSContributeApply />} />
+                  <Route path="contact" element={<ModuleSupportPage configKey="opensource-contact" />} />
+                  <Route path="support" element={<ModuleSupportPage configKey="opensource-support" />} />
+                  <Route path="contributions" element={<Navigate to="/opensource/contribute" replace />} />
+                  <Route path="contributions/how-to-contribute" element={<HowToContribute />} />
+                  <Route path="contributions/review-progress" element={<ReviewProgress />} />
+                  <Route path="contributions/architecture" element={<ArchitecturePage />} />
+                  <Route path="contributions/security" element={<SecurityPolicyPage />} />
+                  <Route path="contributions/code-of-conduct" element={<CodeOfConductPage />} />
+                  <Route path="contributions/rewards" element={<RewardsPage />} />
+                  <Route path="contributions/contributors" element={<Navigate to="/opensource/contributors" replace />} />
+                </Route>
                 <Route path="about" element={<About />} />
+                <Route path="sponsors" element={<Navigate to="/opensource/sponsors" replace />} />
+                <Route path="sponcers" element={<Navigate to="/opensource/sponsors" replace />} />
+                <Route path="events" element={<Navigate to="/opensource/events" replace />} />
+                <Route path="events/*" element={<Navigate to="/opensource/events" replace />} />
+                <Route path="contributors" element={<Navigate to="/opensource/contributors" replace />} />
+                <Route path="contributers" element={<Navigate to="/opensource/contributors" replace />} />
                 <Route path="portfolio" element={<Navigate to="/" replace />} />
+                <Route path="community" element={<Navigate to="/opensource/community" replace />} />
+                <Route path="community/events" element={<Navigate to="/opensource/events" replace />} />
+                <Route path="community/events/*" element={<Navigate to="/opensource/events" replace />} />
                 <Route path="community/leaderboard" element={<CommunityLeaderboard />} />
                 <Route path="community/mentorship" element={<MentorshipApply />} />
                 <Route path="community/forums" element={<CommunityForums />} />
                 <Route path="community/forums/:categoryId" element={<DiscussionCategory />} />
                 <Route path="docs/project/:projectId" element={<ProjectDocs />} />
+                <Route path="contributions/contributors" element={<Navigate to="/opensource/contributors" replace />} />
+                <Route path="contributions/rewards" element={<RewardsPage />} />
+                <Route path="contributions/how-to-contribute" element={<HowToContribute />} />
+                <Route path="contributions/review-progress" element={<ReviewProgress />} />
+                <Route path="contributions/architecture" element={<ArchitecturePage />} />
+                <Route path="contributions/security" element={<SecurityPolicyPage />} />
+                <Route path="contributions/code-of-conduct" element={<CodeOfConductPage />} />
 
                 <Route path="careers/submissions" element={<SubmittedProjects />} />
                 <Route path="collaboration" element={<Collaboration />} />
@@ -527,6 +625,7 @@ function App() {
                 <Route path="courses/:courseId" element={<CourseDetail />} />
                 <Route path="courses/:courseId/enroll" element={<EnrollForm />} />
                 <Route path="faculty" element={<Professors />} />
+                <Route path="university/opensource" element={<UniversityModulePage moduleKey="opensource" />} />
                 <Route path="university/blackwall" element={<UniversityModulePage moduleKey="blackwall" />} />
                 <Route path="university/pay" element={<UniversityModulePage moduleKey="pay" />} />
                 <Route path="university/cloud" element={<UniversityModulePage moduleKey="cloud" />} />
