@@ -64,10 +64,10 @@ const Navigation = () => {
   ] : isOpensource ? [
     { name: "Home", path: "/opensource" },
     { name: "About", path: "/opensource/about" },
-    { name: "Contact", path: "/contact" },
     { name: "Projects", path: "/opensource/projects" },
     { name: "Events", path: "/opensource/events" },
     { name: "Sponsors", path: "/opensource/sponsors" },
+    { name: "Contact", path: "/opensource/contact" },
   ] : isUniversity ? [
     { name: "University", path: "/university" },
     { name: "Professors", path: "/faculty" },

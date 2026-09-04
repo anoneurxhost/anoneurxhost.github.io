@@ -404,6 +404,7 @@ const map: Record<string, Entry> = {
   "/university/contact": { title: "Contact Anoneurx University", description: "Reach Anoneurx University — admissions, faculty, registrar and student services at university@anoneurx.com." },
   "/university/support": { title: "Anoneurx University Support", description: "Help with enrolment, courses, certificates, billing and student accounts at Anoneurx University." },
   "/opensource/contact": { title: "Contact Anoneurx Open Source", description: "Reach the Anoneurx Open Source program — maintainers, security disclosure, sponsorship and community at opensource@anoneurx.com." },
+  "/opensource/partnership-inquiry": { title: "Sponsor an Open Source Project — Anoneurx", description: "Fund the open source work behind Blackwall OS and Anoneurx. Choose a sponsorship tier, pick a project, and support the maintainers." },
   "/opensource/support": { title: "Anoneurx Open Source Support", description: "Help with Anoneurx open source projects — builds, packages, contributions, licensing and security reports." },
   "/opensource/contribute": { title: "Contribute to Anoneurx Open Source", description: "Start contributing to Anoneurx open source — good first issues, contribution workflow, review process and rewards." },
   "/opensource/contribute/apply": { title: "Apply to Contribute — Anoneurx Open Source", description: "Apply to join the Anoneurx open source contributor program — pick a project, area of interest and get matched with a maintainer." },
@@ -535,7 +536,7 @@ const patterns: { pattern: string; build: (params: Record<string, string | undef
     }),
   },
   {
-    pattern: "/opensource/projects/:id",
+    pattern: "/opensource/:id",
     build: (p) => ({
       title: `${humanize(p.id)} — Anoneurx Open Source Project`,
       description: `README, activity, maintainers and releases for the ${humanize(p.id)} Anoneurx open source project.`,
@@ -543,7 +544,7 @@ const patterns: { pattern: string; build: (params: Record<string, string | undef
         "@context": "https://schema.org",
         "@type": "SoftwareSourceCode",
         name: humanize(p.id),
-        url: `${SITE}/opensource/projects/${p.id}`,
+        url: `${SITE}/opensource/${p.id}`,
         codeRepository: `${SITE}/opensource/repos/${p.id}`,
       },
     }),

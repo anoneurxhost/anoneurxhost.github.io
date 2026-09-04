@@ -188,6 +188,9 @@ const OSRepos = React.lazy(() => import('./pages/opensource/OSRepos'));
 const OSProjectDetail = React.lazy(() => import('./pages/opensource/OSProjectDetail'));
 const OSRepoDetail = React.lazy(() => import('./pages/opensource/OSRepoDetail'));
 const OSSearch = React.lazy(() => import('./pages/opensource/OSSearch'));
+const ProjectSubPage = React.lazy(() => import('./pages/opensource/ProjectSubPage'));
+const OSContact = React.lazy(() => import('./pages/opensource/OSContact'));
+const OSSponsorshipInquiry = React.lazy(() => import('./pages/opensource/OSSponsorshipInquiry'));
 
 // Contributions subpages
 const ContributorsPage = React.lazy(() => import('./pages/contributions/Contributors'));
@@ -393,7 +396,8 @@ function App() {
                   <Route path="discussions" element={<OSDiscussions />} />
                   <Route path="repos" element={<OSRepos />} />
                   <Route path="search" element={<OSSearch />} />
-                  <Route path="projects/:id" element={<OSProjectDetail />} />
+                  <Route path=":id" element={<OSProjectDetail />} />
+                  <Route path=":id/:subPage" element={<ProjectSubPage />} />
                   <Route path="repos/:id" element={<OSRepoDetail />} />
                   <Route path="sponsors" element={<Sponsors />} />
                   <Route path="sponcers" element={<Navigate to="/opensource/sponsors" replace />} />
@@ -409,7 +413,8 @@ function App() {
                   <Route path="contributers" element={<Navigate to="/opensource/contributors" replace />} />
                   <Route path="contribute" element={<OSContribute />} />
                   <Route path="contribute/apply" element={<OSContributeApply />} />
-                  <Route path="contact" element={<ModuleSupportPage configKey="opensource-contact" />} />
+                  <Route path="contact" element={<OSContact />} />
+                  <Route path="partnership-inquiry" element={<OSSponsorshipInquiry />} />
                   <Route path="support" element={<ModuleSupportPage configKey="opensource-support" />} />
                   <Route path="contributions" element={<Navigate to="/opensource/contribute" replace />} />
                   <Route path="contributions/how-to-contribute" element={<HowToContribute />} />

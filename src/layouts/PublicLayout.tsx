@@ -63,7 +63,11 @@ const PublicLayout = () => {
     || (location.pathname.startsWith('/faculty/') && location.pathname.split('/').filter(Boolean).length >= 3)
     || (location.pathname.startsWith('/intern/') && location.pathname !== '/intern')
     || location.pathname.startsWith('/read/');
-  const hideNavAndFooter = isAuthPage || isPaymentPage || isProfilePage || isVerifyPage;
+  const isProjectDetail = location.pathname === '/opensource/blackwall'
+    || location.pathname.startsWith('/opensource/blackwall/')
+    || location.pathname === '/opensource/authenticator'
+    || location.pathname.startsWith('/opensource/authenticator/');
+  const hideNavAndFooter = isAuthPage || isPaymentPage || isProfilePage || isVerifyPage || isProjectDetail;
 
   return (
     <div className="min-h-screen relative">

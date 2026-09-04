@@ -648,6 +648,11 @@ const routes = [
     description: "Reach the Anoneurx Open Source program team.",
   },
   {
+    path: "/opensource/partnership-inquiry",
+    title: "Sponsor an Open Source Project — Anoneurx",
+    description: "Fund the open source work behind Blackwall OS and Anoneurx — choose a tier, pick a project, and support the maintainers.",
+  },
+  {
     path: "/opensource/support",
     title: "Anoneurx Open Source Support",
     description: "Help with Anoneurx open source projects, packages and builds.",

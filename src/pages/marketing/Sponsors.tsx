@@ -55,7 +55,7 @@ const Sponsors = () => {
                 Sponsorship keeps Anoneurx open source free forever. Thank you to the companies and organizations funding the work.
               </p>
               <Button asChild className="bg-white text-black hover:bg-white/90 font-bold uppercase tracking-widest text-xs h-11 px-6">
-                <Link to="/partnership-inquiry">Become a sponsor <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                <Link to="/opensource/partnership-inquiry">Become a sponsor <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
             </motion.div>
           </div>
