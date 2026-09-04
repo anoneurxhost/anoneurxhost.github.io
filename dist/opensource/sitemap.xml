@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- OPEN SOURCE HOME -->
+  <url><loc>https://anoneurx.com/opensource</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+
+  <!-- OVERVIEW -->
+  <url><loc>https://anoneurx.com/opensource/about</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://anoneurx.com/opensource/search</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+
+  <!-- PROJECTS -->
+  <url><loc>https://anoneurx.com/opensource/projects</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://anoneurx.com/opensource/organizations</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/repos</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/showcase</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+
+  <!-- PACKAGES & LIBRARIES -->
+  <url><loc>https://anoneurx.com/opensource/packages</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://anoneurx.com/opensource/libraries</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://anoneurx.com/opensource/templates</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/vscode-extensions</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+
+  <!-- RELEASES, ROADMAPS & DISCUSSIONS -->
+  <url><loc>https://anoneurx.com/opensource/releases</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/roadmaps</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/discussions</loc><changefreq>daily</changefreq><priority>0.6</priority></url>
+
+  <!-- COMMUNITY & CONTRIBUTING -->
+  <url><loc>https://anoneurx.com/opensource/community</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/contributors</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/contribute</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://anoneurx.com/opensource/contribute/apply</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/opensource/contributions/how-to-contribute</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/opensource/contributions/review-progress</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/opensource/contributions/architecture</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/opensource/contributions/security</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/opensource/contributions/code-of-conduct</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/opensource/contributions/rewards</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- EVENTS -->
+  <url><loc>https://anoneurx.com/opensource/events</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/events/upcoming</loc><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/opensource/events/past</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/opensource/events/host</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <!-- SPONSORSHIP -->
+  <url><loc>https://anoneurx.com/opensource/sponsors</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/partnership-inquiry</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- SUPPORT & CONTACT -->
+  <url><loc>https://anoneurx.com/opensource/support</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/opensource/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- PROJECT: BLACKWALL OS -->
+  <url><loc>https://anoneurx.com/opensource/blackwall</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://anoneurx.com/opensource/blackwall/features</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/blackwall/changelog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/blackwall/security</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/blackwall/privacy</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/opensource/blackwall/contributors</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/blackwall/roadmap</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/blackwall/faq</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/opensource/blackwall/download</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/blackwall/demo</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <!-- PROJECT: AUTHENTICATOR -->
+  <url><loc>https://anoneurx.com/opensource/authenticator</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://anoneurx.com/opensource/authenticator/features</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/authenticator/changelog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/authenticator/security</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/authenticator/privacy</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/opensource/authenticator/contributors</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/authenticator/roadmap</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/authenticator/faq</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/opensource/authenticator/download</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>
