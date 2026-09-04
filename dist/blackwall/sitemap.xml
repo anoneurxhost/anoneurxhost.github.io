@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- BLACKWALL OS HOME -->
+  <url><loc>https://anoneurx.com/blackwall</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+
+  <!-- PRODUCT -->
+  <url><loc>https://anoneurx.com/blackwall/features</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://anoneurx.com/blackwall/about</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://anoneurx.com/blackwall/architecture</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/blackwall/security</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://anoneurx.com/blackwall/performance</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- DOWNLOAD & INSTALL -->
+  <url><loc>https://anoneurx.com/blackwall/download</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://anoneurx.com/blackwall/install</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://anoneurx.com/blackwall/server</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- SHOWCASE & SCREENSHOTS -->
+  <url><loc>https://anoneurx.com/blackwall/screenshots</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/blackwall/showcase</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- FAQ & SUPPORT -->
+  <url><loc>https://anoneurx.com/blackwall/faq</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/blackwall/support</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/blackwall/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- DOCUMENTATION -->
+  <url><loc>https://anoneurx.com/docs/blackwall</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+</urlset>

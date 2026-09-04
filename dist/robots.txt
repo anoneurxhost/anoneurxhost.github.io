@@ -71,4 +71,6 @@ Allow: /
 # Sitemap
 Sitemap: https://anoneurx.com/sitemap.xml
 Sitemap: https://anoneurx.com/opensource/sitemap.xml
+Sitemap: https://anoneurx.com/blackwall/sitemap.xml
+Sitemap: https://anoneurx.com/cloud/sitemap.xml
 
