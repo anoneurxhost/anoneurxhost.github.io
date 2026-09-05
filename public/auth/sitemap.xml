@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- CORE AUTH -->
+  <url><loc>https://anoneurx.com/auth</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/login</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/signup</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/verify</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- MODULE LOGINS -->
+  <url><loc>https://anoneurx.com/blackwall/login</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/cloud/login</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/cloud/connect/auth</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://anoneurx.com/nexora/login</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/apps/login</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- VERIFICATION FLOWS -->
+  <url><loc>https://anoneurx.com/hackathon/verify</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://anoneurx.com/intern/verify</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://anoneurx.com/internship-verify</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://anoneurx.com/careers/hackathon/verify</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://anoneurx.com/careers/join-dev-team/verify</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://anoneurx.com/careers/other-opportunities/verify</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+</urlset>

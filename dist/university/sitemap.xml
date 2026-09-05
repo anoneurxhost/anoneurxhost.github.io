@@ -3,6 +3,12 @@
   <!-- UNIVERSITY HOME -->
   <url><loc>https://anoneurx.com/university</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
 
+  <!-- UNIVERSITY MODULES -->
+  <url><loc>https://anoneurx.com/university/opensource</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://anoneurx.com/university/blackwall</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://anoneurx.com/university/pay</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://anoneurx.com/university/cloud</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
   <!-- UNIVERSITY SERVICES -->
   <url><loc>https://anoneurx.com/university/contact</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://anoneurx.com/university/support</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
