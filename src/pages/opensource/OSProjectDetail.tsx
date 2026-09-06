@@ -6,6 +6,7 @@ import {
   ArrowRight,
   Check,
   Github,
+  Heart,
   Share2,
   ShieldCheck,
   Sparkles,
@@ -241,6 +242,14 @@ export const OSProjectDetail: React.FC = () => {
               </h3>
               <PeopleGrid people={extra.testers} compact />
             </div>
+            {extra.sponsors && extra.sponsors.length > 0 && (
+              <div id="sponsors" className="mt-8 scroll-mt-28">
+                <h3 className="mb-3 flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-slate-400">
+                  <Heart className="h-4 w-4" /> Sponsors
+                </h3>
+                <PeopleGrid people={extra.sponsors} />
+              </div>
+            )}
           </Section>
 
           <Section id="pages" index={extra.desktopDemo ? "05" : "05"} title="Explore the project">

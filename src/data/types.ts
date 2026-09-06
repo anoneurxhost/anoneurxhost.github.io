@@ -1,8 +1,9 @@
 export type Person = {
   name: string;
-  github: string;
+  github?: string;
   role: string;
   focus: string;
+  avatar?: string;
 };
 
 export type ProjectExtra = {
@@ -26,6 +27,7 @@ export type ProjectExtra = {
   };
   contributors: Person[];
   testers: Person[];
+  sponsors?: Person[];
   features: { title: string; desc: string; tag: string }[];
   changelog: { version: string; date: string; kind: string; notes: string[] }[];
   faq: { q: string; a: string }[];
@@ -64,6 +66,7 @@ export function getProjectExtra(id: string, name: string): ProjectExtra {
     accent: "from-violet-500 to-fuchsia-500",
     contributors: [],
     testers: [],
+    sponsors: [],
     features: [],
     changelog: [],
     faq: [],

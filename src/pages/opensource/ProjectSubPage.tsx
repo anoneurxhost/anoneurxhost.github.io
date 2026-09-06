@@ -106,9 +106,10 @@ const ProjectSubPage: React.FC = () => {
   if (kind === "roadmap") toc = extra.roadmap.map((r) => ({ id: slug(r.quarter), label: r.quarter }));
   if (kind === "faq") toc = extra.faq.map((f) => ({ id: slug(f.q), label: f.q }));
   if (kind === "contributors")
-    toc = [
+    return [
       { id: "contributors", label: "Contributors" },
       { id: "testers", label: "Testers & QA" },
+      { id: "sponsors", label: "Sponsors" },
     ];
   if (kind === "download")
     toc = [
@@ -307,6 +308,12 @@ sha256sum -c ${project.id}-release.sha256`}</pre>
                 <h2 className="mb-4 text-lg font-semibold text-white">Testers &amp; QA</h2>
                 <PeopleGrid people={extra.testers} compact />
               </Card>
+              {extra.sponsors && extra.sponsors.length > 0 && (
+                <Card id="sponsors">
+                  <h2 className="mb-4 text-lg font-semibold text-white">Sponsors</h2>
+                  <PeopleGrid people={extra.sponsors} />
+                </Card>
+              )}
             </>
           )}
         </div>

@@ -1,5 +1,6 @@
 import { Person, ProjectExtra } from "./types";
 import authenticatorLogo from "@/assets/appicons/authenticator.png";
+import saweraAvatar from "@/assets/avatars/sawera-afzal.svg";
 
 export const authenticatorContributors: Person[] = [
   { name: "Insha", github: "inshaits-hub", role: "Performance Engineer", focus: "Benchmarks & profiling" },
@@ -13,6 +14,10 @@ export const authenticatorTesters: Person[] = [
   { name: "Muhammad Anas", github: "Muhammad-Anas59", role: "Beta Tester", focus: "Regression sweeps" },
   { name: "Abdullah Rasheed", github: "abdullahrasheed01", role: "Security Tester", focus: "Vault security" },
   { name: "Rehan", github: "mrtprime21", role: "Performance Tester", focus: "App performance" },
+];
+
+export const authenticatorSponsors: Person[] = [
+  { name: "Sawera Afzal", role: "Sponsor", focus: "Project patron", avatar: saweraAvatar },
 ];
 
 export const authenticatorExtra: ProjectExtra = {
@@ -31,6 +36,7 @@ export const authenticatorExtra: ProjectExtra = {
   ],
   contributors: authenticatorContributors,
   testers: authenticatorTesters,
+  sponsors: authenticatorSponsors,
   features: [
     { title: "Fully offline", desc: "Zero network calls. No backend, no sync, no analytics.", tag: "Privacy" },
     { title: "Encrypted backups", desc: "AES-256-GCM .aax exports derived with PBKDF2-HMAC-SHA256.", tag: "Crypto" },
