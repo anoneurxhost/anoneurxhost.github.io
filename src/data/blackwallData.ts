@@ -8,19 +8,10 @@ import blackwallStore from "@/assets/blackwall/screenshot-store.jpg";
 import blackwallLock from "@/assets/blackwall/screenshot-lock.jpg";
 
 export const blackwallContributors: Person[] = [
-  { name: "Muhammad Qasim", github: "torvalds", role: "Founder · Architecture", focus: "Kernel & runtime" },
-  { name: "Maya Chen", github: "gaearon", role: "Core Maintainer", focus: "Compiler / API surface" },
-  { name: "Ravi Patel", github: "sindresorhus", role: "Performance Engineer", focus: "Benchmarks & profiling" },
-  { name: "Priya Rao", github: "yyx990803", role: "Security Reviewer", focus: "Threat modelling" },
-  { name: "Jonah Reyes", github: "kentcdodds", role: "Developer Experience", focus: "Docs & tooling" },
-  { name: "Sofia Kim", github: "addyosmani", role: "Interface Engineer", focus: "Design system" },
+  { name: "Muhammad Qasim", github: "itskashie", role: "Founder · Architecture", focus: "Kernel & runtime Design system" },
 ];
 
 export const blackwallTesters: Person[] = [
-  { name: "Elena Rossi", github: "tj", role: "QA Lead", focus: "Release verification" },
-  { name: "Léo Dubois", github: "mrdoob", role: "Field Tester", focus: "Hardware matrix" },
-  { name: "Aria Novak", github: "developit", role: "Beta Tester", focus: "Regression sweeps" },
-  { name: "Noah Blake", github: "wesbos", role: "Accessibility Tester", focus: "Screen readers" },
 ];
 
 export const blackwallExtra: ProjectExtra = {
