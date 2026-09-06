@@ -1,6 +1,6 @@
 import { Person, ProjectExtra } from "./types";
 import authenticatorLogo from "@/assets/appicons/authenticator.png";
-import saweraAvatar from "@/assets/avatars/sawera-afzal.svg";
+import saweraAvatar from "@/assets/sponcers/sawera.jpeg";
 
 export const authenticatorContributors: Person[] = [
   { name: "Insha", github: "inshaits-hub", role: "Performance Engineer", focus: "Benchmarks & profiling" },

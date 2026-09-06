@@ -88,9 +88,17 @@ const Sponsors = () => {
                       >
                         <Card className="h-full bg-white/[0.03] border-white/[0.08] backdrop-blur-2xl rounded-2xl hover:border-primary/30 transition-all">
                           <CardContent className="p-6 text-center">
-                            <div className={`h-14 w-14 mx-auto mb-4 rounded-xl bg-gradient-to-br ${meta.color} flex items-center justify-center shadow-lg`}>
-                              <Icon className="h-6 w-6 text-white" />
-                            </div>
+                            {s.avatar ? (
+                              <img
+                                src={s.avatar}
+                                alt={s.name}
+                                className="h-14 w-14 mx-auto mb-4 rounded-xl object-cover border border-white/15"
+                              />
+                            ) : (
+                              <div className={`h-14 w-14 mx-auto mb-4 rounded-xl bg-gradient-to-br ${meta.color} flex items-center justify-center shadow-lg`}>
+                                <Icon className="h-6 w-6 text-white" />
+                              </div>
+                            )}
                             <h3 className="text-sm font-bold text-white mb-1">{s.name}</h3>
                             <p className="text-[10px] text-gray-500 uppercase tracking-widest">Since {s.since}</p>
                           </CardContent>

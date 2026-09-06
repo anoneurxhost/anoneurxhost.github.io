@@ -14,7 +14,7 @@ export type Roadmap = { id: string; project: string; quarter: string; items: str
 export type Release = { id: string; project: string; version: string; date: string; notes: string };
 export type Discussion = { id: string; title: string; author: string; replies: number; category: string };
 export type Event = { id: string; name: string; date: string; type: "Virtual" | "In-Person" | "Hybrid"; location: string };
-export type Sponsor = { id: string; name: string; tier: "Platinum" | "Gold" | "Silver"; since: string };
+export type Sponsor = { id: string; name: string; tier: "Platinum" | "Gold" | "Silver"; since: string; avatar?: string };
 export type Contributor = { id: string; name: string; commits: number; role: string; region: string };
 export type Showcase = { id: string; name: string; author: string; description: string; project: string };
 
@@ -74,13 +74,10 @@ export const events: Event[] = [
   { id: "e6", name: "Authenticator Security Summit", date: "2026-11-14", type: "Virtual", location: "Online" },
 ];
 
+import saweraAvatar from "@/assets/sponcers/sawera.jpeg";
+
 export const sponsors: Sponsor[] = [
-  { id: "s1", name: "Northline", tier: "Platinum", since: "2023" },
-  { id: "s2", name: "Vellum Systems", tier: "Platinum", since: "2024" },
-  { id: "s3", name: "Meridian Cloud", tier: "Gold", since: "2024" },
-  { id: "s4", name: "Kestrel Semiconductor", tier: "Gold", since: "2025" },
-  { id: "s5", name: "Cobalt Studios", tier: "Silver", since: "2025" },
-  { id: "s6", name: "Umbra Labs", tier: "Silver", since: "2025" },
+  { id: "s1", name: "Sawera Afzal", tier: "Platinum", since: "2025", avatar: saweraAvatar },
 ];
 
 export const contributors: Contributor[] = [
