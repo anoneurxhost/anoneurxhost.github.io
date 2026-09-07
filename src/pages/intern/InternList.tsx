@@ -45,6 +45,7 @@ const InternList: React.FC = () => {
         title="Interns"
         description="Meet the Anoneurx interns — the next generation of engineers, researchers and open source contributors."
         path="/intern"
+        keywords="anoneurx interns, internship, intern program, engineering interns, research interns, open source contributors"
       />
       <div className="min-h-screen pt-24 pb-20">
         <div className="container-responsive max-w-6xl text-white">

@@ -20,6 +20,7 @@ const Sponsors = () => {
         title="Sponsors"
         description="Companies that sponsor Anoneurx open source, research and community programs — join Platinum, Gold or Silver tier."
         path="/sponsors"
+        keywords="anoneurx sponsors, open source sponsors, platinum sponsor, gold sponsor, technology sponsorship, fund open source, sponsor anoneurx"
       />
 
       <div className="min-h-screen relative">

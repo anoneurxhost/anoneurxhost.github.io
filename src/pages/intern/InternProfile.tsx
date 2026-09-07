@@ -65,6 +65,7 @@ const InternProfile: React.FC = () => {
         path={path}
         image={person.photo}
         jsonLd={jsonLd}
+        keywords="anoneurx intern, intern profile, engineering intern, research intern, university intern"
       />
 
       <div className="min-h-screen pt-24 pb-20">

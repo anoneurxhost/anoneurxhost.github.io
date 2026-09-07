@@ -34,6 +34,7 @@ const CEO: React.FC = () => {
         description={`${ceo.name}, ${ceo.title} of Anoneurx. ${ceo.about.bio.slice(0, 140)}`}
         path="/ceo"
         image={ceo.photo}
+        keywords="anoneurx ceo, founder, leadership, technology executive, company leadership"
         jsonLd={jsonLd}
       />
 

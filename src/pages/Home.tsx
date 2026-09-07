@@ -40,6 +40,7 @@ export const Home: React.FC = () => {
         description="Anoneurx is a modern technology organization building Software, Operating Systems (Black Wall), Artificial Intelligence, Cloud Infrastructure, Research, Developer Tools, and Open Source."
         path="/"
         jsonLd={jsonLdOrganization}
+        keywords="anoneurx, software, ai, cloud, open source, operating system, black wall, technology, developer tools, research, innovation, free, download"
       />
 
       <main className="w-full bg-transparent text-white selection:bg-cyan-500 selection:text-black overflow-x-hidden">

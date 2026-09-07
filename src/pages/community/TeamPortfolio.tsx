@@ -75,6 +75,7 @@ const TeamPortfolio: React.FC = () => {
         path={`/people/${profile.slug}`}
         image={profile.photo}
         jsonLd={jsonLd}
+        keywords="anoneurx team, team member, engineer, developer, researcher, anoneurx staff"
       />
       <div className="min-h-screen pt-24 pb-20 text-white">
         <div className="container-responsive max-w-6xl">

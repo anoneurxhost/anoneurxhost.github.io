@@ -58,6 +58,7 @@ const FacultyProfile: React.FC = () => {
         path={`/faculty/${department}/${name}`}
         image={person.photo}
         jsonLd={jsonLd}
+        keywords="anoneurx university, faculty profile, professor, researcher, academic, university department"
       />
       <div className="min-h-screen pt-24 pb-20">
         <div className="container-responsive max-w-5xl text-white">
