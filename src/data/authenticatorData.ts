@@ -14,6 +14,9 @@ export const authenticatorTesters: Person[] = [
   { name: "Muhammad Anas", github: "Muhammad-Anas59", role: "Beta Tester", focus: "Regression sweeps" },
   { name: "Abdullah Rasheed", github: "abdullahrasheed01", role: "Security Tester", focus: "Vault security" },
   { name: "Rehan", github: "mrtprime21", role: "Performance Tester", focus: "App performance" },
+  { name: "Umm-e-Hani", github: "ummehani", role: "Accessibility Tester", focus: "Screen readers" },
+
+  
 ];
 
 export const authenticatorSponsors: Person[] = [
