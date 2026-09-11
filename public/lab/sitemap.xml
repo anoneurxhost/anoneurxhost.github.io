@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- ANONEURX LAB SITEMAP -->
+  <!-- Dynamic pages (problems/:id, research/:slug, projects/:slug, people/:username, areas/:slug)
+       are generated at runtime and should be added programmatically. They are intentionally
+       not hardcoded here. -->
+
+  <!-- LAB HOME -->
+  <url>
+    <loc>https://anoneurx.com/lab</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- PROBLEMS -->
+  <url>
+    <loc>https://anoneurx.com/lab/problems</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- RESEARCH -->
+  <url>
+    <loc>https://anoneurx.com/lab/research</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- PROJECTS -->
+  <url>
+    <loc>https://anoneurx.com/lab/projects</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- PEOPLE -->
+  <url>
+    <loc>https://anoneurx.com/lab/people</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- RESEARCH AREAS -->
+  <url>
+    <loc>https://anoneurx.com/lab/areas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ABOUT -->
+  <url>
+    <loc>https://anoneurx.com/lab/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- PARTICIPATE -->
+  <url>
+    <loc>https://anoneurx.com/lab/apply</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://anoneurx.com/lab/guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://anoneurx.com/lab/faq</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>

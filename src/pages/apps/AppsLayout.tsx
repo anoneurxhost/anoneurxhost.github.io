@@ -9,9 +9,10 @@ interface AppsLayoutProps {
 
 const AppsLayout = ({ children, title = "Anoneurx Apps" }: AppsLayoutProps) => {
   useEffect(() => {
-    document.title = title;
+    const cleanTitle = title.replace(/^(ANONEURX|Anoneurx)\s*/i, "");
+    document.title = cleanTitle ? `ANONEURX | ${cleanTitle}` : "ANONEURX |";
     return () => {
-      document.title = "Anoneurx";
+      document.title = "ANONEURX |";
     };
   }, [title]);
 

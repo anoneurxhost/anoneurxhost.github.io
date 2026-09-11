@@ -15,6 +15,17 @@ const cssPath = cssMatch ? cssMatch[1] : "/assets/index.css";
 
 const SITE = "https://anoneurx.com";
 
+// Normalize page titles to the site-wide "ANONEURX |" format and drop a
+// leading/trailing brand word so titles never read "ANONEURX | Anoneurx ...".
+const formatTitle = (t) => {
+  let page = String(t || "")
+    .replace(/^(ANONEURX|Anoneurx)\s*[—|·:-]*\s*/i, "")
+    .replace(/\s*[—|·:-]\s*(ANONEURX|Anoneurx)\s*$/i, "")
+    .trim()
+    .replace(/^[\s|·—:-]+/, "");
+  return page ? `ANONEURX | ${page}` : "ANONEURX |";
+};
+
 // Public indexable routes and their customized head SEO tags
 const routes = [
   {
@@ -822,6 +833,150 @@ const routes = [
     title: "Strategic KPIs — Anoneurx",
     description: "Anoneurx research strategy, milestones and public KPIs.",
   },
+  {
+    path: "/lab",
+    title: "Anoneurx Research Lab",
+    description: "Open research problems, projects and opportunities at Anoneurx Lab — AI, cybersecurity, robotics and systems research.",
+    keywords: "anoneurx lab, research lab, open research, ai research, cybersecurity research, robotics research",
+  },
+  {
+    path: "/lab/problems",
+    title: "Research Problems — Anoneurx Lab",
+    description: "Browse open research problems at Anoneurx Lab. Filter by area, difficulty and status.",
+    keywords: "research problems, open problems, anoneurx lab, ai, cybersecurity, robotics",
+  },
+  {
+    path: "/lab/research",
+    title: "Research — Anoneurx Lab",
+    description: "Research papers, publications and ongoing experiments from Anoneurx Lab.",
+    keywords: "research papers, publications, anoneurx lab",
+  },
+  {
+    path: "/lab/projects",
+    title: "Projects — Anoneurx Lab",
+    description: "Active and prototype projects at Anoneurx Lab.",
+    keywords: "lab projects, anoneurx projects, research projects",
+  },
+  {
+    path: "/lab/people",
+    title: "People — Anoneurx Lab",
+    description: "Researchers, contributors and leads at Anoneurx Lab.",
+    keywords: "researchers, anoneurx lab team, research leads",
+  },
+  {
+    path: "/lab/areas",
+    title: "Research Areas — Anoneurx Lab",
+    description: "Explore research areas at Anoneurx Lab — AI, cybersecurity, robotics, systems and more.",
+    keywords: "research areas, ai, cybersecurity, robotics, systems, anoneurx lab",
+  },
+  {
+    path: "/lab/about",
+    title: "About — Anoneurx Lab",
+    description: "About Anoneurx Lab — mission, values and research philosophy.",
+    keywords: "about anoneurx lab, lab mission, research philosophy",
+  },
+  {
+    path: "/lab/apply",
+    title: "Apply — Anoneurx Lab",
+    description: "Apply to join Anoneurx Lab as a student researcher.",
+    keywords: "apply, join lab, student researcher, anoneurx lab",
+  },
+  {
+    path: "/lab/guide",
+    title: "Research Guide — Anoneurx Lab",
+    description: "How to select problems, write papers and contribute to research at Anoneurx Lab.",
+    keywords: "research guide, how to research, anoneurx lab guide",
+  },
+  {
+    path: "/lab/faq",
+    title: "FAQ — Anoneurx Lab",
+    description: "Frequently asked questions about Anoneurx Lab.",
+    keywords: "faq, anoneurx lab, research lab faq",
+  },
+  {
+    path: "/lab/problems/anx-rp-001",
+    title: "Early Security Warning for Autonomous Systems — Anoneurx Lab",
+    description: "Develop an early warning system that detects security anomalies in autonomous vehicle sensor networks before they propagate to decision-making layers.",
+    keywords: "early security warning, autonomous systems, anomaly detection, anoneurx lab",
+  },
+  {
+    path: "/lab/problems/anx-rp-002",
+    title: "Federated Learning Privacy in Healthcare Data — Anoneurx Lab",
+    description: "Design a federated learning framework that enables cross-hospital model training while provably preserving patient privacy through differential privacy guarantees.",
+    keywords: "federated learning, healthcare privacy, differential privacy, anoneurx lab",
+  },
+  {
+    path: "/lab/problems/anx-rp-003",
+    title: "Real-time SLAM for Indoor Drone Navigation — Anoneurx Lab",
+    description: "Build a lightweight SLAM system that runs on resource-constrained drone hardware for GPS-denied indoor navigation.",
+    keywords: "slam, indoor drone, navigation, anoneurx lab",
+  },
+  {
+    path: "/lab/problems/anx-rp-004",
+    title: "Neural Network Quantization for Edge AI — Anoneurx Lab",
+    description: "Investigate mixed-precision quantization techniques that maintain model accuracy while enabling inference on microcontroller-class hardware.",
+    keywords: "quantization, edge ai, microcontroller, anoneurx lab",
+  },
+  {
+    path: "/lab/problems/anx-rp-005",
+    title: "Adversarial Robustness of Code Generation Models — Anoneurx Lab",
+    description: "Study how LLM-based code assistants can be manipulated to generate vulnerable or malicious code, and develop defenses.",
+    keywords: "adversarial robustness, code generation, llm security, anoneurx lab",
+  },
+  {
+    path: "/lab/problems/anx-rp-006",
+    title: "Zero-Knowledge Proofs for IoT Device Authentication — Anoneurx Lab",
+    description: "Implement lightweight zero-knowledge proof protocols for authenticating IoT devices without revealing device identity or credentials.",
+    keywords: "zero-knowledge proofs, iot authentication, cryptography, anoneurx lab",
+  },
+  {
+    path: "/lab/problems/anx-rp-007",
+    title: "Semantic Code Search in Large Monorepos — Anoneurx Lab",
+    description: "Build a semantic code search engine that understands intent rather than keywords, enabling developers to find relevant code across millions of lines.",
+    keywords: "semantic code search, monorepos, code understanding, anoneurx lab",
+  },
+  {
+    path: "/lab/problems/anx-rp-008",
+    title: "Formal Verification of Smart Contract Compositions — Anoneurx Lab",
+    description: "Develop automated formal verification tools that can prove safety properties of composed smart contracts across DeFi protocols.",
+    keywords: "formal verification, smart contracts, defi, anoneurx lab",
+  },
+  {
+    path: "/lab/problems/anxosQ7MKR",
+    title: "Before the Breach — Anoneurx Lab",
+    description: "Predictive cybersecurity at the operating-system level. Investigate whether subtle behavioral changes can identify a measurable pre-attack state before an actual compromise occurs.",
+    keywords: "pre-attack detection, os security, predictive cybersecurity, anoneurx lab",
+  },
+  {
+    path: "/lab/problems/anxbwT4XPL",
+    title: "Self-Defending OS — Anoneurx Lab",
+    description: "Investigate an operating-system architecture capable of continuously learning system behavior, constructing a runtime security model, and adaptively changing defensive policies.",
+    keywords: "self-defending os, adaptive security, behavior-adaptive, anoneurx lab",
+  },
+  {
+    path: "/lab/problems/anxroN8CVD",
+    title: "Robot Self-Trust — Anoneurx Lab",
+    description: "Investigate whether an autonomous robot can determine when its own perception of reality has become unreliable or potentially compromised.",
+    keywords: "robot self-trust, perception reliability, cross-sensor trust, anoneurx lab",
+  },
+  {
+    path: "/lab/problems/anxbwR6ZQM",
+    title: "Black Wall for Robots — Anoneurx Lab",
+    description: "Investigate a cyber-physical security architecture where a secure runtime prevents compromised software from producing physically dangerous robot behavior.",
+    keywords: "black wall, cyber-physical security, robot safety, anoneurx lab",
+  },
+  {
+    path: "/lab/problems/anxroK3FWT",
+    title: "Cyber-Physical Threat Horizon — Anoneurx Lab",
+    description: "Investigate whether cyber-physical systems can predict a dangerous physical consequence several seconds before it occurs.",
+    keywords: "threat horizon, cyber-physical, predictive security, anoneurx lab",
+  },
+  {
+    path: "/lab/problems/anxcsV9LXP",
+    title: "Self-Learning Security Baseline — Anoneurx Lab",
+    description: "Investigate whether an autonomous system can learn its own operational security baseline instead of relying entirely on manually written security rules.",
+    keywords: "self-learning security, adaptive baseline, autonomous security, anoneurx lab",
+  },
 ];
 
 // Legacy / alias paths that the SPA client-redirects to a canonical page.
@@ -854,7 +1009,7 @@ let count = 0;
 for (const route of routes) {
   const canonicalPath = route.canonicalPath || route.path;
   const canonicalUrl = `${SITE}${canonicalPath === "/" ? "/" : canonicalPath}`;
-  const title = route.title;
+  const title = formatTitle(route.title);
   const description = route.description;
   const keywords = route.keywords || "anoneurx, software, cloud, ai, os, open source";
   const jsonLd = route.jsonLd || [

@@ -15,9 +15,9 @@ export const BankingBackground = () => (
 
 const BankingLayout = () => {
   useEffect(() => {
-    document.title = "Anoneurx | Pay";
+    document.title = "ANONEURX | Pay";
     return () => {
-      document.title = "Anoneurx";
+      document.title = "ANONEURX |";
     };
   }, []);
 

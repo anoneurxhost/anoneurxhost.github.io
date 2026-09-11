@@ -36,6 +36,7 @@ const Navigation = () => {
   const isBanking = location.pathname.startsWith('/pay');
   const isResearch = /^\/(research|view-in-journal|strategic-kpis|read|collaboration)(\/|$)/.test(location.pathname);
   const isOpensource = location.pathname.startsWith('/opensource');
+  const isLab = location.pathname.startsWith('/lab');
 
   const isUniversity = /^\/(university|professors|courses|intern|faculty)/.test(location.pathname);
 
@@ -68,6 +69,13 @@ const Navigation = () => {
     { name: "Events", path: "/opensource/events" },
     { name: "Sponsors", path: "/opensource/sponsors" },
     { name: "Contact", path: "/opensource/contact" },
+  ] : isLab ? [
+    { name: "Home", path: "/lab" },
+    { name: "Problems", path: "/lab/problems" },
+    { name: "Research", path: "/lab/research" },
+    { name: "Projects", path: "/lab/projects" },
+    { name: "People", path: "/lab/people" },
+    { name: "About", path: "/lab/about" },
   ] : isUniversity ? [
     { name: "University", path: "/university" },
     { name: "Professors", path: "/faculty" },

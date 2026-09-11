@@ -47,7 +47,7 @@ const BlackwallServer = () => {
   const [subscribed, setSubscribed] = useState(false);
 
   useEffect(() => {
-    document.title = "Anoneurx | Black Wall Server OS";
+    document.title = "ANONEURX | Black Wall Server OS";
     setSubscribed(!!localStorage.getItem("blackwall_server_notify"));
   }, []);
 

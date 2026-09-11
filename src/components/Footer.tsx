@@ -9,6 +9,7 @@ const Footer = () => {
   const isApps = location.pathname.startsWith('/apps');
   const isBanking = location.pathname.startsWith('/pay');
   const isOpensource = location.pathname.startsWith('/opensource');
+  const isLab = location.pathname.startsWith('/lab');
 
   const cloudLinks = [
     {
@@ -218,6 +219,47 @@ const Footer = () => {
     }
   ];
 
+  const labLinks = [
+    {
+      title: "Research",
+      links: [
+        { name: "Research Lab", path: "/lab" },
+        { name: "Open Problems", path: "/lab/problems" },
+        { name: "Research Areas", path: "/lab/areas" },
+        { name: "Projects", path: "/lab/projects" },
+        { name: "Papers", path: "/lab/research" },
+      ]
+    },
+    {
+      title: "Participate",
+      links: [
+        { name: "Join the Lab", path: "/lab/apply" },
+        { name: "Research Guide", path: "/lab/guide" },
+        { name: "For Students", path: "/lab/apply" },
+        { name: "For Researchers", path: "/lab/people" },
+        { name: "FAQ", path: "/lab/faq" },
+      ]
+    },
+    {
+      title: "Anoneurx",
+      links: [
+        { name: "About Anoneurx", path: "/about" },
+        { name: "Open Source", path: "/opensource" },
+        { name: "Black Wall", path: "/blackwall" },
+        { name: "Anoneurx Pay", path: "/pay" },
+        { name: "Cloud", path: "/cloud" },
+      ]
+    },
+    {
+      title: "Connect",
+      links: [
+        { name: "GitHub", path: "https://github.com/anoneurx" },
+        { name: "LinkedIn", path: "https://linkedin.com/company/anoneurx" },
+        { name: "Contact", path: "/contact" },
+      ]
+    }
+  ];
+
   const globalLinks = [
     {
       title: "Quick Links",
@@ -270,6 +312,8 @@ const Footer = () => {
     ? bankingLinks
     : isOpensource
     ? opensourceLinks
+    : isLab
+    ? labLinks
     : globalLinks;
 
   return (

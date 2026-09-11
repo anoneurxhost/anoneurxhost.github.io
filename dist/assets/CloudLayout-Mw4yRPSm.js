@@ -1,0 +1,1 @@
+import{r as s,j as e,P as r}from"./index-B-aVOnU7.js";const i=({children:t})=>(s.useEffect(()=>(document.title="ANONEURX | Cloud",()=>{document.title="ANONEURX |"}),[]),e.jsx(r,{children:e.jsx("div",{className:"relative min-h-screen text-white flex flex-col",children:e.jsx("main",{className:"flex-1 relative z-10",children:t})})}));export{i as C};

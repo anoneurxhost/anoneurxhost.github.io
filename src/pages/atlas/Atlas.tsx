@@ -65,7 +65,7 @@ function CodeBlock({ code, lang = "atlas" }: { code: string; lang?: string }) {
 
 const Atlas = () => {
   useEffect(() => {
-    document.title = "ATLAS — Native UI at the speed of Rust | Anoneurx";
+    document.title = "ANONEURX | ATLAS — Native UI at the speed of Rust";
   }, []);
 
   return (

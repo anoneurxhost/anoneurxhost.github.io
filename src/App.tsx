@@ -261,6 +261,20 @@ const CareersHackathonApply = React.lazy(() => import('./pages/careers/Hackathon
 const CareersJoinDevTeam = React.lazy(() => import('./pages/careers/JoinDevTeam'));
 const CareersJoinDevTeamApply = React.lazy(() => import('./pages/careers/JoinDevTeamApply'));
 
+// Lab module
+const LabLayout = React.lazy(() => import('./pages/lab/LabLayout'));
+const LabHome = React.lazy(() => import('./pages/lab/LabHome'));
+const LabProblems = React.lazy(() => import('./pages/lab/LabProblems'));
+const LabProblemDetail = React.lazy(() => import('./pages/lab/LabProblemDetail'));
+const LabResearch = React.lazy(() => import('./pages/lab/LabResearch'));
+const LabProjects = React.lazy(() => import('./pages/lab/LabProjects'));
+const LabPeople = React.lazy(() => import('./pages/lab/LabPeople'));
+const LabAreas = React.lazy(() => import('./pages/lab/LabAreas'));
+const LabAbout = React.lazy(() => import('./pages/lab/LabAbout'));
+const LabApply = React.lazy(() => import('./pages/lab/LabApply'));
+const LabGuide = React.lazy(() => import('./pages/lab/LabGuide'));
+const LabFaq = React.lazy(() => import('./pages/lab/LabFaq'));
+
 
 const CourseDetail = React.lazy(() => import('./pages/courses/CourseDetail'));
 const EnrollForm = React.lazy(() => import('./pages/courses/EnrollForm'));
@@ -648,6 +662,21 @@ function App() {
                 <Route path="support" element={<Support />} />
                 <Route path="cookies" element={<Cookies />} />
                 <Route path="challenge/:challengeId" element={<ChallengeDetail />} />
+
+                {/* Anoneurx Research Lab */}
+                <Route path="lab" element={<LabLayout />}>
+                  <Route index element={<LabHome />} />
+                  <Route path="problems" element={<LabProblems />} />
+                  <Route path="problems/:id" element={<LabProblemDetail />} />
+                  <Route path="research" element={<LabResearch />} />
+                  <Route path="projects" element={<LabProjects />} />
+                  <Route path="people" element={<LabPeople />} />
+                  <Route path="areas" element={<LabAreas />} />
+                  <Route path="about" element={<LabAbout />} />
+                  <Route path="apply" element={<LabApply />} />
+                  <Route path="guide" element={<LabGuide />} />
+                  <Route path="faq" element={<LabFaq />} />
+                </Route>
               </Route>
 
               {/* Private Routes */}

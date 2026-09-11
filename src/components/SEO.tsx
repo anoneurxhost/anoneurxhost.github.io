@@ -14,7 +14,7 @@ interface SEOProps {
 }
 
 /**
- * Sitewide SEO component. Sets title (format: "Anoneurx | X"),
+ * Sitewide SEO component. Sets a constant browser title ("ANONEURX |"),
  * meta description, canonical, Open Graph, Twitter Card, and optional JSON-LD.
  */
 const SEO = ({
@@ -27,7 +27,8 @@ const SEO = ({
   noindex,
   keywords,
 }: SEOProps) => {
-  const fullTitle = title ? `Anoneurx | ${title}` : "Anoneurx";
+  const cleanTitle = title ? title.replace(/^(ANONEURX|Anoneurx)\s*/i, "") : "";
+  const fullTitle = cleanTitle ? `ANONEURX | ${cleanTitle}` : "ANONEURX |";
   const url = `${SITE}${path}`;
   const ogImage = image ? (image.startsWith("http") ? image : `${SITE}${image}`) : undefined;
 

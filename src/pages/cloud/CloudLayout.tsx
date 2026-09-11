@@ -3,9 +3,9 @@ import PageTransition from "@/components/PageTransition";
 
 const CloudLayout = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
-    document.title = "Anoneurx Cloud";
+    document.title = "ANONEURX | Cloud";
     return () => {
-      document.title = "Anoneurx";
+      document.title = "ANONEURX |";
     };
   }, []);
 

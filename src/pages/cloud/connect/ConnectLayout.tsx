@@ -8,9 +8,9 @@ const ConnectLayout = () => {
   const location = useLocation();
 
   useEffect(() => {
-    document.title = "Black Wall · Cloud Connect";
+    document.title = "ANONEURX | Black Wall Cloud Connect";
     return () => {
-      document.title = "Anoneurx";
+      document.title = "ANONEURX |";
     };
   }, []);
 

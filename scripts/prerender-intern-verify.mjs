@@ -13,7 +13,7 @@ const cssMatch = SRC.match(/<link[^>]*href="(\/assets\/index-[^"]+\.css)"[^>]*>/
 const jsPath = jsMatch ? jsMatch[1] : "/assets/index.js";
 const cssPath = cssMatch ? cssMatch[1] : "/assets/index.css";
 
-const TITLE = "Anoneurx | Verify Intern";
+const TITLE = "ANONEURX | Verify Intern";
 const DESCRIPTION =
   "Verify an Anoneurx intern instantly. Confirm internship credentials, department, batch, status, certificates and service records using an intern ID or email address. Official Anoneurx internship verification tool.";
 const KEYWORDS =

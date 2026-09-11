@@ -25,8 +25,8 @@ const Pay = () => {
   const category = useMemo(() => searchParams.get("category") || "Subscription", [searchParams]);
 
   useEffect(() => {
-    document.title = "Pay · Anoneurx";
-    return () => { document.title = "Anoneurx"; };
+    document.title = "ANONEURX | Pay";
+    return () => { document.title = "ANONEURX |"; };
   }, []);
 
   const [step, setStep] = useState<Step>("select");

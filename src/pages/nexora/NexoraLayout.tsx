@@ -14,9 +14,9 @@ export const NexoraBackground = () => (
 
 const NexoraLayout = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
-    document.title = "Anoneurx | Nexora";
+    document.title = "ANONEURX | Nexora";
     return () => {
-      document.title = "Anoneurx";
+      document.title = "ANONEURX |";
     };
   }, []);
 

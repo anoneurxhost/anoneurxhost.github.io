@@ -14,9 +14,9 @@ export const BlackwallBackground = () => (
 
 const BlackwallLayout = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
-    document.title = "Anoneurx | Black Wall";
+    document.title = "ANONEURX | Black Wall";
     return () => {
-      document.title = "Anoneurx";
+      document.title = "ANONEURX |";
     };
   }, []);
 

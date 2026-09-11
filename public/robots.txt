@@ -75,4 +75,5 @@ Sitemap: https://anoneurx.com/blackwall/sitemap.xml
 Sitemap: https://anoneurx.com/cloud/sitemap.xml
 Sitemap: https://anoneurx.com/university/sitemap.xml
 Sitemap: https://anoneurx.com/auth/sitemap.xml
+Sitemap: https://anoneurx.com/lab/sitemap.xml
 

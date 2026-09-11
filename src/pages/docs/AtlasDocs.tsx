@@ -231,7 +231,7 @@ const AtlasDocs = () => {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    document.title = "ATLAS Documentation | Anoneurx";
+    document.title = "ANONEURX | ATLAS Documentation";
   }, []);
 
   const current = sections.find((s) => s.id === active) || sections[0];

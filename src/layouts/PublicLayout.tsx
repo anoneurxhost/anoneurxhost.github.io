@@ -39,12 +39,15 @@ const PublicLayout = () => {
   const isOpensource = location.pathname.startsWith('/opensource');
   const isBlackwall = location.pathname.startsWith('/blackwall');
   const isIntern = location.pathname.startsWith('/intern');
+  const isLab = location.pathname.startsWith('/lab');
   const isResearch = location.pathname.startsWith('/research')
     || location.pathname.startsWith('/read')
     || location.pathname === '/view-in-journal'
     || location.pathname === '/strategic-kpis';
 
   const currentBg = isOpensource
+    ? null
+    : isLab
     ? null
     : isBlackwall
     ? { desktop: images.blackwall, mobile: images.blackwall }
@@ -67,7 +70,8 @@ const PublicLayout = () => {
     || location.pathname.startsWith('/opensource/blackwall/')
     || location.pathname === '/opensource/authenticator'
     || location.pathname.startsWith('/opensource/authenticator/');
-  const hideNavAndFooter = isAuthPage || isPaymentPage || isProfilePage || isVerifyPage || isProjectDetail;
+  const isLabProblemDetail = location.pathname.startsWith('/lab/problems/') && location.pathname !== '/lab/problems';
+  const hideNavAndFooter = isAuthPage || isPaymentPage || isProfilePage || isVerifyPage || isProjectDetail || isLabProblemDetail;
 
   return (
     <div className="min-h-screen relative">

@@ -9,9 +9,9 @@ const OpenSourceLayout = () => {
 
   useEffect(() => {
     applyStoredOSTheme();
-    document.title = "Anoneurx Open Source";
+    document.title = "ANONEURX | Open Source";
     return () => {
-      document.title = "Anoneurx";
+      document.title = "ANONEURX |";
     };
   }, []);
 

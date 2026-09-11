@@ -8,7 +8,7 @@ import OpenSource from "@/components/home/OpenSource";
 
 export const Home: React.FC = () => {
   useEffect(() => {
-    document.title = "Anoneurx";
+    document.title = "ANONEURX |";
   }, []);
 
   const jsonLdOrganization = {
