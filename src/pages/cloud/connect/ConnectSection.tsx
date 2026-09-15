@@ -9,7 +9,7 @@ interface Props {
   children: ReactNode;
 }
 
-/** Shared page shell for /cloud/connect/* subpages. */
+/** Shared page shell for /connect/* subpages. */
 const ConnectSection = ({ title, subtitle, icon: Icon, actions, children }: Props) => (
   <div className="space-y-6">
     <header className="flex flex-wrap items-end justify-between gap-4">

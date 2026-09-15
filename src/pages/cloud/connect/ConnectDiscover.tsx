@@ -114,7 +114,7 @@ const ConnectDiscover = () => {
     );
     setTarget(null);
     toast.success(`Connected to ${target.hostname ?? target.ip}`);
-    navigate("/cloud/connect/dashboard");
+    navigate("/blacklink/dashboard");
   };
 
   return (

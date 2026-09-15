@@ -28,7 +28,7 @@ const ConnectHome = () => {
   const [remember, setRemember] = useState(false);
   const [busy, setBusy] = useState<null | "connect" | "test">(null);
 
-  if (server) return <Navigate to="/cloud/connect/dashboard" replace />;
+  if (server) return <Navigate to="/blacklink/dashboard" replace />;
 
   const validate = () => {
     const parsed = schema.safeParse({ host, username, password, port });
@@ -54,7 +54,7 @@ const ConnectHome = () => {
     }
     setBusy(null);
     toast.success(`Connected to ${data.host}`);
-    navigate("/cloud/connect/dashboard");
+    navigate("/blacklink/dashboard");
   };
 
   const onTest = async () => {

@@ -20,26 +20,26 @@ const groups: { label: string; items: { to: string; label: string; icon: typeof 
   {
     label: "Overview",
     items: [
-      { to: "/cloud/connect/dashboard", label: "Dashboard", icon: LayoutDashboard },
-      { to: "/cloud/connect/discover", label: "Discover", icon: Radar },
+      { to: "/blacklink/dashboard", label: "Dashboard", icon: LayoutDashboard },
+      { to: "/blacklink/dashboard/discover", label: "Discover", icon: Radar },
     ],
   },
   {
     label: "Server",
     items: [
-      { to: "/cloud/connect/network", label: "Network", icon: Network },
-      { to: "/cloud/connect/storage", label: "Storage", icon: HardDrive },
-      { to: "/cloud/connect/users", label: "Users", icon: Users },
-      { to: "/cloud/connect/firewall", label: "Firewall", icon: ShieldCheck },
-      { to: "/cloud/connect/terminal", label: "Terminal", icon: Terminal },
+      { to: "/blacklink/dashboard/network", label: "Network", icon: Network },
+      { to: "/blacklink/dashboard/storage", label: "Storage", icon: HardDrive },
+      { to: "/blacklink/dashboard/users", label: "Users", icon: Users },
+      { to: "/blacklink/dashboard/firewall", label: "Firewall", icon: ShieldCheck },
+      { to: "/blacklink/dashboard/terminal", label: "Terminal", icon: Terminal },
     ],
   },
   {
     label: "Automation",
     items: [
-      { to: "/cloud/connect/ssh-keys", label: "SSH Keys", icon: KeyRound },
-      { to: "/cloud/connect/webhooks", label: "Webhooks", icon: Webhook },
-      { to: "/cloud/connect/settings", label: "Settings", icon: Settings },
+      { to: "/blacklink/dashboard/ssh-keys", label: "SSH Keys", icon: KeyRound },
+      { to: "/blacklink/dashboard/webhooks", label: "Webhooks", icon: Webhook },
+      { to: "/blacklink/dashboard/settings", label: "Settings", icon: Settings },
     ],
   },
 ];
@@ -105,12 +105,12 @@ const ConnectSidebar = () => {
             </div>
           )}
           <div className="mt-3 flex gap-1.5">
-            <NavLink
-              to="/cloud/connect"
-              className="flex-1 inline-flex items-center justify-center gap-1 rounded-md bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-[11px] text-slate-200 py-1.5"
-            >
-              <Repeat className="w-3 h-3" /> Switch
-            </NavLink>
+<NavLink
+               to="/blacklink/dashboard"
+               className="flex-1 inline-flex items-center justify-center gap-1 rounded-md bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-[11px] text-slate-200 py-1.5"
+             >
+               <Repeat className="w-3 h-3" /> Switch
+             </NavLink>
             <button
               onClick={disconnect}
               disabled={!server}

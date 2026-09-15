@@ -39,6 +39,7 @@ const Navigation = () => {
   const isLab = location.pathname.startsWith('/lab');
 
   const isUniversity = /^\/(university|professors|courses|intern|faculty)/.test(location.pathname);
+  const isConnect = location.pathname.startsWith("/blacklink");
 
   const navItems = isNexora ? [
     { name: "Home", path: "/nexora" },
@@ -90,6 +91,7 @@ const Navigation = () => {
     { name: "Anoneurx Pay", path: "/pay" },
     { name: "Cloud", path: "/cloud" },
     { name: "University", path: "/university" },
+    { name: "Black Link", path: "/blacklink" },
   ];
 
   const pageOrder = navItems.map(item => item.path);

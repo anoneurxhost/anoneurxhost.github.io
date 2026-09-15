@@ -56,7 +56,7 @@ export const ConnectAuth = () => {
       });
 
       toast.success(`Connected to node ${ip}`);
-      navigate("/cloud/connect");
+            navigate("/blacklink/dashboard");
     } catch (err: any) {
       setError(err?.message || "Connection failed. Check target IP and credentials.");
       toast.error("Failed to connect to cluster node.");

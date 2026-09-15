@@ -977,6 +977,60 @@ const routes = [
     description: "Investigate whether an autonomous system can learn its own operational security baseline instead of relying entirely on manually written security rules.",
     keywords: "self-learning security, adaptive baseline, autonomous security, anoneurx lab",
   },
+  {
+    path: "/blacklink",
+    title: "Anoneurx Black Link — Secure Server Management",
+    description: "Securely connect to and manage your Linux infrastructure with Anoneurx Black Link.",
+    keywords: "anoneurx black link, server management, linux, infrastructure, secure connection",
+  },
+  {
+    path: "/blacklink/features",
+    title: "Features — Anoneurx Black Link",
+    description: "Terminal, files, processes, services, metrics, logs, network and security — all through one secure connection.",
+    keywords: "anoneurx black link features, remote terminal, server monitoring, file management",
+  },
+  {
+    path: "/blacklink/how-it-works",
+    title: "How It Works — Anoneurx Black Link",
+    description: "Learn how Anoneurx Black Link orchestrates the dashboard, connection layer, Agent and Linux system.",
+    keywords: "anoneurx black link how it works, architecture, agent, connection",
+  },
+  {
+    path: "/blacklink/security",
+    title: "Security — Anoneurx Black Link",
+    description: "Designed around trust: encrypted sessions, server identity, least privilege, capability-based access and auditability.",
+    keywords: "anoneurx black link security, encrypted sessions, least privilege, audit",
+  },
+  {
+    path: "/blacklink/agent",
+    title: "Anoneurx Black Link Agent",
+    description: "Install the Anoneurx Black Link Agent and securely connect your Linux server to Anoneurx Black Link.",
+    keywords: "anoneurx black link agent, install, linux server, early access",
+  },
+  {
+    path: "/blacklink/docs",
+    title: "Documentation — Anoneurx Black Link",
+    description: "Guides and references for installing, configuring and integrating Anoneurx Black Link.",
+    keywords: "anoneurx black link docs, documentation, guide, api",
+  },
+  {
+    path: "/blacklink/pricing",
+    title: "Pricing — Anoneurx Black Link",
+    description: "Simple infrastructure. Transparent pricing. Plans coming soon.",
+    keywords: "anoneurx black link pricing, plans, infrastructure",
+  },
+  {
+    path: "/blacklink/status",
+    title: "Status — Anoneurx Black Link",
+    description: "Current state of Anoneurx Black Link services.",
+    keywords: "anoneurx black link status, uptime, services",
+  },
+  {
+    path: "/blacklink/changelog",
+    title: "Changelog — Anoneurx Black Link",
+    description: "Release notes for Anoneurx Black Link.",
+    keywords: "anoneurx black link changelog, release notes, versions",
+  },
 ];
 
 // Legacy / alias paths that the SPA client-redirects to a canonical page.

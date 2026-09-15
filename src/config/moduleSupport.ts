@@ -223,7 +223,7 @@ export const MODULE_SUPPORT: Record<string, ModuleSupportConfig> = {
       { label: "Cloud", to: "/cloud" },
       { label: "Pricing", to: "/cloud/pricing" },
       { label: "Docs", to: "/cloud/docs" },
-      { label: "Console", to: "/cloud/connect" },
+      { label: "Console", to: "/blacklink" },
     ],
     topics: [
       support("Architecture", "Sizing, regions, networking and migration planning."),

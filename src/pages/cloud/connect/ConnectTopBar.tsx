@@ -59,7 +59,7 @@ const ConnectTopBar = () => {
               <button
                 onClick={() => {
                   signOut();
-                  navigate("/cloud/connect/auth");
+                  navigate("/blacklink/auth");
                 }}
                 className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-200 hover:bg-white/[0.06] rounded-lg"
               >

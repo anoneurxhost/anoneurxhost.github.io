@@ -53,7 +53,7 @@ const ConnectDashboard = () => {
     if (action === "shutdown") {
       disconnect();
       toast.success("Shutdown signal sent — session closed");
-      navigate("/cloud/connect");
+      navigate("/blacklink/dashboard");
     } else {
       toast.success("Reboot signal sent");
       setTimeout(refresh, 800);
@@ -61,8 +61,8 @@ const ConnectDashboard = () => {
   };
 
   const quickActions = [
-    { label: "Terminal", icon: Terminal, onClick: () => navigate("/cloud/connect/terminal") },
-    { label: "Discover", icon: Radar, onClick: () => navigate("/cloud/connect/discover") },
+    { label: "Terminal", icon: Terminal, onClick: () => navigate("/blacklink/dashboard/terminal") },
+    { label: "Discover", icon: Radar, onClick: () => navigate("/blacklink/dashboard/discover") },
     { label: "Updates", icon: Download, onClick: () => toast.message("Checking for updates…") },
     { label: "Backups", icon: Database, onClick: () => toast.message("Backup snapshot queued") },
   ];

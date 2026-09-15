@@ -267,6 +267,7 @@ const Footer = () => {
         { name: "Career Hub", path: "/careers" },
         { name: "Interns", path: "/intern" },
         { name: "Collaboration", path: "/collaboration" },
+        { name: "Black Link", path: "/blacklink" },
         // { name: "Verify Credentials", path: "/verify" },
       ]
     },

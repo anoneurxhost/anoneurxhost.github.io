@@ -76,18 +76,18 @@ A comprehensive searchable overview of all routes, features, and search capabili
 - **Archive Storage** `/cloud/storage/archive`
 
 ### Cloud Connect (Console)
-- **Cloud Connect Login** `/cloud/connect/auth` → redirects to `/auth?mode=connect`
-- **Connect Home** `/cloud/connect` - Connect dashboard home
-- **Dashboard** `/cloud/connect/dashboard` - Main dashboard
-- **Network** `/cloud/connect/network` - Network management
-- **Storage** `/cloud/connect/storage` - Storage management
-- **Users** `/cloud/connect/users` - User management
-- **Firewall** `/cloud/connect/firewall` - Firewall settings
-- **Terminal** `/cloud/connect/terminal` - Terminal access
-- **SSH Keys** `/cloud/connect/ssh-keys` - SSH key management
-- **Webhooks** `/cloud/connect/webhooks` - Webhook configuration
-- **Settings** `/cloud/connect/settings` - Cloud Connect settings
-- **Discover** `/cloud/connect/discover` - Resource discovery
+- **Cloud Connect Login** `/connect/auth` → redirects to `/auth?mode=connect`
+- **Connect Home** `/connect` - Connect dashboard home
+- **Dashboard** `/connect/dashboard` - Main dashboard
+- **Network** `/connect/network` - Network management
+- **Storage** `/connect/storage` - Storage management
+- **Users** `/connect/users` - User management
+- **Firewall** `/connect/firewall` - Firewall settings
+- **Terminal** `/connect/terminal` - Terminal access
+- **SSH Keys** `/connect/ssh-keys` - SSH key management
+- **Webhooks** `/connect/webhooks` - Webhook configuration
+- **Settings** `/connect/settings` - Cloud Connect settings
+- **Discover** `/connect/discover` - Resource discovery
 
 ---
 

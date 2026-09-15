@@ -186,6 +186,16 @@ const map: Record<string, Entry> = {
       },
     ],
   },
+  "/blacklink": { title: "Anoneurx Black Link — Secure Server Management", description: "Securely connect to and manage your Linux infrastructure with Anoneurx Black Link.", keywords: "anoneurx black link, server management, linux, infrastructure, secure connection, agent" },
+  "/blacklink/features": { title: "Features — Anoneurx Black Link", description: "Terminal, files, processes, services, metrics, logs, network and security — all through one secure connection.", keywords: "anoneurx black link features, remote terminal, server monitoring, file management" },
+  "/blacklink/how-it-works": { title: "How It Works — Anoneurx Black Link", description: "Learn how Anoneurx Black Link orchestrates the dashboard, connection layer, Agent and Linux system.", keywords: "anoneurx black link how it works, architecture, agent, connection" },
+  "/blacklink/security": { title: "Security — Anoneurx Black Link", description: "Designed around trust: encrypted sessions, server identity, least privilege, capability-based access and auditability.", keywords: "anoneurx black link security, encrypted sessions, least privilege, audit" },
+  "/blacklink/agent": { title: "Anoneurx Black Link Agent", description: "Install the Anoneurx Black Link Agent and securely connect your Linux server to Anoneurx Black Link.", keywords: "anoneurx black link agent, install, linux server, early access" },
+  "/blacklink/docs": { title: "Documentation — Anoneurx Black Link", description: "Guides and references for installing, configuring and integrating Anoneurx Black Link.", keywords: "anoneurx black link docs, documentation, guide, api" },
+  "/blacklink/pricing": { title: "Pricing — Anoneurx Black Link", description: "Simple infrastructure. Transparent pricing. Plans coming soon.", keywords: "anoneurx black link pricing, plans, infrastructure" },
+  "/blacklink/status": { title: "Status — Anoneurx Black Link", description: "Current state of Anoneurx Black Link services.", keywords: "anoneurx black link status, uptime, services" },
+  "/blacklink/changelog": { title: "Changelog — Anoneurx Black Link", description: "Release notes for Anoneurx Black Link.", keywords: "anoneurx black link changelog, release notes, versions" },
+  "/blacklink/auth": { title: "Black Link Authentication — Anoneurx", description: "Sign in to Anoneurx Black Link.", keywords: "anoneurx black link login, sign in, authentication" },
   "/about": { title: "About Anoneurx", description: "Anoneurx is a global software company shipping operating systems, AI, cloud and open source infrastructure for developers.", keywords: "about anoneurx, company, software, operating systems, ai, cloud, open source, developers" },
   "/contact": { title: "Contact Anoneurx", description: "Get in touch with Anoneurx for partnerships, support, press or general enquiries.", keywords: "contact anoneurx, support, partnerships, press, enquiries, get in touch" },
   "/people": { title: "Anoneurx Team — Engineers, Researchers & Designers", description: "Meet the engineers, researchers and designers of Anoneurx across every department.", keywords: "anoneurx team, engineers, researchers, designers, people, departments" },
@@ -577,34 +587,33 @@ const patterns: { pattern: string; build: (params: Record<string, string | undef
   { pattern: "/challenge/:challengeId", build: (p) => ({ title: `Challenge — ${p.challengeId}`, description: `Details for the ${p.challengeId} community challenge.` }) },
   { pattern: "/reportbug/:product", build: (p) => ({ title: `Report a Bug — ${p.product}`, description: `Report a bug in ${p.product}.` }) },
   {
-    pattern: "/cloud/connect",
+    pattern: "/blacklink",
     build: () => ({
-      title: "Black Wall Connect — Cloud Console",
-      description: "Black Wall Cloud Connect console — manage servers, storage, network, firewall, users and SSH keys.",
+      title: "Black Wall Black Link — Cloud Console",
+      description: "Black Wall Black Link console — manage servers, storage, network, firewall, users and SSH keys.",
       jsonLd: [
-        SOFTWARE("Black Wall Cloud Connect", "/cloud/connect", "Cloud server management console for Black Wall OS."),
-        BREADCRUMB([{ name: "Cloud", item: "/cloud" }, { name: "Connect", item: "/cloud/connect" }]),
+        SOFTWARE("Black Wall Black Link", "/blacklink", "Cloud server management console for Black Wall OS."),
+        BREADCRUMB([{ name: "Black Link", item: "/blacklink" }]),
       ],
     }),
   },
   {
-    pattern: "/cloud/connect/:section",
+    pattern: "/blacklink/:section",
     build: (p) => ({
-      title: `Black Wall Connect — ${humanize(p.section)}`,
-      description: `Manage ${humanize(p.section)} in Black Wall Cloud Connect console.`,
+      title: `Black Wall Black Link — ${humanize(p.section)}`,
+      description: `Manage ${humanize(p.section)} in Black Wall Black Link console.`,
       jsonLd: [
-        SOFTWARE("Black Wall Cloud Connect", `/cloud/connect/${p.section}`, "Cloud server management console."),
+        SOFTWARE("Black Wall Black Link", `/blacklink/${p.section}`, "Cloud server management console."),
         BREADCRUMB([
-          { name: "Cloud", item: "/cloud" },
-          { name: "Connect", item: "/cloud/connect" },
-          { name: humanize(p.section), item: `/cloud/connect/${p.section}` },
+          { name: "Black Link", item: "/blacklink" },
+          { name: humanize(p.section), item: `/blacklink/${p.section}` },
         ]),
       ],
     }),
   },
 ];
 
-const NOINDEX_PREFIXES = ["/auth", "/login", "/signup", "/dashboard", "/cloud/connect/auth", "/apps/login", "/cloud/login", "/share/"];
+const NOINDEX_PREFIXES = ["/auth", "/login", "/signup", "/dashboard", "/blacklink/auth", "/blacklink/dashboard", "/apps/login", "/cloud/login", "/share/"];
 const isNoindexPath = (p: string) => NOINDEX_PREFIXES.some((x) => p === x || p.startsWith(x));
 
 const RouteSEO = () => {

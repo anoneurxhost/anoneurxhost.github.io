@@ -239,10 +239,21 @@ const BlockStorage = React.lazy(() => import('./pages/cloud/storage/BlockStorage
 const BackupVault = React.lazy(() => import('./pages/cloud/storage/BackupVault'));
 const ArchiveStorage = React.lazy(() => import('./pages/cloud/storage/ArchiveStorage'));
 
+// Anoneurx Connect — public site
+const ConnectSiteLayout = React.lazy(() => import('./pages/connect/ConnectSiteLayout'));
+const ConnectLanding = React.lazy(() => import('./pages/connect/ConnectLanding'));
+const ConnectFeatures = React.lazy(() => import('./pages/connect/ConnectFeatures'));
+const ConnectHowItWorks = React.lazy(() => import('./pages/connect/ConnectHowItWorks'));
+const ConnectSecurity = React.lazy(() => import('./pages/connect/ConnectSecurity'));
+const ConnectAgent = React.lazy(() => import('./pages/connect/ConnectAgent'));
+const ConnectDocs = React.lazy(() => import('./pages/connect/ConnectDocs'));
+const ConnectPricing = React.lazy(() => import('./pages/connect/ConnectPricing'));
+const ConnectStatus = React.lazy(() => import('./pages/connect/ConnectStatus'));
+const ConnectChangelog = React.lazy(() => import('./pages/connect/ConnectChangelog'));
+
 // Cloud Connect (Black Wall console)
 const ConnectLayout = React.lazy(() => import('./pages/cloud/connect/ConnectLayout'));
 const ConnectAuth = React.lazy(() => import('./pages/auth/ConnectAuth'));
-const ConnectHome = React.lazy(() => import('./pages/cloud/connect/ConnectHome'));
 const ConnectDashboard = React.lazy(() => import('./pages/cloud/connect/ConnectDashboard'));
 const ConnectNetwork = React.lazy(() => import('./pages/cloud/connect/ConnectNetwork'));
 const ConnectStorage = React.lazy(() => import('./pages/cloud/connect/ConnectStorage'));
@@ -862,20 +873,30 @@ function App() {
                 <Route path="settings" element={<PortalSettings />} />
               </Route>
 
-              {/* Black Wall Cloud Connect — standalone console, no site nav/footer */}
-              <Route path="/cloud/connect/auth" element={<Navigate to="/auth?mode=connect" replace />} />
-              <Route path="/cloud/connect" element={<RequireConnectAuth><ConnectLayout /></RequireConnectAuth>}>
-                <Route index element={<ConnectHome />} />
-                <Route path="dashboard" element={<ConnectDashboard />} />
-                <Route path="discover" element={<ConnectDiscover />} />
-                <Route path="network" element={<ConnectNetwork />} />
-                <Route path="storage" element={<ConnectStorage />} />
-                <Route path="users" element={<ConnectUsers />} />
-                <Route path="firewall" element={<ConnectFirewall />} />
-                <Route path="terminal" element={<ConnectTerminal />} />
-                <Route path="ssh-keys" element={<ConnectSSHKeys />} />
-                <Route path="webhooks" element={<ConnectWebhooks />} />
-                <Route path="settings" element={<ConnectSettings />} />
+                            {/* Anoneurx Connect — public site + Black Wall console */}
+              <Route path="/blacklink/auth" element={<Navigate to="/auth?mode=connect" replace />} />
+              <Route path="/blacklink" element={<ConnectSiteLayout />}>
+                <Route index element={<ConnectLanding />} />
+                <Route path="features" element={<ConnectFeatures />} />
+                <Route path="how-it-works" element={<ConnectHowItWorks />} />
+                <Route path="security" element={<ConnectSecurity />} />
+                <Route path="agent" element={<ConnectAgent />} />
+                <Route path="docs" element={<ConnectDocs />} />
+                <Route path="pricing" element={<ConnectPricing />} />
+                <Route path="status" element={<ConnectStatus />} />
+                <Route path="changelog" element={<ConnectChangelog />} />
+                <Route path="dashboard" element={<RequireConnectAuth><ConnectLayout /></RequireConnectAuth>}>
+                  <Route index element={<ConnectDashboard />} />
+                  <Route path="discover" element={<ConnectDiscover />} />
+                  <Route path="network" element={<ConnectNetwork />} />
+                  <Route path="storage" element={<ConnectStorage />} />
+                  <Route path="users" element={<ConnectUsers />} />
+                  <Route path="firewall" element={<ConnectFirewall />} />
+                  <Route path="terminal" element={<ConnectTerminal />} />
+                  <Route path="ssh-keys" element={<ConnectSSHKeys />} />
+                  <Route path="webhooks" element={<ConnectWebhooks />} />
+                  <Route path="settings" element={<ConnectSettings />} />
+                </Route>
               </Route>
 
               <Route path="*" element={<NotFound />} />
