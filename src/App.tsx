@@ -84,6 +84,23 @@ const InternProfile = React.lazy(() => import('./pages/intern/InternProfile'));
 
 const CEOProfile = React.lazy(() => import('./pages/marketing/CEO'));
 
+// ASTRA — Anoneurx Lab self-learning AI research project
+const AstraLayout = React.lazy(() => import('./pages/astra/AstraLayout'));
+const AstraHome = React.lazy(() => import('./pages/astra/AstraHome'));
+const AstraWhatIsPage = React.lazy(() => import('./pages/astra/AstraPages').then((m) => ({ default: m.WhatIsPage })));
+const AstraLearningLoopPage = React.lazy(() => import('./pages/astra/AstraPages').then((m) => ({ default: m.LearningLoopPage })));
+const AstraScalePage = React.lazy(() => import('./pages/astra/AstraPages').then((m) => ({ default: m.ScalePage })));
+const AstraArchitecturePage = React.lazy(() => import('./pages/astra/AstraPages').then((m) => ({ default: m.ArchitecturePage })));
+const AstraSelfLearningPage = React.lazy(() => import('./pages/astra/AstraPages').then((m) => ({ default: m.SelfLearningPage })));
+const AstraMemoryPage = React.lazy(() => import('./pages/astra/AstraPages').then((m) => ({ default: m.MemoryPage })));
+const AstraResearchPage = React.lazy(() => import('./pages/astra/AstraPages').then((m) => ({ default: m.ResearchPage })));
+const AstraStatusPage = React.lazy(() => import('./pages/astra/AstraPages').then((m) => ({ default: m.StatusPage })));
+const AstraLogPage = React.lazy(() => import('./pages/astra/AstraPages').then((m) => ({ default: m.LogPage })));
+const AstraRoadmapPage = React.lazy(() => import('./pages/astra/AstraPages').then((m) => ({ default: m.RoadmapPage })));
+const AstraPhilosophyPage = React.lazy(() => import('./pages/astra/AstraPages').then((m) => ({ default: m.PhilosophyPage })));
+const AstraLabPage = React.lazy(() => import('./pages/astra/AstraPages').then((m) => ({ default: m.LabPage })));
+const AstraContributePage = React.lazy(() => import('./pages/astra/AstraPages').then((m) => ({ default: m.ContributePage })));
+
 // Documentation subpages
 const DocsGettingStarted = React.lazy(() => import('./pages/docs/GettingStarted'));
 const DocsApiReference = React.lazy(() => import('./pages/docs/ApiReference'));
@@ -203,9 +220,8 @@ const CodeOfConductPage = React.lazy(() => import('./pages/contributions/CodeOfC
 const OSContribute = React.lazy(() => import('./pages/opensource/OSContribute'));
 const OSContributeApply = React.lazy(() => import('./pages/opensource/OSContributeApply'));
 
-// Shared module contact / support + university tracks
+// Shared module contact / support
 const ModuleSupportPage = React.lazy(() => import('./pages/common/ModuleSupportPage'));
-const UniversityModulePage = React.lazy(() => import('./pages/courses/university/UniversityModulePage'));
 
 // New Pages
 const OtherOpportunities = React.lazy(() => import('./pages/career/OtherOpportunities'));
@@ -655,10 +671,6 @@ function App() {
                 <Route path="courses/:courseId" element={<CourseDetail />} />
                 <Route path="courses/:courseId/enroll" element={<EnrollForm />} />
                 <Route path="faculty" element={<Professors />} />
-                <Route path="university/opensource" element={<UniversityModulePage moduleKey="opensource" />} />
-                <Route path="university/blackwall" element={<UniversityModulePage moduleKey="blackwall" />} />
-                <Route path="university/pay" element={<UniversityModulePage moduleKey="pay" />} />
-                <Route path="university/cloud" element={<UniversityModulePage moduleKey="cloud" />} />
                 <Route path="university/contact" element={<ModuleSupportPage configKey="university-contact" />} />
                 <Route path="university/support" element={<ModuleSupportPage configKey="university-support" />} />
                 <Route path="blackwall/contact" element={<ModuleSupportPage configKey="blackwall-contact" />} />
@@ -873,7 +885,25 @@ function App() {
                 <Route path="settings" element={<PortalSettings />} />
               </Route>
 
-                            {/* Anoneurx Connect — public site + Black Wall console */}
+                            {/* Anoneurx ASTRA — self-learning AI research lab site */}
+              <Route path="/astra" element={<AstraLayout />}>
+                <Route index element={<AstraHome />} />
+                <Route path="what-is" element={<AstraWhatIsPage />} />
+                <Route path="learning-loop" element={<AstraLearningLoopPage />} />
+                <Route path="scale" element={<AstraScalePage />} />
+                <Route path="architecture" element={<AstraArchitecturePage />} />
+                <Route path="self-learning" element={<AstraSelfLearningPage />} />
+                <Route path="memory" element={<AstraMemoryPage />} />
+                <Route path="research" element={<AstraResearchPage />} />
+                <Route path="status" element={<AstraStatusPage />} />
+                <Route path="log" element={<AstraLogPage />} />
+                <Route path="roadmap" element={<AstraRoadmapPage />} />
+                <Route path="philosophy" element={<AstraPhilosophyPage />} />
+                <Route path="lab" element={<AstraLabPage />} />
+                <Route path="contribute" element={<AstraContributePage />} />
+              </Route>
+
+              {/* Anoneurx Connect — public site + Black Wall console */}
               <Route path="/blacklink/auth" element={<Navigate to="/auth?mode=connect" replace />} />
               <Route path="/blacklink" element={<ConnectSiteLayout />}>
                 <Route index element={<ConnectLanding />} />

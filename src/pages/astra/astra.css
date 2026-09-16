@@ -1,0 +1,118 @@
+
+
+@keyframes astra-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes astra-spin-reverse {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes astra-twinkle {
+  0%, 100% { opacity: 0.12; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@keyframes astra-pulse-ring {
+  0% { transform: scale(0.86); opacity: 0.7; }
+  100% { transform: scale(1.22); opacity: 0; }
+}
+
+@keyframes astra-dash-flow {
+  to { stroke-dashoffset: -60; }
+}
+
+@keyframes astra-node-drop {
+  0% { transform: translateY(-100%); opacity: 0; }
+  35% { opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes astra-scan {
+  0% { top: 0%; opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes astra-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes astra-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes astra-orbit-a {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes astra-orbit-b {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes astra-glow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+.astra-spin-slow { animation: astra-spin 42s linear infinite; }
+.astra-spin-slower { animation: astra-spin-reverse 64s linear infinite; }
+.astra-float { animation: astra-float 7s ease-in-out infinite; }
+.astra-glow { animation: astra-glow 4s ease-in-out infinite; }
+
+@keyframes astra-pipeline {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(calc(100vw + 100%)); }
+}
+
+.astra-twinkle { animation: astra-twinkle 4.5s ease-in-out infinite; }
+
+.astra-orbit { animation: astra-orbit-a 30s linear infinite; }
+.astra-orbit-reverse { animation: astra-orbit-b 46s linear infinite; }
+
+.astra-dash {
+  stroke-dasharray: 4 7;
+  animation: astra-dash-flow 1.6s linear infinite;
+}
+
+.astra-scanline {
+  animation: astra-scan 5.5s linear infinite;
+}
+
+.astra-cursor::after {
+  content: "_";
+  animation: astra-blink 1.1s step-end infinite;
+}
+
+.astra-pulse-ring::before,
+.astra-pulse-ring::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 1px solid rgba(139, 124, 246, 0.55);
+  animation: astra-pulse-ring 3.2s ease-out infinite;
+}
+.astra-pulse-ring::after {
+  animation-delay: 1.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .astra-spin-slow,
+  .astra-spin-slower,
+  .astra-orbit,
+  .astra-orbit-reverse,
+  .astra-float,
+  .astra-glow,
+  .astra-twinkle,
+  .astra-dash,
+  .astra-scanline,
+  .astra-pulse-ring::before,
+  .astra-pulse-ring::after {
+    animation: none;
+  }
+  html { scroll-behavior: auto; }
+}

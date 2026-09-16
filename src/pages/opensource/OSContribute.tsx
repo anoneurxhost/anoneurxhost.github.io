@@ -106,7 +106,7 @@ const OSContribute = () => (
           <Link to="/opensource/support" className="text-sm text-primary hover:underline">
             Contributor support
           </Link>
-          <Link to="/university/opensource" className="text-sm text-primary hover:underline">
+          <Link to="/university" className="text-sm text-primary hover:underline">
             Open Source at Anoneurx University
           </Link>
         </div>

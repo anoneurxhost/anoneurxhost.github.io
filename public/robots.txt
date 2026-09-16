@@ -33,6 +33,11 @@ Allow: /courses
 Allow: /faculty
 Allow: /apps
 Allow: /apps/browse
+Allow: /lab
+Allow: /astra
+Allow: /astra/
+Allow: /blacklink
+Allow: /blacklink/
 
 Disallow: /auth
 Disallow: /login
@@ -77,4 +82,5 @@ Sitemap: https://anoneurx.com/university/sitemap.xml
 Sitemap: https://anoneurx.com/auth/sitemap.xml
 Sitemap: https://anoneurx.com/lab/sitemap.xml
 Sitemap: https://anoneurx.com/blacklink/sitemap.xml
+Sitemap: https://anoneurx.com/astra/sitemap.xml
 
