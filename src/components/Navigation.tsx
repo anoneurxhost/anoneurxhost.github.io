@@ -54,7 +54,7 @@ const Navigation = () => {
     { name: "Home", path: "/cloud" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
-    { name: "Connect To Servers", path: "/auth?mode=connect" },
+    { name: "Connect To Servers", path: "/auth?mode=blacklink" },
   ] : isApps ? [
     { name: "Home", path: "/apps" },
     { name: "Apps", path: "/apps/browse" },

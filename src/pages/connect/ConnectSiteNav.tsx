@@ -169,7 +169,7 @@ const ConnectSiteNav = ({ dark }: ConnectSiteNavProps) => {
         {/* Right actions */}
         <div className="hidden lg:flex items-center gap-3">
           <Link
-            to="/auth?mode=connect"
+            to="/auth?mode=blacklink"
             className="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-300 dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60"
           >
             Sign In
@@ -241,7 +241,7 @@ const ConnectSiteNav = ({ dark }: ConnectSiteNavProps) => {
             )}
             <div className="mt-4 flex flex-col gap-3 border-t border-slate-200 pt-4 dark:border-white/[0.06]">
               <Link
-                to="/auth?mode=connect"
+                to="/auth?mode=blacklink"
                 onClick={() => setMobileOpen(false)}
                 className="rounded-lg border border-slate-200 px-4 py-2.5 text-center text-sm font-semibold text-slate-900 hover:bg-slate-100 dark:border-white/10 dark:text-white dark:hover:bg-white/[0.06]"
               >

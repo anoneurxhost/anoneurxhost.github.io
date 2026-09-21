@@ -61,6 +61,36 @@ const post = <T,>(path: string, body: unknown, fallback: () => T | Promise<T>) =
 const del = <T,>(path: string, fallback: () => T | Promise<T>) =>
   call<T>(path, { method: "DELETE" }, fallback);
 
+/**
+ * Strict session mint used by the auth screen. Unlike `connectApi.createSession`
+ * it never falls back to demo data — the caller needs the real outcome (200 with
+ * a JWT, or an HTTP status) to decide whether to open the live console.
+ */
+export interface SessionPayload {
+  host: string;
+  port: number;
+  username: string;
+  password: string;
+}
+
+export async function createSessionStrict(
+  payload: SessionPayload
+): Promise<{ ok: boolean; status: number; body: SessionInfo | { error?: string } | null }> {
+  if (!BASE) return { ok: false, status: 0, body: null };
+  try {
+    const res = await fetch(`${BASE}/api/sessions`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const body = (await res.json().catch(() => null)) as SessionInfo | { error?: string } | null;
+    return { ok: res.ok, status: res.status, body };
+  } catch (err) {
+    console.warn("Cloud Connect: /api/sessions unreachable.", err);
+    return { ok: false, status: 0, body: null };
+  }
+}
+
 /* ------------------------------------------------------------------ types */
 
 export interface DiscoveredHost {

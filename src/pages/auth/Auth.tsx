@@ -19,8 +19,27 @@ import { PayComponent } from "./PayComponent";
 import { PaySignupComponent } from "./PaySignupComponent";
 import { ConnectAuth } from "./ConnectAuth";
 
-type Mode = "login" | "signup" | "pay" | "pay-signup" | "connect" | "forgot" | "verify" | "reset";
-const MODES: Mode[] = ["login", "signup", "pay", "pay-signup", "connect", "forgot", "verify", "reset"];
+type Mode =
+  | "login"
+  | "signup"
+  | "pay"
+  | "pay-signup"
+  | "blacklink"
+  | "connect"
+  | "forgot"
+  | "verify"
+  | "reset";
+const MODES: Mode[] = [
+  "login",
+  "signup",
+  "pay",
+  "pay-signup",
+  "blacklink",
+  "connect",
+  "forgot",
+  "verify",
+  "reset",
+];
 
 const fieldClass =
   "bg-white/[0.06] border-white/15 text-white placeholder:text-gray-500 h-11 focus-visible:ring-offset-0";
@@ -356,6 +375,7 @@ const Auth = () => {
               />
             )}
 
+            {mode === "blacklink" && <ConnectAuth />}
             {mode === "connect" && <ConnectAuth />}
 
             {mode === "forgot" && (

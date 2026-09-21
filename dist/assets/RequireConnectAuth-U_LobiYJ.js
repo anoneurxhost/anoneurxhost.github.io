@@ -1,0 +1,1 @@
+import{ao as n,at as s,j as t,_ as r}from"./index-DIjsZlte.js";const c=({children:e})=>{const{authenticated:a}=n(),o=s();return a?t.jsx(t.Fragment,{children:e}):t.jsx(r,{to:"/auth?mode=blacklink",replace:!0,state:{from:o.pathname}})};export{c as default};

@@ -8,7 +8,9 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
 import { useConnectSession } from "../cloud/connect/ConnectSession";
-import logoJpeg from "@/assets/blackwall.svg";
+import { createSessionStrict, isLiveBackend } from "../cloud/connect/api";
+import type { SessionInfo } from "../cloud/connect/api";
+import logoJpeg from "@/assets/blacklink/logo.svg";
 
 const connectSchema = z.object({
   ip: z.string().trim().min(1, "Enter a valid Server IP or Hostname"),
@@ -43,23 +45,60 @@ export const ConnectAuth = () => {
       return;
     }
 
+    const host = ip.split(":")[0].trim();
+    const port = ip.includes(":") ? parseInt(ip.split(":")[1], 10) : 8443;
+
     setLoading(true);
     try {
-      await new Promise((r) => setTimeout(r, 600));
+      if (!isLiveBackend()) {
+        // No console backend configured — local demo session only.
+        await new Promise((r) => setTimeout(r, 600));
+        signIn(`${username}@${ip}`);
+        connect({
+          name: `Node (${ip})`,
+          host,
+          username,
+          port,
+        });
+        toast.success("Demo mode — connect a Blacklink console backend for live data.");
+        navigate("/blacklink/dashboard");
+        return;
+      }
 
-      signIn(`${username}@${ip}`);
-      connect({
-        name: `Node (${ip})`,
-        host: ip,
-        username,
-        port: ip.includes(":") ? parseInt(ip.split(":")[1], 10) : 8443,
-      });
+      const result = await createSessionStrict({ host, port, username, password });
+      if (result.ok && "token" in (result.body ?? {}) && result.body?.token) {
+        const session = result.body as SessionInfo;
+        signIn(`${session.username}@${session.host}`);
+        connect(
+          {
+            name: `Node (${session.host})`,
+            host: session.host,
+            username: session.username,
+            port: session.port,
+          },
+          session.token
+        );
+        toast.success(`Connected to node ${session.host} (${session.hostname})`);
+        navigate("/blacklink/dashboard");
+        return;
+      }
 
-      toast.success(`Connected to node ${ip}`);
-            navigate("/blacklink/dashboard");
+      // The gateway answered but rejected us.
+      if (result.status === 401) {
+        setError(`Invalid username or password for ${ip}.`);
+        toast.error("Credentials rejected by the Blacklink console.");
+      } else if (result.status === 0) {
+        setError(`Could not reach the console for ${ip}. Check the IP and network access.`);
+        toast.error("Blacklink console unreachable.");
+      } else {
+        const msg =
+          (result.body as { error?: string } | null)?.error ?? "Console rejected the connection.";
+        setError(`${msg} (HTTP ${result.status}).`);
+        toast.error("Failed to connect to the console.");
+      }
     } catch (err: any) {
       setError(err?.message || "Connection failed. Check target IP and credentials.");
-      toast.error("Failed to connect to cluster node.");
+      toast.error("Failed to connect to the console.");
     } finally {
       setLoading(false);
     }
@@ -74,7 +113,7 @@ export const ConnectAuth = () => {
           alt="Black Wall Connect"
           className="w-16 h-16 object-contain mb-2"
         />
-        <div className="text-xl font-brand tracking-wider text-white font-semibold">Console Auth</div>
+        <div className="text-xl font-brand tracking-wider text-white font-semibold">BLACK  L I NK</div>
       </div>
 
       <form onSubmit={handleConnect} className="space-y-4">

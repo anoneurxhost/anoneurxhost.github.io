@@ -904,7 +904,7 @@ function App() {
               </Route>
 
               {/* Anoneurx Connect — public site + Black Wall console */}
-              <Route path="/blacklink/auth" element={<Navigate to="/auth?mode=connect" replace />} />
+              <Route path="/blacklink/auth" element={<Navigate to="/auth?mode=blacklink" replace />} />
               <Route path="/blacklink" element={<ConnectSiteLayout />}>
                 <Route index element={<ConnectLanding />} />
                 <Route path="features" element={<ConnectFeatures />} />
