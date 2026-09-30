@@ -23,6 +23,8 @@ export type Problem = {
   skills: string[];
   supervisor: string;
   deliverables: string[];
+  repo?: string;
+  repoLabel?: string;
 };
 
 export type ResearchPaper = {
@@ -358,6 +360,8 @@ export const problems: Problem[] = [
       "Evaluation on simulated and real-world perception-contradiction scenarios",
       "Research paper defining and assessing the Robotic Self-Trust Layer",
     ],
+    repo: "https://github.com/anoneurx/Robotics-Self-Trust",
+    repoLabel: "anoneurx/Robotics-Self-Trust",
   },
   {
     id: "anxbwR6ZQM",

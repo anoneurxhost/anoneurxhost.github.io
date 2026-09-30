@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Users, BookOpen, Code2, Target, FileText, Wrench } from "lucide-react";
+import { ArrowLeft, ArrowRight, Users, BookOpen, Code2, Target, FileText, Wrench, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
 import ContentSidebar, { TocItem } from "@/components/project/ContentSidebar";
@@ -76,6 +76,26 @@ const LabProblemDetail = () => {
               <span key={area} className="text-xs px-3 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10">{area}</span>
             ))}
           </div>
+
+          {problem.repo && (
+            <a
+              href={problem.repo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mb-8 flex items-center gap-4 rounded-xl border border-white/10 bg-black/20 p-4 transition-colors hover:border-emerald-500/40 hover:bg-emerald-500/5"
+            >
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/5 text-gray-300 transition-colors group-hover:bg-emerald-500/10 group-hover:text-emerald-400">
+                <Github className="h-5 w-5" />
+              </span>
+              <span className="min-w-0">
+                <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-500">Reference Repository</span>
+                <span className="block truncate font-mono text-sm text-white transition-colors group-hover:text-emerald-400">
+                  {problem.repoLabel ?? problem.repo}
+                </span>
+              </span>
+              <ArrowRight className="ml-auto h-4 w-4 shrink-0 text-gray-500 transition-transform group-hover:translate-x-1 group-hover:text-emerald-400" />
+            </a>
+          )}
         </motion.div>
 
         {/* Content */}
