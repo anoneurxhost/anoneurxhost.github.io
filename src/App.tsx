@@ -8,6 +8,7 @@ import { NavigationProvider } from './contexts/NavigationContext';
 import { AuthProvider } from './contexts/AuthContext';
 import { PortalProvider } from './pages/portal/PortalContext';
 import RequireAuth from './components/RequireAuth';
+import { legacyProblemIds } from './pages/lab/data';
 
 /** Legacy paper URLs (/read-paper/:id, /research/read/:id) → canonical /read/:id */
 const LegacyPaperRedirect = () => {
@@ -21,6 +22,14 @@ const LegacyTeamMemberRedirect = () => {
   if (dept && name) return <Navigate to={`/people/${dept}/${name}`} replace />;
   if (name) return <Navigate to={`/people/${name}`} replace />;
   return <Navigate to="/people" replace />;
+};
+
+/** Legacy problem IDs (anx-rp-001, anxroN8CVD, ...) → canonical lowercase IDs */
+const LabProblemRoute = () => {
+  const { id } = useParams();
+  const canonical = id ? legacyProblemIds[id] : undefined;
+  if (canonical) return <Navigate to={`/lab/problems/${canonical}`} replace />;
+  return <LabProblemDetail />;
 };
 
 // Layouts (keep static - they wrap everything)
@@ -706,7 +715,7 @@ function App() {
                 <Route path="lab" element={<LabLayout />}>
                   <Route index element={<LabHome />} />
                   <Route path="problems" element={<LabProblems />} />
-                  <Route path="problems/:id" element={<LabProblemDetail />} />
+                  <Route path="problems/:id" element={<LabProblemRoute />} />
                   <Route path="research" element={<LabResearch />} />
                   <Route path="projects" element={<LabProjects />} />
                   <Route path="people" element={<LabPeople />} />

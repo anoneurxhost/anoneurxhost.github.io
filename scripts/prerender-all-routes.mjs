@@ -905,85 +905,85 @@ const routes = [
     keywords: "faq, anoneurx lab, research lab faq",
   },
   {
-    path: "/lab/problems/anx-rp-001",
+    path: "/lab/problems/anxrp001",
     title: "Early Security Warning for Autonomous Systems — Anoneurx Lab",
     description: "Develop an early warning system that detects security anomalies in autonomous vehicle sensor networks before they propagate to decision-making layers.",
     keywords: "early security warning, autonomous systems, anomaly detection, anoneurx lab",
   },
   {
-    path: "/lab/problems/anx-rp-002",
+    path: "/lab/problems/anxrp002",
     title: "Federated Learning Privacy in Healthcare Data — Anoneurx Lab",
     description: "Design a federated learning framework that enables cross-hospital model training while provably preserving patient privacy through differential privacy guarantees.",
     keywords: "federated learning, healthcare privacy, differential privacy, anoneurx lab",
   },
   {
-    path: "/lab/problems/anx-rp-003",
+    path: "/lab/problems/anxrp003",
     title: "Real-time SLAM for Indoor Drone Navigation — Anoneurx Lab",
     description: "Build a lightweight SLAM system that runs on resource-constrained drone hardware for GPS-denied indoor navigation.",
     keywords: "slam, indoor drone, navigation, anoneurx lab",
   },
   {
-    path: "/lab/problems/anx-rp-004",
+    path: "/lab/problems/anxrp004",
     title: "Neural Network Quantization for Edge AI — Anoneurx Lab",
     description: "Investigate mixed-precision quantization techniques that maintain model accuracy while enabling inference on microcontroller-class hardware.",
     keywords: "quantization, edge ai, microcontroller, anoneurx lab",
   },
   {
-    path: "/lab/problems/anx-rp-005",
+    path: "/lab/problems/anxrp005",
     title: "Adversarial Robustness of Code Generation Models — Anoneurx Lab",
     description: "Study how LLM-based code assistants can be manipulated to generate vulnerable or malicious code, and develop defenses.",
     keywords: "adversarial robustness, code generation, llm security, anoneurx lab",
   },
   {
-    path: "/lab/problems/anx-rp-006",
+    path: "/lab/problems/anxrp006",
     title: "Zero-Knowledge Proofs for IoT Device Authentication — Anoneurx Lab",
     description: "Implement lightweight zero-knowledge proof protocols for authenticating IoT devices without revealing device identity or credentials.",
     keywords: "zero-knowledge proofs, iot authentication, cryptography, anoneurx lab",
   },
   {
-    path: "/lab/problems/anx-rp-007",
+    path: "/lab/problems/anxrp007",
     title: "Semantic Code Search in Large Monorepos — Anoneurx Lab",
     description: "Build a semantic code search engine that understands intent rather than keywords, enabling developers to find relevant code across millions of lines.",
     keywords: "semantic code search, monorepos, code understanding, anoneurx lab",
   },
   {
-    path: "/lab/problems/anx-rp-008",
+    path: "/lab/problems/anxrp008",
     title: "Formal Verification of Smart Contract Compositions — Anoneurx Lab",
     description: "Develop automated formal verification tools that can prove safety properties of composed smart contracts across DeFi protocols.",
     keywords: "formal verification, smart contracts, defi, anoneurx lab",
   },
   {
-    path: "/lab/problems/anxosQ7MKR",
+    path: "/lab/problems/anxosq7mkr",
     title: "Before the Breach — Anoneurx Lab",
     description: "Predictive cybersecurity at the operating-system level. Investigate whether subtle behavioral changes can identify a measurable pre-attack state before an actual compromise occurs.",
     keywords: "pre-attack detection, os security, predictive cybersecurity, anoneurx lab",
   },
   {
-    path: "/lab/problems/anxbwT4XPL",
+    path: "/lab/problems/anxbwt4xpl",
     title: "Self-Defending OS — Anoneurx Lab",
     description: "Investigate an operating-system architecture capable of continuously learning system behavior, constructing a runtime security model, and adaptively changing defensive policies.",
     keywords: "self-defending os, adaptive security, behavior-adaptive, anoneurx lab",
   },
   {
-    path: "/lab/problems/anxroN8CVD",
+    path: "/lab/problems/anxron8cvd",
     title: "Robot Self-Trust — Anoneurx Lab",
     description: "Investigate whether an autonomous robot can determine when its own perception of reality has become unreliable or potentially compromised.",
     keywords: "robot self-trust, perception reliability, cross-sensor trust, anoneurx lab",
   },
   {
-    path: "/lab/problems/anxbwR6ZQM",
+    path: "/lab/problems/anxbwr6zqm",
     title: "Black Wall for Robots — Anoneurx Lab",
     description: "Investigate a cyber-physical security architecture where a secure runtime prevents compromised software from producing physically dangerous robot behavior.",
     keywords: "black wall, cyber-physical security, robot safety, anoneurx lab",
   },
   {
-    path: "/lab/problems/anxroK3FWT",
+    path: "/lab/problems/anxrok3fwt",
     title: "Cyber-Physical Threat Horizon — Anoneurx Lab",
     description: "Investigate whether cyber-physical systems can predict a dangerous physical consequence several seconds before it occurs.",
     keywords: "threat horizon, cyber-physical, predictive security, anoneurx lab",
   },
   {
-    path: "/lab/problems/anxcsV9LXP",
+    path: "/lab/problems/anxcsv9lxp",
     title: "Self-Learning Security Baseline — Anoneurx Lab",
     description: "Investigate whether an autonomous system can learn its own operational security baseline instead of relying entirely on manually written security rules.",
     keywords: "self-learning security, adaptive baseline, autonomous security, anoneurx lab",
@@ -1065,6 +1065,39 @@ for (const alias of aliases) {
     description: verifyRoute.description,
     keywords: verifyRoute.keywords,
     jsonLd: verifyRoute.jsonLd,
+  });
+}
+
+// Legacy problem IDs (mixed-case and hyphenated) redirect client-side to the
+// lowercase, dashless canonical IDs. Emitted as real 200 documents carrying the
+// canonical page's metadata so old links and crawlers resolve instead of 404ing.
+const legacyProblemAliases = {
+  "anx-rp-001": "anxrp001",
+  "anx-rp-002": "anxrp002",
+  "anx-rp-003": "anxrp003",
+  "anx-rp-004": "anxrp004",
+  "anx-rp-005": "anxrp005",
+  "anx-rp-006": "anxrp006",
+  "anx-rp-007": "anxrp007",
+  "anx-rp-008": "anxrp008",
+  anxosQ7MKR: "anxosq7mkr",
+  anxbwT4XPL: "anxbwt4xpl",
+  anxroN8CVD: "anxron8cvd",
+  anxbwR6ZQM: "anxbwr6zqm",
+  anxroK3FWT: "anxrok3fwt",
+  anxcsV9LXP: "anxcsv9lxp",
+};
+for (const [legacyId, canonicalId] of Object.entries(legacyProblemAliases)) {
+  const canonicalPath = `/lab/problems/${canonicalId}`;
+  const canonicalRoute = routes.find((r) => r.path === canonicalPath);
+  if (!canonicalRoute) continue;
+  routes.push({
+    path: `/lab/problems/${legacyId}`,
+    canonicalPath,
+    title: canonicalRoute.title,
+    description: canonicalRoute.description,
+    keywords: canonicalRoute.keywords,
+    jsonLd: canonicalRoute.jsonLd,
   });
 }
 

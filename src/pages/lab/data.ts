@@ -73,7 +73,7 @@ export const researchAreas: ResearchArea[] = [
 
 export const problems: Problem[] = [
   {
-    id: "anx-rp-001",
+    id: "anxrp001",
     code: "ANX-RP-001",
     title: "Early Security Warning for Autonomous Systems",
     areas: ["Cybersecurity", "AI", "Robotics"],
@@ -99,7 +99,7 @@ export const problems: Problem[] = [
     ],
   },
   {
-    id: "anx-rp-002",
+    id: "anxrp002",
     code: "ANX-RP-002",
     title: "Federated Learning Privacy in Healthcare Data",
     areas: ["AI", "Cybersecurity"],
@@ -125,7 +125,7 @@ export const problems: Problem[] = [
     ],
   },
   {
-    id: "anx-rp-003",
+    id: "anxrp003",
     code: "ANX-RP-003",
     title: "Real-time SLAM for Indoor Drone Navigation",
     areas: ["Robotics", "AI"],
@@ -151,7 +151,7 @@ export const problems: Problem[] = [
     ],
   },
   {
-    id: "anx-rp-004",
+    id: "anxrp004",
     code: "ANX-RP-004",
     title: "Neural Network Quantization for Edge AI",
     areas: ["AI", "Systems"],
@@ -175,9 +175,11 @@ export const problems: Problem[] = [
       "Accuracy vs latency benchmark across hardware targets",
       "Paper on task-aware mixed-precision strategies",
     ],
+    repo: "https://github.com/anoneurx/neural-network-quantization",
+    repoLabel: "anoneurx/neural-network-quantization",
   },
   {
-    id: "anx-rp-005",
+    id: "anxrp005",
     code: "ANX-RP-005",
     title: "Adversarial Robustness of Code Generation Models",
     areas: ["AI Safety", "Cybersecurity"],
@@ -203,7 +205,7 @@ export const problems: Problem[] = [
     ],
   },
   {
-    id: "anx-rp-006",
+    id: "anxrp006",
     code: "ANX-RP-006",
     title: "Zero-Knowledge Proofs for IoT Device Authentication",
     areas: ["Cybersecurity", "IoT"],
@@ -229,7 +231,7 @@ export const problems: Problem[] = [
     ],
   },
   {
-    id: "anx-rp-007",
+    id: "anxrp007",
     code: "ANX-RP-007",
     title: "Semantic Code Search in Large Monorepos",
     areas: ["AI", "Data Science"],
@@ -255,7 +257,7 @@ export const problems: Problem[] = [
     ],
   },
   {
-    id: "anx-rp-008",
+    id: "anxrp008",
     code: "ANX-RP-008",
     title: "Formal Verification of Smart Contract Compositions",
     areas: ["Cybersecurity", "Systems"],
@@ -281,7 +283,7 @@ export const problems: Problem[] = [
     ],
   },
   {
-    id: "anxosQ7MKR",
+    id: "anxosq7mkr",
     code: "ANX-OS-001",
     title: "Before the Breach",
     areas: ["Cybersecurity", "Systems", "AI"],
@@ -308,7 +310,7 @@ export const problems: Problem[] = [
     ],
   },
   {
-    id: "anxbwT4XPL",
+    id: "anxbwt4xpl",
     code: "ANX-BW-001",
     title: "Self-Defending OS",
     areas: ["Systems", "Cybersecurity", "AI"],
@@ -335,7 +337,7 @@ export const problems: Problem[] = [
     ],
   },
   {
-    id: "anxroN8CVD",
+    id: "anxron8cvd",
     code: "ANX-RO-001",
     title: "Robot Self-Trust",
     areas: ["Robotics", "Cybersecurity", "AI"],
@@ -364,7 +366,7 @@ export const problems: Problem[] = [
     repoLabel: "anoneurx/Robotics-Self-Trust",
   },
   {
-    id: "anxbwR6ZQM",
+    id: "anxbwr6zqm",
     code: "ANX-BW-002",
     title: "Black Wall for Robots",
     areas: ["Robotics", "Cybersecurity", "Systems"],
@@ -391,7 +393,7 @@ export const problems: Problem[] = [
     ],
   },
   {
-    id: "anxroK3FWT",
+    id: "anxrok3fwt",
     code: "ANX-RO-002",
     title: "Cyber-Physical Threat Horizon",
     areas: ["Robotics", "Cybersecurity", "Systems"],
@@ -418,7 +420,7 @@ export const problems: Problem[] = [
     ],
   },
   {
-    id: "anxcsV9LXP",
+    id: "anxcsv9lxp",
     code: "ANX-CS-001",
     title: "Self-Learning Security Baseline",
     areas: ["Cybersecurity", "AI", "Robotics"],
@@ -446,6 +448,23 @@ export const problems: Problem[] = [
   },
 ];
 
+export const legacyProblemIds: Record<string, string> = {
+  "anx-rp-001": "anxrp001",
+  "anx-rp-002": "anxrp002",
+  "anx-rp-003": "anxrp003",
+  "anx-rp-004": "anxrp004",
+  "anx-rp-005": "anxrp005",
+  "anx-rp-006": "anxrp006",
+  "anx-rp-007": "anxrp007",
+  "anx-rp-008": "anxrp008",
+  anxosQ7MKR: "anxosq7mkr",
+  anxbwT4XPL: "anxbwt4xpl",
+  anxroN8CVD: "anxron8cvd",
+  anxbwR6ZQM: "anxbwr6zqm",
+  anxroK3FWT: "anxrok3fwt",
+  anxcsV9LXP: "anxcsv9lxp",
+};
+
 export const researchPapers: ResearchPaper[] = [
   {
     id: "paper-001",
@@ -456,7 +475,7 @@ export const researchPapers: ResearchPaper[] = [
     category: "Published",
     area: "Cybersecurity",
     abstract: "We present a novel approach to real-time anomaly detection in autonomous vehicle sensor networks using streaming random projections. Our method achieves 97.3% detection rate with under 8ms latency on edge hardware.",
-    problemId: "anx-rp-001",
+    problemId: "anxrp001",
   },
   {
     id: "paper-002",
@@ -467,7 +486,7 @@ export const researchPapers: ResearchPaper[] = [
     category: "Preprint",
     area: "AI",
     abstract: "We propose DP-FLMed, a federated learning framework with formal differential privacy guarantees for chest X-ray classification across 12 simulated hospital nodes.",
-    problemId: "anx-rp-002",
+    problemId: "anxrp002",
   },
   {
     id: "paper-003",
@@ -478,7 +497,7 @@ export const researchPapers: ResearchPaper[] = [
     category: "Published",
     area: "AI",
     abstract: "We demonstrate that a 4.2-bit average precision BERT model can achieve 94.1% accuracy on keyword spotting while fitting within 256KB RAM on Cortex-M4.",
-    problemId: "anx-rp-004",
+    problemId: "anxrp004",
   },
   {
     id: "paper-004",
@@ -489,7 +508,7 @@ export const researchPapers: ResearchPaper[] = [
     category: "Ongoing",
     area: "Cybersecurity",
     abstract: "Work in progress on lightweight Schnorr-based ZKP protocols optimized for ESP32-class devices with formal security analysis in the UC framework.",
-    problemId: "anx-rp-006",
+    problemId: "anxrp006",
   },
   {
     id: "paper-005",
@@ -500,7 +519,7 @@ export const researchPapers: ResearchPaper[] = [
     category: "Technical Report",
     area: "AI Safety",
     abstract: "We present a taxonomy of adversarial attacks against code generation models and evaluate 5 defense mechanisms across 3 major LLM-based code assistants.",
-    problemId: "anx-rp-005",
+    problemId: "anxrp005",
   },
 ];
 
@@ -512,7 +531,7 @@ export const labProjects: LabProject[] = [
     description: "Real-time anomaly detection library for autonomous vehicle CAN bus networks. Written in Rust for zero-cost abstractions and deterministic performance.",
     area: "Cybersecurity",
     status: "Active",
-    problemId: "anx-rp-001",
+    problemId: "anxrp001",
     researchers: ["Muhammad Qasim", "Student Team A"],
   },
   {
@@ -522,7 +541,7 @@ export const labProjects: LabProject[] = [
     description: "Federated learning framework with differential privacy guarantees for medical imaging. Built on Flower with formal privacy accounting.",
     area: "AI",
     status: "Prototype",
-    problemId: "anx-rp-002",
+    problemId: "anxrp002",
     researchers: ["Student Team B", "Muhammad Qasim"],
   },
   {
@@ -532,7 +551,7 @@ export const labProjects: LabProject[] = [
     description: "A domain-specific language for programming quantized neural networks on microcontrollers. Compiles to TFLite and ONNX.",
     area: "AI",
     status: "Prototype",
-    problemId: "anx-rp-004",
+    problemId: "anxrp004",
     researchers: ["Student Team C"],
   },
 ];
