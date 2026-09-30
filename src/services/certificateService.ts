@@ -98,7 +98,7 @@ const createCertificateHTML = (internData: InternData): string => {
     <!-- Certificate Title -->
     <div class="text-center mb-12">
       <h2 class="text-4xl font-bold text-white mb-4 tracking-wider">CERTIFICATE OF COMPLETION</h2>
-      <div class="w-32 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto"></div>
+      <div class="w-32 h-1 bg-gradient-to-r from-blue-400 to-blue-400 mx-auto"></div>
     </div>
 
     <!-- Certificate Body -->

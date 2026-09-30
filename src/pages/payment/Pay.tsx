@@ -34,12 +34,12 @@ const Pay = () => {
   const [submitting, setSubmitting] = useState(false);
 
   const methods = [
-    { id: "card", icon: CreditCard, title: "Credit / Debit Card", desc: "Visa · Mastercard · Amex", accent: "from-sky-400 to-indigo-500" },
+    { id: "card", icon: CreditCard, title: "Credit / Debit Card", desc: "Visa · Mastercard · Amex", accent: "from-sky-400 to-sky-500" },
     { id: "apple", icon: Apple, title: "Apple Pay", desc: "Touch ID or Face ID", accent: "from-zinc-300 to-zinc-500" },
-    { id: "wallet", icon: Wallet, title: "Anoneurx Wallet", desc: "Pay from balance", accent: "from-fuchsia-400 to-purple-500" },
+    { id: "wallet", icon: Wallet, title: "Anoneurx Wallet", desc: "Pay from balance", accent: "from-teal-400 to-blue-500" },
     { id: "crypto", icon: Bitcoin, title: "Crypto", desc: "BTC · ETH · USDC", accent: "from-amber-400 to-orange-500" },
     { id: "bank", icon: Building2, title: "Bank Transfer", desc: "ACH · SEPA · Wire", accent: "from-emerald-400 to-teal-500" },
-    { id: "mobile", icon: Smartphone, title: "Mobile Money", desc: "UPI · Google Pay", accent: "from-rose-400 to-pink-500" },
+    { id: "mobile", icon: Smartphone, title: "Mobile Money", desc: "UPI · Google Pay", accent: "from-rose-400 to-rose-500" },
   ];
 
   const selected = methods.find(m => m.id === paymentMethod);
@@ -66,7 +66,7 @@ const Pay = () => {
 
         {/* Premium ambient glows */}
         <div className="pointer-events-none absolute -top-40 -left-40 w-[480px] h-[480px] rounded-full bg-blue-500/20 blur-[120px]" />
-        <div className="pointer-events-none absolute -bottom-40 -right-40 w-[520px] h-[520px] rounded-full bg-purple-500/20 blur-[140px]" />
+        <div className="pointer-events-none absolute -bottom-40 -right-40 w-[520px] h-[520px] rounded-full bg-blue-500/20 blur-[140px]" />
         <div className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-emerald-500/10 blur-[140px]" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-10 md:py-14">
@@ -93,7 +93,7 @@ const Pay = () => {
               <span className="text-[10px] uppercase tracking-[0.2em] font-semibold">Anoneurx Pay</span>
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-3">
-              Complete your <span className="bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text text-transparent">purchase</span>
+              Complete your <span className="bg-gradient-to-r from-blue-300 via-blue-300 to-rose-300 bg-clip-text text-transparent">purchase</span>
             </h1>
             <p className="text-sm text-gray-400 max-w-md mx-auto">
               Bank-grade encryption. Zero card storage. Instant provisioning.
@@ -113,7 +113,7 @@ const Pay = () => {
                 <React.Fragment key={s.id}>
                   <div className="flex items-center gap-2">
                     <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold transition-all ${
-                      active ? "bg-gradient-to-br from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/30 scale-110" :
+                      active ? "bg-gradient-to-br from-blue-500 to-blue-500 text-white shadow-lg shadow-blue-500/30 scale-110" :
                       done ? "bg-emerald-500/20 border border-emerald-500/40 text-emerald-300" :
                       "bg-white/[0.03] border border-white/10 text-gray-500"
                     }`}>
@@ -185,7 +185,7 @@ const Pay = () => {
                       <Button
                         onClick={() => setStep("process")}
                         disabled={!paymentMethod}
-                        className="w-full h-12 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-400 hover:to-purple-400 text-white text-sm font-semibold shadow-xl shadow-blue-500/25 disabled:opacity-40 border-0 rounded-xl"
+                        className="w-full h-12 bg-gradient-to-r from-blue-500 to-blue-500 hover:from-blue-400 hover:to-blue-400 text-white text-sm font-semibold shadow-xl shadow-blue-500/25 disabled:opacity-40 border-0 rounded-xl"
                       >
                         Continue to payment <ArrowRight className="w-4 h-4 ml-1" />
                       </Button>
@@ -309,7 +309,7 @@ const Pay = () => {
                   </div>
 
                   <div className="flex items-start gap-3 pb-5 border-b border-white/5">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/30 to-purple-500/30 border border-white/10 flex items-center justify-center shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/30 to-blue-500/30 border border-white/10 flex items-center justify-center shrink-0">
                       <Layers className="w-5 h-5 text-blue-200" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -347,7 +347,7 @@ const Pay = () => {
                 <CardContent className="p-5 space-y-3">
                   {[
                     { icon: Shield, text: "256-bit SSL encryption", sub: "Bank-grade security" },
-                    { icon: Lock, text: "PCI DSS compliant", sub: "Card data tokenized" },
+                    { icon: Lock, text: "Card data is tokenized per our design", sub: "No PCI DSS claim is made." },
                     { icon: Zap, text: "Instant activation", sub: "Access within seconds" },
                   ].map((f, i) => (
                     <div key={i} className="flex items-center gap-3">

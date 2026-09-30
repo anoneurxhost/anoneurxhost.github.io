@@ -15,7 +15,7 @@ const OpenSourceHome = () => {
           <h1 className="mt-6 max-w-4xl text-5xl font-bold leading-tight md:text-7xl">
             Build with us,
             <br />
-            <span className="bg-gradient-to-r from-indigo-300 via-violet-300 to-amber-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-sky-300 via-cyan-300 to-amber-300 bg-clip-text text-transparent">
               in the open.
             </span>
           </h1>
@@ -79,7 +79,7 @@ const OpenSourceHome = () => {
                 {p.stars.toLocaleString()}
               </div>
 
-              <h3 className="mt-5 text-xl font-semibold transition group-hover:text-indigo-300">
+              <h3 className="mt-5 text-xl font-semibold transition group-hover:text-sky-300">
                 {p.name}
               </h3>
 

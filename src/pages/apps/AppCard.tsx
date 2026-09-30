@@ -45,7 +45,7 @@ const AppCard = ({ app }: { app: AppItem }) => {
             </span>
           )}
           {app.newRelease && (
-            <span className="text-[10px] font-semibold uppercase tracking-widest px-2 py-1 rounded-md bg-purple-500/10 text-purple-300 border border-purple-500/20 inline-flex items-center gap-1">
+            <span className="text-[10px] font-semibold uppercase tracking-widest px-2 py-1 rounded-md bg-blue-500/10 text-blue-300 border border-blue-500/20 inline-flex items-center gap-1">
               <Sparkles className="h-2.5 w-2.5" />New
             </span>
           )}

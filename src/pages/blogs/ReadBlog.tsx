@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import blogData from "@/data/blogData.json";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 8 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 

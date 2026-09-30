@@ -4,12 +4,12 @@ import { CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Reveal, SectionHeader, AstraCard, ACCENT } from "../AstraUi";
 
 const PIPELINE = [
-  { label: "Experience", tone: "#8B7CF6" },
-  { label: "Encode", tone: "#7A8CFF" },
+  { label: "Experience", tone: "#38BDF8" },
+  { label: "Encode", tone: "#38BDF8" },
   { label: "Store", tone: "#4F7CFF" },
-  { label: "Recall", tone: "#6E6EF5" },
-  { label: "Consolidate", tone: "#8B7CF6" },
-  { label: "Reinforce", tone: "#B4A9FF" },
+  { label: "Recall", tone: "#0EA5E9" },
+  { label: "Consolidate", tone: "#38BDF8" },
+  { label: "Reinforce", tone: "#93C5FD" },
 ];
 
 const TYPES = [
@@ -46,13 +46,13 @@ const Memory = () => (
 
       <Reveal className="mt-12 overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
         <div className="relative hidden overflow-hidden py-4 lg:block">
-          <div className="absolute inset-y-[44%] inset-x-0 h-px bg-gradient-to-r from-[#8B7CF6]/40 via-[#4F7CFF]/50 to-[#B4A9FF]/40" />
+          <div className="absolute inset-y-[44%] inset-x-0 h-px bg-gradient-to-r from-[#38BDF8]/40 via-[#4F7CFF]/50 to-[#93C5FD]/40" />
           <div className="absolute inset-y-[44%] inset-x-0 h-px overflow-hidden opacity-70">
             <div
               className="h-full w-32"
               style={{
                 background:
-                  "linear-gradient(90deg, transparent, rgba(139,124,246,1), transparent)",
+                  "linear-gradient(90deg, transparent, rgba(56,189,248,1), transparent)",
                 animation: "astra-pipeline 4s linear infinite",
               }}
             />
@@ -79,7 +79,7 @@ const Memory = () => (
                   </span>
                 </div>
                 {i < PIPELINE.length - 1 ? (
-                  <div className="hidden h-px flex-1 bg-[#2A2A44]/80 sm:block" />
+                  <div className="hidden h-px flex-1 bg-[#2A3345]/80 sm:block" />
                 ) : null}
               </Fragment>
             ))}
@@ -90,7 +90,7 @@ const Memory = () => (
             <span
               key={p.label}
               className="flex shrink-0 items-center gap-2 rounded-full border px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider"
-              style={{ borderColor: `${p.tone}3A`, color: p.tone, background: "#090912" }}
+              style={{ borderColor: `${p.tone}3A`, color: p.tone, background: "#090D12" }}
             >
               <span className="h-1.5 w-1.5 rounded-full" style={{ background: p.tone }} />
               {p.label}
@@ -104,7 +104,7 @@ const Memory = () => (
           <Reveal key={t.name} delay={i * 0.08}>
             <AstraCard className="h-full">
               <CardHeader>
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-[#A79BFF]">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-[#7DD3FC]">
                   <t.icon className="h-5 w-5" />
                 </span>
                 <CardTitle className="pt-4 text-lg text-white">
@@ -125,8 +125,8 @@ const Memory = () => (
             <div className="flex items-start gap-3">
               <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#4F7CFF]" />
               <div>
-                <p className="text-sm font-medium text-[#B9B9CF]">Privacy by default</p>
-                <p className="mt-1 text-sm leading-relaxed text-[#8E8EA8]">
+                <p className="text-sm font-medium text-[#B9C0CF]">Privacy by default</p>
+                <p className="mt-1 text-sm leading-relaxed text-[#8E96A8]">
                   No memory is created from unconsented interaction. Every memory
                   block carries provenance metadata, retention limits and can be
                   deleted on request. Consent is a runtime property, not an

@@ -4,7 +4,7 @@ import NexoraLayout from "./NexoraLayout";
 
 const channels = [
   { name: "GitHub", desc: "File issues, contribute code, browse the source.", icon: Github, link: "#", color: "from-slate-500 to-slate-700", users: "12k stars" },
-  { name: "Discord", desc: "Live chat with the team and other power users.", icon: MessageCircle, link: "#", color: "from-indigo-500 to-purple-500", users: "32k members" },
+  { name: "Discord", desc: "Live chat with the team and other power users.", icon: MessageCircle, link: "#", color: "from-sky-500 to-blue-500", users: "32k members" },
   { name: "Telegram", desc: "Casual community for tips, tricks and beta builds.", icon: Send, link: "#", color: "from-blue-500 to-cyan-400", users: "8k members" },
   { name: "Reddit", desc: "/r/nexora — discussions, support and showcases.", icon: Users, link: "#", color: "from-orange-500 to-rose-500", users: "21k members" },
 ];
@@ -13,7 +13,7 @@ const NexoraCommunity = () => (
   <NexoraLayout>
     <section className="px-4 py-20">
       <div className="container-responsive max-w-5xl">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-14">
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-14">
           <span className="text-[10px] uppercase tracking-[0.3em] text-blue-400">Community</span>
           <h1 className="mt-3 text-4xl sm:text-5xl font-bold">Join the <span className="italic text-blue-300">Nexora</span> family</h1>
           <p className="mt-4 text-sm text-slate-500 max-w-xl mx-auto">Pick your favorite platform — we're active everywhere.</p>
@@ -24,7 +24,7 @@ const NexoraCommunity = () => (
             <motion.a
               key={c.name}
               href={c.link}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.05 }}

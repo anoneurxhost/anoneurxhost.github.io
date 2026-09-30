@@ -44,6 +44,52 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* ============================================================
+       Cloud Connect design tokens (Blacklink console).
+       Auto follow the OS via prefers-color-scheme — no manual toggle.
+       ============================================================ */
+    --cc-bg: #f6f8fa;
+    --cc-surface: #ffffff;
+    --cc-surface-2: #f9fafb;
+    --cc-surface-hover: #f1f5f9;
+    --cc-border: #e2e8f0;
+    --cc-border-strong: #cbd5e1;
+    --cc-text: #111827;
+    --cc-text-2: #475569;
+    --cc-muted: #64748b;
+    --cc-muted-2: #94a3b8;
+    --cc-accent: #0ea5e9;
+    --cc-accent-strong: #0284c7;
+    --cc-accent-soft: rgba(14, 165, 233, 0.1);
+    --cc-accent-border: rgba(14, 165, 233, 0.45);
+    --cc-success: #10b981;
+    --cc-warning: #f59e0b;
+    --cc-danger: #ef4444;
+    --cc-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 1px 1px rgba(15, 23, 42, 0.04);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --cc-bg: #0b0f14;
+      --cc-surface: #111820;
+      --cc-surface-2: #151c24;
+      --cc-surface-hover: #1a232d;
+      --cc-border: #26313d;
+      --cc-border-strong: #334155;
+      --cc-text: #f1f5f9;
+      --cc-text-2: #cbd5e1;
+      --cc-muted: #94a3b8;
+      --cc-muted-2: #64748b;
+      --cc-accent: #22d3ee;
+      --cc-accent-strong: #67e8f9;
+      --cc-accent-soft: rgba(34, 211, 238, 0.1);
+      --cc-accent-border: rgba(34, 211, 238, 0.4);
+      --cc-success: #34d399;
+      --cc-warning: #fbbf24;
+      --cc-danger: #f87171;
+      --cc-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    }
   }
 }
 
@@ -77,8 +123,13 @@
   body.theme-light a { color: #0A0A0A; }
 
   html {
-    scroll-behavior: smooth;
     overflow-x: hidden;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   html, body {
@@ -322,7 +373,7 @@
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(8px);
     }
     to {
       opacity: 1;
@@ -333,7 +384,7 @@
   @keyframes slideUp {
     from {
       opacity: 0;
-      transform: translateY(50px);
+      transform: translateY(10px);
     }
     to {
       opacity: 1;
@@ -344,7 +395,7 @@
   @keyframes scaleIn {
     from {
       opacity: 0;
-      transform: scale(0.9);
+      transform: scale(0.98);
     }
     to {
       opacity: 1;
@@ -357,7 +408,7 @@
       transform: translateY(0px);
     }
     50% {
-      transform: translateY(-20px);
+      transform: translateY(-6px);
     }
   }
   
@@ -367,6 +418,16 @@
     }
     50% {
       box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in,
+    .animate-slide-up,
+    .animate-scale-in,
+    .animate-float,
+    .animate-pulse-glow {
+      animation: none !important;
     }
   }
 

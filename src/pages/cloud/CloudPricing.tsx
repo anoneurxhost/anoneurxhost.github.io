@@ -36,16 +36,16 @@ const plans = [
     desc: "For growing applications",
     popular: true,
     features: ["4 vCPU Cores", "8GB RAM", "160GB SSD", "5TB Transfer", "Security Bundle", "Email Support"],
-    color: "bg-violet-600/20",
-    border: "border-violet-600/40"
+    color: "bg-cyan-600/20",
+    border: "border-cyan-600/40"
   },
   {
     name: "Enterprise",
     price: "Custom",
     desc: "For large-scale infra",
     features: ["Dedicated Hardware", "Unlimited RAM", "Arbitrary Storage", "Unmetered Transfer", "24/7 Dedicated SRE"],
-    color: "bg-indigo-500/10",
-    border: "border-indigo-500/20"
+    color: "bg-sky-500/10",
+    border: "border-sky-500/20"
   }
 ];
 
@@ -81,7 +81,7 @@ const CloudPricing = () => {
       <div className="pt-32 pb-20">
         <div className="container-responsive">
           <div className="text-center mb-12">
-             <Badge className="mb-3 bg-violet-500/10 text-violet-400 border-violet-500/20 px-3 py-1 uppercase tracking-[0.2em] font-bold text-[9px]">Infrastructure Tiers</Badge>
+             <Badge className="mb-3 bg-cyan-500/10 text-cyan-400 border-cyan-500/20 px-3 py-1 uppercase tracking-[0.2em] font-bold text-[9px]">Infrastructure Tiers</Badge>
             <h1 className="text-2xl md:text-3xl font-bold tracking-tighter mb-3 text-white uppercase">Cloud Pricing</h1>
             <p className="text-gray-400 text-[10px] max-w-[280px] mx-auto uppercase tracking-widest font-medium opacity-50">Scale your infrastructure with pixel-perfect precision.</p>
           </div>
@@ -90,26 +90,26 @@ const CloudPricing = () => {
             {plans.map((plan, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
                 className={`relative rounded-lg border group overflow-hidden transition-all duration-500 ${
                   plan.popular 
-                  ? "border-violet-500/40 bg-violet-500/[0.03] scale-105 shadow-xl shadow-violet-500/10 z-10" 
+                  ? "border-cyan-500/40 bg-cyan-500/[0.03] scale-105 shadow-xl shadow-cyan-500/10 z-10" 
                   : "border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10"
                 } backdrop-blur-3xl p-6 flex flex-col`}
               >
                 {/* Glow Effect */}
-                <div className={`absolute -top-20 -left-20 w-40 h-40 rounded-full blur-[80px] opacity-20 pointer-events-none transition-all duration-700 group-hover:scale-150 ${plan.popular ? "bg-violet-500" : "bg-blue-500"}`} />
+                <div className={`absolute -top-20 -left-20 w-40 h-40 rounded-full blur-[80px] opacity-20 pointer-events-none transition-all duration-700 group-hover:scale-150 ${plan.popular ? "bg-cyan-500" : "bg-blue-500"}`} />
 
                 {plan.popular && (
-                  <div className="absolute top-4 right-4 bg-gradient-to-r from-violet-600 to-indigo-600 px-2 py-0.5 rounded-full text-[7px] font-black uppercase tracking-[0.2em] text-white shadow-lg">
+                  <div className="absolute top-4 right-4 bg-gradient-to-r from-cyan-600 to-sky-600 px-2 py-0.5 rounded-full text-[7px] font-black uppercase tracking-[0.2em] text-white shadow-lg">
                     Recommended
                   </div>
                 )}
                 
                 <div className="mb-6">
-                  <div className={`w-10 h-10 rounded-lg mb-4 flex items-center justify-center border transition-transform duration-500 group-hover:scale-110 ${plan.popular ? "bg-violet-500/20 border-violet-500/30 text-violet-400" : "bg-white/5 border-white/10 text-white/40"}`}>
+                  <div className={`w-10 h-10 rounded-lg mb-4 flex items-center justify-center border transition-transform duration-500 group-hover:scale-110 ${plan.popular ? "bg-cyan-500/20 border-cyan-500/30 text-cyan-400" : "bg-white/5 border-white/10 text-white/40"}`}>
                      {idx === 0 ? <Zap className="w-5 h-5" /> : idx === 1 ? <Rocket className="w-5 h-5" /> : <Shield className="w-5 h-5" />}
                   </div>
                   <h3 className="text-base font-bold mb-1 uppercase tracking-tight text-white">{plan.name}</h3>
@@ -124,8 +124,8 @@ const CloudPricing = () => {
                 <div className="space-y-2.5 mb-10 flex-1 pt-4 border-t border-white/5">
                   {plan.features.map((feature, fIdx) => (
                     <div key={fIdx} className="flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                      <div className={`p-0.5 rounded-full ${plan.popular ? "bg-violet-500/20" : "bg-white/5"}`}>
-                        <Check className={`h-2.5 w-2.5 ${plan.popular ? "text-violet-400" : "text-gray-600"}`} />
+                      <div className={`p-0.5 rounded-full ${plan.popular ? "bg-cyan-500/20" : "bg-white/5"}`}>
+                        <Check className={`h-2.5 w-2.5 ${plan.popular ? "text-cyan-400" : "text-gray-600"}`} />
                       </div>
                       {feature}
                     </div>
@@ -143,7 +143,7 @@ const CloudPricing = () => {
                   }}
                   className={`w-full h-11 rounded-lg font-black uppercase tracking-[0.2em] text-[9px] transition-all duration-300 group/btn ${
                     plan.popular 
-                    ? 'bg-violet-600 hover:bg-violet-500 text-white shadow-lg shadow-violet-500/20' 
+                    ? 'bg-cyan-600 hover:bg-cyan-500 text-white shadow-lg shadow-cyan-500/20' 
                     : 'bg-white/5 border border-white/10 hover:bg-white/10 text-white'
                   }`}
                 >
@@ -157,13 +157,13 @@ const CloudPricing = () => {
           {/* Custom Server Builder Overlay */}
           <Dialog open={isCustomOpen} onOpenChange={setIsCustomOpen}>
             <DialogContent className="max-w-xl bg-black/95 border-white/10 backdrop-blur-2xl text-white rounded-xl p-0 overflow-hidden shadow-2xl">
-               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-violet-500 to-purple-500" />
+               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500" />
                
                <div className="p-6">
                   <DialogHeader className="mb-6">
                     <div className="flex items-center gap-3 mb-1">
-                      <div className="p-1.5 rounded-lg bg-violet-600/20 border border-violet-500/30">
-                        <Server className="h-4 w-4 text-violet-400" />
+                      <div className="p-1.5 rounded-lg bg-cyan-600/20 border border-cyan-500/30">
+                        <Server className="h-4 w-4 text-cyan-400" />
                       </div>
                       <div>
                         <DialogTitle className="text-xl font-bold uppercase tracking-tight">Node Builder</DialogTitle>
@@ -232,7 +232,7 @@ const CloudPricing = () => {
 
                     {/* Summary Card */}
                     <div className="p-6 rounded-lg bg-white/5 border border-white/10 flex flex-col justify-between relative overflow-hidden group">
-                      <div className="absolute top-0 right-0 w-24 h-24 bg-violet-600/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-600/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
                       
                       <div>
                         <h4 className="text-[8px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-4">Real-time Estimate</h4>
@@ -252,14 +252,14 @@ const CloudPricing = () => {
                            <div className="h-px bg-white/10 my-3" />
                            <div className="flex justify-between items-end">
                               <span className="text-[9px] font-bold text-gray-500 uppercase tracking-widest pb-0.5">Monthly</span>
-                              <span className="text-3xl font-black tracking-tighter text-violet-400">${totalPrice}</span>
+                              <span className="text-3xl font-black tracking-tighter text-cyan-400">${totalPrice}</span>
                            </div>
                         </div>
                       </div>
 
                       <Button 
                         onClick={handleCheckout}
-                        className="w-full h-10 bg-white text-black hover:bg-violet-500 hover:text-white transition-all duration-300 font-black uppercase tracking-[0.2em] text-[9px] mt-6 flex items-center justify-center gap-2"
+                        className="w-full h-10 bg-white text-black hover:bg-cyan-500 hover:text-white transition-all duration-300 font-black uppercase tracking-[0.2em] text-[9px] mt-6 flex items-center justify-center gap-2"
                       >
                         Deploy Node <ArrowRight className="h-3 w-3" />
                       </Button>
@@ -282,10 +282,10 @@ const CloudPricing = () => {
                   ))}
                </div>
             </div>
-            <div className="h-32 w-full lg:w-72 rounded-lg bg-violet-600/5 border border-violet-500/20 flex items-center justify-center relative overflow-hidden group shadow-xl">
-                <Globe className="h-14 w-14 text-violet-500/20 animate-pulse transition-transform duration-1000 group-hover:scale-125" />
+            <div className="h-32 w-full lg:w-72 rounded-lg bg-cyan-600/5 border border-cyan-500/20 flex items-center justify-center relative overflow-hidden group shadow-xl">
+                <Globe className="h-14 w-14 text-cyan-500/20 animate-pulse transition-transform duration-1000 group-hover:scale-125" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent" />
-                <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[8px] font-bold text-violet-400 uppercase tracking-[0.4em] whitespace-nowrap opacity-40">Edge Network</p>
+                <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[8px] font-bold text-cyan-400 uppercase tracking-[0.4em] whitespace-nowrap opacity-40">Edge Network</p>
             </div>
           </div>
         </div>

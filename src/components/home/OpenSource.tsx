@@ -53,14 +53,14 @@ export const OpenSource: React.FC = () => {
   return (
     <section className="relative py-32 px-4 sm:px-6 lg:px-8 bg-black text-white border-t border-white/5 overflow-hidden">
       {/* Background radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-indigo-900/10 rounded-full blur-[200px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-sky-900/10 rounded-full blur-[200px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto space-y-16">
 
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono tracking-widest text-sky-400 uppercase"
@@ -69,7 +69,7 @@ export const OpenSource: React.FC = () => {
           </motion.div>
 
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
@@ -79,7 +79,7 @@ export const OpenSource: React.FC = () => {
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
@@ -96,7 +96,7 @@ export const OpenSource: React.FC = () => {
             return (
               <motion.div
                 key={card.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
@@ -137,14 +137,14 @@ export const OpenSource: React.FC = () => {
 
         {/* Large Central Call To Action Button */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center pt-8"
         >
           <Link
             to="/opensource"
-            className="inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-bold text-lg tracking-wide hover:from-cyan-400 hover:to-indigo-500 hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_40px_rgba(6,182,212,0.3)]"
+            className="inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-gradient-to-r from-cyan-500 to-sky-600 text-white font-bold text-lg tracking-wide hover:from-cyan-400 hover:to-sky-500 hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_40px_rgba(6,182,212,0.3)]"
           >
             <Code2 className="w-6 h-6" />
             <span>Explore Open Source Hub</span>

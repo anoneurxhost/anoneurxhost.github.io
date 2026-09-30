@@ -7,14 +7,14 @@ const platforms = [
   { name: "Linux", note: "Ubuntu, Fedora, Arch · AppImage / .deb", icon: Cpu, cta: "Download AppImage", color: "from-amber-500 to-orange-400", available: true },
   { name: "Android", note: "Android 10+ · Play Store", icon: Smartphone, cta: "Get on Play Store", color: "from-emerald-500 to-teal-400", available: true },
   { name: "macOS", note: "Apple Silicon / Intel · Universal DMG", icon: Apple, cta: "Coming Soon", color: "from-slate-500 to-slate-400", available: false },
-  { name: "iOS", note: "iPhone & iPad · App Store", icon: Smartphone, cta: "Coming Soon", color: "from-purple-500 to-pink-400", available: false },
+  { name: "iOS", note: "iPhone & iPad · App Store", icon: Smartphone, cta: "Coming Soon", color: "from-blue-500 to-rose-400", available: false },
 ];
 
 const NexoraDownload = () => (
   <NexoraLayout>
     <section className="px-4 py-20">
       <div className="container-responsive max-w-6xl">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <span className="text-[10px] uppercase tracking-[0.3em] text-blue-400">Download</span>
           <h1 className="mt-3 text-4xl sm:text-5xl font-bold">Get Nexora <span className="italic text-blue-300">everywhere.</span></h1>
           <p className="mt-4 text-sm text-slate-500 max-w-lg mx-auto">
@@ -30,7 +30,7 @@ const NexoraDownload = () => (
           {platforms.map((p, i) => (
             <motion.div
               key={p.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.05 }}

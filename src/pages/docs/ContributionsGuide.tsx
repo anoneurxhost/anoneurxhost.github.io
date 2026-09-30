@@ -8,23 +8,23 @@ import {
   BookOpen, Shield, Trophy, Layers, Lock, BarChart3, Heart, ArrowRight
 } from "lucide-react";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const stats = [
   { label: "PRs Merged", value: "2,847", icon: GitMerge, color: "text-green-400" },
   { label: "Issues Closed", value: "4,213", icon: CheckCircle, color: "text-blue-400" },
-  { label: "Contributors", value: "1,800+", icon: Users, color: "text-purple-400" },
+  { label: "Contributors", value: "1,800+", icon: Users, color: "text-blue-400" },
   { label: "Lines of Code", value: "1.2M+", icon: Code, color: "text-amber-400" },
 ];
 
 const subpages = [
   { title: "Contributors", description: "Meet the people who build and maintain Anoneurx every day.", icon: Users, path: "/contributions/contributors", color: "from-green-500/20 to-emerald-500/20", border: "border-green-500/20" },
   { title: "How to Contribute", description: "Step-by-step guide to making your first contribution.", icon: BookOpen, path: "/contributions/how-to-contribute", color: "from-blue-500/20 to-cyan-500/20", border: "border-blue-500/20" },
-  { title: "Review Progress", description: "Track PR statuses and understand our review pipeline.", icon: BarChart3, path: "/contributions/review-progress", color: "from-purple-500/20 to-pink-500/20", border: "border-purple-500/20" },
+  { title: "Review Progress", description: "Track PR statuses and understand our review pipeline.", icon: BarChart3, path: "/contributions/review-progress", color: "from-blue-500/20 to-rose-500/20", border: "border-blue-500/20" },
   { title: "Rewards & Recognition", description: "Earn badges, swag, and exclusive perks for contributing.", icon: Trophy, path: "/contributions/rewards", color: "from-yellow-500/20 to-amber-500/20", border: "border-yellow-500/20" },
   { title: "Architecture Overview", description: "Understand the system design, layers, and how components interact.", icon: Layers, path: "/contributions/architecture", color: "from-cyan-500/20 to-blue-500/20", border: "border-cyan-500/20" },
   { title: "Security Policy", description: "How we handle vulnerabilities and protect our users.", icon: Lock, path: "/contributions/security", color: "from-red-500/20 to-rose-500/20", border: "border-red-500/20" },
-  { title: "Code of Conduct", description: "Our commitment to a welcoming and inclusive community.", icon: Shield, path: "/contributions/code-of-conduct", color: "from-pink-500/20 to-purple-500/20", border: "border-pink-500/20" },
+  { title: "Code of Conduct", description: "Our commitment to a welcoming and inclusive community.", icon: Shield, path: "/contributions/code-of-conduct", color: "from-rose-500/20 to-blue-500/20", border: "border-rose-500/20" },
 ];
 
 const ContributionsGuide = () => (
@@ -34,7 +34,7 @@ const ContributionsGuide = () => (
       <section className="relative py-24 sm:py-32 px-4">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-green-500/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
         </div>
         <div className="container mx-auto max-w-5xl relative z-10 text-center">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.5 }}>

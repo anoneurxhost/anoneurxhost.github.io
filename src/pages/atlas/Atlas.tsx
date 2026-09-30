@@ -73,7 +73,7 @@ const Atlas = () => {
       {/* Ambient glow */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 h-[600px] w-[1200px] rounded-full bg-blue-600/20 blur-[140px]" />
-        <div className="absolute bottom-[-20%] right-[-10%] h-[500px] w-[800px] rounded-full bg-fuchsia-600/10 blur-[140px]" />
+        <div className="absolute bottom-[-20%] right-[-10%] h-[500px] w-[800px] rounded-full bg-teal-600/10 blur-[140px]" />
       </div>
 
       {/* HERO */}
@@ -109,7 +109,7 @@ const Atlas = () => {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
+            <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
               <CodeBlock code={heroCode} lang="atlas" />
             </motion.div>
           </div>
@@ -169,7 +169,7 @@ const Atlas = () => {
       {/* CTA */}
       <section className="px-4 py-20">
         <div className="container-responsive max-w-5xl">
-          <div className="rounded-3xl border border-blue-500/20 bg-gradient-to-br from-blue-600/10 via-white/[0.02] to-fuchsia-600/10 backdrop-blur-2xl p-10 lg:p-14 text-center">
+          <div className="rounded-3xl border border-blue-500/20 bg-gradient-to-br from-blue-600/10 via-white/[0.02] to-teal-600/10 backdrop-blur-2xl p-10 lg:p-14 text-center">
             <Rocket className="h-8 w-8 text-blue-300 mx-auto mb-4" />
             <h2 className="text-3xl sm:text-4xl font-bold mb-3">Ready to build with ATLAS?</h2>
             <p className="text-sm text-slate-400 max-w-xl mx-auto mb-8">Dive into the full language specification, grammar reference, and getting-started guide.</p>

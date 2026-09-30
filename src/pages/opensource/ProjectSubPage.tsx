@@ -54,7 +54,7 @@ const PolicyBlocks: React.FC<{ sections: PolicySection[] }> = ({ sections }) => 
       {sections.map((s, i) => (
         <div key={s.title} id={slug(s.title)} className="scroll-mt-28 border-b border-white/10 pb-6 last:border-b-0 last:pb-0">
           <div className="mb-3 flex items-center gap-3">
-            <span className="font-mono text-xs tracking-[0.2em] text-fuchsia-400">{String(i + 1).padStart(2, "0")}</span>
+            <span className="font-mono text-xs tracking-[0.2em] text-teal-400">{String(i + 1).padStart(2, "0")}</span>
             <h2 className="text-lg font-semibold text-white md:text-xl">{s.title}</h2>
           </div>
           {s.body.map((p) => (
@@ -87,7 +87,7 @@ const ProjectSubPage: React.FC = () => {
       <div className="grid min-h-screen place-items-center bg-slate-950 px-4 text-center text-white">
         <div className="rounded-[5px] border border-white/10 bg-black/10 p-10 backdrop-blur-xl">
           <h1 className="mb-3 text-3xl font-bold">Project not found</h1>
-          <Link to="/opensource/projects" className="inline-flex items-center gap-2 rounded-xl bg-fuchsia-600 px-5 py-2.5 text-sm font-semibold hover:bg-fuchsia-500">
+          <Link to="/opensource/projects" className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-semibold hover:bg-teal-500">
             <ArrowLeft className="h-4 w-4" /> Back to projects
           </Link>
         </div>
@@ -133,7 +133,7 @@ const ProjectSubPage: React.FC = () => {
         transition={{ duration: 0.5 }}
         className="mb-10 border-b border-white/10 pb-8"
       >
-        <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.24em] text-fuchsia-400">{meta.kicker}</p>
+        <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.24em] text-teal-400">{meta.kicker}</p>
         <h1 className="font-brand text-3xl leading-tight text-white sm:text-4xl lg:text-5xl">{meta.title}</h1>
         <p className="mt-3 max-w-3xl font-light text-slate-400">
           {kind === "privacy"
@@ -158,7 +158,7 @@ const ProjectSubPage: React.FC = () => {
             <div className="grid gap-5 sm:grid-cols-2">
               {extra.features.map((f) => (
                 <Card key={f.title} id={slug(f.title)}>
-                  {f.tag && <span className="mb-2 inline-block rounded-md bg-fuchsia-500/10 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-fuchsia-300">{f.tag}</span>}
+                  {f.tag && <span className="mb-2 inline-block rounded-md bg-teal-500/10 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-teal-300">{f.tag}</span>}
                   <h2 className="text-lg font-semibold text-white">{f.title}</h2>
                   <p className="mt-2 text-sm leading-relaxed text-slate-400">{f.desc}</p>
                 </Card>
@@ -230,7 +230,7 @@ sha256sum -c ${project.id}-release.sha256`}</pre>
                   <h2 className="mb-3 text-lg font-semibold text-white">Requirements</h2>
                   <ul className="grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
                     {extra.desktopDemo.requirements.map((r) => (
-                      <li key={r} className="flex gap-2"><span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-fuchsia-400" /> {r}</li>
+                      <li key={r} className="flex gap-2"><span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-teal-400" /> {r}</li>
                     ))}
                   </ul>
                 </Card>
@@ -246,7 +246,7 @@ sha256sum -c ${project.id}-release.sha256`}</pre>
               {extra.changelog.map((c) => (
                 <Card key={c.version} id={slug(c.version)}>
                   <div className="mb-3 flex flex-wrap items-center gap-3">
-                    <span className="rounded-lg bg-fuchsia-500/15 px-2.5 py-1 font-mono text-xs text-fuchsia-300">{c.version}</span>
+                    <span className="rounded-lg bg-teal-500/15 px-2.5 py-1 font-mono text-xs text-teal-300">{c.version}</span>
                     <span className="text-xs text-slate-400">{c.date}</span>
                     <span className="rounded-full border border-white/10 px-2.5 py-0.5 text-[10px] uppercase tracking-wider text-slate-400">{c.kind}</span>
                   </div>
@@ -268,7 +268,7 @@ sha256sum -c ${project.id}-release.sha256`}</pre>
                     {r.status === "shipped" ? (
                       <CheckCircle2 className="h-5 w-5 text-emerald-400" />
                     ) : r.status === "active" ? (
-                      <Clock className="h-5 w-5 text-fuchsia-400" />
+                      <Clock className="h-5 w-5 text-teal-400" />
                     ) : (
                       <CircleDashed className="h-5 w-5 text-slate-500" />
                     )}
@@ -277,7 +277,7 @@ sha256sum -c ${project.id}-release.sha256`}</pre>
                   </div>
                   <ul className="space-y-2 text-sm text-slate-300">
                     {r.items.map((i) => (
-                      <li key={i} className="flex gap-2"><span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-fuchsia-400" /> {i}</li>
+                      <li key={i} className="flex gap-2"><span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-teal-400" /> {i}</li>
                     ))}
                   </ul>
                 </Card>
@@ -290,7 +290,7 @@ sha256sum -c ${project.id}-release.sha256`}</pre>
               {extra.faq.map((f) => (
                 <Card key={f.q} id={slug(f.q)}>
                   <h2 className="mb-2 flex items-start gap-2 text-base font-semibold text-white">
-                    <HelpCircle className="mt-0.5 h-4 w-4 shrink-0 text-fuchsia-400" /> {f.q}
+                    <HelpCircle className="mt-0.5 h-4 w-4 shrink-0 text-teal-400" /> {f.q}
                   </h2>
                   <p className="pl-6 text-sm leading-relaxed text-slate-400">{f.a}</p>
                 </Card>

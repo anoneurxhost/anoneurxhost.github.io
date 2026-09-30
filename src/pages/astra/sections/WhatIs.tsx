@@ -31,7 +31,7 @@ const WhatIs = () => (
         title={
           <>
             A model that keeps learning{" "}
-            <span className="text-[#8B7CF6]">after training</span>
+            <span className="text-[#38BDF8]">after training</span>
           </>
         }
         subtitle="Most models are frozen the moment training ends. ASTRA is an attempt to close the gap between 'trained' and 'finished' — a system built to keep getting better from real experience."
@@ -43,7 +43,7 @@ const WhatIs = () => (
             <AstraCard className="h-full">
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-[#A79BFF]">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-[#7DD3FC]">
                     <c.icon className="h-5 w-5" />
                   </span>
                   <Chip tone={c.tone}>{c.tone}</Chip>

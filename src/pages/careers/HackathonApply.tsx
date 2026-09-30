@@ -8,7 +8,7 @@ import ApplyShell from "@/components/ApplyShell";
 
 const upcomingEvents = [
   { id: "ai-innovation-2024", title: "AI Innovation Hackathon", date: "Mar 15-17", location: "San Francisco", duration: "48h", maxTeamSize: 4, prize: "$50K", themes: ["AI", "Health"], description: "Build AI for healthcare and sustainability.", spotsLeft: 45, accent: "text-blue-400" },
-  { id: "blockchain-buildout-2024", title: "Blockchain BuildOut", date: "Apr 22-24", location: "Austin", duration: "54h", maxTeamSize: 5, prize: "$30K", themes: ["DeFi", "Web3"], description: "Build the next-gen decentralized apps.", spotsLeft: 67, accent: "text-purple-400" },
+  { id: "blockchain-buildout-2024", title: "Blockchain BuildOut", date: "Apr 22-24", location: "Austin", duration: "54h", maxTeamSize: 5, prize: "$30K", themes: ["DeFi", "Web3"], description: "Build the next-gen decentralized apps.", spotsLeft: 67, accent: "text-blue-400" },
   { id: "quantum-challenge-2024", title: "Quantum Challenge", date: "May 10-12", location: "Boston", duration: "48h", maxTeamSize: 3, prize: "$75K", themes: ["Quantum", "Algos"], description: "Practical quantum computing applications.", spotsLeft: 23, accent: "text-emerald-400" },
   { id: "climate-hack-2024", title: "Climate Hack", date: "Jun 8-10", location: "Online", duration: "48h", maxTeamSize: 4, prize: "$25K", themes: ["Climate", "IoT"], description: "Tech that reduces carbon footprint.", spotsLeft: 88, accent: "text-cyan-400" },
 ];

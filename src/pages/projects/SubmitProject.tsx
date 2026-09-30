@@ -9,7 +9,7 @@ import PageTransition from '@/components/PageTransition';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const projectSchema = z.object({
   title: z.string().trim().min(3, 'Title must be at least 3 characters').max(100, 'Title must be under 100 characters'),
@@ -111,7 +111,7 @@ const SubmitProject = () => {
 
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Project Details */}
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              <motion.div initial="hidden" animate="visible" variants={fadeUp}>
                 <Card className="bg-white/[0.03] backdrop-blur-2xl border-white/[0.08]">
                   <CardContent className="p-6 space-y-5">
                     <div className="flex items-center gap-2 text-primary mb-2">
@@ -159,7 +159,7 @@ const SubmitProject = () => {
               </motion.div>
 
               {/* Tech Stack */}
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              <motion.div initial="hidden" animate="visible" variants={fadeUp}>
                 <Card className="bg-white/[0.03] backdrop-blur-2xl border-white/[0.08]">
                   <CardContent className="p-6 space-y-5">
                     <div className="flex items-center gap-2 text-primary mb-2">
@@ -203,7 +203,7 @@ const SubmitProject = () => {
               </motion.div>
 
               {/* Team */}
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              <motion.div initial="hidden" animate="visible" variants={fadeUp}>
                 <Card className="bg-white/[0.03] backdrop-blur-2xl border-white/[0.08]">
                   <CardContent className="p-6 space-y-5">
                     <div className="flex items-center gap-2 text-primary mb-2">
@@ -247,7 +247,7 @@ const SubmitProject = () => {
               </motion.div>
 
               {/* Proposer Info */}
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              <motion.div initial="hidden" animate="visible" variants={fadeUp}>
                 <Card className="bg-white/[0.03] backdrop-blur-2xl border-white/[0.08]">
                   <CardContent className="p-6 space-y-5">
                     <h2 className="text-lg font-semibold text-white">Your Information</h2>
@@ -285,7 +285,7 @@ const SubmitProject = () => {
               </motion.div>
 
               {/* Submit */}
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              <motion.div initial="hidden" animate="visible" variants={fadeUp}>
                 <Button
                   type="submit"
                   disabled={submitting}

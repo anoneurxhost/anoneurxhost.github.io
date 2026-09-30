@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Users, ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const pastEvents = [
   { id: "annual-dev-conf", title: "Annual Developer Conference", date: "Mar 1-3, 2026", attendees: 1200, summary: "Three days of talks, workshops, and networking with top developers and researchers.", image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=300&fit=crop" },

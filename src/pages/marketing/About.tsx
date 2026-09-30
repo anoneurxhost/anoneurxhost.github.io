@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 8 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
@@ -29,7 +29,7 @@ const About = () => {
     { icon: <Award className="w-8 h-8 text-yellow-400" />, title: "25+ Industry Awards", description: "Recognition for innovation excellence" },
     { icon: <Users className="w-8 h-8 text-blue-400" />, title: "250+ Team Members", description: "Growing global talent network" },
     { icon: <TrendingUp className="w-8 h-8 text-green-400" />, title: "98% Client Satisfaction", description: "Exceptional service delivery" },
-    { icon: <Globe className="w-8 h-8 text-purple-400" />, title: "15+ Countries", description: "Global presence and impact" },
+    { icon: <Globe className="w-8 h-8 text-blue-400" />, title: "15+ Countries", description: "Global presence and impact" },
   ];
 
   const values = [

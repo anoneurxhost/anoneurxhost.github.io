@@ -6,14 +6,14 @@ const missions = [
   { icon: Feather, title: "Freedom", desc: "Open source from the kernel up. Yours to inspect, fork, and improve.", color: "from-blue-500 to-cyan-400" },
   { icon: Lock, title: "Security", desc: "Memory-safe Rust core, sandboxed apps and signed atomic updates.", color: "from-emerald-500 to-teal-400" },
   { icon: Zap, title: "Performance", desc: "Engineered to fly on modest hardware while feeling instant on any.", color: "from-amber-500 to-orange-400" },
-  { icon: Minimize2, title: "Simplicity", desc: "No bloat. No tracking. Just the tools you need, beautifully arranged.", color: "from-purple-500 to-pink-400" },
+  { icon: Minimize2, title: "Simplicity", desc: "No bloat. No tracking. Just the tools you need, beautifully arranged.", color: "from-blue-500 to-rose-400" },
 ];
 
 const BlackwallAbout = () => (
   <BlackwallLayout>
     <section className="px-4 py-20">
       <div className="container-responsive max-w-4xl">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <span className="text-[10px] uppercase tracking-[0.3em] text-blue-400">Our Story</span>
           <h1 className="mt-3 text-4xl sm:text-5xl font-bold">About <span className="italic text-blue-300">Black Wall</span></h1>
         </motion.div>
@@ -29,8 +29,8 @@ const BlackwallAbout = () => (
             freedom, security, performance and simplicity.
           </p>
           <p className="text-base leading-relaxed text-slate-400">
-            Today, Black Wall is a full desktop operating system used by thousands across the globe.
-            It's free, open source, community-driven and crafted with obsessive attention to detail.
+            Today, Black Wall is a full desktop operating system designed as a community platform. It is
+            free, open source, and crafted with obsessive attention to detail.
           </p>
         </motion.div>
 
@@ -39,7 +39,7 @@ const BlackwallAbout = () => (
           {missions.map((m, i) => (
             <motion.div
               key={m.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}

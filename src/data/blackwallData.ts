@@ -18,7 +18,7 @@ export const blackwallExtra: ProjectExtra = {
   platform: "os",
   platformLabel: "Operating System",
   logo: blackwallLogo,
-  accent: "from-violet-500 to-fuchsia-500",
+  accent: "from-cyan-500 to-teal-500",
   storeLinks: {
     iso: "#download-blackwall-iso",
     desktop: [

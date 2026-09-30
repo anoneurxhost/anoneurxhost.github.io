@@ -2,22 +2,11 @@
 import { useEffect } from "react";
 
 /**
- * Adds a parallax effect to any element with class .universal-page-bg.
+ * Disabled: the scroll-linked background drift was distracting and repainted on
+ * every scroll event. The class is left in place so existing markup is harmless.
  */
 export function useParallaxBackground() {
   useEffect(() => {
-    function handleScroll() {
-      const scrollY = window.scrollY || window.pageYOffset;
-      const bgEls = document.getElementsByClassName("universal-page-bg");
-      for (let i = 0; i < bgEls.length; i++) {
-        const el = bgEls[i] as HTMLElement;
-        el.style.backgroundPosition = `center ${-scrollY * 0.2}px`;
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // set once
-
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Intentionally no-op.
   }, []);
 }

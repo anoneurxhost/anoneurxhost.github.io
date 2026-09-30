@@ -73,7 +73,7 @@ export function resolveProject(
       title: "System Performance Metrics",
       description: `Execution benchmark metrics for ${basic.name}:`,
       metrics: [
-        { name: `${basic.name} Runtime`, value: "Optimal", score: 95, color: "bg-fuchsia-500" },
+        { name: `${basic.name} Runtime`, value: "Optimal", score: 95, color: "bg-teal-500" },
         { name: "Legacy Baseline", value: "Standard", score: 60, color: "bg-slate-500" },
       ],
     },

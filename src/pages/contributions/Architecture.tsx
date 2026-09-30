@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Layers, Server, Monitor, Database, Shield, Globe, Copy, Check } from "lucide-react";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const CodeBlock = ({ code }: { code: string }) => {
   const [copied, setCopied] = useState(false);
@@ -24,7 +24,7 @@ const CodeBlock = ({ code }: { code: string }) => {
 
 const layers = [
   { name: "Presentation Layer", icon: Monitor, color: "text-blue-400", items: ["React Pages (Lazy Loaded)", "Reusable UI Components (shadcn/ui)", "Framer Motion Animations", "Responsive Tailwind CSS Layouts"] },
-  { name: "State & Context Layer", icon: Globe, color: "text-purple-400", items: ["AuthContext — Authentication state", "UserContext — User profile data", "NotificationContext — Real-time alerts", "NavigationContext — Route management"] },
+  { name: "State & Context Layer", icon: Globe, color: "text-blue-400", items: ["AuthContext — Authentication state", "UserContext — User profile data", "NotificationContext — Real-time alerts", "NavigationContext — Route management"] },
   { name: "Service Layer", icon: Server, color: "text-green-400", items: ["API Service (Axios/Fetch)", "Auth API — Login, Register, Token Refresh", "Role API — RBAC Management", "Certificate Service — PDF Generation"] },
   { name: "Backend Layer", icon: Layers, color: "text-amber-400", items: ["Express.js REST API", "Route → Middleware → Controller Pattern", "JWT Authentication + RBAC", "Rate Limiting & Input Validation"] },
   { name: "Data Layer", icon: Database, color: "text-cyan-400", items: ["MongoDB with Mongoose ODM", "User, Project, Application Models", "Role & Permission Models", "File & Content Models"] },

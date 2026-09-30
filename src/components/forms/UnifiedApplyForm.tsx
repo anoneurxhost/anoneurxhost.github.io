@@ -576,7 +576,7 @@ export const UnifiedApplyForm: React.FC<UnifiedApplyFormProps> = ({
 
   return (
     <div className="w-full max-w-4xl mx-auto p-6 bg-black/40 backdrop-blur-xl border border-white/10 rounded-lg shadow-2xl">
-      <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-300 bg-clip-text text-transparent">{config.title}</h2>
+      <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-blue-300 bg-clip-text text-transparent">{config.title}</h2>
       {targetTitle && (
         <p className="text-gray-300 mb-6">
           Applying for: <span className="font-semibold text-white">{targetTitle}</span>

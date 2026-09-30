@@ -77,7 +77,7 @@ const LabResearch = () => {
                 <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
                   paper.category === "Published" ? "bg-emerald-500/10 text-emerald-400" :
                   paper.category === "Ongoing" ? "bg-blue-500/10 text-blue-400" :
-                  paper.category === "Preprint" ? "bg-purple-500/10 text-purple-400" :
+                  paper.category === "Preprint" ? "bg-blue-500/10 text-blue-400" :
                   "bg-gray-500/10 text-gray-400"
                 }`}>
                   {paper.category}

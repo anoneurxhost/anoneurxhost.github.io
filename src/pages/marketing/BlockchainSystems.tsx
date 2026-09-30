@@ -15,10 +15,10 @@ const services = [
 ];
 
 const projects = [
-  { title: "ChainLend Protocol", desc: "$200M+ TVL across 12 lending markets.", tag: "DeFi", img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop" },
+  { title: "ChainLend Protocol", desc: "Lending market design. No live TVL; not deployed to mainnet.", tag: "DeFi", img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop" },
   { title: "ArtChain NFT", desc: "Royalty-aware marketplace with on-chain provenance.", tag: "NFT", img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=400&fit=crop" },
-  { title: "TraceMain", desc: "Pharma supply-chain blockchain across 4 continents.", tag: "Supply", img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop" },
-  { title: "VoteSecure", desc: "Provably-fair governance for global DAOs.", tag: "Governance", img: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop" },
+  { title: "TraceMain", desc: "Pharma supply-chain tracking. No production rollout.", tag: "Supply", img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop" },
+  { title: "VoteSecure", desc: "Provably-fair governance design for DAOs.", tag: "Governance", img: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop" },
 ];
 
 const BlockchainSystems = () => (
@@ -28,7 +28,7 @@ const BlockchainSystems = () => (
 
       <section className="relative px-4 pt-20 pb-12">
         <div className="container mx-auto max-w-7xl grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
             <Badge className="bg-amber-500/10 text-amber-300 border-amber-500/30 text-[10px] mb-3">
               <Sparkles className="w-3 h-3 mr-1.5" /> Blockchain Systems
             </Badge>
@@ -75,7 +75,11 @@ const BlockchainSystems = () => (
       <section className="px-4 py-12">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-8">
-            <h2 className="text-xl md:text-2xl font-bold text-white mb-2">Featured Blockchain Projects</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-white mb-2">Example project areas</h2>
+            <p className="text-sm text-gray-400 max-w-2xl mx-auto">
+              These describe work we can do, not deployments we have shipped. None of them is audited or
+              holds a production value.
+            </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {projects.map((p, i) => (

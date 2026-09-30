@@ -2,7 +2,7 @@ import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 
-export const ACCENT = "#8B7CF6";
+export const ACCENT = "#38BDF8";
 export const ACCENT_BLUE = "#4F7CFF";
 
 export const cx = (...parts: (string | false | undefined | null)[]) =>
@@ -21,10 +21,10 @@ export function Reveal({
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: reduce ? 0 : 26 }}
+      initial={{ opacity: 0, y: reduce ? 0 : 8 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-70px" }}
-      transition={{ duration: 0.7, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
+      transition={{ duration: 0.3, delay, ease: "easeOut" }}
     >
       {children}
     </motion.div>
@@ -33,7 +33,7 @@ export function Reveal({
 
 export function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="font-mono text-[11px] font-medium uppercase tracking-[0.32em] text-[#8B7CF6]">
+    <p className="font-mono text-[11px] font-medium uppercase tracking-[0.32em] text-[#38BDF8]">
       {children}
     </p>
   );
@@ -57,7 +57,7 @@ export function SectionHeader({
         {title}
       </h2>
       {subtitle ? (
-        <p className="mt-4 text-base leading-relaxed text-[#8E8EA8] sm:text-lg">
+        <p className="mt-4 text-base leading-relaxed text-[#8E96A8] sm:text-lg">
           {subtitle}
         </p>
       ) : null}
@@ -99,11 +99,11 @@ export function Chip({
   tone?: "default" | "accent" | "blue" | "muted";
 }) {
   const tones: Record<string, string> = {
-    default: "border-[#2A2A40] bg-[#12121E] text-[#B9B9CF]",
+    default: "border-[#2A3243] bg-[#121620] text-[#B9C0CF]",
     accent:
-      "border-[#8B7CF6]/40 bg-[#8B7CF6]/10 text-[#A79BFF]",
-    blue: "border-[#4F7CFF]/40 bg-[#4F7CFF]/10 text-[#8FB0FF]",
-    muted: "border-[#1E1E30] bg-[#0D0D18] text-[#77778F]",
+      "border-[#38BDF8]/40 bg-[#38BDF8]/10 text-[#7DD3FC]",
+    blue: "border-[#4F7CFF]/40 bg-[#4F7CFF]/10 text-[#7DD3FC]",
+    muted: "border-[#1E2430] bg-[#0D1117] text-[#777F8F]",
   };
   return (
     <span
@@ -127,7 +127,7 @@ export function GradientText({
   return (
     <span
       className={cx(
-        "bg-gradient-to-r from-[#8B7CF6] via-[#7A8CFF] to-[#4F7CFF] bg-clip-text text-transparent",
+        "bg-gradient-to-r from-[#38BDF8] via-[#38BDF8] to-[#4F7CFF] bg-clip-text text-transparent",
         className
       )}
     >

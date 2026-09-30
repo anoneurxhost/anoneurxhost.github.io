@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Shield, Lock, AlertTriangle, Clock, Mail, Award, CheckCircle, Eye } from "lucide-react";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const policies = [
   { title: "Reporting Vulnerabilities", icon: AlertTriangle, color: "text-red-400", content: "Do NOT open public issues for security vulnerabilities. Email security@anoneurx.com with a detailed description including steps to reproduce, affected components, and potential impact." },

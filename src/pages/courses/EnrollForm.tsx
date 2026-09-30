@@ -142,9 +142,9 @@ const EnrollForm = () => {
 
                 {/* Section 2: Education */}
                 <Card className="bg-white/[0.03] backdrop-blur-2xl border-white/[0.08] overflow-hidden">
-                  <div className="h-1 bg-gradient-to-r from-purple-500 to-pink-500" />
+                  <div className="h-1 bg-gradient-to-r from-blue-500 to-rose-500" />
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-lg text-white flex items-center gap-2"><GraduationCap className="w-4 h-4 text-purple-400" /> Education & Background</CardTitle>
+                    <CardTitle className="text-lg text-white flex items-center gap-2"><GraduationCap className="w-4 h-4 text-blue-400" /> Education & Background</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

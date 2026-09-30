@@ -21,7 +21,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ isOpen, onClose }) => {
     switch (role) {
       case 'ceo': return 'bg-yellow-600';
       case 'hr': return 'bg-green-600';
-      case 'hod': return 'bg-purple-600';
+      case 'hod': return 'bg-blue-600';
       case 'employee': return 'bg-blue-600';
       default: return 'bg-gray-600';
     }
@@ -74,7 +74,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ isOpen, onClose }) => {
           <Card className="bg-gray-800/50 border-gray-600">
             <CardHeader className="pb-3">
               <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
                   <User className="w-8 h-8 text-white" />
                 </div>
                 <div>

@@ -8,7 +8,9 @@ export default defineConfig(({ mode }) => ({
   base: process.env.VITE_BASE_URL || "/",
   server: {
     host: "::",
-    port: 8080,
+    // Agent owns 127.0.0.1:8080 and the gateway owns 127.0.0.1:8081;
+    // Vite must stay on its own port (5173) so it doesn't collide.
+    port: 5173,
     watch: {
       usePolling: true,
       ignored: ["**/node_modules/**", "**/.git/**", "**/dist/**"],

@@ -39,9 +39,9 @@ const CloudSecurity = () => {
 
           <div className="grid md:grid-cols-2 gap-6 mb-20 max-w-5xl mx-auto">
              {features.map((f, i) => (
-                <div key={i} className="p-8 rounded-lg bg-white/[0.02] border border-white/5 hover:border-violet-500/20 transition-all group">
-                   <div className="h-12 w-12 rounded-lg bg-violet-600/10 flex items-center justify-center mb-6">
-                      <f.icon className="h-6 w-6 text-violet-400" />
+                <div key={i} className="p-8 rounded-lg bg-white/[0.02] border border-white/5 hover:border-cyan-500/20 transition-all group">
+                   <div className="h-12 w-12 rounded-lg bg-cyan-600/10 flex items-center justify-center mb-6">
+                      <f.icon className="h-6 w-6 text-cyan-400" />
                    </div>
                    <h3 className="text-lg font-bold mb-3 tracking-tight">{f.title}</h3>
                    <p className="text-[11px] text-gray-500 leading-relaxed">{f.desc}</p>

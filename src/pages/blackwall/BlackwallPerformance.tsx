@@ -3,16 +3,16 @@ import { Zap, Activity, Battery, Gauge, Rocket, FastForward } from "lucide-react
 import BlackwallLayout from "./BlackwallLayout";
 
 const metrics = [
-  { icon: Rocket, label: "Boot Time", value: "3.2s", desc: "Cold boot to fully interactive desktop." },
-  { icon: Activity, label: "Memory Usage", value: "340MB", desc: "Base system idle memory footprint." },
-  { icon: FastForward, label: "App Launch", value: "<150ms", desc: "Average launch time for native applications." },
+  { icon: Rocket, label: "Boot Time", desc: "Cold boot timing varies by hardware." },
+  { icon: Activity, label: "Memory Usage", desc: "Base system idle memory depends on configuration." },
+  { icon: FastForward, label: "App Launch", desc: "Launch time depends on the application." },
 ];
 
 const BlackwallPerformance = () => (
   <BlackwallLayout>
     <section className="px-4 py-20 min-h-screen">
       <div className="container-responsive max-w-5xl">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
           <span className="text-[10px] uppercase tracking-[0.3em] text-amber-500">Benchmarks</span>
           <h1 className="mt-4 text-4xl sm:text-5xl font-bold">Unrivaled Velocity.</h1>
           <p className="mt-6 text-slate-400 max-w-xl mx-auto text-sm leading-relaxed">

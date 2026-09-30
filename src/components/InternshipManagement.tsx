@@ -117,7 +117,7 @@ const InternshipManagement = () => {
       case 'approved': return 'bg-green-600';
       case 'rejected': return 'bg-red-600';
       case 'active': return 'bg-blue-600';
-      case 'completed': return 'bg-purple-600';
+      case 'completed': return 'bg-blue-600';
       default: return 'bg-gray-600';
     }
   };
@@ -201,7 +201,7 @@ const InternshipManagement = () => {
         <Card className="bg-transparent backdrop-blur-md border-gray-700">
           <CardContent className="p-4">
             <div className="flex items-center space-x-2">
-              <Calendar className="w-5 h-5 text-purple-400" />
+              <Calendar className="w-5 h-5 text-blue-400" />
               <div>
                 <p className="text-white font-bold text-xl">{interns.filter(i => i.status === 'completed').length}</p>
                 <p className="text-gray-300 text-sm">Completed</p>

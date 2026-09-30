@@ -63,7 +63,7 @@ const StoreBadges: React.FC<Props> = ({ extra, className = "" }) => {
       {links.iso && (
         <a
           href={links.iso}
-          className={`${base} bg-gradient-to-r from-fuchsia-600 to-violet-600 text-white shadow-lg shadow-fuchsia-900/40`}
+          className={`${base} bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-lg shadow-teal-900/40`}
         >
           <Disc3 className="h-5 w-5" /> Download OS image
         </a>

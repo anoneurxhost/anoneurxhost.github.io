@@ -15,9 +15,9 @@ const services = [
 ];
 
 const projects = [
-  { title: "Warehouse Pilot", desc: "Autonomous picking robots at 50+ DCs.", tag: "Logistics", img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=600&h=400&fit=crop" },
-  { title: "AgriBot R3", desc: "Self-driving harvester for vineyards.", tag: "AgriTech", img: "https://images.unsplash.com/photo-1574169208507-84376144848b?w=600&h=400&fit=crop" },
-  { title: "MedAssist Arm", desc: "Surgical assist arm with sub-mm precision.", tag: "Medical", img: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&h=400&fit=crop" },
+  { title: "Warehouse Pilot", desc: "Autonomous picking research. Lab prototype, no warehouse deployment.", tag: "Logistics", img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=600&h=400&fit=crop" },
+  { title: "AgriBot R3", desc: "Self-driving harvester for vineyards. Prototype only.", tag: "AgriTech", img: "https://images.unsplash.com/photo-1574169208507-84376144848b?w=600&h=400&fit=crop" },
+  { title: "MedAssist Arm", desc: "Surgical assist research. Not a medical device and not for clinical use.", tag: "Medical", img: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&h=400&fit=crop" },
   { title: "InspectorDrone", desc: "Aerial inspection for energy infrastructure.", tag: "Energy", img: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600&h=400&fit=crop" },
 ];
 
@@ -28,7 +28,7 @@ const RoboticsSystems = () => (
 
       <section className="relative px-4 pt-20 pb-12">
         <div className="container mx-auto max-w-7xl grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
             <Badge className="bg-orange-500/10 text-orange-300 border-orange-500/30 text-[10px] mb-3">
               <Sparkles className="w-3 h-3 mr-1.5" /> Robotics Systems
             </Badge>
@@ -75,7 +75,11 @@ const RoboticsSystems = () => (
       <section className="px-4 py-12">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-8">
-            <h2 className="text-xl md:text-2xl font-bold text-white mb-2">Featured Robotics Projects</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-white mb-2">Example project areas</h2>
+            <p className="text-sm text-gray-400 max-w-2xl mx-auto">
+              These describe work we can do, not machines we have shipped. None is a certified medical
+              device and none runs in a customer facility.
+            </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {projects.map((p, i) => (

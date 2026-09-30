@@ -53,7 +53,7 @@ const ContentSidebar: React.FC<Props> = ({ items, title = "On this page", classN
                   }`}
                 >
                   {isActive && (
-                    <span className="absolute -left-4 top-1/2 h-5 w-[2px] -translate-y-1/2 rounded-full bg-fuchsia-500 shadow-[0_0_12px_2px] shadow-fuchsia-500/50" />
+                    <span className="absolute -left-4 top-1/2 h-5 w-[2px] -translate-y-1/2 rounded-full bg-teal-500 shadow-[0_0_12px_2px] shadow-teal-500/50" />
                   )}
                   {item.label}
                 </a>

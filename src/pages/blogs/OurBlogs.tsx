@@ -8,7 +8,7 @@ import { Calendar, Clock, Search, User, BookOpen, ArrowRight, Sparkles } from "l
 import blogData from "@/data/blogData.json";
 import { motion } from "framer-motion";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const OurBlogs = () => {
   const [searchTerm, setSearchTerm] = useState("");

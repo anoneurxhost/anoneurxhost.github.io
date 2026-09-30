@@ -57,7 +57,7 @@ const PageHero = ({ eyebrow, title, intro, icon: Icon, children, align = "left" 
         <motion.h1
           initial={reduce ? { opacity: 1 } : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.35, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className={`font-semibold tracking-tight ${
             dark ? "text-white" : "text-neutral-900"
           } text-4xl md:text-5xl lg:text-6xl leading-[1.05] max-w-3xl`}
@@ -67,7 +67,7 @@ const PageHero = ({ eyebrow, title, intro, icon: Icon, children, align = "left" 
         <motion.p
           initial={reduce ? { opacity: 1 } : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.35, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className={`mt-6 max-w-2xl text-lg md:text-xl leading-relaxed ${
             dark ? "text-white/75" : "text-neutral-600"
           }`}

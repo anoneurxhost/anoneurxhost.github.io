@@ -51,7 +51,7 @@ export const ACCOUNT_TYPES: Record<PayAccountType, PayAccountConfig> = {
     name: "Individual",
     description: "For everyday personal money management",
     icon: User,
-    accent: "from-blue-500 to-indigo-500",
+    accent: "from-blue-500 to-sky-500",
     nav: [
       { label: "Overview", key: "overview" },
       { label: "Cards", key: "cards" },
@@ -128,7 +128,7 @@ export const ACCOUNT_TYPES: Record<PayAccountType, PayAccountConfig> = {
     name: "Corporate",
     description: "For enterprises & global treasury teams",
     icon: Factory,
-    accent: "from-violet-500 to-purple-500",
+    accent: "from-cyan-500 to-blue-500",
     nav: [
       { label: "Overview", key: "overview" },
       { label: "Treasury", key: "treasury" },

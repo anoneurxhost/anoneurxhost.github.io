@@ -5,7 +5,7 @@ const LegalPage = ({ title, intro, sections }: { title: string; intro: string; s
   <NexoraLayout>
     <section className="px-4 py-20">
       <div className="container-responsive max-w-3xl">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <span className="text-[10px] uppercase tracking-[0.3em] text-blue-400">Legal</span>
           <h1 className="mt-3 text-4xl sm:text-5xl font-bold">{title}</h1>
           <p className="mt-4 text-sm text-slate-500">Last updated: April 22, 2026</p>

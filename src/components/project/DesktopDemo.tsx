@@ -23,7 +23,7 @@ const DesktopDemo: React.FC<Props> = ({ demo }) => {
           <span className="flex items-center gap-2 truncate font-mono text-[11px] text-slate-400">
             <Monitor className="h-3.5 w-3.5" /> {demo.windowTitle}
           </span>
-          <span className="ml-auto hidden items-center gap-1.5 rounded-full border border-fuchsia-400/30 bg-fuchsia-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-fuchsia-300 sm:flex">
+          <span className="ml-auto hidden items-center gap-1.5 rounded-full border border-teal-400/30 bg-teal-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-teal-300 sm:flex">
             <Play className="h-3 w-3" /> Live demo
           </span>
         </div>
@@ -55,7 +55,7 @@ const DesktopDemo: React.FC<Props> = ({ demo }) => {
               onClick={() => setIdx(i)}
               className={`whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
                 i === idx
-                  ? "bg-fuchsia-500/20 text-fuchsia-200 ring-1 ring-fuchsia-400/40"
+                  ? "bg-teal-500/20 text-teal-200 ring-1 ring-teal-400/40"
                   : "text-slate-400 hover:bg-white/5 hover:text-slate-200"
               }`}
             >
@@ -70,7 +70,7 @@ const DesktopDemo: React.FC<Props> = ({ demo }) => {
         <ul className="grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
           {demo.requirements.map((r) => (
             <li key={r} className="flex gap-2">
-              <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-fuchsia-400" />
+              <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-teal-400" />
               {r}
             </li>
           ))}

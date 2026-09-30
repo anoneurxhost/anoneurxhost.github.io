@@ -44,7 +44,7 @@ const WebDevelopment = () => {
               <p className="text-gray-300">Full-featured online stores with payment processing and inventory management</p>
             </Card>
             <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6 hover:bg-white/10 transition-colors">
-              <Layout className="w-12 h-12 text-purple-400 mb-4" />
+              <Layout className="w-12 h-12 text-blue-400 mb-4" />
               <h3 className="text-xl font-semibold mb-3 text-white">SaaS Platforms</h3>
               <p className="text-gray-300">Scalable software-as-a-service solutions with subscription management</p>
             </Card>
@@ -120,7 +120,7 @@ const WebDevelopment = () => {
               </div>
             </Card>
             <Card className="bg-white/5 backdrop-blur-sm border-white/10 overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-purple-600 to-pink-600"></div>
+              <div className="h-48 bg-gradient-to-br from-blue-600 to-rose-600"></div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-3 text-white">E-learning Platform</h3>
                 <p className="text-gray-300 mb-4">Interactive educational platform with video streaming and assessments</p>
@@ -138,7 +138,7 @@ const WebDevelopment = () => {
               <div className="h-48 bg-gradient-to-br from-blue-600 to-cyan-600"></div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-3 text-white">Healthcare Portal</h3>
-                <p className="text-gray-300 mb-4">HIPAA-compliant patient management system with telemedicine features</p>
+                <p className="text-gray-300 mb-4">Patient management system with telemedicine features, designed for integration with EMR/EHR platforms. No regulatory clearance is claimed.</p>
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-green-400 text-sm">• 99.9% uptime</span>
                   <div className="flex items-center text-yellow-400">
@@ -180,7 +180,7 @@ const WebDevelopment = () => {
             </div>
             <div className="space-y-8">
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Code className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -264,7 +264,7 @@ const WebDevelopment = () => {
                 Our new e-commerce platform has tripled our online sales."
               </p>
               <div className="flex items-center">
-                <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center mr-3">
+                <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mr-3">
                   <Users className="w-5 h-5 text-white" />
                 </div>
                 <div>

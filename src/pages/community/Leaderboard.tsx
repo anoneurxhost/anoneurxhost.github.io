@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Trophy, Flame, ArrowRight, GraduationCap, ChevronLeft, ChevronRight, Medal } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const leaderboard = [
   { rank: 1, name: "Sarah Chen", points: 4850, contributions: 342, streak: 45, level: "Platinum", prs: 198, issues: 87, reviews: 57 },

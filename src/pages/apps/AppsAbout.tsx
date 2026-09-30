@@ -32,7 +32,7 @@ const AppsAbout = () => {
       <div className="relative pt-20 pb-32 overflow-hidden">
         <div className="container-responsive relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto mb-20"
@@ -53,12 +53,12 @@ const AppsAbout = () => {
             {values.map((v, i) => (
               <motion.div
                 key={v.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="p-6 rounded-lg border border-white/10 bg-white/[0.03] backdrop-blur-xl hover:border-white/20 transition-all group"
               >
-                <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mb-5 shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform">
+                <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-blue-500 to-sky-600 flex items-center justify-center mb-5 shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform">
                   <v.icon className="h-5 w-5 text-white" />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">{v.title}</h3>
@@ -70,7 +70,7 @@ const AppsAbout = () => {
           {/* Vision Section */}
           <div className="relative rounded-lg overflow-hidden border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-2xl p-8 lg:p-16">
             <div className="absolute top-0 right-0 -mr-20 -mt-20 h-96 w-96 rounded-full bg-blue-500/10 blur-[120px]" />
-            <div className="absolute bottom-0 left-0 -ml-20 -mb-20 h-96 w-96 rounded-full bg-indigo-500/10 blur-[120px]" />
+            <div className="absolute bottom-0 left-0 -ml-20 -mb-20 h-96 w-96 rounded-full bg-sky-500/10 blur-[120px]" />
             
             <div className="max-w-3xl relative z-10">
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">A Vision for the Digital Frontier</h2>
@@ -89,7 +89,7 @@ const AppsAbout = () => {
               <div className="mt-12 flex flex-wrap gap-4">
                 <Link
                   to="/apps/browse"
-                  className="px-8 h-14 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold flex items-center justify-center shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 transition-all hover:-translate-y-1"
+                  className="px-8 h-14 rounded-2xl bg-gradient-to-r from-blue-600 to-sky-600 text-white font-semibold flex items-center justify-center shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 transition-all hover:-translate-y-1"
                 >
                   Explore apps
                 </Link>

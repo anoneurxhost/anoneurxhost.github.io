@@ -15,8 +15,8 @@ const PageLoader = () => {
                 className="text-sm font-bold text-white tracking-[0.25em]"
                 style={{
                   fontFamily: "'Anurati', sans-serif",
-                  animation: "letterFade 2.5s ease-in-out infinite",
-                  animationDelay: `${i * 0.15}s`,
+                  animation: "letterFade 0.5s ease-out both",
+                  animationDelay: `${i * 0.05}s`,
                 }}
               >
                 {letter}
@@ -29,8 +29,8 @@ const PageLoader = () => {
 
       <style>{`
         @keyframes letterFade {
-          0%, 100% { opacity: 0.2; transform: scale(0.95); filter: blur(1px); }
-          50% { opacity: 1; transform: scale(1.05); filter: blur(0); }
+          from { opacity: 0.2; }
+          to { opacity: 1; }
         }
       `}</style>
     </div>

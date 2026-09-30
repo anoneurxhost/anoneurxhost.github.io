@@ -37,7 +37,7 @@ const Section: React.FC<{
     className="scroll-mt-28 rounded-[5px] border border-white/10 bg-black/10 p-6 backdrop-blur-xl md:p-8"
   >
     <div className="mb-5 flex items-center gap-3">
-      <span className="font-mono text-xs tracking-[0.2em] text-fuchsia-400">{index}</span>
+      <span className="font-mono text-xs tracking-[0.2em] text-teal-400">{index}</span>
       <h2 className="text-xl font-semibold text-white md:text-2xl">{title}</h2>
     </div>
     {lead && <p className="mb-6 max-w-3xl font-light leading-relaxed text-slate-300">{lead}</p>}
@@ -56,7 +56,7 @@ export const OSProjectDetail: React.FC = () => {
         <div className="rounded-[5px] border border-white/10 bg-black/10 p-10 backdrop-blur-xl">
           <h1 className="mb-3 text-3xl font-bold">Project not found</h1>
           <p className="mb-6 text-slate-400">We could not locate that project.</p>
-          <Link to="/opensource/projects" className="inline-flex items-center gap-2 rounded-xl bg-fuchsia-600 px-5 py-2.5 text-sm font-semibold hover:bg-fuchsia-500">
+          <Link to="/opensource/projects" className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-semibold hover:bg-teal-500">
             <ArrowLeft className="h-4 w-4" /> Back to projects
           </Link>
         </div>
@@ -97,7 +97,7 @@ export const OSProjectDetail: React.FC = () => {
         transition={{ duration: 0.6 }}
         className="relative mb-12 overflow-hidden rounded-[5px] border border-white/10 bg-black/10 p-6 backdrop-blur-xl md:p-10"
       >
-        <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-fuchsia-600/15 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-teal-600/15 blur-[120px]" />
         <div className="pointer-events-none absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-cyan-500/10 blur-[120px]" />
 
         <div className="relative z-10 flex flex-col gap-6 md:flex-row md:items-start">
@@ -105,7 +105,7 @@ export const OSProjectDetail: React.FC = () => {
 
           <div className="min-w-0 flex-1">
             <div className="mb-4 flex flex-wrap items-center gap-2 text-xs">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-fuchsia-400/30 bg-fuchsia-500/10 px-3 py-1 font-mono uppercase tracking-wider text-fuchsia-300">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-teal-400/30 bg-teal-500/10 px-3 py-1 font-mono uppercase tracking-wider text-teal-300">
                 <Sparkles className="h-3.5 w-3.5" /> {extra.platformLabel}
               </span>
               <span className="rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 font-semibold text-cyan-300">{project.language}</span>
@@ -161,7 +161,7 @@ export const OSProjectDetail: React.FC = () => {
             <div id="highlights" className="grid scroll-mt-28 grid-cols-2 gap-4 sm:grid-cols-4">
               {project.stats.map((st) => (
                 <div key={st.label} className="rounded-[5px] border border-white/10 bg-black/10 p-4 backdrop-blur-xl">
-                  <p className="text-[11px] font-mono uppercase tracking-wider text-fuchsia-300">{st.label}</p>
+                  <p className="text-[11px] font-mono uppercase tracking-wider text-teal-300">{st.label}</p>
                   <p className="mt-1 text-xl font-bold text-white">{st.value}</p>
                   <p className="mt-1 text-[11px] text-slate-400">{st.subtext}</p>
                 </div>
@@ -199,7 +199,7 @@ export const OSProjectDetail: React.FC = () => {
                   {project.downloads.map((d) => (
                     <tr key={d.name} className="border-t border-white/8 text-slate-300 hover:bg-white/[0.03]">
                       <td className="px-4 py-3 font-mono text-xs text-white">
-                        <a href={d.url} className="hover:text-fuchsia-300">{d.name}</a>
+                        <a href={d.url} className="hover:text-teal-300">{d.name}</a>
                       </td>
                       <td className="px-4 py-3">{d.target}</td>
                       <td className="px-4 py-3 font-mono text-xs">{d.version}</td>
@@ -220,8 +220,8 @@ export const OSProjectDetail: React.FC = () => {
           <Section id="features" index={extra.desktopDemo ? "03" : "03"} title="Capabilities">
             <div className="grid gap-4 sm:grid-cols-2">
               {extra.features.map((f) => (
-                <div key={f.title} className="rounded-[5px] border border-white/10 bg-black/10 p-5 backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:border-fuchsia-400/30">
-                  {f.tag && <span className="mb-2 inline-block rounded-md bg-fuchsia-500/10 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-fuchsia-300">{f.tag}</span>}
+                <div key={f.title} className="rounded-[5px] border border-white/10 bg-black/10 p-5 backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:border-teal-400/30">
+                  {f.tag && <span className="mb-2 inline-block rounded-md bg-teal-500/10 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-teal-300">{f.tag}</span>}
                   <h3 className="text-base font-semibold text-white">{f.title}</h3>
                   <p className="mt-1 text-sm leading-relaxed text-slate-400">{f.desc}</p>
                 </div>
@@ -268,10 +268,10 @@ export const OSProjectDetail: React.FC = () => {
                 <Link
                   key={l.to}
                   to={l.to}
-                  className="group rounded-[5px] border border-white/10 bg-black/10 p-4 backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:border-fuchsia-400/40"
+                  className="group rounded-[5px] border border-white/10 bg-black/10 p-4 backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:border-teal-400/40"
                 >
                   <span className="flex items-center justify-between text-sm font-semibold text-white">
-                    {l.label} <ArrowRight className="h-4 w-4 text-slate-500 transition-transform group-hover:translate-x-1 group-hover:text-fuchsia-300" />
+                    {l.label} <ArrowRight className="h-4 w-4 text-slate-500 transition-transform group-hover:translate-x-1 group-hover:text-teal-300" />
                   </span>
                   <span className="mt-1 block text-xs text-slate-400">{l.desc}</span>
                 </Link>

@@ -11,7 +11,7 @@ import {
   MessageSquare, Shield, Lightbulb, Rocket
 } from "lucide-react";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const steps = [
   {
@@ -24,7 +24,7 @@ const steps = [
     step: "02", title: "Create a Branch", icon: GitBranch,
     description: "Create a feature branch from the main branch. Use descriptive, prefixed names for easy identification.",
     code: `git checkout -b feature/your-feature-name\n# or\ngit checkout -b fix/bug-description`,
-    color: "from-purple-500 to-pink-500",
+    color: "from-blue-500 to-rose-500",
   },
   {
     step: "03", title: "Make Changes", icon: Code,
@@ -43,7 +43,7 @@ const steps = [
 const codeStandards = [
   { title: "TypeScript", description: "Use strict types. Avoid `any`. Define interfaces for all data structures.", icon: FileCode, color: "text-blue-400" },
   { title: "Components", description: "Small, focused components. Use composition. Max 200 lines per file.", icon: Code, color: "text-green-400" },
-  { title: "Naming", description: "PascalCase for components, camelCase for functions, UPPER_CASE for constants.", icon: Terminal, color: "text-purple-400" },
+  { title: "Naming", description: "PascalCase for components, camelCase for functions, UPPER_CASE for constants.", icon: Terminal, color: "text-blue-400" },
   { title: "Testing", description: "Write unit tests for utilities and integration tests for features.", icon: CheckCircle, color: "text-amber-400" },
   { title: "Accessibility", description: "Use semantic HTML, ARIA labels, keyboard navigation support.", icon: Eye, color: "text-cyan-400" },
   { title: "Performance", description: "Lazy load routes. Memoize expensive computations. Optimize re-renders.", icon: Zap, color: "text-rose-400" },
@@ -59,7 +59,7 @@ const issueLabels = [
   { label: "good first issue", color: "bg-green-500/20 text-green-300 border-green-500/30", description: "Great for newcomers", icon: Lightbulb },
   { label: "bug", color: "bg-red-500/20 text-red-300 border-red-500/30", description: "Something isn't working", icon: Shield },
   { label: "enhancement", color: "bg-blue-500/20 text-blue-300 border-blue-500/30", description: "New feature or improvement", icon: Rocket },
-  { label: "documentation", color: "bg-purple-500/20 text-purple-300 border-purple-500/30", description: "Docs improvement", icon: BookOpen },
+  { label: "documentation", color: "bg-blue-500/20 text-blue-300 border-blue-500/30", description: "Docs improvement", icon: BookOpen },
   { label: "help wanted", color: "bg-amber-500/20 text-amber-300 border-amber-500/30", description: "Extra attention needed", icon: MessageSquare },
   { label: "security", color: "bg-rose-500/20 text-rose-300 border-rose-500/30", description: "Security related", icon: Shield },
 ];
@@ -84,7 +84,7 @@ const HowToContribute = () => (
       <section className="relative py-24 sm:py-32 px-4">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/3 left-1/4 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/3 left-1/4 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl" />
         </div>
         <div className="container mx-auto max-w-4xl relative z-10">
           <Link to="/contributions" className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-white/70 mb-8 transition-colors">
@@ -107,11 +107,11 @@ const HowToContribute = () => (
         <div className="container mx-auto max-w-4xl">
           <div className="relative">
             {/* Vertical connecting line */}
-            <div className="absolute left-[27px] top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/30 via-purple-500/30 to-amber-500/30 hidden md:block" />
+            <div className="absolute left-[27px] top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/30 via-blue-500/30 to-amber-500/30 hidden md:block" />
 
             <div className="space-y-8">
               {steps.map((step, i) => (
-                <motion.div key={step.step} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.12, duration: 0.4 }}>
+                <motion.div key={step.step} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.05, duration: 0.3 }}>
                   <Card className="bg-white/[0.03] backdrop-blur-2xl border-white/[0.08] overflow-hidden hover:bg-white/[0.05] transition-all duration-300">
                     <div className={`h-1 bg-gradient-to-r ${step.color}`} />
                     <CardContent className="p-6 md:p-8">

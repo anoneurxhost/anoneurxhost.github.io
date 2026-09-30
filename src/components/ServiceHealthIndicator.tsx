@@ -19,7 +19,7 @@ export const ServiceHealthIndicator: React.FC = () => {
 
   const domainIcons: Record<ServiceDomain, React.ReactNode> = {
     auth: <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />,
-    opensource: <Globe className="w-3.5 h-3.5 text-purple-400" />,
+    opensource: <Globe className="w-3.5 h-3.5 text-blue-400" />,
     core: <Server className="w-3.5 h-3.5 text-emerald-400" />,
     connect: <Cpu className="w-3.5 h-3.5 text-amber-400" />,
   };

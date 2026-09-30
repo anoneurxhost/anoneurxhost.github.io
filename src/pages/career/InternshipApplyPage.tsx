@@ -127,7 +127,7 @@ const InternshipApplyPage = () => {
                          href="https://instagram.com" 
                          target="_blank" 
                          rel="noopener noreferrer"
-                         className="group bg-gradient-to-r from-pink-500 to-purple-600 p-4 rounded-full hover:scale-110 transition-all duration-300"
+                         className="group bg-gradient-to-r from-rose-500 to-blue-600 p-4 rounded-full hover:scale-110 transition-all duration-300"
                        >
                          <Instagram className="w-6 h-6 text-white group-hover:animate-pulse" />
                        </a>
@@ -158,7 +158,7 @@ const InternshipApplyPage = () => {
                            placeholder="Enter your email address"
                            className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-gray-400"
                          />
-                         <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6">
+                         <Button className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white px-6">
                            <Send className="w-4 h-4 mr-2" />
                            Subscribe
                          </Button>

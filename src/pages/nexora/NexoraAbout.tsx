@@ -3,7 +3,7 @@ import { Compass, Heart, Globe, Users } from "lucide-react";
 import NexoraLayout from "./NexoraLayout";
 
 const values = [
-  { icon: Heart, title: "User First", desc: "We work for users — not advertisers, not data brokers, not investors.", color: "from-rose-500 to-pink-400" },
+  { icon: Heart, title: "User First", desc: "We work for users — not advertisers, not data brokers, not investors.", color: "from-rose-500 to-rose-400" },
   { icon: Globe, title: "Open Web", desc: "We believe the web should stay open, interoperable and free.", color: "from-blue-500 to-cyan-400" },
   { icon: Users, title: "Community Driven", desc: "Built in the open, shaped by feedback, owned by everyone.", color: "from-emerald-500 to-teal-400" },
 ];
@@ -12,7 +12,7 @@ const NexoraAbout = () => (
   <NexoraLayout>
     <section className="px-4 py-20">
       <div className="container-responsive max-w-4xl">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10 border border-blue-500/20 mb-4">
             <Compass className="h-5 w-5 text-blue-300" />
           </div>
@@ -32,7 +32,7 @@ const NexoraAbout = () => (
           </p>
           <p className="text-base text-slate-400 leading-relaxed">
             We're a small team backed by <span className="text-white font-semibold">Anoneurx</span>, a community of engineers
-            who care about the open web. Today, Nexora is used by hundreds of thousands of people across more than 70 countries.
+            who care about the open web.
           </p>
         </motion.div>
 
@@ -41,7 +41,7 @@ const NexoraAbout = () => (
           {values.map((v, i) => (
             <motion.div
               key={v.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}

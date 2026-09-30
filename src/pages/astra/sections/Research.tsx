@@ -62,7 +62,7 @@ const Research = () => (
         title={
           <>
             The open problems that{" "}
-            <span className="text-[#8B7CF6]">make ASTRA real</span>
+            <span className="text-[#38BDF8]">make ASTRA real</span>
           </>
         }
         subtitle="Each is a research module in the Anoneurx Lab. None are solved yet — they are active areas of honest investigation."
@@ -73,7 +73,7 @@ const Research = () => (
           <Reveal key={m.name} delay={i * 0.06}>
             <AstraCard className="h-full">
               <CardHeader>
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-[#A79BFF]">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-[#7DD3FC]">
                   <m.icon className="h-5 w-5" />
                 </span>
                 <CardTitle className="pt-5 text-base text-white">

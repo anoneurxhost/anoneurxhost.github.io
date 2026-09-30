@@ -3,7 +3,7 @@ import { isLiveBackend } from "./api";
 
 /** Shown when a section renders demo data instead of live agent data. */
 const DemoBanner = () => (
-  <div className="flex items-start gap-3 rounded-xl border border-amber-400/20 bg-amber-400/[0.06] px-4 py-3 text-xs text-amber-200/90">
+  <div className="flex items-start gap-3 rounded-xl border border-amber-500/30 bg-amber-500/[0.08] px-4 py-3 text-xs text-amber-700 dark:text-amber-300">
     <Info className="w-4 h-4 mt-0.5 shrink-0" />
     {isLiveBackend() ? (
       <p>
@@ -14,8 +14,8 @@ const DemoBanner = () => (
     ) : (
       <p>
         <span className="font-semibold">Demo data.</span> Set{" "}
-        <code className="font-mono text-amber-100">VITE_CONNECT_API_URL</code> to your deployed
-        Blacklink console backend (see <code className="font-mono text-amber-100">/server</code>) to
+        <code className="font-mono text-amber-700 dark:text-amber-200">VITE_CONNECT_API_URL</code> to your deployed
+        Blacklink console backend (see <code className="font-mono text-amber-700 dark:text-amber-200">/server</code>) to
         drive real servers, scans, SSH keys and webhooks.
       </p>
     )}

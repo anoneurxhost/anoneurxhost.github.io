@@ -54,7 +54,7 @@ const OSSponsorshipInquiry = () => {
           <p className="text-white/60 leading-relaxed mb-8">
             Thanks for supporting Anoneurx open source. Our sponsorship team will get back to you at the email provided within 2 business days.
           </p>
-          <Button asChild className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600">
+          <Button asChild className="bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-600 hover:to-cyan-600">
             <a href="mailto:opensource@anoneurx.com">opensource@anoneurx.com</a>
           </Button>
         </div>
@@ -70,7 +70,7 @@ const OSSponsorshipInquiry = () => {
         </span>
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
           Sponsor an{" "}
-          <span className="bg-gradient-to-r from-indigo-300 via-violet-300 to-amber-300 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-sky-300 via-cyan-300 to-amber-300 bg-clip-text text-transparent">
             Open Source Project
           </span>
         </h1>
@@ -84,7 +84,7 @@ const OSSponsorshipInquiry = () => {
           <Card className="bg-white/[0.03] border-white/[0.08] backdrop-blur-2xl rounded-3xl">
             <CardContent className="p-8 space-y-6">
               <h2 className="text-xl font-semibold text-white flex items-center">
-                <Handshake className="w-5 h-5 mr-2 text-indigo-400" />
+                <Handshake className="w-5 h-5 mr-2 text-sky-400" />
                 Sponsorship Application
               </h2>
 
@@ -153,7 +153,7 @@ const OSSponsorshipInquiry = () => {
                   placeholder="Describe your sponsorship goals, budget range, and what you'd like to support." />
               </div>
 
-              <Button type="submit" className="w-full bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600">
+              <Button type="submit" className="w-full bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-600 hover:to-cyan-600">
                 <Send className="w-4 h-4 mr-2" />
                 Submit Sponsorship Inquiry
               </Button>
@@ -197,7 +197,7 @@ const OSSponsorshipInquiry = () => {
               <div className="space-y-3">
                 {["Submit your sponsorship inquiry", "Initial review and assessment", "Sponsorship discussion and tier finalization", "Agreement and launch of benefits"].map((step, i) => (
                   <div key={i} className="flex items-center gap-3">
-                    <div className="w-8 h-8 shrink-0 rounded-full bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center text-white font-bold text-sm">
+                    <div className="w-8 h-8 shrink-0 rounded-full bg-gradient-to-br from-sky-500 to-cyan-500 flex items-center justify-center text-white font-bold text-sm">
                       {i + 1}
                     </div>
                     <span className="text-sm text-gray-300">{step}</span>

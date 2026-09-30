@@ -49,8 +49,8 @@ const Hackathon = () => {
       themes: ["DeFi", "NFTs", "Web3"],
       description: "Create the next generation of decentralized applications and blockchain solutions.",
       spotsLeft: 67,
-      gradient: "from-purple-500/20 to-pink-500/20",
-      accent: "text-purple-400"
+      gradient: "from-blue-500/20 to-rose-500/20",
+      accent: "text-blue-400"
     },
     {
       id: "quantum-challenge-2024",
@@ -80,22 +80,22 @@ const Hackathon = () => {
       <div className="min-h-screen">
         {/* Hero */}
         <section className="min-h-[80vh] flex items-center justify-center relative overflow-hidden px-4">
-          <div className="absolute top-20 left-20 w-80 h-80 bg-purple-500/10 rounded-full blur-[140px]" />
-          <div className="absolute bottom-20 right-20 w-72 h-72 bg-pink-500/10 rounded-full blur-[120px]" />
+          <div className="absolute top-20 left-20 w-80 h-80 bg-blue-500/10 rounded-full blur-[140px]" />
+          <div className="absolute bottom-20 right-20 w-72 h-72 bg-rose-500/10 rounded-full blur-[120px]" />
 
           <div className="container mx-auto max-w-6xl relative z-10">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-center mb-16"
             >
-              <Badge className="mb-6 bg-white/5 text-purple-300 border-white/10 px-5 py-2 backdrop-blur-xl">
+              <Badge className="mb-6 bg-white/5 text-blue-300 border-white/10 px-5 py-2 backdrop-blur-xl">
                 <Flame className="w-4 h-4 mr-2" />
                 Hackathon Hub
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight">
                 Code. Compete.
-                <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-blue-400 via-rose-400 to-orange-400 bg-clip-text text-transparent">
                   Create.
                 </span>
               </h1>
@@ -148,7 +148,7 @@ const Hackathon = () => {
               {upcomingEvents.map((event, i) => (
                 <motion.div
                   key={event.id}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 8 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}

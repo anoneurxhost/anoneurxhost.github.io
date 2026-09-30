@@ -94,9 +94,9 @@ const CourseComparison: React.FC<CourseComparisonProps> = ({ courses, selected, 
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 40 }}
+        exit={{ opacity: 0, y: 8 }}
         className="fixed bottom-0 left-0 right-0 z-50"
       >
         {/* Collapsed bar when 1 selected */}

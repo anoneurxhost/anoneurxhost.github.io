@@ -28,7 +28,7 @@ const BlackwallDownload = () => {
       <SocialOverlay isOpen={showSocialOverlay} onClose={() => setShowSocialOverlay(false)} />
       <section className="px-4 py-20">
         <div className="container-responsive max-w-6xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
             <span className="text-[10px] uppercase tracking-[0.3em] text-blue-400">Download</span>
             <h1 className="mt-3 text-4xl sm:text-5xl font-bold">Get Black Wall OS</h1>
             <p className="mt-4 text-sm text-slate-500 max-w-lg mx-auto">
@@ -38,7 +38,7 @@ const BlackwallDownload = () => {
 
           {/* Latest Stable Card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="relative overflow-hidden rounded-xl border border-blue-500/20 bg-gradient-to-br from-blue-600/10 to-transparent backdrop-blur-2xl p-8 md:p-10 mb-8"

@@ -49,15 +49,15 @@ const CloudDocs = () => {
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
               <Input 
                 placeholder="Search articles or APIs..." 
-                className="w-full h-12 pl-12 pr-10 rounded-lg bg-white/5 border-white/10 text-white placeholder:text-gray-600 focus:border-violet-500/50 text-base transition-all"
+                className="w-full h-12 pl-12 pr-10 rounded-lg bg-white/5 border-white/10 text-white placeholder:text-gray-600 focus:border-cyan-500/50 text-base transition-all"
               />
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
                {categories.map((cat, i) => (
                  <div key={i} className="p-6 rounded-lg bg-white/[0.02] border border-white/5 hover:border-white/10 transition-all flex flex-col items-center text-center">
-                    <div className="h-12 w-12 rounded-lg bg-violet-600/10 flex items-center justify-center mb-6">
-                       <cat.icon className="h-6 w-6 text-violet-400" />
+                    <div className="h-12 w-12 rounded-lg bg-cyan-600/10 flex items-center justify-center mb-6">
+                       <cat.icon className="h-6 w-6 text-cyan-400" />
                     </div>
                     <h2 className="text-lg font-bold mb-5 tracking-tight">{cat.title}</h2>
                     <ul className="space-y-3 w-full">
@@ -85,7 +85,7 @@ const CloudDocs = () => {
                   ].map((art, i) => (
                     <div key={i} className="group p-5 rounded-lg bg-white/[0.01] border border-white/5 hover:bg-white/[0.03] transition-all flex items-center justify-between cursor-pointer">
                        <div className="flex items-center gap-4">
-                          <FileText className="h-4 w-4 text-gray-600 group-hover:text-violet-400 transition-colors" />
+                          <FileText className="h-4 w-4 text-gray-600 group-hover:text-cyan-400 transition-colors" />
                           <span className="text-xs font-medium text-gray-400 group-hover:text-white transition-colors">{art}</span>
                        </div>
                     </div>

@@ -73,7 +73,7 @@ const InternshipApplication = () => {
       description: "Contribute to satellite technology development and space mission planning projects.",
       requirements: ["Aerospace/Physics background", "MATLAB proficiency", "Space systems knowledge"],
       icon: Rocket,
-      color: "bg-purple-500/20 text-purple-400"
+      color: "bg-blue-500/20 text-blue-400"
     },
     {
       id: "web",

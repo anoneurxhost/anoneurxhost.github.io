@@ -47,7 +47,7 @@ const BlogsAll = () => {
               </Button>
             </Link>
 
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
               <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
                 All Articles
               </h1>
@@ -108,7 +108,7 @@ const BlogsAll = () => {
                 {sorted.map((blog, i) => (
                   <motion.div
                     key={blog.id}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 8 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: (i % 3) * 0.08 }}

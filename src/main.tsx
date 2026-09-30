@@ -1,6 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
+import { MotionConfig } from "framer-motion";
 import App from "./App.tsx";
 import { ErrorBoundary } from "./pages/other/NotFound.tsx";
 import "./index.css";
@@ -22,9 +23,11 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <HelmetProvider>
-      <ErrorBoundary>
-        <App />
-      </ErrorBoundary>
+      <MotionConfig reducedMotion="user">
+        <ErrorBoundary>
+          <App />
+        </ErrorBoundary>
+      </MotionConfig>
     </HelmetProvider>
   </React.StrictMode>
 );

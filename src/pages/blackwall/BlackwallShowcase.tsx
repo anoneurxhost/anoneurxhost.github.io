@@ -36,16 +36,16 @@ const BlackwallShowcase = () => {
   return (
     <div className="flex flex-col min-h-screen relative">
       <div className="pointer-events-none absolute top-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-[160px]" />
-      <div className="pointer-events-none absolute bottom-40 left-10 w-96 h-96 bg-indigo-500/10 rounded-full blur-[160px]" />
+      <div className="pointer-events-none absolute bottom-40 left-10 w-96 h-96 bg-sky-500/10 rounded-full blur-[160px]" />
 
       <section className="px-4 pt-32 pb-12 relative">
         <div className="container-responsive max-w-6xl text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
             <Badge className="bg-blue-500/10 text-blue-300 border-blue-500/20 text-[10px] uppercase tracking-[0.3em] mb-5">
               Showcase
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight font-brand">
-              See <span className="italic bg-gradient-to-r from-blue-400 to-indigo-300 bg-clip-text text-transparent">Black Wall</span> in motion
+              See <span className="italic bg-gradient-to-r from-blue-400 to-sky-300 bg-clip-text text-transparent">Black Wall</span> in motion
             </h1>
             <p className="mt-5 text-sm md:text-base text-gray-400 max-w-2xl mx-auto leading-relaxed">
               A guided tour of the Black Wall OS interface — from the lock screen to the terminal. Click any preview to expand.
@@ -77,7 +77,7 @@ const BlackwallShowcase = () => {
               <motion.button
                 key={s.title}
                 onClick={() => setActive(shots.indexOf(s))}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
                 className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-2xl overflow-hidden hover:border-blue-500/40 transition-all text-left"

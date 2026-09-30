@@ -11,17 +11,17 @@ import { Card, CardContent } from "@/components/ui/card";
 import bankingHero from "@/assets/marketing/banking-hero.jpg";
 
 const features = [
-  { icon: CreditCard, title: "Virtual Cards", desc: "Spin up unlimited single-use or merchant-locked cards instantly." },
-  { icon: Zap, title: "Instant Transfers", desc: "Move money in seconds, 24/7, globally — no hidden fees." },
-  { icon: ShieldCheck, title: "Bank-Grade Security", desc: "Biometrics, hardware key support, and 256-bit encryption." },
-  { icon: Sparkles, title: "AI Insights", desc: "Personalized spending intelligence and savings predictions." },
+  { icon: CreditCard, title: "Virtual Cards", desc: "Single-use or merchant-locked cards, issued per merchant." },
+  { icon: Zap, title: "Instant Transfers", desc: "Transfer handling design, including cross-border cases." },
+  { icon: ShieldCheck, title: "Security Design", desc: "Biometric unlock and hardware key support are designed in. No security certification is claimed here." },
+  { icon: Sparkles, title: "AI Insights", desc: "Spending categorisation and savings suggestions." },
 ];
 
 const stats = [
-  { value: "5M+", label: "Customers", icon: Globe },
-  { value: "$8B+", label: "Processed", icon: TrendingUp },
-  { value: "180+", label: "Countries", icon: Globe },
-  { value: "4.9★", label: "App Rating", icon: Sparkles },
+  { value: "Pre-launch", label: "Product status", icon: Globe },
+  { value: "None", label: "Balance held", icon: TrendingUp },
+  { value: "No", label: "Banking licence", icon: Globe },
+  { value: "Unrated", label: "App store", icon: Sparkles },
 ];
 
 const BankingHome = () => {
@@ -34,7 +34,7 @@ const BankingHome = () => {
             <motion.div 
               initial={{ opacity: 0, x: -20 }} 
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.35 }}
             >
               <Badge className="bg-amber-500/10 text-amber-400 border-amber-500/20 text-[10px] font-bold uppercase tracking-widest mb-6">
                 <Sparkles className="h-3 w-3 mr-1.5" /> Anoneurx Bank v2.0
@@ -44,11 +44,13 @@ const BankingHome = () => {
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500">people who build.</span>
               </h1>
               <p className="text-gray-400 text-sm md:text-base max-w-xl mb-8 leading-relaxed">
-                The first account designed for builders and founders. Premium debit cards, instant global payouts, and smart automation in one beautiful app.
+                Anoneurx Bank is a design prototype for account and card software. It is not a bank, it holds
+                no customer funds, and it is not available to open. Nothing on this site is a financial
+                product offer.
               </p>
               <div className="flex flex-col sm:flex-row items-center gap-4">
-                <Button className="h-12 px-8 rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs uppercase tracking-widest group shadow-lg shadow-amber-500/20">
-                  Open Account <ChevronRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                <Button className="h-12 px-8 rounded-md bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs uppercase tracking-widest group shadow-lg shadow-amber-500/20">
+                  Not Available Yet <ChevronRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 <Link to="/pay/features">
                   <Button variant="outline" className="h-12 px-8 rounded-lg border-white/10 hover:bg-white/5 text-white font-bold text-xs uppercase tracking-widest">
@@ -61,7 +63,7 @@ const BankingHome = () => {
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }} 
               animate={{ opacity: 1, scale: 1 }} 
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
               className="relative"
             >
               <div className="absolute -inset-10 bg-amber-500/10 blur-[100px] rounded-full" />
@@ -86,7 +88,7 @@ const BankingHome = () => {
             {features.map((f, i) => (
               <motion.div 
                 key={f.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}

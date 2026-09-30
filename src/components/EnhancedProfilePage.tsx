@@ -46,7 +46,7 @@ const EnhancedProfilePage: React.FC<EnhancedProfilePageProps> = ({ isOpen, onClo
     switch (role) {
       case 'ceo': return 'bg-yellow-600';
       case 'hr': return 'bg-green-600';
-      case 'hod': return 'bg-purple-600';
+      case 'hod': return 'bg-blue-600';
       case 'employee': return 'bg-blue-600';
       default: return 'bg-gray-600';
     }
@@ -121,7 +121,7 @@ const EnhancedProfilePage: React.FC<EnhancedProfilePageProps> = ({ isOpen, onClo
             <CardContent className="p-6">
               <div className="flex items-center space-x-4 mb-4">
                 <div className="relative">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
                     <User className="w-10 h-10 text-white" />
                   </div>
                   <Button size="sm" className="absolute -bottom-1 -right-1 h-6 w-6 rounded-full p-0 bg-blue-600">

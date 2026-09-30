@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Clock, MapPin, Users, Video, Globe, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const events = [
   { id: "ai-ml-meetup", title: "AI/ML Community Meetup", date: "Apr 15, 2026", time: "6:00 PM UTC", type: "Virtual", attendees: 320, description: "Monthly meetup discussing latest AI trends, model architectures, and real-world deployments.", image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=300&fit=crop", location: "Zoom" },
@@ -18,7 +18,7 @@ const events = [
 ];
 
 const typeIcon: Record<string, any> = { "Virtual": Video, "Hybrid": Globe, "In-Person": MapPin };
-const typeColor: Record<string, string> = { "Virtual": "bg-blue-500/15 text-blue-300 border-blue-500/20", "Hybrid": "bg-purple-500/15 text-purple-300 border-purple-500/20", "In-Person": "bg-green-500/15 text-green-300 border-green-500/20" };
+const typeColor: Record<string, string> = { "Virtual": "bg-blue-500/15 text-blue-300 border-blue-500/20", "Hybrid": "bg-blue-500/15 text-blue-300 border-blue-500/20", "In-Person": "bg-green-500/15 text-green-300 border-green-500/20" };
 
 const UpcomingEvents = () => (
   <PageTransition>

@@ -81,7 +81,7 @@ export const useOpportunityData = (type?: 'internship' | 'hackathon' | 'fellowsh
         description: "Create the next generation of decentralized applications and blockchain solutions.",
         requirements: ["Team of 2-5 members", "Blockchain knowledge", "Creative thinking"],
         icon: Shield,
-        color: "bg-purple-500/20 text-purple-400",
+        color: "bg-blue-500/20 text-blue-400",
         type: 'hackathon',
         additionalInfo: [{ label: "Team Size", value: "2-5" }, { label: "Spots Left", value: "67" }]
       },

@@ -84,13 +84,13 @@ const BlackwallServer = () => {
       {/* HERO */}
       <section className="relative pt-32 pb-16 px-4 overflow-hidden">
         <div className="container-responsive relative z-10 text-center max-w-4xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <Badge className="bg-blue-500/10 text-blue-300 border-blue-500/20 text-[10px] font-bold uppercase tracking-widest mb-6">
               <Server className="h-3 w-3 mr-1.5" /> Coming December 2026
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold font-brand tracking-tight mb-6 leading-tight">
               Black Wall <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-blue-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-blue-500">
                 Server OS
               </span>
             </h1>

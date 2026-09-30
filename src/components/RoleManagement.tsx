@@ -79,9 +79,9 @@ const RoleManagement = ({ currentUserRole, currentUserDepartment }: RoleManageme
     switch (role) {
       case 'ceo': return 'bg-yellow-600';
       case 'hr': return 'bg-green-600';
-      case 'hod': return 'bg-purple-600';
+      case 'hod': return 'bg-blue-600';
       case 'employee': return 'bg-blue-600';
-      case 'research-collaborator': return 'bg-indigo-600';
+      case 'research-collaborator': return 'bg-sky-600';
       case 'auditor': return 'bg-red-600';
       case 'intern': return 'bg-orange-600';
       default: return 'bg-gray-600';

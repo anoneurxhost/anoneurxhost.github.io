@@ -39,13 +39,13 @@ const PHASES = [
 ];
 
 const stateStyle: Record<string, { label: string; cls: string }> = {
-  done: { label: "done", cls: "border-[#3A3A56] text-[#77778F]" },
-  active: { label: "current", cls: "border-[#8B7CF6]/50 text-[#A79BFF]" },
-  planned: { label: "planned", cls: "border-[#2A2A44] text-[#5C5C74]" },
+  done: { label: "done", cls: "border-[#3A4356] text-[#777F8F]" },
+  active: { label: "current", cls: "border-[#38BDF8]/50 text-[#7DD3FC]" },
+  planned: { label: "planned", cls: "border-[#2A3345] text-[#5C6474]" },
 };
 
 const lineColor = (state: string) =>
-  state === "done" ? ACCENT_BLUE : state === "active" ? ACCENT : "#2A2A44";
+  state === "done" ? ACCENT_BLUE : state === "active" ? ACCENT : "#2A3345";
 
 const Roadmap = () => (
   <section
@@ -61,14 +61,14 @@ const Roadmap = () => (
         eyebrow="10 · Roadmap"
         title={
           <>
-            A plan that respects <span className="text-[#8B7CF6]">reality</span>
+            A plan that respects <span className="text-[#38BDF8]">reality</span>
           </>
         }
         subtitle="Phases, not promises. Each gate must be passed on the previous phase's measured results — scale is never scheduled ahead of the loop."
       />
 
       <div className="relative mt-14">
-        <div className="absolute bottom-4 left-[11px] top-4 w-px bg-[#262640]" />
+        <div className="absolute bottom-4 left-[11px] top-4 w-px bg-[#262E3D]" />
         <div className="space-y-10">
           {PHASES.map((p, i) => {
             const s = stateStyle[p.state];
@@ -85,7 +85,7 @@ const Roadmap = () => (
                         background: lineColor(p.state),
                         boxShadow:
                           p.state === "active"
-                            ? "0 0 12px 2px rgba(139,124,246,0.7)"
+                            ? "0 0 12px 2px rgba(56,189,248,0.7)"
                             : "none",
                       }}
                     />
@@ -105,7 +105,7 @@ const Roadmap = () => (
                     </span>
                   </div>
                   <h3 className="mt-2 text-xl font-semibold text-white">{p.name}</h3>
-                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#8E8EA8]">
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#8E96A8]">
                     {p.body}
                   </p>
                 </div>

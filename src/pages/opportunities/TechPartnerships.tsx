@@ -68,7 +68,7 @@ const TechPartnerships = () => {
           <section className="relative py-16 px-4">
             <div className="container mx-auto max-w-6xl">
               <div className="text-center mb-12">
-                <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white bg-gradient-to-r from-white via-purple-200 to-violet-300 bg-clip-text text-transparent">
+                <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white bg-gradient-to-r from-white via-blue-200 to-cyan-300 bg-clip-text text-transparent">
                   Tech Partnerships
                 </h1>
                 <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -88,7 +88,7 @@ const TechPartnerships = () => {
                       <div className="flex justify-between items-start mb-3">
                         <div className="flex flex-wrap gap-2">
                           {partnership.categories.map((category, catIndex) => (
-                            <Badge key={catIndex} variant="secondary" className="bg-purple-500/20 text-purple-300">
+                            <Badge key={catIndex} variant="secondary" className="bg-blue-500/20 text-blue-300">
                               {category}
                             </Badge>
                           ))}
@@ -117,7 +117,7 @@ const TechPartnerships = () => {
                           <ul className="text-gray-300 text-sm space-y-1">
                             {partnership.benefits.map((benefit, benefitIndex) => (
                               <li key={benefitIndex} className="flex items-start">
-                                <span className="text-purple-400 mr-2">•</span>
+                                <span className="text-blue-400 mr-2">•</span>
                                 {benefit}
                               </li>
                             ))}
@@ -142,7 +142,7 @@ const TechPartnerships = () => {
 
                       <div className="flex gap-2 pt-2">
                         <Button
-                          className="flex-1 bg-purple-600 hover:bg-purple-700 text-white"
+                          className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
                           onClick={() => {
                             setSelectedPartnership(partnership);
                             setShowApplyForm(true);

@@ -38,7 +38,7 @@ const Philosophy = () => (
         title={
           <>
             The rules the project{" "}
-            <span className="text-[#8B7CF6]">won't break</span>
+            <span className="text-[#38BDF8]">won't break</span>
           </>
         }
         subtitle="Five principles that constrain every technical decision. If something conflicts with these, the something changes."
@@ -49,7 +49,7 @@ const Philosophy = () => (
           <Reveal key={p.title} delay={i * 0.06}>
             <AstraCard className="h-full">
               <CardHeader>
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-[#A79BFF]">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-[#7DD3FC]">
                   <p.icon className="h-5 w-5" />
                 </span>
                 <CardTitle className="pt-4 text-lg text-white">
@@ -64,7 +64,7 @@ const Philosophy = () => (
         ))}
         <Reveal delay={0.3}>
           <AstraCard hover={false} className="flex h-full items-center justify-center border-dashed p-7 text-center">
-            <p className="text-sm text-[#5C5C74]">
+            <p className="text-sm text-[#5C6474]">
               Rule zero: the loop serves its users.
               <br />
               Everything else is an implementation detail.

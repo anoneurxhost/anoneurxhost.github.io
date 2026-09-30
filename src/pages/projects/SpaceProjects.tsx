@@ -43,7 +43,7 @@ const SpaceProjects = () => {
               <p className="text-gray-300">Pushing the boundaries of human knowledge about the cosmos</p>
             </div>
             <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-white/10">
-              <Rocket className="w-12 h-12 text-indigo-400 mx-auto mb-4" />
+              <Rocket className="w-12 h-12 text-sky-400 mx-auto mb-4" />
               <h3 className="text-xl font-semibold mb-3 text-white">Innovation</h3>
               <p className="text-gray-300">Developing breakthrough technologies for space missions</p>
             </div>
@@ -67,12 +67,12 @@ const SpaceProjects = () => {
               <p className="text-gray-300">Advanced satellite systems for communication, observation, and research</p>
             </Card>
             <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6 hover:bg-white/10 transition-colors">
-              <Globe className="w-12 h-12 text-indigo-400 mb-4" />
+              <Globe className="w-12 h-12 text-sky-400 mb-4" />
               <h3 className="text-xl font-semibold mb-3 text-white">Space Communication</h3>
               <p className="text-gray-300">Next-generation communication networks for deep space missions</p>
             </Card>
             <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6 hover:bg-white/10 transition-colors">
-              <Star className="w-12 h-12 text-purple-400 mb-4" />
+              <Star className="w-12 h-12 text-blue-400 mb-4" />
               <h3 className="text-xl font-semibold mb-3 text-white">AI for Space</h3>
               <p className="text-gray-300">Artificial intelligence systems for autonomous space operations</p>
             </Card>
@@ -91,7 +91,7 @@ const SpaceProjects = () => {
           <h2 className="text-4xl font-bold text-center mb-16 text-white">Current Space Projects</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="bg-white/5 backdrop-blur-sm border-white/10 overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center">
+              <div className="h-48 bg-gradient-to-br from-blue-600 to-sky-600 flex items-center justify-center">
                 <Satellite className="w-16 h-16 text-white" />
               </div>
               <div className="p-6">
@@ -105,7 +105,7 @@ const SpaceProjects = () => {
               </div>
             </Card>
             <Card className="bg-white/5 backdrop-blur-sm border-white/10 overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center">
+              <div className="h-48 bg-gradient-to-br from-blue-600 to-rose-600 flex items-center justify-center">
                 <Star className="w-16 h-16 text-white" />
               </div>
               <div className="p-6">
@@ -216,7 +216,7 @@ const SpaceProjects = () => {
                 <p className="text-gray-300">Zero-waste space missions and renewable energy systems for space applications</p>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-blue-600/20 to-indigo-600/20 rounded-lg p-8 border border-blue-500/30">
+            <div className="bg-gradient-to-br from-blue-600/20 to-sky-600/20 rounded-lg p-8 border border-blue-500/30">
               <h3 className="text-2xl font-bold mb-4 text-white">Sustainability Goals</h3>
               <p className="text-gray-300 mb-6">
                 We're committed to developing space technologies that are environmentally sustainable 

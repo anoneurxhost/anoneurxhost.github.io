@@ -44,7 +44,7 @@ const SelfLearning = () => (
           eyebrow="05 · Self-learning"
           title={
             <>
-              Learns from <span className="text-[#8B7CF6]">usage</span>, not just
+              Learns from <span className="text-[#38BDF8]">usage</span>, not just
               from datasets
             </>
           }
@@ -61,10 +61,10 @@ const SelfLearning = () => (
             <AstraCard className="h-full">
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-[#A79BFF]">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-[#7DD3FC]">
                     <s.icon className="h-5 w-5" />
                   </span>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#5C5C74]">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#5C6474]">
                     0{i + 1}
                   </span>
                 </div>
@@ -84,11 +84,11 @@ const SelfLearning = () => (
         <AstraCard hover={false}>
           <CardHeader>
             <div className="flex items-start gap-3">
-              <Ban className="mt-0.5 h-5 w-5 shrink-0 text-[#8B7CF6]" />
+              <Ban className="mt-0.5 h-5 w-5 shrink-0 text-[#38BDF8]" />
               <div className="grid gap-x-8 gap-y-2 sm:grid-cols-2">
                 {CAVEATS.map((c) => (
-                  <p key={c} className="text-sm leading-relaxed text-[#B9B9CF]">
-                    <span className="mr-2 text-[#8B7CF6]">·</span>
+                  <p key={c} className="text-sm leading-relaxed text-[#B9C0CF]">
+                    <span className="mr-2 text-[#38BDF8]">·</span>
                     {c}
                   </p>
                 ))}

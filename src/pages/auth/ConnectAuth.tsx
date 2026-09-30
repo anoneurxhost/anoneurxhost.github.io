@@ -66,7 +66,7 @@ export const ConnectAuth = () => {
       }
 
       const result = await createSessionStrict({ host, port, username, password });
-      if (result.ok && "token" in (result.body ?? {}) && result.body?.token) {
+      if (result.ok && result.body && "token" in result.body && result.body.token) {
         const session = result.body as SessionInfo;
         signIn(`${session.username}@${session.host}`);
         connect(
@@ -88,8 +88,11 @@ export const ConnectAuth = () => {
         setError(`Invalid username or password for ${ip}.`);
         toast.error("Credentials rejected by the Blacklink console.");
       } else if (result.status === 0) {
-        setError(`Could not reach the console for ${ip}. Check the IP and network access.`);
-        toast.error("Blacklink console unreachable.");
+        setError(
+          "Could not reach the console backend. The dashboard connects through the console server, not directly to " +
+            `${ip}. Check that the console server is running and reachable from this network.`
+        );
+        toast.error("Console backend unreachable.");
       } else {
         const msg =
           (result.body as { error?: string } | null)?.error ?? "Console rejected the connection.";

@@ -15,31 +15,25 @@ const InvestmentOpportunities = () => {
 
   const investmentOptions = [
     {
-      title: "Series A Funding",
-      amount: "$5M - $15M",
-      equity: "15-25%",
-      stage: "Growth",
-      description: "Scaling our AI development capabilities and expanding market reach",
-      roi: "Expected 3-5x return",
-      timeline: "3-5 years",
+      title: "Technology partnership",
+      focus: "Joint engineering",
+      description:
+        "Embedding Anoneurx components inside another product, with engineering time shared across both roadmaps.",
+      engagement: "Scoped per project",
     },
     {
-      title: "Strategic Investment",
-      amount: "$1M - $5M",
-      equity: "5-15%",
-      stage: "Expansion",
-      description: "Partnership-focused investment for technology integration",
-      roi: "Expected 2-4x return",
-      timeline: "2-4 years",
+      title: "Infrastructure collaboration",
+      focus: "Platform",
+      description:
+        "Co-development on cloud, runtime or operating system work where both parties contribute engineering capacity.",
+      engagement: "Scoped per project",
     },
     {
-      title: "Seed Investment",
-      amount: "$500K - $2M",
-      equity: "10-20%",
-      stage: "Early",
-      description: "Early-stage investment in emerging technologies",
-      roi: "Expected 5-10x return",
-      timeline: "5-7 years",
+      title: "Research collaboration",
+      focus: "Research",
+      description:
+        "Joint research on published problems, with results released openly and authorship agreed in writing up front.",
+      engagement: "By proposal",
     },
   ];
 
@@ -62,24 +56,25 @@ const InvestmentOpportunities = () => {
           <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 text-white">
             <div className="text-center mb-16">
               <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                Investment Opportunities
+                Collaboration
               </h1>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                Invest in the future of technology with Anoneurx and be part of our growth story.
+                We work with other engineering teams on joint products and open research. This page is not
+                an offer of securities, and we are not raising capital.
               </p>
             </div>
           </section>
 
           {/* Key Metrics */}
           <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 text-white">
-              {/* Form + Investment Options */}
+              {/* Form + Collaboration options */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 px-4 sm:px-6 lg:px-8 text-white mb-16">
-                {/* Investment Inquiry Form */}
+                {/* Partnership enquiry form */}
                 <Card className="bg-white/10 backdrop-blur-sm border-white/20">
                   <CardHeader>
                     <CardTitle className="text-white text-2xl flex items-center">
                       <PieChart className="w-6 h-6 mr-2" />
-                      Investment Inquiry
+                      Partnership Enquiry
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -105,7 +100,7 @@ const InvestmentOpportunities = () => {
                             id="organization"
                             name="organization"
                             className="bg-white/10 border-white/30 text-white"
-                            placeholder="Investment Firm/Company"
+                            placeholder="Company or team name"
                           />
                         </div>
                       </div>
@@ -121,7 +116,7 @@ const InvestmentOpportunities = () => {
                             type="email"
                             required
                             className="bg-white/10 border-white/30 text-white"
-                            placeholder="investor@firm.com"
+                            placeholder="you@example.com"
                           />
                         </div>
                         <div className="space-y-2">
@@ -139,71 +134,71 @@ const InvestmentOpportunities = () => {
 
                       <div className="space-y-2">
                         <Label htmlFor="investmentType" className="text-white">
-                          Investment Interest *
+                          Area of Interest *
                         </Label>
                         <Select required value={investmentType} onValueChange={setInvestmentType}>
                           <SelectTrigger id="investmentType" className="bg-white/10 border-white/30 text-white">
-                            <SelectValue placeholder="Select investment type" />
+                            <SelectValue placeholder="Select an area" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="series-a">Series A Funding</SelectItem>
-                            <SelectItem value="strategic">Strategic Investment</SelectItem>
-                            <SelectItem value="seed">Seed Investment</SelectItem>
-                            <SelectItem value="portfolio">Portfolio Investment</SelectItem>
+                            <SelectItem value="engineering">Engineering collaboration</SelectItem>
+                            <SelectItem value="infrastructure">Infrastructure</SelectItem>
+                            <SelectItem value="research">Joint research</SelectItem>
+                            <SelectItem value="other">Something else</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
 
                       <div className="space-y-2">
                         <Label htmlFor="investmentRange" className="text-white">
-                          Investment Range
+                          Engineering Capacity Needed
                         </Label>
                         <Select value={investmentRange} onValueChange={setInvestmentRange}>
                           <SelectTrigger id="investmentRange" className="bg-white/10 border-white/30 text-white">
-                            <SelectValue placeholder="Select investment range" />
+                            <SelectValue placeholder="Select a range" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="under-1m">Under $1M</SelectItem>
-                            <SelectItem value="1m-5m">$1M - $5M</SelectItem>
-                            <SelectItem value="5m-15m">$5M - $15M</SelectItem>
-                            <SelectItem value="over-15m">Over $15M</SelectItem>
+                            <SelectItem value="under-1m">Under 1 engineer-month</SelectItem>
+                            <SelectItem value="1m-5m">1 to 5 engineer-months</SelectItem>
+                            <SelectItem value="5m-15m">5 to 15 engineer-months</SelectItem>
+                            <SelectItem value="over-15m">More than 15 engineer-months</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
 
                       <div className="space-y-2">
                         <Label htmlFor="investmentGoals" className="text-white">
-                          Investment Goals *
+                          Project Details *
                         </Label>
                         <Textarea
                           id="investmentGoals"
                           name="investmentGoals"
                           required
                           className="bg-white/10 border-white/30 text-white min-h-[8rem]"
-                          placeholder="Describe your investment goals, timeline, and areas of interest."
+                          placeholder="Describe the project, the timeline, and who is involved."
                         />
                       </div>
 
                       <Button
                         type="submit"
-                        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-                        aria-label="Submit Investment Inquiry"
+                        className="w-full bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700"
+                        aria-label="Submit partnership enquiry"
                       >
                         <Send className="w-4 h-4 mr-2" />
-                        Submit Investment Inquiry
+                        Send Enquiry
                       </Button>
                     </form>
                   </CardContent>
                 </Card>
 
-                {/* Investment Opportunities */}
+                {/* Collaboration options */}
                 <div className="grid grid-cols-1 gap-6">
                   {investmentOptions.map((option, index) => (
                     <Card key={index} className="bg-white/10 backdrop-blur-sm border-white/20">
                       <CardHeader>
                         <div className="flex justify-between items-start">
                           <CardTitle className="text-white text-lg">{option.title}</CardTitle>
-                          <Badge className="bg-blue-600">{option.stage}</Badge>
+                          <Badge className="bg-blue-600">{option.focus}</Badge>
                         </div>
                       </CardHeader>
                       <CardContent className="space-y-4">
@@ -211,20 +206,8 @@ const InvestmentOpportunities = () => {
 
                         <div className="grid grid-cols-2 gap-4 text-sm">
                           <div>
-                            <p className="text-gray-400">Investment Amount</p>
-                            <p className="text-white font-semibold">{option.amount}</p>
-                          </div>
-                          <div>
-                            <p className="text-gray-400">Equity Range</p>
-                            <p className="text-white font-semibold">{option.equity}</p>
-                          </div>
-                          <div>
-                            <p className="text-gray-400">Expected ROI</p>
-                            <p className="text-green-400 font-semibold">{option.roi}</p>
-                          </div>
-                          <div>
-                            <p className="text-gray-400">Timeline</p>
-                            <p className="text-white font-semibold">{option.timeline}</p>
+                            <p className="text-gray-400">Engagement</p>
+                            <p className="text-white font-semibold">{option.engagement}</p>
                           </div>
                         </div>
                       </CardContent>

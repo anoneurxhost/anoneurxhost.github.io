@@ -20,7 +20,7 @@ import cvImg from "@/assets/courses/computer-vision.jpg";
 import embeddedImg from "@/assets/courses/embedded-systems.jpg";
 import nlpImg from "@/assets/courses/nlp.jpg";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const coursesData: Record<string, {
   title: string; category: string; duration: string; rating: number; students: string;

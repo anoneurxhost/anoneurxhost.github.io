@@ -29,7 +29,7 @@ const DashboardTopBar = ({ user, title }: DashboardTopBarProps) => {
       case "hr":
         return "bg-green-600";
       case "hod":
-        return "bg-purple-600";
+        return "bg-blue-600";
       case "employee":
         return "bg-blue-600";
       case "faculty":

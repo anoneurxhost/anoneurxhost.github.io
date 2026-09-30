@@ -10,7 +10,7 @@ import AppCard from "./AppCard";
 import { apps, categories } from "./appsData";
 
 const benefits = [
-  { icon: Globe2, title: "Global Reach", desc: "Reach millions of users across 180+ countries." },
+  { icon: Globe2, title: "Global Reach", desc: "Apps available worldwide, hosted from multiple regions." },
   { icon: Rocket, title: "Easy Publishing", desc: "Submit and publish in minutes with our pipeline." },
   { icon: Wallet, title: "Fast Payments", desc: "Weekly payouts in 30+ currencies." },
   { icon: BarChart3, title: "Analytics Dashboard", desc: "Live insights on installs, revenue and reviews." },
@@ -56,7 +56,7 @@ const AppsHome = () => {
           <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
             <div>
               <div className="mb-4">
-                <span className="text-[10px] font-bold text-violet-400 uppercase tracking-[0.2em] mb-2 block">Premium</span>
+                <span className="text-[10px] font-bold text-cyan-400 uppercase tracking-[0.2em] mb-2 block">Premium</span>
                 <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">Featured Collection</h2>
               </div>
               <p className="text-sm text-slate-400">Hand-picked premium apps from global developers.</p>
@@ -146,7 +146,7 @@ const AppsHome = () => {
           </div>
           <div>
             <h2 className="text-xl font-bold text-white mb-4 inline-flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-purple-400" /> New Releases
+              <Sparkles className="h-5 w-5 text-blue-400" /> New Releases
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {newReleases.map((a) => <AppCard key={a.id} app={a} />)}

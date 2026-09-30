@@ -63,7 +63,7 @@ export function getProjectExtra(id: string, name: string): ProjectExtra {
   return {
     platform: "os",
     platformLabel: "Operating System",
-    accent: "from-violet-500 to-fuchsia-500",
+    accent: "from-cyan-500 to-teal-500",
     contributors: [],
     testers: [],
     sponsors: [],

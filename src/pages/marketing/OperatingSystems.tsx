@@ -17,7 +17,7 @@ const services = [
 const projects = [
   { title: "Black Wall OS", desc: "Privacy-first OS for hostile environments.", tag: "Security", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop" },
   { title: "EdgeOS Lite", desc: "70 MB OS optimized for edge inference.", tag: "Edge", img: "https://images.unsplash.com/photo-1551808525-51a94da548ce?w=600&h=400&fit=crop" },
-  { title: "MedRTOS", desc: "FDA-cleared RTOS for cardiac devices.", tag: "Medical", img: "https://images.unsplash.com/photo-1581090700227-1e37b190418e?w=600&h=400&fit=crop" },
+  { title: "MedRTOS", desc: "Real-time OS prototype for medical device integration. Not a cleared device and not for clinical use.", tag: "Medical", img: "https://images.unsplash.com/photo-1581090700227-1e37b190418e?w=600&h=400&fit=crop" },
   { title: "AeroBoot", desc: "Bootloader & OS for aerospace systems.", tag: "Aerospace", img: "https://images.unsplash.com/photo-1517976487492-5750f3195933?w=600&h=400&fit=crop" },
 ];
 
@@ -28,7 +28,7 @@ const OperatingSystems = () => (
 
       <section className="relative px-4 pt-20 pb-12">
         <div className="container mx-auto max-w-7xl grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
             <Badge className="bg-cyan-500/10 text-cyan-300 border-cyan-500/30 text-[10px] mb-3">
               <Sparkles className="w-3 h-3 mr-1.5" /> Operating Systems
             </Badge>
@@ -75,7 +75,11 @@ const OperatingSystems = () => (
       <section className="px-4 py-12">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-8">
-            <h2 className="text-xl md:text-2xl font-bold text-white mb-2">Featured OS Projects</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-white mb-2">Example project areas</h2>
+            <p className="text-sm text-gray-400 max-w-2xl mx-auto">
+              These describe work we can do, not deployments we have shipped. None of them carries a
+              regulatory clearance or a production reference.
+            </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {projects.map((p, i) => (

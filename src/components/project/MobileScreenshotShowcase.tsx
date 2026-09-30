@@ -33,7 +33,7 @@ const MobileScreenshotShowcase: React.FC<Props> = ({
       className="scroll-mt-28 rounded-[5px] border border-white/10 bg-black/10 p-6 backdrop-blur-xl md:p-8"
     >
       <div className="mb-6 flex items-center gap-3">
-        <span className="font-mono text-xs tracking-[0.2em] text-fuchsia-400">00</span>
+        <span className="font-mono text-xs tracking-[0.2em] text-teal-400">00</span>
         <h2 className="text-xl font-semibold text-white md:text-2xl">{title}</h2>
       </div>
 
@@ -76,7 +76,7 @@ const MobileScreenshotShowcase: React.FC<Props> = ({
           </div>
 
           {/* Ambient glow */}
-          <div className="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 h-32 w-48 rounded-full bg-fuchsia-600/10 blur-[60px]" />
+          <div className="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 h-32 w-48 rounded-full bg-teal-600/10 blur-[60px]" />
         </div>
 
         {/* Controls + Info */}
@@ -98,7 +98,7 @@ const MobileScreenshotShowcase: React.FC<Props> = ({
                   onClick={() => setIdx(i)}
                   className={`h-2 rounded-full transition-all ${
                     i === idx
-                      ? "w-6 bg-fuchsia-400"
+                      ? "w-6 bg-teal-400"
                       : "w-2 bg-white/20 hover:bg-white/40"
                   }`}
                   aria-label={`Go to screenshot ${i + 1}`}
@@ -123,7 +123,7 @@ const MobileScreenshotShowcase: React.FC<Props> = ({
                 onClick={() => setIdx(i)}
                 className={`whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
                   i === idx
-                    ? "bg-fuchsia-500/20 text-fuchsia-200 ring-1 ring-fuchsia-400/40"
+                    ? "bg-teal-500/20 text-teal-200 ring-1 ring-teal-400/40"
                     : "text-slate-400 hover:bg-white/5 hover:text-slate-200"
                 }`}
               >
@@ -135,7 +135,7 @@ const MobileScreenshotShowcase: React.FC<Props> = ({
           {/* Active caption */}
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur-md">
             <div className="mb-1 flex items-center gap-2">
-              <Smartphone className="h-3.5 w-3.5 text-fuchsia-400" />
+              <Smartphone className="h-3.5 w-3.5 text-teal-400" />
               <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-slate-500">
                 Screenshot {idx + 1} of {screenshots.length}
               </span>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ShieldCheck, Plus, Trash2, RefreshCw, Loader2 } from "lucide-react";
+import { Shield, ShieldOff, Plus, Trash2, RefreshCw, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import ConnectSection from "./ConnectSection";
 import DemoBanner from "./DemoBanner";
@@ -7,53 +7,60 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
-  Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle,
+  Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle,
 } from "@/components/ui/dialog";
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
-import { connectApi, FirewallRule } from "./api";
+import { connectApi } from "./api";
 import { useAsyncData } from "./useConnectData";
+
+const card = "rounded-xl border border-[var(--cc-border)] bg-[var(--cc-surface)] shadow-[var(--cc-shadow)]";
+const outlineBtn = "border-[var(--cc-border)] bg-[var(--cc-surface)] text-[var(--cc-text-2)] hover:bg-[var(--cc-surface-hover)] hover:text-[var(--cc-text)]";
+const primaryBtn = "bg-sky-500 hover:bg-sky-600 text-white dark:bg-cyan-400 dark:hover:bg-cyan-300 dark:text-black font-semibold";
+const dialogContent = "bg-white dark:bg-[#10151c] border-slate-200 dark:border-[#26313d] text-slate-900 dark:text-white";
+const inputCls = "bg-[var(--cc-surface-2)] border-[var(--cc-border)] text-[var(--cc-text)] placeholder:text-[var(--cc-muted-2)] h-10";
 
 const ConnectFirewall = () => {
   const { data: rules, setData, mode, loading, refresh } = useAsyncData(() => connectApi.firewall(), []);
   const [open, setOpen] = useState(false);
+  const [name, setName] = useState("");
   const [port, setPort] = useState("");
-  const [proto, setProto] = useState<FirewallRule["proto"]>("tcp");
-  const [src, setSrc] = useState("0.0.0.0/0");
-  const [action, setAction] = useState<FirewallRule["action"]>("allow");
-  const [note, setNote] = useState("");
+  const [proto, setProto] = useState<"tcp" | "udp" | "icmp">("tcp");
+  const [action, setAction] = useState<"allow" | "deny">("allow");
+  const [source, setSource] = useState("0.0.0.0/0");
   const [busy, setBusy] = useState(false);
 
   const add = async () => {
-    if (!/^\d{1,5}(-\d{1,5})?$/.test(port.trim())) return toast.error("Enter a port or range, e.g. 8080 or 3000-3010");
-    if (!/^\d{1,3}(\.\d{1,3}){3}\/\d{1,2}$/.test(src.trim())) return toast.error("Source must be a CIDR, e.g. 10.0.0.0/8");
+    const p = Number(port);
+    if (!Number.isInteger(p) || p < 1 || p > 65535) return toast.error("Enter a valid port (1 – 65535)");
     setBusy(true);
-    const res = await connectApi.addRule({ port: port.trim(), proto, src: src.trim(), action, note: note.trim() || undefined });
+    const res = await connectApi.addFirewallRule({ name: name.trim() || `port-${p}`, port: p, proto, action, source });
     setData(res.data);
     setBusy(false);
     setOpen(false);
-    setPort(""); setNote("");
-    toast.success("Firewall rule added");
+    setName("");
+    setPort("");
+    toast.success(`Rule "${name.trim() || `port-${p}`}" added`);
   };
 
   const remove = async (id: string) => {
-    const res = await connectApi.removeRule(id);
+    const res = await connectApi.removeFirewallRule(id);
     setData(res.data);
-    toast.success("Rule removed");
+    toast.success("Rule deleted");
   };
 
   return (
     <ConnectSection
       title="Firewall"
-      subtitle="Ingress and egress rules for the connected server."
-      icon={ShieldCheck}
+      subtitle="Access rules applied to the connected server."
+      icon={Shield}
       actions={
         <>
-          <Button variant="outline" onClick={refresh} className="border-white/10 bg-white/[0.04] text-slate-200 hover:bg-white/[0.08]">
+          <Button variant="outline" onClick={refresh} className={outlineBtn}>
             <RefreshCw className={`w-4 h-4 mr-1.5 ${loading ? "animate-spin" : ""}`} /> Refresh
           </Button>
-          <Button onClick={() => setOpen(true)} className="bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold">
+          <Button onClick={() => setOpen(true)} className={primaryBtn}>
             <Plus className="w-4 h-4 mr-1.5" /> Add rule
           </Button>
         </>
@@ -61,39 +68,47 @@ const ConnectFirewall = () => {
     >
       {mode === "demo" && <DemoBanner />}
 
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl overflow-hidden">
+      <div className={`${card} overflow-hidden`}>
         {loading && !rules ? (
-          <div className="p-16 text-center"><Loader2 className="w-6 h-6 animate-spin mx-auto text-cyan-300" /></div>
+          <div className="p-16 text-center"><Loader2 className="w-6 h-6 animate-spin mx-auto text-[var(--cc-accent)]" /></div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm min-w-[680px]">
-              <thead className="text-[11px] uppercase tracking-widest text-slate-500">
+              <thead className="text-[11px] uppercase tracking-widest text-[var(--cc-muted)]">
                 <tr>
-                  <th className="text-left px-5 py-3 font-medium">Port</th>
+                  <th className="text-left px-5 py-3 font-medium">Name</th>
+                  <th className="text-left px-5 py-3 font-medium">Type</th>
                   <th className="text-left px-5 py-3 font-medium">Protocol</th>
+                  <th className="text-left px-5 py-3 font-medium">Port</th>
                   <th className="text-left px-5 py-3 font-medium">Source</th>
-                  <th className="text-left px-5 py-3 font-medium">Note</th>
-                  <th className="text-left px-5 py-3 font-medium">Action</th>
-                  <th className="text-right px-5 py-3 font-medium"></th>
+                  <th className="text-right px-5 py-3 font-medium">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5">
+              <tbody className="divide-y divide-[var(--cc-border)]">
                 {(rules ?? []).map((r) => (
                   <tr key={r.id}>
-                    <td className="px-5 py-3 font-mono text-slate-200">{r.port}</td>
-                    <td className="px-5 py-3 text-slate-300 uppercase">{r.proto}</td>
-                    <td className="px-5 py-3 font-mono text-slate-400 text-xs">{r.src}</td>
-                    <td className="px-5 py-3 text-slate-400 text-xs">{r.note ?? "—"}</td>
+                    <td className="px-5 py-3 font-medium text-[var(--cc-text)]">{r.name}</td>
                     <td className="px-5 py-3">
-                      <span className={`rounded-full px-2 py-0.5 text-[11px] border ${
-                        r.action === "allow"
-                          ? "border-emerald-400/30 bg-emerald-400/10 text-emerald-300"
-                          : "border-red-400/30 bg-red-400/10 text-red-300"
-                      }`}>{r.action}</span>
+                      <span
+                        className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[11px] font-medium ${
+                          r.action === "allow"
+                            ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                            : "border-red-500/30 bg-red-500/10 text-red-600 dark:text-red-400"
+                        }`}
+                      >
+                        {r.action === "allow" ? <Shield className="w-3 h-3" /> : <ShieldOff className="w-3 h-3" />}
+                        {r.action}
+                      </span>
                     </td>
+                    <td className="px-5 py-3 text-[var(--cc-muted)] font-mono text-xs">{r.proto}</td>
+                    <td className="px-5 py-3 font-mono text-[var(--cc-text-2)]">{r.port}</td>
+                    <td className="px-5 py-3 font-mono text-xs text-[var(--cc-muted)]">{r.source}</td>
                     <td className="px-5 py-3 text-right">
-                      <button onClick={() => remove(r.id)} aria-label="Remove rule"
-                        className="w-8 h-8 inline-grid place-items-center rounded-lg border border-red-400/20 bg-red-400/10 text-red-300 hover:bg-red-400/20">
+                      <button
+                        onClick={() => remove(r.id)}
+                        className="w-8 h-8 inline-grid place-items-center rounded-lg border border-red-500/30 bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-500/20 transition-colors"
+                        aria-label={`Delete ${r.name}`}
+                      >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
                     </td>
@@ -106,48 +121,67 @@ const ConnectFirewall = () => {
       </div>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="bg-[#0a0d12] border-white/10 text-white">
-          <DialogHeader><DialogTitle>New firewall rule</DialogTitle></DialogHeader>
-          <div className="grid grid-cols-2 gap-3">
+        <DialogContent className={dialogContent}>
+          <DialogHeader>
+            <DialogTitle>Add a firewall rule</DialogTitle>
+            <DialogDescription className="text-slate-600 dark:text-slate-400">
+              Rules apply immediately on the connected server.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-3">
             <div className="space-y-1.5">
-              <Label className="text-xs text-slate-300">Port</Label>
-              <Input value={port} onChange={(e) => setPort(e.target.value)} placeholder="443"
-                className="bg-white/[0.04] border-white/10 text-white h-10 font-mono" />
+              <Label className="text-xs text-slate-600 dark:text-slate-400">Name</Label>
+              <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="web-https" className={inputCls} />
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-1.5">
+                <Label className="text-xs text-slate-600 dark:text-slate-400">Port</Label>
+                <Input value={port} onChange={(e) => setPort(e.target.value)} placeholder="443"
+                  className={`${inputCls} font-mono`} />
+              </div>
+              <div className="space-y-1.5">
+                <Label className="text-xs text-slate-600 dark:text-slate-400">Protocol</Label>
+                <Select
+                  value={proto}
+                  onValueChange={(v) => setProto(v as "tcp" | "udp" | "icmp")}
+                >
+                  <SelectTrigger className={inputCls}><SelectValue /></SelectTrigger>
+                  <SelectContent className="bg-white dark:bg-[#10151c] border-slate-200 dark:border-[#26313d] text-slate-900 dark:text-white">
+                    <SelectItem value="tcp">TCP</SelectItem>
+                    <SelectItem value="udp">UDP</SelectItem>
+                    <SelectItem value="icmp">ICMP</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
             <div className="space-y-1.5">
-              <Label className="text-xs text-slate-300">Protocol</Label>
-              <Select value={proto} onValueChange={(v) => setProto(v as FirewallRule["proto"])}>
-                <SelectTrigger className="bg-white/[0.04] border-white/10 text-white h-10"><SelectValue /></SelectTrigger>
-                <SelectContent className="bg-[#0a0d12] border-white/10 text-white">
-                  <SelectItem value="tcp">TCP</SelectItem>
-                  <SelectItem value="udp">UDP</SelectItem>
-                </SelectContent>
-              </Select>
+              <Label className="text-xs text-slate-600 dark:text-slate-400">Source CIDR</Label>
+              <Input value={source} onChange={(e) => setSource(e.target.value)}
+                className={`${inputCls} font-mono`} />
             </div>
-            <div className="space-y-1.5">
-              <Label className="text-xs text-slate-300">Source CIDR</Label>
-              <Input value={src} onChange={(e) => setSrc(e.target.value)}
-                className="bg-white/[0.04] border-white/10 text-white h-10 font-mono" />
-            </div>
-            <div className="space-y-1.5">
-              <Label className="text-xs text-slate-300">Action</Label>
-              <Select value={action} onValueChange={(v) => setAction(v as FirewallRule["action"])}>
-                <SelectTrigger className="bg-white/[0.04] border-white/10 text-white h-10"><SelectValue /></SelectTrigger>
-                <SelectContent className="bg-[#0a0d12] border-white/10 text-white">
-                  <SelectItem value="allow">Allow</SelectItem>
-                  <SelectItem value="deny">Deny</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="col-span-2 space-y-1.5">
-              <Label className="text-xs text-slate-300">Note (optional)</Label>
-              <Input value={note} onChange={(e) => setNote(e.target.value)} placeholder="HTTPS ingress"
-                className="bg-white/[0.04] border-white/10 text-white h-10" />
+            <div className="flex gap-2">
+              {(["allow", "deny"] as const).map((a) => (
+                <button
+                  key={a}
+                  onClick={() => setAction(a)}
+                  className={`flex-1 rounded-lg border px-3 py-2 text-sm capitalize transition-colors ${
+                    action === a
+                      ? a === "allow"
+                        ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                        : "border-red-500/40 bg-red-500/10 text-red-600 dark:text-red-400"
+                      : "border-[var(--cc-border)] bg-[var(--cc-surface-2)] text-[var(--cc-text-2)] hover:bg-[var(--cc-surface-hover)]"
+                  }`}
+                >
+                  {a === "allow" ? "Allow" : "Deny"}
+                </button>
+              ))}
             </div>
           </div>
           <DialogFooter>
-            <Button variant="ghost" onClick={() => setOpen(false)} className="text-slate-300 hover:bg-white/[0.06]">Cancel</Button>
-            <Button onClick={add} disabled={busy} className="bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold">
+            <Button variant="ghost" onClick={() => setOpen(false)} className="text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/[0.06]">
+              Cancel
+            </Button>
+            <Button onClick={add} disabled={busy} className={primaryBtn}>
               {busy && <Loader2 className="w-4 h-4 mr-1.5 animate-spin" />} Add rule
             </Button>
           </DialogFooter>

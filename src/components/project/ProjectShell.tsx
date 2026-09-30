@@ -49,7 +49,7 @@ const ProjectShell: React.FC<Props> = ({ projectId, name, platformLabel, githubU
               >
                 {p.label}
                 {active && (
-                  <span className="absolute inset-x-3 -bottom-[9px] h-[2px] rounded-full bg-fuchsia-500 shadow-[0_0_10px_2px] shadow-fuchsia-500/40" />
+                  <span className="absolute inset-x-3 -bottom-[9px] h-[2px] rounded-full bg-teal-500 shadow-[0_0_10px_2px] shadow-teal-500/40" />
                 )}
               </Link>
             );

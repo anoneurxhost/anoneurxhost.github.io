@@ -122,7 +122,7 @@ const OSSearch = () => {
             <div key={`${item.type}-${item.id}`} className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition-all hover:border-white/20 hover:bg-white/[0.07]">
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <span className="inline-block rounded-md border border-purple-500/30 bg-purple-500/10 px-2.5 py-0.5 text-[11px] font-mono font-semibold uppercase tracking-wider text-purple-300">
+                  <span className="inline-block rounded-md border border-blue-500/30 bg-blue-500/10 px-2.5 py-0.5 text-[11px] font-mono font-semibold uppercase tracking-wider text-blue-300">
                     {item.type}
                   </span>
                   <h2 className="mt-2 text-xl font-semibold text-white">{item.name ?? item.title}</h2>
@@ -140,7 +140,7 @@ const OSSearch = () => {
                 </p>
               )}
 
-              <Link to={getItemLink(item)} className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors">
+              <Link to={getItemLink(item)} className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors">
                 {getItemActionLabel(item)}
               </Link>
             </div>

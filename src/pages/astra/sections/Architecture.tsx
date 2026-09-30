@@ -39,7 +39,7 @@ const BASE = {
   name: "Weights & Data",
   tag: "20B substrate · consentful records",
   body: "The learned substrate. Updated continuously by the loop's reflections — never frozen at a checkpoint.",
-  accent: "#B4A9FF",
+  accent: "#93C5FD",
 };
 
 const Node = ({ layer }: { layer: (typeof LAYERS)[0] | (typeof BRANCHES)[0] | typeof BASE }) => (
@@ -57,17 +57,17 @@ const Node = ({ layer }: { layer: (typeof LAYERS)[0] | (typeof BRANCHES)[0] | ty
         </p>
         <h3 className="mt-1 text-base font-semibold text-white sm:text-lg">{layer.name}</h3>
       </div>
-      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#5C5C74]">
+      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#5C6474]">
         {layer.zone}
       </span>
     </div>
-    <p className="px-6 pb-5 text-sm leading-relaxed text-[#8E8EA8] sm:px-7">{layer.body}</p>
+    <p className="px-6 pb-5 text-sm leading-relaxed text-[#8E96A8] sm:px-7">{layer.body}</p>
   </AstraCard>
 );
 
 const Connector = ({ animated = false }: { animated?: boolean }) => (
   <div className="relative mx-auto flex h-10 w-px justify-center overflow-hidden">
-    <div className="h-full w-px bg-[#2A2A44]" />
+    <div className="h-full w-px bg-[#2A3345]" />
     {animated ? (
       <span
         className="astra-dash absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-transparent"
@@ -81,14 +81,14 @@ const Connector = ({ animated = false }: { animated?: boolean }) => (
 
 const BranchSplit = () => (
   <div className="relative mx-auto flex h-12 w-24 flex-col items-center">
-    <div className="h-6 w-px bg-[#2A2A44]" />
+    <div className="h-6 w-px bg-[#2A3345]" />
     <div className="flex w-full items-center justify-between px-1">
-      <div className="h-px flex-1 bg-[#2A2A44]" />
-      <div className="h-px flex-1 bg-[#2A2A44]" />
+      <div className="h-px flex-1 bg-[#2A3345]" />
+      <div className="h-px flex-1 bg-[#2A3345]" />
     </div>
     <div className="mt-0 flex w-full justify-between px-1">
-      <div className="h-3 w-px bg-[#2A2A44]" />
-      <div className="h-3 w-px bg-[#2A2A44]" />
+      <div className="h-3 w-px bg-[#2A3345]" />
+      <div className="h-3 w-px bg-[#2A3345]" />
     </div>
   </div>
 );
@@ -110,10 +110,10 @@ const Architecture = () => (
           <Reveal delay={0.1}>
             <AstraCard hover={false} className="mt-8">
               <div className="p-6">
-                <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-[#77778F]">
+                <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-[#777F8F]">
                   design rule
                 </p>
-                <p className="mt-2 text-sm leading-relaxed text-[#B9B9CF]">
+                <p className="mt-2 text-sm leading-relaxed text-[#B9C0CF]">
                   Innovation happens in the loop and the memory. Tools are
                   replaceable. Weights are a substrate. Nothing above the loop can
                   permanently override the loop's duty to keep learning.

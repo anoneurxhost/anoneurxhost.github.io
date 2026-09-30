@@ -27,7 +27,7 @@ const products = [
     icon: Monitor,
     name: "Black Wall OS",
     description: "Desktop & laptop operating system built on a Rust microkernel with blockchain identity.",
-    color: "from-blue-600/20 to-indigo-600/10 border-blue-500/20",
+    color: "from-blue-600/20 to-sky-600/10 border-blue-500/20",
     iconColor: "text-blue-400",
     links: [
       { label: "Documentation", to: "/docs/blackwall" },
@@ -39,8 +39,8 @@ const products = [
     icon: Server,
     name: "Black Wall Server",
     description: "Hardened enterprise server platform with zero-trust networking and immutable OS design.",
-    color: "from-purple-600/20 to-blue-600/10 border-purple-500/20",
-    iconColor: "text-purple-400",
+    color: "from-blue-600/20 to-blue-600/10 border-blue-500/20",
+    iconColor: "text-blue-400",
     links: [
       { label: "Server Docs", to: "/docs/blackwall" },
       { label: "Architecture", to: "/blackwall/architecture" },
@@ -76,7 +76,7 @@ const channels = [
     label: "Enterprise Support",
     desc: "Priority SLA for Server deployments",
     href: "mailto:enterprise@anoneurx.com",
-    color: "border-purple-500/20 hover:border-purple-500/40 text-purple-400",
+    color: "border-blue-500/20 hover:border-blue-500/40 text-blue-400",
   },
 ];
 
@@ -102,8 +102,8 @@ const FAQItem = ({ q, a, badge }: { q: string; a: string; badge: string }) => {
             badge === "both"
               ? "bg-blue-500/10 border-blue-500/25 text-blue-300"
               : badge === "os"
-              ? "bg-indigo-500/10 border-indigo-500/25 text-indigo-300"
-              : "bg-purple-500/10 border-purple-500/25 text-purple-300"
+              ? "bg-sky-500/10 border-sky-500/25 text-sky-300"
+              : "bg-blue-500/10 border-blue-500/25 text-blue-300"
           }`}>
             {badge === "both" ? "Both" : badge === "os" ? "OS" : "Server"}
           </span>

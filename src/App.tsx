@@ -282,6 +282,22 @@ const ConnectSSHKeys = React.lazy(() => import('./pages/cloud/connect/ConnectSSH
 const ConnectWebhooks = React.lazy(() => import('./pages/cloud/connect/ConnectWebhooks'));
 const RequireConnectAuth = React.lazy(() => import('./pages/cloud/connect/RequireConnectAuth'));
 
+// Cloud Connect — Security Center (live data only)
+const SecurityOverview = React.lazy(() => import('./pages/cloud/connect/security/SecurityOverview'));
+const SecuritySsh = React.lazy(() => import('./pages/cloud/connect/security/SecuritySsh'));
+const SecurityBruteforce = React.lazy(() => import('./pages/cloud/connect/security/SecurityBruteforce'));
+const SecurityIpControl = React.lazy(() => import('./pages/cloud/connect/security/SecurityIpControl'));
+const SecurityPorts = React.lazy(() => import('./pages/cloud/connect/security/SecurityPorts'));
+const SecurityScan = React.lazy(() => import('./pages/cloud/connect/security/SecurityScan'));
+const SecurityIntegrity = React.lazy(() => import('./pages/cloud/connect/security/SecurityIntegrity'));
+const SecurityEvents = React.lazy(() => import('./pages/cloud/connect/security/SecurityEvents'));
+const SecuritySecrets = React.lazy(() => import('./pages/cloud/connect/security/SecuritySecrets'));
+const SecurityTls = React.lazy(() => import('./pages/cloud/connect/security/SecurityTls'));
+const SecurityBackups = React.lazy(() => import('./pages/cloud/connect/security/SecurityBackups'));
+const SecurityUpdates = React.lazy(() => import('./pages/cloud/connect/security/SecurityUpdates'));
+const SecurityRecovery = React.lazy(() => import('./pages/cloud/connect/security/SecurityRecovery'));
+const SecurityTotp = React.lazy(() => import('./pages/cloud/connect/security/SecurityTotp'));
+
 // Career Pages
 const CareersHackathon = React.lazy(() => import('./pages/careers/Hackathon'));
 const CareersHackathonApply = React.lazy(() => import('./pages/careers/HackathonApply'));
@@ -926,6 +942,20 @@ function App() {
                   <Route path="ssh-keys" element={<ConnectSSHKeys />} />
                   <Route path="webhooks" element={<ConnectWebhooks />} />
                   <Route path="settings" element={<ConnectSettings />} />
+                  <Route path="security" element={<SecurityOverview />} />
+                  <Route path="ssh" element={<SecuritySsh />} />
+                  <Route path="bruteforce" element={<SecurityBruteforce />} />
+                  <Route path="ip-control" element={<SecurityIpControl />} />
+                  <Route path="ports" element={<SecurityPorts />} />
+                  <Route path="scan" element={<SecurityScan />} />
+                  <Route path="integrity" element={<SecurityIntegrity />} />
+                  <Route path="events" element={<SecurityEvents />} />
+                  <Route path="secrets" element={<SecuritySecrets />} />
+                  <Route path="tls" element={<SecurityTls />} />
+                  <Route path="backups" element={<SecurityBackups />} />
+                  <Route path="updates" element={<SecurityUpdates />} />
+                  <Route path="recovery" element={<SecurityRecovery />} />
+                  <Route path="totp" element={<SecurityTotp />} />
                 </Route>
               </Route>
 

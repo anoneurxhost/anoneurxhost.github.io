@@ -4,7 +4,9 @@ import type { ConnectMode, Result } from "./api";
 /**
  * Small fetch-state helper for the Cloud Connect console.
  * Every loader returns { data, mode } so pages can show a demo notice
- * when the standalone Rust backend isn't configured.
+ * when the standalone Rust backend isn't configured. Security Center
+ * loaders may additionally return `error` (a SecResult) so business-logic
+ * failures (bad TOTP/recovery code, forbidden) surface in the UI.
  */
 export function useAsyncData<T>(loader: () => Promise<Result<T>>, deps: unknown[] = []) {
   const [data, setData] = useState<T | null>(null);
@@ -19,6 +21,8 @@ export function useAsyncData<T>(loader: () => Promise<Result<T>>, deps: unknown[
       const res = await loader();
       setData(res.data);
       setMode(res.mode);
+      const resWithErr = res as Result<T> & { error?: string };
+      if (resWithErr.error) setError(resWithErr.error);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Request failed");
     } finally {

@@ -18,12 +18,12 @@ const ProjectsSection = ({ projects }: ProjectsSectionProps) => {
   return (
     <div>
       <h3 className="text-xl font-bold text-white mb-6 flex items-center">
-        <Code2 className="mr-2 w-5 h-5 text-purple-400" />
+        <Code2 className="mr-2 w-5 h-5 text-blue-400" />
         Projects Portfolio
       </h3>
       <div className="space-y-6">
         {projects.map((project, index) => (
-          <div key={index} className="p-6 bg-gray-800/50 rounded-lg border border-gray-700 hover:border-purple-500/50 transition-colors">
+          <div key={index} className="p-6 bg-gray-800/50 rounded-lg border border-gray-700 hover:border-blue-500/50 transition-colors">
             <div className="flex items-start justify-between mb-4">
               <div>
                 <h4 className="text-lg font-semibold text-white mb-2">{project.title}</h4>
@@ -34,7 +34,7 @@ const ProjectsSection = ({ projects }: ProjectsSectionProps) => {
                   href={project.link} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-purple-400 hover:text-purple-300 transition-colors"
+                  className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors"
                 >
                   <Github className="w-5 h-5" />
                   <span className="text-sm">View Code</span>
@@ -48,7 +48,7 @@ const ProjectsSection = ({ projects }: ProjectsSectionProps) => {
                 {project.technologies.map((tech, techIndex) => (
                   <Badge 
                     key={techIndex} 
-                    className="bg-purple-500/20 text-purple-300 border-purple-500/30 text-xs"
+                    className="bg-blue-500/20 text-blue-300 border-blue-500/30 text-xs"
                   >
                     {tech}
                   </Badge>

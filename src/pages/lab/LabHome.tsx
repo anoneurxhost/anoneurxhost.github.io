@@ -29,7 +29,7 @@ const LabHome = () => {
       <section className="relative min-h-[90vh] flex items-center px-4">
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-900/10 via-transparent to-transparent" />
         <div className="mx-auto max-w-7xl py-24 md:py-36 relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}>
             <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 text-[10px] font-bold uppercase tracking-widest mb-6">
               <Beaker className="h-3 w-3 mr-1.5" /> Anoneurx Research Lab
             </Badge>
@@ -80,7 +80,7 @@ const LabHome = () => {
               {steps.map((step, i) => (
                 <motion.div
                   key={step.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 8 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
@@ -116,7 +116,7 @@ const LabHome = () => {
             {openProblems.map((problem, i) => (
               <motion.div
                 key={problem.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
@@ -161,7 +161,7 @@ const LabHome = () => {
             {researchAreas.map((area, i) => (
               <motion.div
                 key={area.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
@@ -191,7 +191,7 @@ const LabHome = () => {
             {recentPapers.map((paper, i) => (
               <motion.div
                 key={paper.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
@@ -201,7 +201,7 @@ const LabHome = () => {
                   <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
                     paper.category === "Published" ? "bg-emerald-500/10 text-emerald-400" :
                     paper.category === "Ongoing" ? "bg-blue-500/10 text-blue-400" :
-                    paper.category === "Preprint" ? "bg-purple-500/10 text-purple-400" :
+                    paper.category === "Preprint" ? "bg-blue-500/10 text-blue-400" :
                     "bg-gray-500/10 text-gray-400"
                   }`}>
                     {paper.category}
@@ -235,7 +235,7 @@ const LabHome = () => {
             {researchers.map((person, i) => (
               <motion.div
                 key={person.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
@@ -272,7 +272,7 @@ const LabHome = () => {
             ].map((item, i) => (
               <motion.div
                 key={item.step}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}

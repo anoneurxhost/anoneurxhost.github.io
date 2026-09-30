@@ -5,7 +5,7 @@ import wallpaper from "@/assets/wallpapers/nexora.jpg";
 export const NexoraBackground = () => (
   <div className="pointer-events-none fixed inset-0 z-0">
     <div
-      className="absolute inset-0 bg-cover bg-center bg-fixed bg-no-repeat"
+      className="absolute inset-0 bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${wallpaper})` }}
     />
     <div className="absolute inset-0 bg-black/50" />

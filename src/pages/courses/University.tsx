@@ -1,5 +1,5 @@
 import React from 'react';
-import { GraduationCap, BookOpen, Users, Award, Brain, Bot, Satellite, Code, ArrowRight, Globe, Microscope, Quote, Star } from 'lucide-react';
+import { GraduationCap, BookOpen, Users, Award, Brain, Bot, Satellite, Code, ArrowRight, Microscope, FlaskConical } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PageTransition from "@/components/PageTransition";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,67 +7,22 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const University = () => {
-  const stats = [
-    { icon: <Users className="w-6 h-6 text-blue-400" />, label: 'Students', value: '25,000+' },
-    { icon: <BookOpen className="w-6 h-6 text-purple-400" />, label: 'Courses', value: '150+' },
-    { icon: <GraduationCap className="w-6 h-6 text-green-400" />, label: 'Graduates', value: '12,000+' },
-    { icon: <Award className="w-6 h-6 text-yellow-400" />, label: 'Research Papers', value: '500+' },
+  const status = [
+    { icon: <BookOpen className="w-6 h-6 text-blue-400" />, label: 'Programmes', value: '4 tracks' },
+    { icon: <FlaskConical className="w-6 h-6 text-cyan-400" />, label: 'Status', value: 'In development' },
+    { icon: <Users className="w-6 h-6 text-emerald-400" />, label: 'Enrolment', value: 'Not yet open' },
+    { icon: <Award className="w-6 h-6 text-amber-400" />, label: 'Admissions', value: 'By application' },
   ];
 
   const programs = [
-    { icon: <Brain className="w-8 h-8 text-blue-400" />, title: 'Artificial Intelligence', description: 'Deep learning, NLP, computer vision, and intelligent systems. Build the next generation of AI-powered solutions.', courses: 42, color: 'from-blue-500/20 to-cyan-500/20' },
-    { icon: <Bot className="w-8 h-8 text-green-400" />, title: 'Robotics & Automation', description: 'From kinematics to autonomous systems. Design, build, and program robots that operate in the real world.', courses: 28, color: 'from-green-500/20 to-emerald-500/20' },
-    { icon: <Satellite className="w-8 h-8 text-purple-400" />, title: 'Space Technology', description: 'Satellite systems, orbital mechanics, and aerospace engineering. Reach beyond our atmosphere.', courses: 18, color: 'from-purple-500/20 to-violet-500/20' },
-    { icon: <Code className="w-8 h-8 text-orange-400" />, title: 'Blockchain & Systems', description: 'Distributed systems, smart contracts, and decentralized architectures. Build trustless infrastructure.', courses: 24, color: 'from-orange-500/20 to-red-500/20' },
+    { icon: <Brain className="w-8 h-8 text-blue-400" />, title: 'Artificial Intelligence', description: 'Deep learning, natural language processing, computer vision and intelligent systems. Course material covers model training and evaluation.', color: 'from-blue-500/20 to-cyan-500/20' },
+    { icon: <Bot className="w-8 h-8 text-emerald-400" />, title: 'Robotics & Automation', description: 'Kinematics, control and autonomous systems. Course material covers simulation and hardware integration.', color: 'from-emerald-500/20 to-teal-500/20' },
+    { icon: <Satellite className="w-8 h-8 text-sky-400" />, title: 'Space Technology', description: 'Satellite systems, orbital mechanics and aerospace engineering. Course material covers ground segment design.', color: 'from-sky-500/20 to-cyan-500/20' },
+    { icon: <Code className="w-8 h-8 text-orange-400" />, title: 'Distributed Systems', description: 'Consensus, smart contracts and peer-to-peer architectures. Course material covers protocol design and analysis.', color: 'from-orange-500/20 to-rose-500/20' },
   ];
 
   const faculty = [
-    { name: 'Dr. Zoha Tariq', role: 'Proffesor', specialization: 'Mathematical Physics' },
-  ];
-
-  const testimonials = [
-    {
-      name: 'Priya Sharma',
-      program: 'AI & Machine Learning',
-      year: 'Class of 2025',
-      rating: 5,
-      quote: 'The neural networks course completely transformed my understanding of deep learning. The hands-on labs with real datasets gave me the confidence to build production-grade models. I landed a research position at a top AI lab right after graduating.',
-    },
-    {
-      name: 'Marcus Johnson',
-      program: 'Robotics & Automation',
-      year: 'Class of 2024',
-      rating: 5,
-      quote: 'Working with actual robotic arms and autonomous vehicles in the 24/7 labs was incredible. Prof. Mitchell\'s kinematics course bridged theory and practice perfectly. I now lead a robotics team at a startup.',
-    },
-    {
-      name: 'Elena Vasquez',
-      program: 'Blockchain & Systems',
-      year: 'Class of 2025',
-      rating: 5,
-      quote: 'The blockchain infrastructure course gave me an edge in the job market. I built a DeFi protocol as my capstone project and received funding to turn it into a real product. The mentorship here is unmatched.',
-    },
-    {
-      name: 'Takeshi Yamamoto',
-      program: 'Space Technology',
-      year: 'Class of 2024',
-      rating: 4,
-      quote: 'From orbital mechanics simulations to collaborating with aerospace engineers on real CubeSat missions — this program delivers what it promises. The global community is also a huge advantage.',
-    },
-    {
-      name: 'Fatima Al-Rashid',
-      program: 'Cybersecurity',
-      year: 'Class of 2025',
-      rating: 5,
-      quote: 'The penetration testing labs are incredibly realistic. Dr. Patel\'s incident response module prepared me for real-world scenarios. I earned my OSCP certification while still enrolled in the program.',
-    },
-    {
-      name: 'Daniel Osei',
-      program: 'Data Science',
-      year: 'Class of 2024',
-      rating: 5,
-      quote: 'The data science curriculum is rigorous and practical. From feature engineering to MLOps, every module builds on the last. My capstone project — a predictive analytics platform — is now used by a healthcare startup.',
-    },
+    { name: 'Dr. Zoha Tariq', role: 'Professor', specialization: 'Mathematical Physics' },
   ];
 
   return (
@@ -79,40 +34,48 @@ const University = () => {
             <div className="text-center space-y-6">
               <Badge className="bg-primary/20 text-blue-500 border-primary/30 px-4 py-2">
                 <GraduationCap className="w-4 h-4 mr-2" />
-                Education & Innovation
+                Education &amp; Research
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Anoneurx University</h1>
               <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-                Empowering minds through technology, research, and innovation. Where academic theory meets industrial reality.
+                Course material across artificial intelligence, robotics, space technology and distributed
+                systems. The material is browsable now. Cohort applications have not opened.
               </p>
             </div>
 
-            {/* Stats */}
+            {/* Programme status */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              {stats.map((stat, i) => (
+              {status.map((item, i) => (
                 <Card key={i} className="bg-white/5 border-white/10 backdrop-blur-sm text-center">
                   <CardContent className="p-6 space-y-2">
-                    <div className="flex justify-center">{stat.icon}</div>
-                    <div className="text-2xl font-bold text-white">{stat.value}</div>
-                    <div className="text-xs text-gray-400">{stat.label}</div>
+                    <div className="flex justify-center">{item.icon}</div>
+                    <div className="text-lg font-semibold text-white">{item.value}</div>
+                    <div className="text-xs text-gray-400">{item.label}</div>
                   </CardContent>
                 </Card>
               ))}
             </div>
 
+            <p className="text-sm text-gray-400 max-w-3xl">
+              We do not publish enrolment, graduate or paper counts. No cohort has completed, so any such
+              figure would be invented. Published research output is listed on the research page instead.
+            </p>
+
             {/* Mission */}
             <section className="space-y-4">
-              <h2 className="text-3xl font-semibold">Our Mission</h2>
+              <h2 className="text-3xl font-semibold">Purpose</h2>
               <p className="text-base text-gray-300 leading-relaxed max-w-3xl">
-                At Anoneurx University, we believe that education should be as dynamic as the technology that drives our world. Our mission is to bridge the gap between academic theory and industrial reality, providing students with hands-on experience in AI, Robotics, Space systems, and beyond. We cultivate critical thinkers, innovators, and leaders who are prepared to solve the world's most pressing challenges.
+                Anoneurx University exists to publish course material that connects engineering theory to
+                working systems. Material is written by the teams building the software it describes, and it
+                is released openly so that anyone can work through it without enrolling.
               </p>
             </section>
 
             {/* Academic Programs */}
             <section className="space-y-8">
               <div className="space-y-2">
-                <h2 className="text-3xl font-semibold">Academic Programs</h2>
-                <p className="text-base text-gray-400">Specialized tracks designed for the innovators of tomorrow.</p>
+                <h2 className="text-3xl font-semibold">Programmes</h2>
+                <p className="text-base text-gray-400">Four subject tracks, each mapped to work the organisation is doing.</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {programs.map((program, i) => (
@@ -123,9 +86,8 @@ const University = () => {
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <p className="text-base text-gray-300">{program.description}</p>
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-400">{program.courses} courses available</span>
-                        <Link to="/courses" className="text-sm text-primary hover:underline flex items-center gap-1">Explore <ArrowRight className="w-3 h-3" /></Link>
+                      <div className="flex items-center justify-end">
+                        <Link to="/courses" className="text-sm text-primary hover:underline flex items-center gap-1">Browse material <ArrowRight className="w-3 h-3" /></Link>
                       </div>
                     </CardContent>
                   </Card>
@@ -133,14 +95,14 @@ const University = () => {
               </div>
             </section>
 
-            {/* Campus Life */}
+            {/* How study works */}
             <section className="space-y-8">
-              <h2 className="text-3xl font-semibold">Campus Life</h2>
+              <h2 className="text-3xl font-semibold">How study works</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {[
-                  { icon: <Microscope className="w-6 h-6 text-blue-400" />, title: '24/7 Labs', description: 'Open labs for hands-on research and experimentation with cutting-edge equipment.' },
-                  { icon: <Globe className="w-6 h-6 text-green-400" />, title: 'Global Community', description: 'Students from 50+ countries collaborating on projects that matter.' },
-                  { icon: <Award className="w-6 h-6 text-yellow-400" />, title: 'Competitions', description: 'Regular hackathons, coding challenges, and innovation competitions.' },
+                  { icon: <BookOpen className="w-6 h-6 text-blue-400" />, title: 'Open material', description: 'Every course is readable without an account. No enrolment required to start.' },
+                  { icon: <Microscope className="w-6 h-6 text-cyan-400" />, title: 'Lab exercises', description: 'Exercises run against real repositories and datasets from active projects.' },
+                  { icon: <Award className="w-6 h-6 text-amber-400" />, title: 'Reviewed material', description: 'Content is revised when the underlying software changes, not on a fixed schedule.' },
                 ].map((item, i) => (
                   <Card key={i} className="bg-white/5 border-white/10">
                     <CardContent className="p-6 space-y-3">
@@ -155,7 +117,7 @@ const University = () => {
 
             {/* Faculty Highlights */}
             <section className="space-y-8">
-              <h2 className="text-3xl font-semibold">Faculty Highlights</h2>
+              <h2 className="text-3xl font-semibold">Faculty</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {faculty.map((member, i) => (
                   <Card key={i} className="bg-white/5 border-white/10 text-center">
@@ -172,46 +134,15 @@ const University = () => {
               </div>
             </section>
 
-            {/* Student Testimonials */}
-            <section className="space-y-8">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-semibold">Student Testimonials</h2>
-                <p className="text-base text-gray-400">Hear from our graduates about their experience at Anoneurx University.</p>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {testimonials.map((t, i) => (
-                  <Card key={i} className="bg-white/5 border-white/10 hover:border-primary/10 transition-all duration-300">
-                    <CardContent className="p-6 space-y-4">
-                      <Quote className="w-8 h-8 text-primary/30" />
-                      <p className="text-sm text-gray-300 leading-relaxed italic">"{t.quote}"</p>
-                      <div className="flex items-center gap-1">
-                        {Array.from({ length: 5 }).map((_, j) => (
-                          <Star key={j} className={`w-3.5 h-3.5 ${j < t.rating ? 'text-yellow-500 fill-yellow-500' : 'text-gray-600'}`} />
-                        ))}
-                      </div>
-                      <div className="pt-2 border-t border-white/5">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/30 to-blue-500/10 flex items-center justify-center">
-                            <span className="text-sm font-bold text-primary">{t.name.charAt(0)}{t.name.split(' ').pop()?.charAt(0)}</span>
-                          </div>
-                          <div>
-                            <p className="text-sm font-medium text-white">{t.name}</p>
-                            <p className="text-xs text-gray-400">{t.program} · {t.year}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </section>
-
             {/* Admissions CTA */}
             <section className="text-center space-y-6">
               <Card className="bg-black/40 backdrop-blur-md pt-16 pb-8 border-none max-w-2xl mx-auto">
                 <CardContent className="p-8 md:p-12 space-y-4">
-                  <h2 className="text-3xl font-semibold text-white">Ready to Begin?</h2>
-                  <p className="text-base text-gray-300">Join thousands of students shaping the future of technology. Applications are now open for all programs.</p>
+                  <h2 className="text-3xl font-semibold text-white">Start reading</h2>
+                  <p className="text-base text-gray-300">
+                    Course material is open now. Cohort applications open once the first intake is scheduled, and
+                    we will publish the date here rather than maintain a waiting list.
+                  </p>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
                     <Button asChild size="lg"><Link to="/courses">Browse Courses</Link></Button>
                     <Button variant="outline" asChild size="lg" className="border-white/20 text-white hover:bg-white/10"><Link to="/contact">Contact Admissions</Link></Button>

@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MessageSquare, Users, Clock, ArrowLeft, ThumbsUp, Eye, ChevronLeft, ChevronRight } from "lucide-react";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const categoryData: Record<string, { name: string; description: string; members: number }> = {
   "general": { name: "General Discussion", description: "Chat about anything tech-related. Share ideas, ask questions, and connect with the community.", members: 4200 },

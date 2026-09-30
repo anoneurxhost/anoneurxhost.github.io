@@ -3,14 +3,14 @@ import { Shield, Zap, Heart, Users } from "lucide-react";
 
 const values = [
   { icon: Heart, title: "Customer Centric", desc: "Every feature is built based on real feedback from builders and creators.", color: "from-amber-500 to-orange-400" },
-  { icon: Shield, title: "Uncompromising Security", desc: "Your financial safety is our highest priority, using bank-grade encryption.", color: "from-blue-500 to-indigo-400" },
+  { icon: Shield, title: "Uncompromising Security", desc: "Your financial safety is our highest priority, using bank-grade encryption.", color: "from-blue-500 to-sky-400" },
   { icon: Users, title: "Community Owned", desc: "Shaped by the Anoneurx community to serve the next generation of builders.", color: "from-emerald-500 to-teal-400" },
 ];
 
 const BankingAbout = () => (
   <section className="px-4 py-20">
     <div className="container-responsive max-w-4xl">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
+      <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
         <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500/10 border border-amber-500/20 mb-4">
           <Zap className="h-5 w-5 text-amber-300" />
         </div>
@@ -37,7 +37,7 @@ const BankingAbout = () => (
         {values.map((v, i) => (
           <motion.div
             key={v.title}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.08 }}

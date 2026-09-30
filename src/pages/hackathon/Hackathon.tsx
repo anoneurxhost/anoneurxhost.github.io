@@ -39,10 +39,10 @@ const Hackathon = () => {
           <section className="relative py-24 px-4">
             <div className="container mx-auto max-w-6xl text-center">
               <div className="mb-8">
-                <span className="inline-block px-4 py-2 bg-purple-500/20 text-purple-300 rounded-full text-sm font-medium mb-6">
+                <span className="inline-block px-4 py-2 bg-blue-500/20 text-blue-300 rounded-full text-sm font-medium mb-6">
                   Hackathons
                 </span>
-                <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white bg-gradient-to-r from-white via-purple-200 to-pink-300 bg-clip-text text-transparent">
+                <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white bg-gradient-to-r from-white via-blue-200 to-rose-300 bg-clip-text text-transparent">
                   Hackathon Hub
                 </h1>
                 <p className="text-xl text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed">
@@ -89,7 +89,7 @@ const Hackathon = () => {
                 <Link to="/hackathon/enroll">
                   <Card className="bg-white/10 border-white/20 backdrop-blur-sm hover:bg-white/15 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20 group h-full">
                     <CardHeader className="text-center">
-                      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white">
+                      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-500 to-sky-600 flex items-center justify-center text-white">
                         <UserPlus className="w-8 h-8" />
                       </div>
                       <CardTitle className="text-white text-2xl group-hover:text-blue-300 transition-colors">
@@ -146,7 +146,7 @@ const Hackathon = () => {
                       <CardContent>
                         <div className="flex flex-wrap gap-2">
                           {event.themes.map((theme, themeIndex) => (
-                            <span key={themeIndex} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">
+                            <span key={themeIndex} className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">
                               {theme}
                             </span>
                           ))}

@@ -82,19 +82,19 @@ export const HackathonVerifyComponent: React.FC = () => {
         <Button
           type="submit"
           disabled={checking}
-          className="w-full h-11 bg-purple-600 hover:bg-purple-500 text-white font-medium transition-all"
+          className="w-full h-11 bg-blue-600 hover:bg-blue-500 text-white font-medium transition-all"
         >
           {checking ? <Loader2 className="w-4 h-4 animate-spin" /> : "Verify Hackathon Record"}
         </Button>
       </form>
 
       {/* EXECUTIVE PROFESSIONAL HELP CARD */}
-      <div className="mt-8 rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.07] to-white/[0.02] p-5 backdrop-blur-2xl shadow-xl space-y-3 transition-all hover:border-purple-500/30 hover:shadow-[0_8px_24px_rgba(168,85,247,0.12)]">
+      <div className="mt-8 rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.07] to-white/[0.02] p-5 backdrop-blur-2xl shadow-xl space-y-3 transition-all hover:border-blue-500/30 hover:shadow-[0_8px_24px_rgba(59,130,246,0.12)]">
         <div className="flex items-center gap-2">
-          <div className="p-1.5 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400">
+          <div className="p-1.5 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400">
             <HelpCircle className="w-4 h-4" />
           </div>
-          <span className="text-xs font-mono font-bold tracking-widest text-purple-400 uppercase">
+          <span className="text-xs font-mono font-bold tracking-widest text-blue-400 uppercase">
             Need Help?
           </span>
         </div>
@@ -103,13 +103,13 @@ export const HackathonVerifyComponent: React.FC = () => {
         </p>
         <a
           href="mailto:hackathon@anoneurx.com"
-          className="group flex items-center justify-between mt-3 p-3 px-4 rounded-xl bg-white/[0.04] border border-white/10 hover:bg-purple-500/10 hover:border-purple-500/30 transition-all active:scale-[0.99]"
+          className="group flex items-center justify-between mt-3 p-3 px-4 rounded-xl bg-white/[0.04] border border-white/10 hover:bg-blue-500/10 hover:border-blue-500/30 transition-all active:scale-[0.99]"
         >
-          <div className="flex items-center gap-2.5 text-xs font-mono text-purple-400 group-hover:text-purple-300 font-semibold">
-            <Mail className="w-4 h-4 text-purple-400 group-hover:scale-110 transition-transform" />
+          <div className="flex items-center gap-2.5 text-xs font-mono text-blue-400 group-hover:text-blue-300 font-semibold">
+            <Mail className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
             <span>hackathon@anoneurx.com</span>
           </div>
-          <ArrowUpRight className="w-4 h-4 text-white/40 group-hover:text-purple-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+          <ArrowUpRight className="w-4 h-4 text-white/40 group-hover:text-blue-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
         </a>
       </div>
 

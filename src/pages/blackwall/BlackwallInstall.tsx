@@ -94,8 +94,8 @@ const BlackwallInstall = () => (
         {/* ── Black Wall OS Section ── */}
         <motion.div {...fade(0.1)} className="space-y-8">
           <div className="flex items-center gap-3 border-b border-white/[0.07] pb-4">
-            <div className="h-9 w-9 rounded-xl bg-indigo-500/15 border border-indigo-500/20 flex items-center justify-center">
-              <Monitor className="h-5 w-5 text-indigo-400" />
+            <div className="h-9 w-9 rounded-xl bg-sky-500/15 border border-sky-500/20 flex items-center justify-center">
+              <Monitor className="h-5 w-5 text-sky-400" />
             </div>
             <div>
               <h2 className="text-2xl font-bold">Black Wall OS</h2>
@@ -107,7 +107,7 @@ const BlackwallInstall = () => (
             {/* Requirements */}
             <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] backdrop-blur p-6">
               <h3 className="text-base font-bold mb-5 flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-indigo-400" /> System Requirements
+                <ShieldCheck className="h-4 w-4 text-sky-400" /> System Requirements
               </h3>
               <ul className="space-y-4">
                 {osRequirements.map((r) => <ReqCard key={r.label} {...r} />)}
@@ -115,21 +115,21 @@ const BlackwallInstall = () => (
             </div>
 
             {/* Steps */}
-            <div className="rounded-xl border border-indigo-500/20 bg-gradient-to-br from-indigo-600/10 to-transparent backdrop-blur p-6">
+            <div className="rounded-xl border border-sky-500/20 bg-gradient-to-br from-sky-600/10 to-transparent backdrop-blur p-6">
               <h3 className="text-base font-bold mb-6 flex items-center gap-2">
-                <Terminal className="h-4 w-4 text-indigo-400" /> Installation Steps
+                <Terminal className="h-4 w-4 text-sky-400" /> Installation Steps
               </h3>
               <div className="space-y-6">
-                {osSteps.map((s) => <StepCard key={s.step} {...s} color="text-indigo-400" />)}
+                {osSteps.map((s) => <StepCard key={s.step} {...s} color="text-sky-400" />)}
               </div>
             </div>
           </div>
 
           {/* Tip */}
-          <div className="rounded-xl border border-indigo-500/15 bg-indigo-500/[0.04] p-5 flex items-start gap-3">
-            <Usb className="h-5 w-5 text-indigo-300 shrink-0 mt-0.5" />
+          <div className="rounded-xl border border-sky-500/15 bg-sky-500/[0.04] p-5 flex items-start gap-3">
+            <Usb className="h-5 w-5 text-sky-300 shrink-0 mt-0.5" />
             <p className="text-xs text-slate-400 leading-relaxed">
-              <span className="text-indigo-300 font-semibold">Dual-boot tip:</span> The installer auto-detects Windows and Linux partitions. Leave at least 20 GB unallocated and the installer will offer to create a Black Wall partition alongside your existing OS.
+              <span className="text-sky-300 font-semibold">Dual-boot tip:</span> The installer auto-detects Windows and Linux partitions. Leave at least 20 GB unallocated and the installer will offer to create a Black Wall partition alongside your existing OS.
             </p>
           </div>
 
@@ -137,7 +137,7 @@ const BlackwallInstall = () => (
           <div className="flex flex-wrap gap-3">
             <Link
               to="/blackwall/download"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-indigo-600/80 hover:bg-indigo-600 text-white text-sm font-semibold transition"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-sky-600/80 hover:bg-sky-600 text-white text-sm font-semibold transition"
             >
               <Download className="h-4 w-4" /> Download Black Wall OS
             </Link>
@@ -155,8 +155,8 @@ const BlackwallInstall = () => (
         {/* ── Black Wall Server Section ── */}
         <motion.div {...fade(0.15)} className="space-y-8">
           <div className="flex items-center gap-3 border-b border-white/[0.07] pb-4">
-            <div className="h-9 w-9 rounded-xl bg-purple-500/15 border border-purple-500/20 flex items-center justify-center">
-              <Server className="h-5 w-5 text-purple-400" />
+            <div className="h-9 w-9 rounded-xl bg-blue-500/15 border border-blue-500/20 flex items-center justify-center">
+              <Server className="h-5 w-5 text-blue-400" />
             </div>
             <div>
               <h2 className="text-2xl font-bold">Black Wall Server</h2>
@@ -168,7 +168,7 @@ const BlackwallInstall = () => (
             {/* Requirements */}
             <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] backdrop-blur p-6">
               <h3 className="text-base font-bold mb-5 flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-purple-400" /> System Requirements
+                <ShieldCheck className="h-4 w-4 text-blue-400" /> System Requirements
               </h3>
               <ul className="space-y-4">
                 {serverRequirements.map((r) => <ReqCard key={r.label} {...r} />)}
@@ -176,19 +176,19 @@ const BlackwallInstall = () => (
             </div>
 
             {/* Steps */}
-            <div className="rounded-xl border border-purple-500/20 bg-gradient-to-br from-purple-600/10 to-transparent backdrop-blur p-6">
+            <div className="rounded-xl border border-blue-500/20 bg-gradient-to-br from-blue-600/10 to-transparent backdrop-blur p-6">
               <h3 className="text-base font-bold mb-6 flex items-center gap-2">
-                <Terminal className="h-4 w-4 text-purple-400" /> Installation Steps
+                <Terminal className="h-4 w-4 text-blue-400" /> Installation Steps
               </h3>
               <div className="space-y-6">
-                {serverSteps.map((s) => <StepCard key={s.step} {...s} color="text-purple-400" />)}
+                {serverSteps.map((s) => <StepCard key={s.step} {...s} color="text-blue-400" />)}
               </div>
             </div>
           </div>
 
           {/* Post-install commands */}
-          <div className="rounded-xl border border-purple-500/15 bg-purple-500/[0.04] p-6">
-            <h3 className="text-sm font-semibold text-purple-300 mb-3 flex items-center gap-2">
+          <div className="rounded-xl border border-blue-500/15 bg-blue-500/[0.04] p-6">
+            <h3 className="text-sm font-semibold text-blue-300 mb-3 flex items-center gap-2">
               <Terminal className="h-4 w-4" /> Essential First Commands
             </h3>
             <div className="space-y-2 font-mono text-xs">
@@ -199,7 +199,7 @@ const BlackwallInstall = () => (
                 ["bwctl update check", "Pull latest signed OS updates"],
               ].map(([cmd, note]) => (
                 <div key={cmd} className="flex items-center gap-3">
-                  <code className="text-purple-300 bg-purple-900/30 px-2 py-1 rounded">{cmd}</code>
+                  <code className="text-blue-300 bg-blue-900/30 px-2 py-1 rounded">{cmd}</code>
                   <span className="text-slate-500 text-[11px]">— {note}</span>
                 </div>
               ))}
@@ -210,7 +210,7 @@ const BlackwallInstall = () => (
           <div className="grid sm:grid-cols-3 gap-4">
             {["Signed atomic updates", "Zero-trust by default", "CIS Benchmark hardened"].map((f) => (
               <div key={f} className="flex items-center gap-2 text-sm text-slate-300">
-                <CheckCircle2 className="h-4 w-4 text-purple-400 shrink-0" /> {f}
+                <CheckCircle2 className="h-4 w-4 text-blue-400 shrink-0" /> {f}
               </div>
             ))}
           </div>
@@ -219,7 +219,7 @@ const BlackwallInstall = () => (
           <div className="flex flex-wrap gap-3">
             <Link
               to="/blackwall/server"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-purple-600/80 hover:bg-purple-600 text-white text-sm font-semibold transition"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600/80 hover:bg-blue-600 text-white text-sm font-semibold transition"
             >
               <Server className="h-4 w-4" /> Black Wall Server <ChevronRight className="h-4 w-4" />
             </Link>

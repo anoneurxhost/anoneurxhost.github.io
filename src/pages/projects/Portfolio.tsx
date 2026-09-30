@@ -11,9 +11,9 @@ import { Input } from '@/components/ui/input';
 import PageTransition from '@/components/PageTransition';
 
 const portfolioProjects = [
-  { id: 1, title: "AI E-Commerce Platform", description: "Full-stack e-commerce with AI recommendations and dynamic pricing.", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop", category: "Web", technologies: ["React", "Node", "TF"], status: "completed", impact: "+40% conversion", liveLink: "https://example.com", githubLink: "https://github.com" },
+  { id: 1, title: "AI E-Commerce Platform", description: "Full-stack e-commerce with AI recommendations and dynamic pricing.", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop", category: "Web", technologies: ["React", "Node", "TF"], status: "completed", impact: "Performance improvements per project", liveLink: "https://example.com", githubLink: "https://github.com" },
   { id: 2, title: "Autonomous Drone Nav", description: "Drone navigation using computer vision and LIDAR for agriculture.", image: "https://images.unsplash.com/photo-1508614999368-9260051292e5?w=600&h=400&fit=crop", category: "Robotics", technologies: ["Python", "ROS", "OpenCV"], status: "completed", impact: "-60% survey time", githubLink: "https://github.com" },
-  { id: 3, title: "DeFi Platform", description: "Blockchain DeFi for P2P lending, staking, and yield farming.", image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop", category: "Blockchain", technologies: ["Solidity", "Web3"], status: "live", impact: "$50M+ volume", liveLink: "https://example.com" },
+  { id: 3, title: "DeFi Platform", description: "Blockchain DeFi for P2P lending, staking, and yield farming.", image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop", category: "Blockchain", technologies: ["Solidity", "Web3"], status: "live", impact: "DeFi infrastructure prototype", liveLink: "https://example.com" },
   { id: 4, title: "Healthcare System", description: "Patient management, telemedicine and AI diagnostics.", image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop", category: "Web", technologies: ["React", "Django"], status: "completed", impact: "100K+ patients", liveLink: "https://example.com" },
   { id: 5, title: "Satellite Analytics", description: "Satellite imagery for climate monitoring and disaster response.", image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600&h=400&fit=crop", category: "Space", technologies: ["Python", "TF"], status: "in_progress", impact: "1TB+ daily" },
   { id: 6, title: "Smart Manufacturing IoT", description: "Real-time monitoring and predictive maintenance.", image: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=600&h=400&fit=crop", category: "AI/ML", technologies: ["Python", "MQTT"], status: "completed", impact: "+30% efficiency" },
@@ -56,12 +56,12 @@ const Portfolio = () => {
     <PageTransition>
       <div className="min-h-screen relative">
         <div className="pointer-events-none absolute top-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-[160px]" />
-        <div className="pointer-events-none absolute bottom-20 left-10 w-80 h-80 bg-purple-500/10 rounded-full blur-[140px]" />
+        <div className="pointer-events-none absolute bottom-20 left-10 w-80 h-80 bg-blue-500/10 rounded-full blur-[140px]" />
 
         {/* Hero */}
         <section className="relative z-10 px-4 pt-24 pb-10">
           <div className="container mx-auto max-w-6xl text-center">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
               <Badge className="mb-3 bg-white/5 text-blue-300 border-white/10 px-3 py-1 backdrop-blur-xl text-[10px]">
                 <Star className="w-3 h-3 mr-1.5" /> Our Work
               </Badge>

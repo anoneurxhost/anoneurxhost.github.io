@@ -22,26 +22,26 @@ const Lab = () => (
               className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full opacity-40 blur-3xl transition-opacity duration-300 group-hover:opacity-70"
               style={{
                 background:
-                  "radial-gradient(circle, rgba(139,124,246,0.35), transparent 70%)",
+                  "radial-gradient(circle, rgba(56,189,248,0.35), transparent 70%)",
               }}
             />
             <div className="relative flex flex-wrap items-start justify-between gap-6 p-8 sm:p-10">
               <div className="flex items-start gap-4">
-                <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/5 text-[#A79BFF]">
+                <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/5 text-[#7DD3FC]">
                   <FlaskConical className="h-6 w-6" />
                 </span>
                 <div>
                   <h3 className="text-xl font-semibold text-white sm:text-2xl">
                     Anoneurx Lab
                   </h3>
-                  <p className="mt-2 max-w-lg text-sm leading-relaxed text-[#8E8EA8]">
+                  <p className="mt-2 max-w-lg text-sm leading-relaxed text-[#8E96A8]">
                     Where ASTRA's research problems, people and projects live.
                     Explore open problems, read the papers and see who is working
                     on what.
                   </p>
                 </div>
               </div>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-[#A79BFF] transition-colors group-hover:border-[#8B7CF6]/50 group-hover:bg-white/10">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-[#7DD3FC] transition-colors group-hover:border-[#38BDF8]/50 group-hover:bg-white/10">
                 visit the lab
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </span>

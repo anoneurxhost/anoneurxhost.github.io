@@ -14,14 +14,14 @@ const features = [
   { icon: Rocket, title: "Fast Deployment", desc: "Spin up instances with pre-configured images in less than 30 seconds." },
   { icon: Cpu, title: "Scalable Infra", desc: "Auto-scaling groups that adapt to your traffic patterns automatically." },
   { icon: Shield, title: "DDoS Protected", desc: "Enterprise-grade protection with L3/L4 mitigation included." },
-  { icon: Database, title: "Global Persistent", desc: "Distributed block storage with 99.999% durability guarantee." },
+  { icon: Database, title: "Global Persistent", desc: "Distributed block storage with high durability, designed for data integrity." },
 ];
 
 const stats = [
-  { value: "40+", label: "Regions", icon: Globe },
-  { value: "99.99%", label: "Uptime", icon: Shield },
-  { value: "2Tbps", label: "Network", icon: Zap },
-  { value: "SLA", label: "Guarantee", icon: Rocket },
+  { value: "Multiple", label: "Deployment regions", icon: Globe },
+  { value: "Designed for", label: "Availability", icon: Shield },
+  { value: "High", label: "Throughput", icon: Zap },
+  { value: "Built-in", label: "Resilience", icon: Rocket },
 ];
 
 const CloudHome = () => {
@@ -34,21 +34,21 @@ const CloudHome = () => {
             <motion.div 
               initial={{ opacity: 0, x: -20 }} 
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.35 }}
               className="text-center lg:text-left"
             >
-              <Badge className="bg-violet-500/10 text-violet-400 border-violet-500/20 text-[10px] font-bold uppercase tracking-widest mb-6">
+              <Badge className="bg-cyan-500/10 text-cyan-400 border-cyan-500/20 text-[10px] font-bold uppercase tracking-widest mb-6">
                 <Zap className="h-3 w-3 mr-1.5" /> Anoneurx Cloud v2.1
               </Badge>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-tight">
                 Infrastructure for <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-indigo-300 to-blue-400">Deep-Scale Apps.</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400">Deep-Scale Apps.</span>
               </h1>
               <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
                 Deploy virtual machines, edge networks, and distributed databases in seconds. Built on our global low-latency fiber spine.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                <Button className="h-12 px-8 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-bold text-xs uppercase tracking-widest group shadow-lg shadow-violet-500/20">
+                <Button className="h-12 px-8 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs uppercase tracking-widest group shadow-lg shadow-cyan-500/20">
                   Deploy Now <ChevronRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 <Link to="/cloud/pricing">
@@ -62,10 +62,10 @@ const CloudHome = () => {
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }} 
               animate={{ opacity: 1, scale: 1 }} 
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
               className="relative hidden lg:block"
             >
-              <div className="absolute -inset-10 bg-violet-500/10 blur-[100px] rounded-full" />
+              <div className="absolute -inset-10 bg-cyan-500/10 blur-[100px] rounded-full" />
               <div className="relative rounded-xl border border-white/10 bg-black/40 backdrop-blur-3xl p-8 shadow-2xl">
                  <div className="flex items-center gap-3 mb-6">
                     <div className="w-3 h-3 rounded-full bg-red-500/50" />
@@ -78,8 +78,8 @@ const CloudHome = () => {
                     <div className="h-2 w-[80%] bg-white/5 rounded-full" />
                     <div className="h-2 w-[90%] bg-white/10 rounded-full" />
                     <div className="grid grid-cols-2 gap-4 pt-4">
-                       <div className="h-20 rounded-lg bg-violet-500/10 border border-violet-500/20" />
-                       <div className="h-20 rounded-lg bg-indigo-500/10 border border-indigo-500/20" />
+                       <div className="h-20 rounded-lg bg-cyan-500/10 border border-cyan-500/20" />
+                       <div className="h-20 rounded-lg bg-sky-500/10 border border-sky-500/20" />
                     </div>
                  </div>
               </div>
@@ -92,21 +92,21 @@ const CloudHome = () => {
       <section className="py-20 border-y border-white/5 bg-black/20 px-4">
         <div className="container-responsive">
           <div className="text-center mb-14">
-            <span className="text-[10px] uppercase tracking-[0.3em] text-violet-400 font-bold">Cloud Engineering</span>
+            <span className="text-[10px] uppercase tracking-[0.3em] text-cyan-400 font-bold">Cloud Engineering</span>
             <h2 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight">Scale without limits.</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((f, i) => (
               <motion.div 
                 key={f.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="p-6 rounded-lg bg-white/[0.02] border border-white/5 hover:border-violet-500/30 transition-all group"
+                className="p-6 rounded-lg bg-white/[0.02] border border-white/5 hover:border-cyan-500/30 transition-all group"
               >
-                <div className="h-10 w-10 rounded-lg bg-violet-500/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                  <f.icon className="h-5 w-5 text-violet-400" />
+                <div className="h-10 w-10 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  <f.icon className="h-5 w-5 text-cyan-400" />
                 </div>
                 <h3 className="text-lg font-bold mb-2 tracking-tight">{f.title}</h3>
                 <p className="text-gray-500 text-xs leading-relaxed">{f.desc}</p>
@@ -123,7 +123,7 @@ const CloudHome = () => {
             {stats.map((s, i) => (
               <div key={i} className="text-center group">
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/5 border border-white/10 mb-4 group-hover:bg-white/10 transition-all">
-                  <s.icon className="h-5 w-5 text-violet-400" />
+                  <s.icon className="h-5 w-5 text-cyan-400" />
                 </div>
                 <div className="text-2xl font-bold text-white mb-1">{s.value}</div>
                 <div className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">{s.label}</div>
@@ -136,7 +136,7 @@ const CloudHome = () => {
       {/* CTA Banner */}
       <section className="px-4 py-24">
         <div className="container-responsive">
-          <div className="relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-violet-900/10 via-black to-blue-900/5 p-10 lg:p-16 text-center lg:text-left flex flex-col lg:flex-row items-center justify-between gap-10">
+          <div className="relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-cyan-900/10 via-black to-blue-900/5 p-10 lg:p-16 text-center lg:text-left flex flex-col lg:flex-row items-center justify-between gap-10">
             <div className="relative z-10 max-w-xl">
               <h2 className="text-3xl lg:text-4xl font-bold mb-4 tracking-tight">Build faster <br className="hidden lg:block" /><span className="italic">at global scale.</span></h2>
               <p className="text-gray-400 text-sm mb-8 leading-relaxed">
@@ -144,7 +144,7 @@ const CloudHome = () => {
               </p>
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                 <Link to="/cloud/products">
-                  <Button className="h-12 px-8 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-bold text-xs uppercase tracking-widest group">
+                  <Button className="h-12 px-8 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs uppercase tracking-widest group">
                     Explore Products <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
@@ -157,16 +157,16 @@ const CloudHome = () => {
             </div>
             <div className="relative z-10 grid grid-cols-2 gap-4 w-full lg:w-auto">
                <div className="p-5 rounded-lg bg-black/60 border border-white/10 backdrop-blur-md flex-1 min-w-[150px]">
-                  <Server className="h-6 w-6 text-violet-400 mb-3" />
+                  <Server className="h-6 w-6 text-cyan-400 mb-3" />
                   <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Compute</p>
                   <p className="text-lg font-bold text-white mb-3">$5/mo</p>
-                  <div className="h-1 w-full bg-violet-500 shadow-[0_0_10px_rgba(139,92,246,0.3)] rounded-full" />
+                  <div className="h-1 w-full bg-cyan-500 shadow-[0_0_10px_rgba(14,165,233,0.3)] rounded-full" />
                </div>
                <div className="p-5 rounded-lg bg-black/60 border border-white/10 backdrop-blur-md flex-1 min-w-[150px]">
-                  <Database className="h-6 w-6 text-violet-400 mb-3" />
+                  <Database className="h-6 w-6 text-cyan-400 mb-3" />
                   <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Storage</p>
                   <p className="text-lg font-bold text-white mb-3">$0.02</p>
-                  <div className="h-1 w-full bg-violet-500 shadow-[0_0_10px_rgba(139,92,246,0.3)] rounded-full" />
+                  <div className="h-1 w-full bg-cyan-500 shadow-[0_0_10px_rgba(14,165,233,0.3)] rounded-full" />
                </div>
             </div>
           </div>

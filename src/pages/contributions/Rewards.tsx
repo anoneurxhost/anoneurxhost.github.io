@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Trophy, Star, Award, CheckCircle, ArrowRight, Gift, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const tiers = [
   { tier: "Bronze", minContributions: 1, icon: Award, gradient: "from-amber-700/30 to-amber-600/20", border: "border-amber-700/30", textColor: "text-amber-400", perks: ["Contributor badge on GitHub", "Name in CONTRIBUTORS.md", "Community Discord role", "Access to contributor-only channels"] },

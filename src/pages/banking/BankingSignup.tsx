@@ -95,7 +95,7 @@ const BankingSignup = () => {
   return (
     <section className="px-4 pt-20 pb-16 min-h-screen">
       <div className="container mx-auto max-w-3xl">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8">
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8">
           <Badge className="mb-3 bg-amber-500/10 text-amber-300 border-amber-500/20 px-3 py-1 text-[10px] uppercase tracking-widest">
             <Sparkles className="w-3 h-3 mr-1.5" /> Anoneurx Bank
           </Badge>

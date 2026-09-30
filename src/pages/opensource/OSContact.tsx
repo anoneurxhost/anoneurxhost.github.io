@@ -10,7 +10,7 @@ const OSContact = () => {
           Get in Touch
         </span>
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-          Contact <span className="bg-gradient-to-r from-indigo-300 via-violet-300 to-amber-300 bg-clip-text text-transparent">Anoneurx Open Source</span>
+          Contact <span className="bg-gradient-to-r from-sky-300 via-cyan-300 to-amber-300 bg-clip-text text-transparent">Anoneurx Open Source</span>
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg leading-relaxed text-white/70">
           Maintainers, security disclosure, sponsorship and community — reach the people who keep every Anoneurx repository moving.
@@ -50,8 +50,8 @@ const OSContact = () => {
         </div>
 
         <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-xl hover:border-white/20 transition-colors">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-500/10 mb-5">
-            <MapPin className="h-6 w-6 text-violet-400" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/10 mb-5">
+            <MapPin className="h-6 w-6 text-cyan-400" />
           </div>
           <h3 className="text-xl font-semibold mb-2">Location</h3>
           <p className="text-sm text-white/60 mb-4">Global community with contributors worldwide.</p>

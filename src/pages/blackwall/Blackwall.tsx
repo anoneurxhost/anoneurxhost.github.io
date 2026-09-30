@@ -35,14 +35,14 @@ const Blackwall = () => {
             <motion.div 
               initial={{ opacity: 0, x: -20 }} 
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.35 }}
             >
               <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20 text-[10px] font-bold uppercase tracking-widest mb-6">
                 <Shield className="h-3 w-3 mr-1.5" /> Black Wall OS v4.2
               </Badge>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-brand tracking-tight mb-6 leading-tight">
                 Privacy-first <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-blue-500">Operating System.</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-blue-500">Operating System.</span>
               </h1>
               <p className="text-gray-400 text-sm md:text-base max-w-xl mb-8 leading-relaxed">
                 Secure. Fast. Minimal. Powerful. A next-generation operating system built in Rust with blockchain-backed identity for creators and privacy-first users.
@@ -71,7 +71,7 @@ const Blackwall = () => {
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }} 
               animate={{ opacity: 1, scale: 1 }} 
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
               className="relative"
             >
               <div className="absolute -inset-10 bg-blue-500/10 blur-[100px] rounded-full" />
@@ -96,7 +96,7 @@ const Blackwall = () => {
             {features.map((f, i) => (
               <motion.div 
                 key={f.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}

@@ -5,7 +5,7 @@ import BlackwallLayout from "./BlackwallLayout";
 
 const layers = [
   { icon: Box, title: "Application Layer", desc: "Sandboxed user apps, native UI toolkit, IPC.", color: "from-blue-500 to-cyan-400" },
-  { icon: Network, title: "System Services", desc: "REST API server, AI assistant, recovery service.", color: "from-purple-500 to-pink-400" },
+  { icon: Network, title: "System Services", desc: "REST API server, AI assistant, recovery service.", color: "from-blue-500 to-rose-400" },
   { icon: Cpu, title: "Microkernel", desc: "Rust kernel: memory, scheduling, IPC, capabilities.", color: "from-emerald-500 to-teal-400" },
   { icon: HardDrive, title: "Hardware Abstraction", desc: "Drivers, HAL, UEFI bootloader.", color: "from-amber-500 to-orange-400" },
 ];
@@ -21,7 +21,7 @@ const BlackwallArchitecture = () => (
   <BlackwallLayout>
     <section className="px-4 py-20">
       <div className="container-responsive max-w-5xl">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-14">
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-14">
           <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10 border border-blue-500/20 mb-4">
             <Layers className="h-5 w-5 text-blue-300" />
           </div>
@@ -63,7 +63,7 @@ const BlackwallArchitecture = () => (
           {principles.map((p, i) => (
             <motion.div
               key={p.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}

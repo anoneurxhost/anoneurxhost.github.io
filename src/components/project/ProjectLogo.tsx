@@ -15,7 +15,7 @@ const SIZES = {
 };
 
 /** Project / app logo. Falls back to a gradient monogram tile. */
-const ProjectLogo: React.FC<Props> = ({ name, logo, accent = "from-purple-500 to-cyan-500", size = "md", className = "" }) => {
+const ProjectLogo: React.FC<Props> = ({ name, logo, accent = "from-blue-500 to-cyan-500", size = "md", className = "" }) => {
   const initials = name
     .replace(/[^A-Za-z ]/g, "")
     .split(" ")

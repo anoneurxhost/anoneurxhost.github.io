@@ -9,22 +9,22 @@ const LOOP = [
   { label: "06 · Improve", desc: "Update weights and policy. Loop returns to 01." },
 ];
 
-const STEP_COLORS = ["#8B7CF6", "#7A8CFF", "#4F7CFF", "#6E6EF5", "#8B7CF6", "#B4A9FF"];
+const STEP_COLORS = ["#38BDF8", "#38BDF8", "#4F7CFF", "#0EA5E9", "#38BDF8", "#93C5FD"];
 
 const LoopDiagram = () => (
   <div className="relative mx-auto aspect-square w-full max-w-xl">
-    <div className="astra-float absolute inset-[16%] rounded-full bg-[radial-gradient(circle,rgba(139,124,246,0.16),transparent_68%)]" />
-    <div className="astra-orbit absolute inset-[7%] rounded-full border border-dashed border-[#3B3B5C]/80" />
-    <div className="astra-orbit-reverse absolute inset-[27%] rounded-full border border-[#2E2E4C]/80" />
+    <div className="astra-float absolute inset-[16%] rounded-full bg-[radial-gradient(circle,rgba(56,189,248,0.16),transparent_68%)]" />
+    <div className="astra-orbit absolute inset-[7%] rounded-full border border-dashed border-[#3B4457]/80" />
+    <div className="astra-orbit-reverse absolute inset-[27%] rounded-full border border-[#2E3749]/80" />
     <div className="astra-orbit absolute inset-[7%]">
       {[0, 60, 120, 180, 240, 300].map((a) => (
         <span
           key={a}
-          className="absolute left-1/2 top-1/2 h-1 w-1 rounded-full bg-[#8B7CF6]"
+          className="absolute left-1/2 top-1/2 h-1 w-1 rounded-full bg-[#38BDF8]"
           style={{
             transform: `rotate(${a}deg) translateX(43%)`,
             opacity: 0.9,
-            boxShadow: "0 0 8px 0 rgba(139,124,246,0.9)",
+            boxShadow: "0 0 8px 0 rgba(56,189,248,0.9)",
           }}
         />
       ))}
@@ -32,15 +32,15 @@ const LoopDiagram = () => (
 
     {/* center node */}
     <div className="absolute inset-0 flex items-center justify-center">
-      <div className="astra-pulse-ring relative flex h-32 w-32 items-center justify-center rounded-full border border-[#34345A] bg-[#0B0B18] text-center shadow-[0_0_60px_-10px_rgba(139,124,246,0.5)] sm:h-40 sm:w-40">
+      <div className="astra-pulse-ring relative flex h-32 w-32 items-center justify-center rounded-full border border-[#343E52] bg-[#0B0F16] text-center shadow-[0_0_60px_-10px_rgba(56,189,248,0.5)] sm:h-40 sm:w-40">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#8B7CF6]">
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#38BDF8]">
             ASTRA
           </p>
           <p className="mt-1 text-sm font-semibold text-white sm:text-base">
             learning loop
           </p>
-          <p className="mt-1 font-mono text-[9px] uppercase tracking-wider text-[#77778F]">
+          <p className="mt-1 font-mono text-[9px] uppercase tracking-wider text-[#777F8F]">
             one loop / exp.
           </p>
         </div>
@@ -64,15 +64,15 @@ const LoopDiagram = () => (
           >
             <div
               className={cx(
-                "w-[118px] rounded-xl border bg-[#090912]/95 px-3 py-2.5 text-center backdrop-blur-sm sm:w-[132px]",
-                i === 5 && "shadow-[0_0_30px_-8px_rgba(139,124,246,0.55)]"
+                "w-[118px] rounded-xl border bg-[#090D12]/95 px-3 py-2.5 text-center backdrop-blur-sm sm:w-[132px]",
+                i === 5 && "shadow-[0_0_30px_-8px_rgba(56,189,248,0.55)]"
               )}
               style={{ borderColor: `${color}44` }}
             >
               <p className="font-mono text-[10px] font-semibold uppercase tracking-wider" style={{ color }}>
                 {step.label}
               </p>
-              <p className="mt-1 text-[10px] leading-snug text-[#8E8EA8] sm:text-[11px]">
+              <p className="mt-1 text-[10px] leading-snug text-[#8E96A8] sm:text-[11px]">
                 {step.desc}
               </p>
             </div>
@@ -109,15 +109,15 @@ const LearningLoop = () => (
           subtitle="Every interaction ASTRA has becomes a datapoint it can learn from. The loop never stops at inference — it records, reflects and improves, then takes the next task."
         />
         <div className="mt-10 hidden gap-3 lg:flex">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#2A2A40] bg-[#0A0A14]/70 px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-[#B9B9CF]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#8B7CF6]" />
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#2A3243] bg-[#0A0E14]/70 px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-[#B9C0CF]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#38BDF8]" />
             continual
           </span>
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#2A2A40] bg-[#0A0A14]/70 px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-[#B9B9CF]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#2A3243] bg-[#0A0E14]/70 px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-[#B9C0CF]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#4F7CFF]" />
             outcome-driven
           </span>
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#2A2A40] bg-[#0A0A14]/70 px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-[#B9B9CF]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#2A3243] bg-[#0A0E14]/70 px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-[#B9C0CF]">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
             consented
           </span>
@@ -137,7 +137,7 @@ const LearningLoop = () => (
                   <p className="font-mono text-[10px] uppercase tracking-wider" style={{ color: STEP_COLORS[i] }}>
                     {s.label}
                   </p>
-                  <p className="mt-1 text-sm text-[#8E8EA8]">{s.desc}</p>
+                  <p className="mt-1 text-sm text-[#8E96A8]">{s.desc}</p>
                 </div>
               </AstraCard>
             </Reveal>

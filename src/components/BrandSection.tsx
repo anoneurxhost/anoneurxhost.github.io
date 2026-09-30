@@ -5,7 +5,7 @@ import { SiHuggingface } from "@icons-pack/react-simple-icons";
 export const SocialRow = () => {
   const socialLinks = [
     { icon: <Youtube className="w-5 h-5" />, href: "https://youtube.com/@anoneurx", label: "YouTube", color: "text-red-500" },
-    { icon: <Instagram className="w-5 h-5" />, href: "https://instagram.com/@anoneurx", label: "Instagram", color: "text-pink-500" },
+    { icon: <Instagram className="w-5 h-5" />, href: "https://instagram.com/@anoneurx", label: "Instagram", color: "text-rose-500" },
     { icon: <MessageCircle className="w-5 h-5" />, href: "https://whatsapp.com/channel/0029VbAmgwp3mFYF4DFVym0z", label: "WhatsApp", color: "text-green-500" },
     {
       icon: (

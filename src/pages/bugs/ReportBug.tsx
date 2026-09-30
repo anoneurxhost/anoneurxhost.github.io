@@ -41,7 +41,7 @@ const ReportBug = () => {
       { icon: Activity, text: "Specify the hardware environment and driver versions." },
       { icon: Shield, text: "Note any security policy violations or firewall issues." }
     ],
-    accent: "text-purple-400"
+    accent: "text-blue-400"
   } : {
     title: "Nexora Engine Insights",
     description: "Help us refine the nexus between speed and privacy.",
@@ -83,7 +83,7 @@ const ReportBug = () => {
             ) : (
               <motion.div
                 key="content"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="grid lg:grid-cols-2 gap-8 items-stretch"
               >
@@ -94,7 +94,7 @@ const ReportBug = () => {
                       <div className="flex items-center justify-between">
                         <div className="space-y-1">
                           <CardTitle className="text-lg font-bold text-white uppercase tracking-widest flex items-center gap-2">
-                            <Bug className={`h-5 w-5 ${isBlackwall ? 'text-purple-400' : 'text-blue-400'}`} />
+                            <Bug className={`h-5 w-5 ${isBlackwall ? 'text-blue-400' : 'text-blue-400'}`} />
                             Incident Report
                           </CardTitle>
                           <CardDescription className="text-[11px] text-gray-500 uppercase tracking-tighter">
@@ -140,7 +140,7 @@ const ReportBug = () => {
                     <CardFooter className="px-8 pb-10 pt-4">
                       <Button
                         type="submit"
-                        className={`w-full h-14 ${isBlackwall ? 'bg-purple-600 hover:bg-purple-500' : 'bg-blue-600 hover:bg-blue-500'} text-white rounded-[5px] font-bold text-xs uppercase tracking-[0.3em] transition-all group shadow-xl`}
+                        className={`w-full h-14 ${isBlackwall ? 'bg-blue-600 hover:bg-blue-500' : 'bg-blue-600 hover:bg-blue-500'} text-white rounded-[5px] font-bold text-xs uppercase tracking-[0.3em] transition-all group shadow-xl`}
                         disabled={isSubmitting}
                       >
                         {isSubmitting ? (

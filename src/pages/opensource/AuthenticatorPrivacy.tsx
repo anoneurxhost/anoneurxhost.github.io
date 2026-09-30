@@ -32,7 +32,7 @@ import OSPage from "./OSPage";
 import heroBg from "@/assets/opensource/bg.png";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 8 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
@@ -99,7 +99,7 @@ export const AuthenticatorPrivacy: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen relative text-white bg-slate-950 selection:bg-purple-500/30 selection:text-purple-100">
+    <div className="min-h-screen relative text-white bg-slate-950 selection:bg-blue-500/30 selection:text-blue-100">
       {/* Background Image */}
       <div
         className="fixed inset-0 -z-20 bg-cover bg-center bg-no-repeat opacity-70 pointer-events-none"
@@ -108,7 +108,7 @@ export const AuthenticatorPrivacy: React.FC = () => {
       <div className="fixed inset-0 -z-10 bg-gradient-to-b from-slate-950/80 via-slate-950/60 to-slate-950/90 pointer-events-none" />
 
       {/* Ambient Glows */}
-      <div className="fixed top-0 left-1/4 -z-10 h-[600px] w-[600px] rounded-full bg-purple-600/5 blur-[200px] pointer-events-none" />
+      <div className="fixed top-0 left-1/4 -z-10 h-[600px] w-[600px] rounded-full bg-blue-600/5 blur-[200px] pointer-events-none" />
       <div className="fixed bottom-0 right-1/4 -z-10 h-[600px] w-[600px] rounded-full bg-emerald-600/5 blur-[200px] pointer-events-none" />
 
       <OSPage>
@@ -123,7 +123,7 @@ export const AuthenticatorPrivacy: React.FC = () => {
           >
             <Link
               to="/opensource/authenticator"
-              className="group inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-2.5 text-sm font-medium text-slate-300 backdrop-blur-md hover:bg-white/10 hover:text-white transition-all duration-300 hover:border-white/20 hover:shadow-lg hover:shadow-purple-500/10"
+              className="group inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-2.5 text-sm font-medium text-slate-300 backdrop-blur-md hover:bg-white/10 hover:text-white transition-all duration-300 hover:border-white/20 hover:shadow-lg hover:shadow-blue-500/10"
             >
               <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
               Back to Authenticator
@@ -141,16 +141,16 @@ export const AuthenticatorPrivacy: React.FC = () => {
             initial="hidden"
             animate="visible"
             variants={stagger}
-            className="relative mb-12 overflow-hidden rounded-[2rem] border border-white/[0.08] bg-gradient-to-br from-slate-900/90 via-slate-950/95 to-purple-950/30 p-8 md:p-12 lg:p-16 backdrop-blur-3xl shadow-2xl shadow-purple-900/10"
+            className="relative mb-12 overflow-hidden rounded-[2rem] border border-white/[0.08] bg-gradient-to-br from-slate-900/90 via-slate-950/95 to-blue-950/30 p-8 md:p-12 lg:p-16 backdrop-blur-3xl shadow-2xl shadow-blue-900/10"
           >
             {/* Hero ambient */}
-            <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-purple-600/8 blur-[140px] pointer-events-none" />
+            <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-blue-600/8 blur-[140px] pointer-events-none" />
             <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-emerald-600/8 blur-[140px] pointer-events-none" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-64 w-64 rounded-full bg-blue-600/5 blur-[120px] pointer-events-none" />
 
             <div className="relative z-10">
               <motion.div variants={fadeUp} className="mb-6 flex flex-wrap items-center gap-2.5">
-                <span className="rounded-lg border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-xs font-semibold text-purple-300 tracking-wide">
+                <span className="rounded-lg border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-300 tracking-wide">
                   ANONEURX Authenticator
                 </span>
                 <span className="h-1 w-1 rounded-full bg-slate-600" />
@@ -209,16 +209,16 @@ export const AuthenticatorPrivacy: React.FC = () => {
                       }}
                       className={`group flex items-center gap-2.5 rounded-xl px-3.5 py-2.5 text-xs transition-all duration-200 ${
                         activeSection === sec.id
-                          ? "bg-purple-500/15 font-semibold text-purple-300 border border-purple-500/20 shadow-sm shadow-purple-500/5"
+                          ? "bg-blue-500/15 font-semibold text-blue-300 border border-blue-500/20 shadow-sm shadow-blue-500/5"
                           : "text-slate-500 hover:bg-white/[0.04] hover:text-slate-300 border border-transparent"
                       }`}
                     >
-                      <span className={`transition-colors ${activeSection === sec.id ? "text-purple-400" : "text-slate-600 group-hover:text-slate-400"}`}>
+                      <span className={`transition-colors ${activeSection === sec.id ? "text-blue-400" : "text-slate-600 group-hover:text-slate-400"}`}>
                         {sec.icon}
                       </span>
                       <span>{sec.num}. {sec.title}</span>
                       {activeSection === sec.id && (
-                        <ChevronRight className="h-3 w-3 text-purple-400 ml-auto" />
+                        <ChevronRight className="h-3 w-3 text-blue-400 ml-auto" />
                       )}
                     </a>
                   ))}
@@ -229,7 +229,7 @@ export const AuthenticatorPrivacy: React.FC = () => {
                     href="mailto:privacy@anoneurx.com"
                     className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] py-2.5 text-center text-xs font-medium text-slate-400 hover:bg-white/[0.08] hover:text-white transition-all duration-200"
                   >
-                    <Mail className="h-3.5 w-3.5 text-purple-400" /> Contact Privacy Team
+                    <Mail className="h-3.5 w-3.5 text-blue-400" /> Contact Privacy Team
                   </a>
                 </div>
               </div>
@@ -242,7 +242,7 @@ export const AuthenticatorPrivacy: React.FC = () => {
               <AnimatedSection>
                 <section id="sec-1" ref={(el) => registerRef("sec-1", el)} className="scroll-mt-24 rounded-[1.75rem] border border-white/[0.08] bg-slate-900/50 p-7 md:p-10 backdrop-blur-xl shadow-xl shadow-black/10">
                   <div className="mb-6 flex items-center gap-4">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/15 text-purple-300">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/15 text-blue-300">
                       <Info className="h-5 w-5" />
                     </span>
                     <div>
@@ -260,9 +260,9 @@ export const AuthenticatorPrivacy: React.FC = () => {
                     <p>
                       This Privacy Policy explains what information the App accesses, collects, stores, uses, and shares.
                     </p>
-                    <div className="mt-6 rounded-2xl border border-purple-500/20 bg-purple-500/[0.06] p-5 flex items-start gap-3">
-                      <Lock className="h-5 w-5 text-purple-400 shrink-0 mt-0.5" />
-                      <p className="text-sm text-purple-200 font-medium">
+                    <div className="mt-6 rounded-2xl border border-blue-500/20 bg-blue-500/[0.06] p-5 flex items-start gap-3">
+                      <Lock className="h-5 w-5 text-blue-400 shrink-0 mt-0.5" />
+                      <p className="text-sm text-blue-200 font-medium">
                         By using ANONEURX Authenticator, you acknowledge the practices described in this Privacy Policy.
                       </p>
                     </div>
@@ -330,7 +330,7 @@ export const AuthenticatorPrivacy: React.FC = () => {
                     {/* 2.3 */}
                     <div className="rounded-2xl border border-white/[0.06] bg-slate-950/50 p-6">
                       <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2.5">
-                        <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-purple-500/15 text-purple-400 text-xs font-bold">2.3</span>
+                        <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-500/15 text-blue-400 text-xs font-bold">2.3</span>
                         Device Information
                       </h3>
                       <p className="text-sm text-slate-300 leading-relaxed">
@@ -370,8 +370,8 @@ export const AuthenticatorPrivacy: React.FC = () => {
                         </div>
                       ))}
                     </div>
-                    <div className="mt-2 rounded-2xl border border-purple-500/20 bg-purple-500/[0.06] p-5">
-                      <p className="font-semibold text-purple-300 flex items-start gap-2">
+                    <div className="mt-2 rounded-2xl border border-blue-500/20 bg-blue-500/[0.06] p-5">
+                      <p className="font-semibold text-blue-300 flex items-start gap-2">
                         <Lock className="h-4 w-4 shrink-0 mt-0.5" />
                         This information is designed to remain on your device and is never uploaded to ANONEURX servers.
                       </p>
@@ -428,7 +428,7 @@ export const AuthenticatorPrivacy: React.FC = () => {
               <AnimatedSection>
                 <section id="sec-5" ref={(el) => registerRef("sec-5", el)} className="scroll-mt-24 rounded-[1.75rem] border border-white/[0.08] bg-slate-900/50 p-7 md:p-10 backdrop-blur-xl shadow-xl shadow-black/10">
                   <div className="mb-6 flex items-center gap-4">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/15 text-purple-300">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/15 text-blue-300">
                       <Share2 className="h-5 w-5" />
                     </span>
                     <div>
@@ -526,7 +526,7 @@ export const AuthenticatorPrivacy: React.FC = () => {
               <AnimatedSection>
                 <section id="sec-8" ref={(el) => registerRef("sec-8", el)} className="scroll-mt-24 rounded-[1.75rem] border border-white/[0.08] bg-slate-900/50 p-7 md:p-10 backdrop-blur-xl shadow-xl shadow-black/10">
                   <div className="mb-6 flex items-center gap-4">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/15 text-purple-300">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/15 text-blue-300">
                       <Server className="h-5 w-5" />
                     </span>
                     <div>
@@ -548,7 +548,7 @@ export const AuthenticatorPrivacy: React.FC = () => {
                         "Take another action that removes locally stored information",
                       ].map((item, i) => (
                         <div key={i} className="flex items-center gap-2.5 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3 text-sm text-slate-300">
-                          <ChevronRight className="h-3.5 w-3.5 text-purple-400 shrink-0" />
+                          <ChevronRight className="h-3.5 w-3.5 text-blue-400 shrink-0" />
                           {item}
                         </div>
                       ))}
@@ -644,7 +644,7 @@ export const AuthenticatorPrivacy: React.FC = () => {
               <AnimatedSection>
                 <section id="sec-12" ref={(el) => registerRef("sec-12", el)} className="scroll-mt-24 rounded-[1.75rem] border border-white/[0.08] bg-slate-900/50 p-7 md:p-10 backdrop-blur-xl shadow-xl shadow-black/10">
                   <div className="mb-6 flex items-center gap-4">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/15 text-purple-300">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/15 text-blue-300">
                       <KeyRound className="h-5 w-5" />
                     </span>
                     <div>
@@ -710,10 +710,10 @@ export const AuthenticatorPrivacy: React.FC = () => {
                   <div className="grid gap-4 sm:grid-cols-3">
                     <a
                       href="mailto:privacy@anoneurx.com"
-                      className="group flex flex-col items-center justify-center rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 text-center hover:bg-purple-500/[0.08] hover:border-purple-500/20 transition-all duration-300"
+                      className="group flex flex-col items-center justify-center rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 text-center hover:bg-blue-500/[0.08] hover:border-blue-500/20 transition-all duration-300"
                     >
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/15 mb-3 group-hover:bg-purple-500/25 transition-colors">
-                        <Mail className="h-5 w-5 text-purple-400" />
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/15 mb-3 group-hover:bg-blue-500/25 transition-colors">
+                        <Mail className="h-5 w-5 text-blue-400" />
                       </div>
                       <span className="text-xs font-mono text-slate-500 mb-1">Privacy Contact</span>
                       <span className="text-sm font-semibold text-white">privacy@anoneurx.com</span>
@@ -751,7 +751,7 @@ export const AuthenticatorPrivacy: React.FC = () => {
                 <section id="sec-15" ref={(el) => registerRef("sec-15", el)} className="scroll-mt-24 rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-emerald-950/30 via-slate-900/90 to-slate-950 p-8 md:p-12 backdrop-blur-xl shadow-2xl shadow-emerald-900/10 relative overflow-hidden">
                   {/* Ambient glow */}
                   <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-emerald-500/5 blur-[100px] pointer-events-none" />
-                  <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-purple-500/5 blur-[100px] pointer-events-none" />
+                  <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-blue-500/5 blur-[100px] pointer-events-none" />
 
                   <div className="relative z-10">
                     <div className="mb-6 flex items-center gap-3">

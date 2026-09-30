@@ -5,24 +5,19 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Users, Clock, Calendar, Activity } from "lucide-react";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const pastEventData: Record<string, any> = {
   "annual-dev-conf": {
     title: "Annual Developer Conference", date: "Mar 1-3, 2026",
-    description: "Our flagship conference brought together 1,200+ developers, researchers, and tech leaders for three days of learning, sharing, and networking. Topics ranged from AI/ML breakthroughs to DevOps best practices.",
+    description: "A community gathering focusing on developer tools, infrastructure, and open source collaboration. Sessions covered a range of topics chosen by the community.",
     images: [
       "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=400&fit=crop",
       "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&h=400&fit=crop",
       "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=400&fit=crop",
     ],
-    summary: "The conference featured 24 sessions across 3 tracks, 8 hands-on workshops, and a 24-hour hackathon. Attendees came from 35 countries.",
-    stats: [
-      { label: "Attendees", value: "1,200+", icon: Users },
-      { label: "Duration", value: "3 Days", icon: Clock },
-      { label: "Sessions", value: "24", icon: Calendar },
-      { label: "Activities", value: "32", icon: Activity },
-    ],
+    summary: "The event included talks, workshops, and informal discussions. Details and recordings are shared through the community channel.",
+    stats: [],
   },
 };
 

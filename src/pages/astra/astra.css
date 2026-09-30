@@ -93,7 +93,7 @@
   position: absolute;
   inset: 0;
   border-radius: 9999px;
-  border: 1px solid rgba(139, 124, 246, 0.55);
+  border: 1px solid rgba(56, 189, 248, 0.55);
   animation: astra-pulse-ring 3.2s ease-out infinite;
 }
 .astra-pulse-ring::after {

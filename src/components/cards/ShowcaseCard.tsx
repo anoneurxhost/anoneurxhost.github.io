@@ -53,7 +53,7 @@ const ShowcaseCard = ({
         onClick={onClick}
         className={`group h-full bg-white/[0.03] border-white/[0.08] backdrop-blur-2xl rounded-2xl overflow-hidden hover:border-primary/30 transition-all ${onClick ? "cursor-pointer" : ""}`}
       >
-        <div className="relative h-32 overflow-hidden bg-gradient-to-br from-blue-500/20 via-indigo-500/10 to-purple-500/20">
+        <div className="relative h-32 overflow-hidden bg-gradient-to-br from-blue-500/20 via-sky-500/10 to-blue-500/20">
           {image ? (
             <img
               src={image}

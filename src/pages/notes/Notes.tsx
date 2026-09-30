@@ -23,7 +23,7 @@ const Notes = () => (
 
       <section className="px-4 pt-20 pb-12">
         <div className="container mx-auto max-w-7xl grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
             <Badge className="bg-blue-500/10 text-blue-300 border-blue-500/30 text-[10px] mb-4">
               <Sparkles className="w-3 h-3 mr-1.5" /> Anoneurx Notes
             </Badge>
@@ -40,7 +40,7 @@ const Notes = () => (
             </div>
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }} className="relative">
-            <div className="absolute -inset-10 bg-gradient-to-tr from-blue-500/20 to-purple-500/10 blur-3xl rounded-full" />
+            <div className="absolute -inset-10 bg-gradient-to-tr from-blue-500/20 to-blue-500/10 blur-3xl rounded-full" />
             <img src={notesHero} alt="Anoneurx Notes" width={1280} height={768} className="relative rounded-2xl border border-white/10 shadow-2xl" />
           </motion.div>
         </div>

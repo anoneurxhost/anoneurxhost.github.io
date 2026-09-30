@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 import { researchPapers } from "@/data/researchPapers";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const Research = () => {
   const [searchQuery, setSearchQuery] = useState('');

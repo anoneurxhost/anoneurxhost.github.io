@@ -234,7 +234,7 @@ const DepartmentManagement = () => {
                       </div>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <Target className="w-4 h-4 text-purple-400" />
+                      <Target className="w-4 h-4 text-blue-400" />
                       <div>
                         <p className="text-white font-bold">{dept.projects}</p>
                         <p className="text-gray-400 text-xs">Projects</p>

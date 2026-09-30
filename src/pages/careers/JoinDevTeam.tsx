@@ -36,7 +36,7 @@ const JoinDevTeam = () => {
           <div className="absolute bottom-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-[120px]" />
 
           <div className="container mx-auto max-w-6xl relative z-10">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
+            <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
               <Badge className="mb-6 bg-white/5 text-emerald-300 border-white/10 px-5 py-2 backdrop-blur-xl">
                 <Code className="w-4 h-4 mr-2" />
                 We're Hiring
@@ -77,7 +77,7 @@ const JoinDevTeam = () => {
               {openPositions.map((pos, i) => {
                 const Icon = pos.icon;
                 return (
-                  <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
+                  <motion.div key={i} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
                     <Card className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl hover:bg-white/[0.06] hover:border-white/[0.12] transition-all duration-300 group cursor-pointer" onClick={() => navigate('/careers/join-dev-team/apply')}>
                       <CardContent className="p-6">
                         <div className="flex items-start justify-between mb-4">

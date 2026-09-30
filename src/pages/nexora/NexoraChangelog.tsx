@@ -40,7 +40,7 @@ const NexoraChangelog = () => (
   <NexoraLayout>
     <section className="px-4 py-20">
       <div className="container-responsive max-w-3xl">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10 border border-blue-500/20 mb-4">
             <Tag className="h-5 w-5 text-blue-300" />
           </div>
@@ -55,7 +55,7 @@ const NexoraChangelog = () => (
           {releases.map((r, i) => (
             <motion.div
               key={r.version}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.05 }}

@@ -106,7 +106,7 @@ export const VerifyResultOverlay: React.FC<VerifyResultOverlayProps> = ({
       color: "purple",
       icon: Trophy,
       title: "Verified Hackathon Record",
-      badgeColor: "text-purple-400 border-purple-500/20 bg-purple-500/10",
+      badgeColor: "text-blue-400 border-blue-500/20 bg-blue-500/10",
       contactEmail: "hackathon@anoneurx.com",
     },
     university: {
@@ -131,9 +131,9 @@ export const VerifyResultOverlay: React.FC<VerifyResultOverlayProps> = ({
         className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-2xl overflow-y-auto"
       >
         <motion.div
-          initial={{ opacity: 0, scale: 0.94, y: 20 }}
+          initial={{ opacity: 0, scale: 0.94, y: 8 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.94, y: 20 }}
+          exit={{ opacity: 0, scale: 0.94, y: 8 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
           onClick={(e) => e.stopPropagation()}
           className="relative w-full max-w-xl my-auto overflow-hidden rounded-3xl border border-white/15 bg-zinc-950/95 backdrop-blur-3xl p-6 sm:p-8 shadow-[0_32px_80px_rgba(0,0,0,0.9)] text-white"
@@ -354,8 +354,8 @@ export const VerifyResultOverlay: React.FC<VerifyResultOverlayProps> = ({
               </div>
 
               {mode === "hackathon" && result.applicationData.status === "accepted" && (
-                <div className="p-4 bg-purple-500/10 border border-purple-500/30 rounded-2xl space-y-2">
-                  <div className="flex items-center gap-2 text-purple-300 font-semibold text-sm">
+                <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-2xl space-y-2">
+                  <div className="flex items-center gap-2 text-blue-300 font-semibold text-sm">
                     <Award className="h-4 w-4" />
                     <span>Hackathon Certificate Verified</span>
                   </div>
@@ -365,7 +365,7 @@ export const VerifyResultOverlay: React.FC<VerifyResultOverlayProps> = ({
                   <Button
                     onClick={handleDownloadHackathonCertificate}
                     disabled={downloading}
-                    className="mt-2 bg-purple-600 hover:bg-purple-500 text-white text-xs h-9"
+                    className="mt-2 bg-blue-600 hover:bg-blue-500 text-white text-xs h-9"
                   >
                     {downloading ? (
                       <><Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" /> Generating…</>

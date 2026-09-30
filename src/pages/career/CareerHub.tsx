@@ -6,14 +6,14 @@ import PageTransition from "@/components/PageTransition";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const CareerHub = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const opportunities = [
     { title: "Internships", description: "Gain hands-on experience working on cutting-edge technology projects with expert mentors.", icon: GraduationCap, path: "/internships", color: "from-blue-500/20 to-cyan-500/20", iconColor: "text-blue-400", features: ["6-month programs", "Mentorship", "Real projects", "Certification"], spots: "20+ open" },
-    { title: "Hackathon", description: "Compete in our global hackathons and win prizes while solving real-world challenges.", icon: Trophy, path: "/careers/hackathon", color: "from-purple-500/20 to-pink-500/20", iconColor: "text-purple-400", features: ["48-hour challenge", "$50K prizes", "Expert judges", "Team building"], spots: "3 events" },
+    { title: "Hackathon", description: "Compete in our global hackathons and win prizes while solving real-world challenges.", icon: Trophy, path: "/careers/hackathon", color: "from-blue-500/20 to-rose-500/20", iconColor: "text-blue-400", features: ["48-hour challenge", "$50K prizes", "Expert judges", "Team building"], spots: "3 events" },
     { title: "Join Dev Team", description: "Become a permanent member of our elite development team building revolutionary products.", icon: Code, path: "/careers/join-dev-team", color: "from-emerald-500/20 to-teal-500/20", iconColor: "text-emerald-400", features: ["Full-time roles", "Competitive salary", "Remote work", "Growth path"], spots: "14 roles" },
     { title: "Other Opportunities", description: "Explore fellowships, research grants, partnerships, incubation programs, and more.", icon: Rocket, path: "/careers/other-opportunities", color: "from-orange-500/20 to-amber-500/20", iconColor: "text-orange-400", features: ["Fellowships", "Research grants", "Partnerships", "Incubation"], spots: "5 programs" },
   ];

@@ -14,9 +14,9 @@ const OtherOpportunities = () => {
   const opportunities = [
     { title: "Fellowships", description: "Explore tech fellowships and advanced research positions with leading institutions.", icon: GraduationCap, path: "/opportunities/fellowships", gradient: "from-blue-500/20 to-cyan-500/20", accent: "text-blue-400" },
     { title: "Research Grants", description: "Access funding programs and grants for innovative research and development.", icon: DollarSign, path: "/opportunities/research-grants", gradient: "from-emerald-500/20 to-teal-500/20", accent: "text-emerald-400" },
-    { title: "Tech Partnerships", description: "Collaborate with industry leaders on transformative technology projects.", icon: Users, path: "/opportunities/tech-partnerships", gradient: "from-purple-500/20 to-pink-500/20", accent: "text-purple-400" },
+    { title: "Tech Partnerships", description: "Collaborate with industry leaders on transformative technology projects.", icon: Users, path: "/opportunities/tech-partnerships", gradient: "from-blue-500/20 to-rose-500/20", accent: "text-blue-400" },
     { title: "Startup Incubation", description: "Launch your startup with our incubation program, mentorship, and resources.", icon: Rocket, path: "/opportunities/startup-incubation", gradient: "from-orange-500/20 to-amber-500/20", accent: "text-orange-400" },
-    { title: "Global Exchange", description: "International exchanges and global networking.", icon: Globe, path: "/opportunities/global-exchange", gradient: "from-pink-500/20 to-rose-500/20", accent: "text-pink-400" },
+    { title: "Global Exchange", description: "International exchanges and global networking.", icon: Globe, path: "/opportunities/global-exchange", gradient: "from-rose-500/20 to-rose-500/20", accent: "text-rose-400" },
     { title: "Open Innovation", description: "Submit ideas that don't fit any track and let us match you.", icon: Sparkles, path: "/opportunities/apply?type=other_opportunity", gradient: "from-yellow-500/20 to-amber-500/20", accent: "text-yellow-400" },
   ];
 
@@ -26,17 +26,17 @@ const OtherOpportunities = () => {
         {/* Hero */}
         <section className="min-h-[80vh] flex items-center justify-center relative overflow-hidden px-4">
           <div className="absolute top-20 left-20 w-80 h-80 bg-orange-500/10 rounded-full blur-[140px]" />
-          <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-500/10 rounded-full blur-[120px]" />
+          <div className="absolute bottom-20 right-20 w-72 h-72 bg-blue-500/10 rounded-full blur-[120px]" />
 
           <div className="container mx-auto max-w-6xl relative z-10">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
+            <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
               <Badge className="mb-6 bg-white/5 text-orange-300 border-white/10 px-5 py-2 backdrop-blur-xl">
                 <Sparkles className="w-4 h-4 mr-2" />
                 Explore Opportunities
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight">
                 Beyond the
-                <span className="block bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-orange-400 via-rose-400 to-blue-400 bg-clip-text text-transparent">
                   Ordinary
                 </span>
               </h1>
@@ -66,7 +66,7 @@ const OtherOpportunities = () => {
               {opportunities.map((opp, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 8 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}

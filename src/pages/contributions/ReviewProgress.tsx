@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Eye, Zap, Bug, GitMerge, Clock, CheckCircle, AlertCircle, XCircle, BarChart3 } from "lucide-react";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const reviewStages = [
   { stage: "Auto Checks", description: "CI runs linting, type checking, and tests automatically", time: "~5 min", icon: Zap, color: "text-yellow-400" },
   { stage: "Code Review", description: "At least one maintainer reviews code quality and architecture", time: "24-48 hours", icon: Eye, color: "text-blue-400" },
-  { stage: "QA Testing", description: "Manual testing for UI changes, automated for logic", time: "1-2 days", icon: Bug, color: "text-purple-400" },
+  { stage: "QA Testing", description: "Manual testing for UI changes, automated for logic", time: "1-2 days", icon: Bug, color: "text-blue-400" },
   { stage: "Merge", description: "Squash-merged to main with a clean commit message", time: "Immediate", icon: GitMerge, color: "text-green-400" },
 ];
 
@@ -19,7 +19,7 @@ const prStatuses = [
   { status: "Open", icon: AlertCircle, color: "text-green-400 bg-green-500/10 border-green-500/20", description: "PR is open and awaiting review. Maintainers will be notified." },
   { status: "Changes Requested", icon: XCircle, color: "text-orange-400 bg-orange-500/10 border-orange-500/20", description: "Reviewer has requested changes. Address feedback and push updates." },
   { status: "Approved", icon: CheckCircle, color: "text-blue-400 bg-blue-500/10 border-blue-500/20", description: "PR has been approved. It will be merged after final checks." },
-  { status: "Merged", icon: GitMerge, color: "text-purple-400 bg-purple-500/10 border-purple-500/20", description: "PR has been merged into the main branch. Congratulations!" },
+  { status: "Merged", icon: GitMerge, color: "text-blue-400 bg-blue-500/10 border-blue-500/20", description: "PR has been merged into the main branch. Congratulations!" },
 ];
 
 const recentPRs = [
@@ -34,7 +34,7 @@ const recentPRs = [
 const stats = [
   { label: "Open PRs", value: "12", color: "text-green-400" },
   { label: "In Review", value: "8", color: "text-blue-400" },
-  { label: "Merged This Week", value: "34", color: "text-purple-400" },
+  { label: "Merged This Week", value: "34", color: "text-blue-400" },
   { label: "Avg Review Time", value: "18h", color: "text-amber-400" },
 ];
 
@@ -42,7 +42,7 @@ const statusColor: Record<string, string> = {
   Open: "bg-green-500/20 text-green-300",
   "Changes Requested": "bg-orange-500/20 text-orange-300",
   Approved: "bg-blue-500/20 text-blue-300",
-  Merged: "bg-purple-500/20 text-purple-300",
+  Merged: "bg-blue-500/20 text-blue-300",
 };
 
 const ReviewProgress = () => (
@@ -50,7 +50,7 @@ const ReviewProgress = () => (
     <div className="min-h-screen">
       <section className="relative py-24 sm:py-32 px-4">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/3 left-1/3 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/3 left-1/3 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl" />
         </div>
         <div className="container mx-auto max-w-5xl relative z-10">
           <Link to="/contributions" className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-white/70 mb-8 transition-colors">

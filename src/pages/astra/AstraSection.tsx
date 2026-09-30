@@ -149,10 +149,10 @@ export function IndexCard({ def, delay }: { def: SectionDef; delay: number }) {
         <Card className="h-full rounded-lg border bg-white/5 border-white/10 backdrop-blur-sm transition-all duration-300 hover:bg-white/10">
           <CardHeader>
             <div className="flex items-start justify-between">
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-[#A79BFF]">
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-[#7DD3FC]">
                 <def.icon className="h-5 w-5" />
               </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#5C5C74]">
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#5C6474]">
                 {def.index}
               </span>
             </div>
@@ -164,7 +164,7 @@ export function IndexCard({ def, delay }: { def: SectionDef; delay: number }) {
             </CardDescription>
           </CardHeader>
           <CardContent className="pt-0">
-            <span className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-[#A79BFF]">
+            <span className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-[#7DD3FC]">
               read
               <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
             </span>
@@ -190,15 +190,15 @@ export function AstraPageShell({
     <main className="astra-bg relative">
       <div className="container-responsive pt-24">
         <Reveal>
-          <nav className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.24em] text-[#5C5C74]">
+          <nav className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.24em] text-[#5C6474]">
             <Link
               to="/astra"
-              className="text-[#A79BFF] transition-colors hover:text-white"
+              className="text-[#7DD3FC] transition-colors hover:text-white"
             >
               ASTRA
             </Link>
             <span>/</span>
-            <span className="text-[#C7C7DE]">{def?.nav}</span>
+            <span className="text-[#C7CDDE]">{def?.nav}</span>
           </nav>
         </Reveal>
       </div>
@@ -210,7 +210,7 @@ export function AstraPageShell({
           {prev ? (
             <Link
               to={prev.to}
-              className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 font-mono text-[11px] uppercase tracking-wider text-[#C7C7DE] transition-colors hover:border-[#8B7CF6]/50 hover:text-white"
+              className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 font-mono text-[11px] uppercase tracking-wider text-[#C7CDDE] transition-colors hover:border-[#38BDF8]/50 hover:text-white"
             >
               <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-0.5" />
               {prev.nav}
@@ -221,7 +221,7 @@ export function AstraPageShell({
           {next ? (
             <Link
               to={next.to}
-              className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 font-mono text-[11px] uppercase tracking-wider text-[#C7C7DE] transition-colors hover:border-[#8B7CF6]/50 hover:text-white"
+              className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 font-mono text-[11px] uppercase tracking-wider text-[#C7CDDE] transition-colors hover:border-[#38BDF8]/50 hover:text-white"
             >
               {next.nav}
               <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />

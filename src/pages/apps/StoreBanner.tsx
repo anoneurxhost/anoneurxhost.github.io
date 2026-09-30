@@ -6,7 +6,7 @@ const StoreBanner = () => {
     title: "Microsoft 365",
     desc: "Apps to manage the everyday",
     image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop",
-    color: "from-blue-600/20 to-indigo-900/40"
+    color: "from-blue-600/20 to-sky-900/40"
   };
 
   const sideTop = {

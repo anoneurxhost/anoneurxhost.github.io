@@ -23,9 +23,9 @@ const PARTICLES: { x: number; y: number; r: number; d: number; s: number }[] =
   });
 
 const ORBIT_NODES = [
-  { label: "PERCEIVE", color: "#8B7CF6", R: 132 },
+  { label: "PERCEIVE", color: "#38BDF8", R: 132 },
   { label: "RECALL", color: "#4F7CFF", R: 132 },
-  { label: "PLAN", color: "#8B7CF6", R: 194 },
+  { label: "PLAN", color: "#38BDF8", R: 194 },
   { label: "ACT", color: "#4F7CFF", R: 194 },
 ];
 
@@ -35,7 +35,7 @@ const Hero = () => (
       className="pointer-events-none absolute inset-0"
       style={{
         background:
-          "radial-gradient(ellipse 70% 55% at 50% 38%, rgba(139,124,246,0.10), transparent 65%)",
+          "radial-gradient(ellipse 70% 55% at 50% 38%, rgba(56,189,248,0.10), transparent 65%)",
       }}
     />
     <div
@@ -55,7 +55,7 @@ const Hero = () => (
       <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="text-center lg:text-left">
           <Reveal>
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.34em] text-[#8B7CF6]">
+            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.34em] text-[#38BDF8]">
               Anoneurx Lab · Self-Teaching AI Research
             </p>
           </Reveal>
@@ -65,13 +65,13 @@ const Hero = () => (
             </h1>
           </Reveal>
           <Reveal delay={0.16}>
-            <p className="mt-5 text-xl font-medium text-[#C7C7DE] sm:text-2xl">
+            <p className="mt-5 text-xl font-medium text-[#C7CDDE] sm:text-2xl">
               A self-learning AI that improves through{" "}
               <GradientText>its own experience</GradientText>.
             </p>
           </Reveal>
           <Reveal delay={0.24}>
-            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-[#8E8EA8] lg:mx-0">
+            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-[#8E96A8] lg:mx-0">
               ASTRA is an Anoneurx research project exploring models that learn
               continuously — recording, reflecting and improving from real use
               instead of standing still after training. Currently a 20B
@@ -83,23 +83,23 @@ const Hero = () => (
             <div className="mt-9 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
               <Link
                 to="/astra/what-is"
-                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#8B7CF6] to-[#4F7CFF] px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_40px_-12px_rgba(139,124,246,0.65)] transition-transform duration-300 hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#38BDF8] to-[#4F7CFF] px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_40px_-12px_rgba(56,189,248,0.65)] transition-transform duration-300 hover:-translate-y-0.5"
               >
                 Read the research
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
               </Link>
               <Link
                 to="/astra/status"
-                className="inline-flex items-center gap-2 rounded-full border border-[#2A2A40] bg-[#0A0A14]/70 px-6 py-3 text-sm font-semibold text-[#C7C7DE] transition-colors duration-300 hover:border-[#8B7CF6]/50 hover:text-white"
+                className="inline-flex items-center gap-2 rounded-full border border-[#2A3243] bg-[#0A0E14]/70 px-6 py-3 text-sm font-semibold text-[#C7CDDE] transition-colors duration-300 hover:border-[#38BDF8]/50 hover:text-white"
               >
                 Status
               </Link>
             </div>
           </Reveal>
           <Reveal delay={0.4}>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 font-mono text-[11px] uppercase tracking-wider text-[#77778F] lg:justify-start">
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 font-mono text-[11px] uppercase tracking-wider text-[#777F8F] lg:justify-start">
               <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#8B7CF6]" />
+                <span className="h-1.5 w-1.5 rounded-full bg-[#38BDF8]" />
                 20B parameters
               </span>
               <span className="inline-flex items-center gap-2">
@@ -121,11 +121,11 @@ const Hero = () => (
               className="astra-glow absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
               style={{
                 background:
-                  "radial-gradient(circle, rgba(139,124,246,0.28), rgba(79,124,255,0.10) 60%, transparent 75%)",
+                  "radial-gradient(circle, rgba(56,189,248,0.28), rgba(79,124,255,0.10) 60%, transparent 75%)",
               }}
             />
-            <div className="astra-orbit absolute inset-[14%] rounded-full border border-dashed border-[#3B3B5C]/70" />
-            <div className="astra-orbit-reverse absolute inset-[30%] rounded-full border border-[#343456]">
+            <div className="astra-orbit absolute inset-[14%] rounded-full border border-dashed border-[#3B4457]/70" />
+            <div className="astra-orbit-reverse absolute inset-[30%] rounded-full border border-[#343E50]">
               <span
                 className="absolute left-1/2 top-0 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full"
                 style={{
@@ -134,8 +134,8 @@ const Hero = () => (
                 }}
               />
             </div>
-            <div className="astra-orbit absolute inset-[4%] rounded-full border border-[#23233A]/60" />
-            <div className="astra-orbit-reverse absolute inset-[44%] rounded-full border border-dashed border-[#2E2E4C]/60" />
+            <div className="astra-orbit absolute inset-[4%] rounded-full border border-[#232A38]/60" />
+            <div className="astra-orbit-reverse absolute inset-[44%] rounded-full border border-dashed border-[#2E3749]/60" />
 
             <div className="absolute inset-0">
               {ORBIT_NODES.map((n, i) => (
@@ -203,7 +203,7 @@ const Hero = () => (
             ))}
           </div>
 
-          <p className="mt-2 text-center font-mono text-[10px] uppercase tracking-[0.28em] text-[#5C5C74] sm:text-[11px]">
+          <p className="mt-2 text-center font-mono text-[10px] uppercase tracking-[0.28em] text-[#5C6474] sm:text-[11px]">
             A · S · T · R · A — autonomous self-teaching research agent
           </p>
         </Reveal>
@@ -214,7 +214,7 @@ const Hero = () => (
       href="#explore"
       className={cx(
         "absolute bottom-6 left-1/2 hidden -translate-x-1/2 items-center gap-2",
-        "font-mono text-[10px] uppercase tracking-[0.26em] text-[#5C5C74] transition-colors hover:text-[#A79BFF]",
+        "font-mono text-[10px] uppercase tracking-[0.26em] text-[#5C6474] transition-colors hover:text-[#7DD3FC]",
         "sm:flex"
       )}
     >

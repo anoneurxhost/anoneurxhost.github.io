@@ -27,7 +27,7 @@ const ChatList = ({ users, selectedUserId, onSelectUser }: ChatListProps) => {
     switch (userType) {
       case 'client': return 'bg-green-600';
       case 'student': return 'bg-blue-600';
-      case 'employee': return 'bg-purple-600';
+      case 'employee': return 'bg-blue-600';
       case 'hr': return 'bg-orange-600';
       case 'hod': return 'bg-red-600';
       case 'ceo': return 'bg-yellow-600';

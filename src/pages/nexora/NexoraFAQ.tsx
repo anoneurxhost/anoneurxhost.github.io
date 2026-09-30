@@ -29,7 +29,7 @@ const NexoraFAQ = () => (
   <NexoraLayout>
     <section className="px-4 py-20">
       <div className="container-responsive max-w-3xl">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-14">
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-14">
           <span className="text-[10px] uppercase tracking-[0.3em] text-blue-400">FAQ</span>
           <h1 className="mt-3 text-4xl font-bold">Frequently Asked <span className="italic text-blue-300">Questions</span></h1>
           <p className="mt-4 text-sm text-slate-500">

@@ -58,7 +58,7 @@ const Collaboration = () => {
       title: "Project Showcase",
       description: "Display your innovative projects and connect with potential collaborators",
       icon: <Award className="w-8 h-8" />,
-      color: "from-purple-500 to-purple-700",
+      color: "from-blue-500 to-blue-700",
       stats: collaborationData.filter(item => item.type === "project_showcase").length
     },
     {
@@ -74,7 +74,7 @@ const Collaboration = () => {
       title: "Open Source Projects",
       description: "Collaborate on open source projects and contribute to the community",
       icon: <Code className="w-8 h-8" />,
-      color: "from-indigo-500 to-indigo-700",
+      color: "from-sky-500 to-sky-700",
       stats: collaborationData.filter(item => item.type === "open_source").length
     },
     {

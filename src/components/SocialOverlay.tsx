@@ -4,7 +4,7 @@ import { X, Github, Youtube, Instagram, Linkedin, MessageCircle } from "lucide-r
 export const SocialOverlay = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   const socialLinks = [
     { icon: <Youtube className="w-6 h-6" />, href: "https://youtube.com/@anoneurx", label: "YouTube", color: "text-red-500" },
-    { icon: <Instagram className="w-6 h-6" />, href: "https://instagram.com/@anoneurx", label: "Instagram", color: "text-pink-500" },
+    { icon: <Instagram className="w-6 h-6" />, href: "https://instagram.com/@anoneurx", label: "Instagram", color: "text-rose-500" },
     { icon: <MessageCircle className="w-6 h-6" />, href: "https://whatsapp.com/channel/0029VbAmgwp3mFYF4DFVym0z", label: "WhatsApp", color: "text-green-500" },
     { icon: (<svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.3.3 0 0 1 .069.288c-.097.407-.313 1.272-.355 1.447-.058.231-.19.281-.438.167-1.637-.762-2.661-3.153-2.661-5.076 0-4.135 3.003-7.931 8.659-7.931 4.545 0 8.077 3.239 8.077 7.567 0 4.516-2.848 8.151-6.801 8.151-1.328 0-2.576-.69-3.004-1.504l-.817 3.111c-.296 1.131-1.097 2.55-1.631 3.413A12.001 12.001 0 0 0 12 24c6.628 0 12-5.372 12-12S18.628 0 12 0z" /></svg>), href: "https://pinterest.com/anoneurx", label: "Pinterest", color: "text-red-600" },
     { icon: <Linkedin className="w-6 h-6" />, href: "https://linkedin.com/company/anoneurx", label: "LinkedIn", color: "text-blue-500" },
@@ -26,9 +26,9 @@ export const SocialOverlay = ({ isOpen, onClose }: { isOpen: boolean; onClose: (
           <div className="absolute inset-0" onClick={onClose} />
           
           <motion.div
-            initial={{ scale: 0.95, opacity: 0, y: 20 }}
+            initial={{ scale: 0.95, opacity: 0, y: 8 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.95, opacity: 0, y: 20 }}
+            exit={{ scale: 0.95, opacity: 0, y: 8 }}
             className="relative w-full max-w-2xl rounded-2xl border border-white/10 bg-black/60 p-8 md:p-12 shadow-2xl"
           >
             <button

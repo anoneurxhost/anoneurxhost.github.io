@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Clock, MapPin, Users, Video, Globe, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const upcomingEvents = [
   { title: "AI/ML Community Meetup", date: "Apr 15, 2026", time: "6:00 PM UTC", type: "Virtual", attendees: 320, description: "Monthly meetup discussing latest AI trends, model architectures, and real-world deployments.", topics: ["LLM Fine-tuning", "RAG Pipelines", "Edge AI"], speaker: "Dr. Sarah Chen" },

@@ -62,7 +62,7 @@ const JoinUs = () => {
                           </div>
                         </div>
                         <div className="flex items-start space-x-3">
-                          <div className="w-2 h-2 bg-purple-400 rounded-full mt-2"></div>
+                          <div className="w-2 h-2 bg-blue-400 rounded-full mt-2"></div>
                           <div>
                             <h4 className="text-white font-medium">Learning Budget</h4>
                             <p className="text-gray-300 text-sm">Annual budget for courses and conferences</p>

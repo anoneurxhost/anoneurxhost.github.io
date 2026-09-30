@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Shield, Heart, Users, MessageSquare, AlertTriangle, CheckCircle, XCircle, Mail } from "lucide-react";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const pledges = [
   "Use welcoming and inclusive language",
@@ -37,7 +37,7 @@ const CodeOfConduct = () => (
     <div className="min-h-screen">
       <section className="relative py-24 sm:py-32 px-4">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-pink-500/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-rose-500/5 rounded-full blur-3xl" />
         </div>
         <div className="container mx-auto max-w-4xl relative z-10">
           <Link to="/contributions" className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-white/70 mb-8 transition-colors">
@@ -59,7 +59,7 @@ const CodeOfConduct = () => (
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-4xl">
           <div className="flex items-center gap-3 mb-8">
-            <Heart className="w-5 h-5 text-pink-400/60" />
+            <Heart className="w-5 h-5 text-rose-400/60" />
             <h2 className="text-white">Our Pledge</h2>
           </div>
           <Card className="bg-white/[0.03] backdrop-blur-2xl border-white/[0.08]">

@@ -52,7 +52,7 @@ const CloudProducts = () => {
       <div className="pt-32 pb-20">
         <div className="container-responsive">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-16 text-center lg:text-left"
           >
@@ -72,10 +72,10 @@ const CloudProducts = () => {
                     <Link 
                       key={iIdx}
                       to={item.path}
-                      className="p-6 rounded-lg bg-white/[0.03] border border-white/5 hover:border-violet-500/30 transition-all group flex items-start gap-5"
+                      className="p-6 rounded-lg bg-white/[0.03] border border-white/5 hover:border-cyan-500/30 transition-all group flex items-start gap-5"
                     >
-                      <div className="h-10 w-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-violet-500/10 transition-colors">
-                        <item.icon className="h-5 w-5 text-violet-400" />
+                      <div className="h-10 w-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-cyan-500/10 transition-colors">
+                        <item.icon className="h-5 w-5 text-cyan-400" />
                       </div>
                       <div>
                         <h3 className="font-bold text-white mb-1 text-sm">{item.name}</h3>

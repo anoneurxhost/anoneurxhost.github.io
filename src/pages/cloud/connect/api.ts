@@ -7,7 +7,22 @@
  * demo data so the console remains fully navigable.
  */
 
-const BASE = (import.meta.env.VITE_CONNECT_API_URL as string | undefined)?.replace(/\/$/, "");
+// Derive the API origin from the page host so the console also works from a
+// phone / any LAN device (http://<laptop-ip>:5173 -> http://<laptop-ip>:8081).
+// VITE_CONNECT_API_URL may still force a specific backend (e.g. a public one).
+const envBase = (import.meta.env.VITE_CONNECT_API_URL as string | undefined)?.replace(/\/$/, "");
+const BASE =
+  envBase ||
+  `${window.location.protocol}//${window.location.hostname}:8081`;
+
+/** Resolved console backend origin (http://<host>:8081). */
+export const getApiBase = () => BASE;
+
+/** WebSocket base URL matching {@link getApiBase}, e.g. ws://<host>:8081. */
+export const getStreamBase = () => {
+  const proto = window.location.protocol === "https:" ? "wss" : "ws";
+  return `${proto}://${new URL(BASE).host}`;
+};
 
 export const isLiveBackend = () => Boolean(BASE);
 
@@ -15,11 +30,23 @@ let sessionToken: string | null = null;
 export const setSessionToken = (t: string | null) => {
   sessionToken = t;
 };
+export const getSessionToken = () => sessionToken;
 
-export type ConnectMode = "live" | "demo";
+export type ConnectMode = "live" | "demo" | "offline";
 export interface Result<T> {
   data: T;
   mode: ConnectMode;
+}
+
+/**
+ * Result variant used by the Security Center. Unlike the demo-fallback used
+ * elsewhere, security endpoints NEVER fabricate data: when the backend is
+ * unreachable `mode` is `"offline"` and `data` holds a neutral blank. When the
+ * backend responded with an error, `error` carries its message (verification
+ * failures, forbidden, …) so the UI can surface it instead of an offline banner.
+ */
+export interface SecResult<T> extends Result<T> {
+  error?: string;
 }
 
 const delay = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -60,6 +87,42 @@ const post = <T,>(path: string, body: unknown, fallback: () => T | Promise<T>) =
   call<T>(path, { method: "POST", body: JSON.stringify(body) }, fallback);
 const del = <T,>(path: string, fallback: () => T | Promise<T>) =>
   call<T>(path, { method: "DELETE" }, fallback);
+
+/** Strict request for the Security Center: parse `{ error }` from the API
+ * envelope on non-2xx so business errors (bad TOTP/recovery code, forbidden,
+ * upstream agent message) surface — and never substitute demo data. */
+async function secRequest<T>(path: string, init: RequestInit, fallback: T): Promise<SecResult<T>> {
+  try {
+    const res = await fetch(`${BASE}${path}`, {
+      ...init,
+      headers: {
+        "Content-Type": "application/json",
+        ...(sessionToken ? { Authorization: `Bearer ${sessionToken}` } : {}),
+        ...(init.headers ?? {}),
+      },
+    });
+    if (!res.ok) {
+      let message = `request failed (HTTP ${res.status})`;
+      try {
+        const env: { error?: string | null } = await res.json();
+        if (env && typeof env.error === "string" && env.error.trim()) message = env.error;
+      } catch {
+        /* non-JSON error body — keep status message */
+      }
+      console.warn(`Cloud Connect: ${path} -> ${res.status}.`, message);
+      return { data: fallback, mode: "offline", error: message };
+    }
+    return { data: (await res.json()) as T, mode: "live" };
+  } catch (err) {
+    console.warn(`Cloud Connect: ${path} unreachable.`, err);
+    return { data: fallback, mode: "offline" };
+  }
+}
+
+const secGet = <T,>(path: string, fallback: T): Promise<SecResult<T>> =>
+  secRequest<T>(path, { method: "GET" }, fallback);
+const secPost = <T,>(path: string, body: unknown, fallback: T): Promise<SecResult<T>> =>
+  secRequest<T>(path, { method: "POST", body: JSON.stringify(body) }, fallback);
 
 /**
  * Strict session mint used by the auth screen. Unlike `connectApi.createSession`
@@ -157,11 +220,11 @@ export interface SystemUser {
 
 export interface FirewallRule {
   id: string;
-  port: string;
-  proto: "tcp" | "udp";
-  src: string;
+  name: string;
+  port: number;
+  proto: "tcp" | "udp" | "icmp";
+  source: string;
   action: "allow" | "deny";
-  note?: string;
 }
 
 export interface SshKey {
@@ -219,6 +282,304 @@ export interface ConsoleSettings {
   hostname: string;
 }
 
+/* -------------------------------------------------- Security Center types */
+
+export type SecStatus = "ok" | "warn" | "warning" | "critical";
+
+export interface SecCheck {
+  key: string;
+  label: string;
+  status: SecStatus;
+  detail: string;
+}
+
+export interface SecPort {
+  port: number;
+  proto: string;
+  address: string;
+  exposed: boolean;
+  process: string | null;
+}
+
+export interface SshView {
+  port: number;
+  password_authentication: boolean;
+  permit_root_login: string;
+  pubkey_authentication: boolean;
+  max_auth_tries: string;
+  permit_empty_passwords: string;
+  x11_forwarding: string;
+  allow_tcp_forwarding: string;
+  kbd_interactive_authentication: string;
+  login_grace_time: string;
+  protocol: string;
+  files: string[];
+}
+
+export interface SecBfSource {
+  ip: string;
+  attempts: number;
+  blocked: boolean;
+  exceeds_threshold: boolean;
+}
+
+export interface SecBlockedEntry {
+  ip: string;
+  reason: string;
+  escalated: boolean;
+}
+
+export interface BruteForceView {
+  window_hours: number;
+  threshold: number;
+  total_attempts: number;
+  distinct_ips: number;
+  failures_24h: number;
+  blocked_ips: number;
+  sources: SecBfSource[];
+  blocked: SecBlockedEntry[];
+}
+
+export interface BlockEntry {
+  id: string;
+  cidr: string;
+  reason: string;
+  created_at: number;
+}
+
+export interface PortsView {
+  exposed: number;
+  total: number;
+  listeners: (SecPort & { process?: string | null })[];
+}
+
+export interface ScanFinding {
+  severity: "low" | "medium" | "high" | "critical";
+  check: string;
+  detail: string;
+  remediation: string;
+}
+
+export interface ScanResult {
+  checked_at: string;
+  findings: ScanFinding[];
+  summary: { critical: number; high: number; medium: number; low: number };
+  verdict: "pass" | "warn" | "fail";
+}
+
+export interface IntegrityStatus {
+  baseline_exists: boolean;
+  baseline_created?: number;
+  tracked: number;
+  changed: string[];
+  added?: string[];
+  removed?: string[];
+  intact?: boolean;
+  files?: string[];
+}
+
+export interface IntegrityInitResult {
+  created_at: number;
+  tracked: number;
+  files: string[];
+}
+
+export interface SecEvent {
+  time: string | number;
+  severity: string;
+  kind: string;
+  text: string;
+}
+
+export interface EventsFeed {
+  events: SecEvent[];
+  total: number;
+}
+
+export interface SecretMeta {
+  id: string;
+  name: string;
+  created_at: number;
+  updated_at: number;
+}
+
+export interface SecretsView {
+  encrypted: boolean;
+  version: number;
+  secrets: SecretMeta[];
+  count: number;
+}
+
+export interface SecretGetResult {
+  name: string;
+  value: string;
+  id: string;
+}
+
+export interface TlsStatus {
+  present: boolean;
+  valid?: boolean;
+  days_remaining?: number;
+  not_before?: number;
+  not_after?: number;
+  subject?: string | null;
+  issuer?: string | null;
+  fingerprint_sha256?: string | null;
+  path?: string;
+  summary: string;
+}
+
+export interface BackupFile {
+  name: string;
+  size_bytes: number;
+  created_at: number | null;
+  verified: boolean;
+}
+
+export interface BackupStatus {
+  count: number;
+  latest: number | null;
+  files: BackupFile[];
+  encrypted: boolean;
+  protected: boolean;
+}
+
+export interface BackupActionResult {
+  ok: boolean;
+  name?: string;
+  size_bytes?: number;
+  files?: number;
+  restored?: number;
+}
+
+export interface UpdateStatus {
+  pending: string[];
+  count: number;
+  checked_at: string;
+  agent_fingerprint_sha256: string;
+  signed_updates_configured: boolean;
+}
+
+export interface RecoveryStatus {
+  set: boolean;
+  generated_at?: number;
+  remaining: number;
+}
+
+export interface TotpStatus {
+  enabled: boolean;
+  configured: boolean;
+  created_at?: number;
+  last_verified_at?: number | null;
+}
+
+export interface TotpSetup {
+  ok: boolean;
+  secret: string;
+  uri: string;
+  qr_svg: string;
+  steps: number;
+  algorithm: string;
+  enabled: boolean;
+}
+
+export interface SecurityStatus {
+  score: number;
+  level: string;
+  checks: SecCheck[];
+  firewall: { enabled: boolean; rules: number };
+  ssh: { password_authentication: boolean; permit_root_login: string | null; port?: number | null };
+  bruteforce: { blocked_ips: number; sources: SecBfSource[]; failures_24h: number };
+  open_ports: SecPort[];
+  integrity: { baseline_exists: boolean; tracked: number };
+  tls: TlsStatus;
+  totp: TotpStatus;
+  recovery: RecoveryStatus;
+  secrets: { stored: number };
+  updates: { pending: number; checked_at: string | null };
+  backups: BackupStatus;
+  events_24h: number;
+}
+
+export interface OkResult {
+  ok: boolean;
+}
+
+/* Neutral blanks for offline mode — never presented as live data. */
+const secBlank = {
+  posture: (): SecurityStatus => ({
+    score: 0,
+    level: "",
+    checks: [],
+    firewall: { enabled: false, rules: 0 },
+    ssh: { password_authentication: false, permit_root_login: null, port: null },
+    bruteforce: { blocked_ips: 0, sources: [], failures_24h: 0 },
+    open_ports: [],
+    integrity: { baseline_exists: false, tracked: 0 },
+    tls: { present: false, summary: "" },
+    totp: { enabled: false, configured: false },
+    recovery: { set: false, remaining: 0 },
+    secrets: { stored: 0 },
+    updates: { pending: 0, checked_at: null },
+    backups: { count: 0, latest: null, files: [], encrypted: false, protected: true },
+    events_24h: 0,
+  }),
+  ssh: (): SshView => ({
+    port: 22,
+    password_authentication: false,
+    permit_root_login: "",
+    pubkey_authentication: false,
+    max_auth_tries: "",
+    permit_empty_passwords: "",
+    x11_forwarding: "",
+    allow_tcp_forwarding: "",
+    kbd_interactive_authentication: "",
+    login_grace_time: "",
+    protocol: "",
+    files: [],
+  }),
+  bruteforce: (): BruteForceView => ({
+    window_hours: 24,
+    threshold: 5,
+    total_attempts: 0,
+    distinct_ips: 0,
+    failures_24h: 0,
+    blocked_ips: 0,
+    sources: [],
+    blocked: [],
+  }),
+  ports: (): PortsView => ({ exposed: 0, total: 0, listeners: [] }),
+  scan: (): ScanResult => ({
+    checked_at: "",
+    findings: [],
+    summary: { critical: 0, high: 0, medium: 0, low: 0 },
+    verdict: "pass",
+  }),
+  integrity: (): IntegrityStatus => ({ baseline_exists: false, tracked: 0, changed: [] }),
+  events: (): EventsFeed => ({ events: [], total: 0 }),
+  secrets: (): SecretsView => ({ encrypted: true, version: 1, secrets: [], count: 0 }),
+  tls: (): TlsStatus => ({ present: false, summary: "" }),
+  backups: (): BackupStatus => ({ count: 0, latest: null, files: [], encrypted: false, protected: true }),
+  updates: (): UpdateStatus => ({
+    pending: [],
+    count: 0,
+    checked_at: "",
+    agent_fingerprint_sha256: "",
+    signed_updates_configured: false,
+  }),
+  recovery: (): RecoveryStatus => ({ set: false, remaining: 0 }),
+  totp: (): TotpStatus => ({ enabled: false, configured: false }),
+  totpSetup: (): TotpSetup => ({
+    ok: false,
+    secret: "",
+    uri: "",
+    qr_svg: "",
+    steps: 30,
+    algorithm: "SHA256",
+    enabled: false,
+  }),
+};
+
 /* ------------------------------------------------------------- demo state */
 
 const rid = () => Math.random().toString(36).slice(2, 10);
@@ -273,11 +634,11 @@ const demo = {
     { id: rid(), name: "monitor", role: "readonly", shell: "/sbin/nologin", last: "yesterday", sudo: false },
   ] as SystemUser[],
   rules: [
-    { id: rid(), port: "22", proto: "tcp", src: "10.0.0.0/8", action: "allow", note: "SSH (internal)" },
-    { id: rid(), port: "80", proto: "tcp", src: "0.0.0.0/0", action: "allow", note: "HTTP" },
-    { id: rid(), port: "443", proto: "tcp", src: "0.0.0.0/0", action: "allow", note: "HTTPS" },
-    { id: rid(), port: "3306", proto: "tcp", src: "10.0.0.0/24", action: "allow", note: "MySQL" },
-    { id: rid(), port: "23", proto: "tcp", src: "0.0.0.0/0", action: "deny", note: "Telnet blocked" },
+    { id: rid(), name: "SSH (internal)", port: 22, proto: "tcp", source: "10.0.0.0/8", action: "allow" },
+    { id: rid(), name: "HTTP", port: 80, proto: "tcp", source: "0.0.0.0/0", action: "allow" },
+    { id: rid(), name: "HTTPS", port: 443, proto: "tcp", source: "0.0.0.0/0", action: "allow" },
+    { id: rid(), name: "MySQL", port: 3306, proto: "tcp", source: "10.0.0.0/24", action: "allow" },
+    { id: rid(), name: "Telnet blocked", port: 23, proto: "tcp", source: "0.0.0.0/0", action: "deny" },
   ] as FirewallRule[],
   settings: {
     autoUpdate: true,
@@ -441,12 +802,12 @@ export const connectApi = {
     }),
 
   firewall: () => get<FirewallRule[]>("/api/firewall", () => demo.rules),
-  addRule: (r: Omit<FirewallRule, "id">) =>
+  addFirewallRule: (r: { name: string; port: number; proto: FirewallRule["proto"]; source: string; action: "allow" | "deny" }) =>
     post<FirewallRule[]>("/api/firewall", r, () => {
       demo.rules = [...demo.rules, { ...r, id: rid() }];
       return demo.rules;
     }),
-  removeRule: (id: string) =>
+  removeFirewallRule: (id: string) =>
     del<FirewallRule[]>(`/api/firewall/${id}`, () => {
       demo.rules = demo.rules.filter((r) => r.id !== id);
       return demo.rules;
@@ -540,6 +901,63 @@ export const connectApi = {
       demo.settings = { ...s };
       return demo.settings;
     }),
+};
+
+/* --------------------------------------- Security Center (live-only, no demo) */
+
+export const securityApi = {
+  posture: () => secGet<SecurityStatus>("/api/security", secBlank.posture()),
+  ssh: () => secGet<SshView>("/api/security/ssh", secBlank.ssh()),
+  saveSsh: (directive: string, value: string) =>
+    secPost<SshView>("/api/security/ssh", { directive, value }, secBlank.ssh()),
+  bruteforce: () => secGet<BruteForceView>("/api/security/bruteforce", secBlank.bruteforce()),
+  ipList: () => secGet<BlockEntry[]>("/api/security/ip-control", []),
+  ipAdd: (cidr: string, reason: string) =>
+    secPost<BlockEntry[]>("/api/security/ip-control", { cidr, reason }, []),
+  ipRemove: (cidr: string) =>
+    secPost<BlockEntry[]>("/api/security/ip-control/remove", { cidr }, []),
+  ports: () => secGet<PortsView>("/api/security/ports", secBlank.ports()),
+  scan: () => secPost<ScanResult>("/api/security/scan", {}, secBlank.scan()),
+  integrity: () => secGet<IntegrityStatus>("/api/security/integrity", secBlank.integrity()),
+  integrityInit: () =>
+    secPost<IntegrityInitResult>("/api/security/integrity/init", {}, { created_at: 0, tracked: 0, files: [] }),
+  integrityVerify: () =>
+    secPost<IntegrityStatus>("/api/security/integrity/verify", {}, secBlank.integrity()),
+  events: () => secGet<EventsFeed>("/api/security/events", secBlank.events()),
+  secrets: () => secGet<SecretsView>("/api/security/secrets", secBlank.secrets()),
+  secretSet: (name: string, value: string) =>
+    secPost<{ ok: boolean; id?: string; updated?: boolean }>(
+      "/api/security/secrets",
+      { name, value },
+      { ok: false }
+    ),
+  secretGet: (name: string) =>
+    secPost<SecretGetResult>("/api/security/secrets/get", { name }, { name, value: "", id: "" }),
+  secretDelete: (name: string) =>
+    secPost<OkResult>("/api/security/secrets/delete", { name }, { ok: false }),
+  tls: () => secGet<TlsStatus>("/api/security/tls", secBlank.tls()),
+  backups: () => secGet<BackupStatus>("/api/security/backups", secBlank.backups()),
+  backupCreate: () => secPost<BackupActionResult>("/api/security/backups", {}, { ok: false }),
+  backupRestore: (name: string) =>
+    secPost<BackupActionResult>("/api/security/backups/restore", { name }, { ok: false }),
+  backupDelete: (name: string) =>
+    secPost<OkResult>("/api/security/backups/delete", { name }, { ok: false }),
+  updates: () => secGet<UpdateStatus>("/api/security/updates", secBlank.updates()),
+  updateCheck: () => secPost<UpdateStatus>("/api/security/updates/check", {}, secBlank.updates()),
+  recovery: () => secGet<RecoveryStatus>("/api/security/recovery", secBlank.recovery()),
+  recoveryGenerate: () =>
+    secPost<{ ok: boolean; codes: string[]; count: number; note: string }>(
+      "/api/security/recovery/generate",
+      {},
+      { ok: false, codes: [], count: 0, note: "" }
+    ),
+  recoveryVerify: (code: string) =>
+    secPost<OkResult>("/api/security/recovery/verify", { code }, { ok: false }),
+  totp: () => secGet<TotpStatus>("/api/security/totp", secBlank.totp()),
+  totpSetup: (account: string) =>
+    secPost<TotpSetup>("/api/security/totp/setup", { account }, secBlank.totpSetup()),
+  totpVerify: (code: string) =>
+    secPost<OkResult>("/api/security/totp/verify", { code }, { ok: false }),
 };
 
 function demoShell(cmd: string): string {

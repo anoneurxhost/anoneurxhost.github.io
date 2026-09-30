@@ -14,7 +14,7 @@ const OSAbout = () => {
           </span>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
             Building the future, <br />
-            <span className="bg-gradient-to-r from-indigo-300 via-violet-300 to-amber-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-sky-300 via-cyan-300 to-amber-300 bg-clip-text text-transparent">
               in the open.
             </span>
           </h1>
@@ -26,8 +26,8 @@ const OSAbout = () => {
         {/* Pillars / Values Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-20">
           <div className="p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl hover:border-white/25 transition duration-300">
-            <div className="h-12 w-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center mb-6">
-              <Shield className="h-6 w-6 text-indigo-400" />
+            <div className="h-12 w-12 rounded-2xl bg-sky-500/10 flex items-center justify-center mb-6">
+              <Shield className="h-6 w-6 text-sky-400" />
             </div>
             <h3 className="text-xl font-semibold mb-3">Hardened Security</h3>
             <p className="text-white/60 text-sm leading-relaxed">
@@ -36,8 +36,8 @@ const OSAbout = () => {
           </div>
 
           <div className="p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl hover:border-white/25 transition duration-300">
-            <div className="h-12 w-12 rounded-2xl bg-violet-500/10 flex items-center justify-center mb-6">
-              <Users className="h-6 w-6 text-violet-400" />
+            <div className="h-12 w-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-6">
+              <Users className="h-6 w-6 text-cyan-400" />
             </div>
             <h3 className="text-xl font-semibold mb-3">Community First</h3>
             <p className="text-white/60 text-sm leading-relaxed">

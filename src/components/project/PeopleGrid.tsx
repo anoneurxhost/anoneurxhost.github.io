@@ -40,7 +40,7 @@ const PeopleGrid: React.FC<Props> = ({ people, compact = false }) => (
               className="h-11 w-11 shrink-0 rounded-full border border-white/15 object-cover grayscale transition-all group-hover:grayscale-0"
             />
           ) : (
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-gradient-to-br from-violet-500/30 to-fuchsia-500/30 text-sm font-bold text-white/80">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-gradient-to-br from-cyan-500/30 to-teal-500/30 text-sm font-bold text-white/80">
               {initials}
             </div>
           )}
@@ -51,12 +51,12 @@ const PeopleGrid: React.FC<Props> = ({ people, compact = false }) => (
               <span className="mt-0.5 block truncate text-[11px] font-mono text-slate-500">{p.focus}</span>
             )}
           </span>
-          {hasGithub && <Github className="ml-auto h-4 w-4 shrink-0 text-slate-500 transition-colors group-hover:text-fuchsia-300" />}
-          {!hasGithub && <User className="ml-auto h-4 w-4 shrink-0 text-slate-500 transition-colors group-hover:text-fuchsia-300" />}
+          {hasGithub && <Github className="ml-auto h-4 w-4 shrink-0 text-slate-500 transition-colors group-hover:text-teal-300" />}
+          {!hasGithub && <User className="ml-auto h-4 w-4 shrink-0 text-slate-500 transition-colors group-hover:text-teal-300" />}
         </>
       );
 
-      const baseClass = "group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-3 backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-fuchsia-400/40 hover:bg-white/[0.06]";
+      const baseClass = "group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-3 backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-teal-400/40 hover:bg-white/[0.06]";
 
       if (hasGithub) {
         return (

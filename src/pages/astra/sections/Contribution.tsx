@@ -31,7 +31,7 @@ const Contribution = () => (
         eyebrow="13 · Contribute"
         title={
           <>
-            Help build <span className="text-[#8B7CF6]">something honest</span>
+            Help build <span className="text-[#38BDF8]">something honest</span>
           </>
         }
         subtitle="ASTRA needs researchers, engineers and critical reviewers. If you believe self-learning AI should be transparent, there is a seat at this table."
@@ -44,10 +44,10 @@ const Contribution = () => (
               <AstraCard className="h-full">
                 <CardHeader>
                   <div className="flex items-start justify-between">
-                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-[#A79BFF]">
+                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-[#7DD3FC]">
                       <w.icon className="h-5 w-5" />
                     </span>
-                    <ArrowRight className="h-4 w-4 text-[#5C5C74] transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[#A79BFF]" />
+                    <ArrowRight className="h-4 w-4 text-[#5C6474] transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[#7DD3FC]" />
                   </div>
                   <CardTitle className="pt-4 text-lg text-white">
                     {w.title}

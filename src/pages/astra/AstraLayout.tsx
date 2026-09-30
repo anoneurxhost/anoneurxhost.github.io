@@ -57,7 +57,7 @@ const AstraLayout = () => {
     }`;
 
   return (
-    <div className="astra-bg relative min-h-screen bg-[#030309] text-white">
+    <div className="astra-bg relative min-h-screen bg-[#030509] text-white">
       <Helmet>
         <title>ANONEURX | ASTRA — Self-Learning AI Research</title>
         <meta
@@ -108,7 +108,7 @@ const AstraLayout = () => {
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "border-b border-[#1E1E30]/80 bg-[#030309]/85 backdrop-blur-xl"
+            ? "border-b border-[#1E2430]/80 bg-[#030509]/85 backdrop-blur-xl"
             : "border-b border-transparent bg-transparent"
         }`}
       >
@@ -139,7 +139,7 @@ const AstraLayout = () => {
               >
                 {link.label}
                 {!isActive(link.to) && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-0 bg-gradient-to-r from-fuchsia-600 to-blue-700 transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-0 bg-gradient-to-r from-teal-600 to-blue-700 transition-all duration-300 group-hover:w-full" />
                 )}
               </Link>
             ))}
@@ -181,7 +181,7 @@ const AstraLayout = () => {
                 >
                   {item.label}
                   {isActive(item.to) && (
-                    <span className="absolute left-1 top-1/2 -translate-y-1/2 w-1 h-5 bg-gradient-to-b from-fuchsia-600 to-blue-700 rounded-full transition-all duration-300" />
+                    <span className="absolute left-1 top-1/2 -translate-y-1/2 w-1 h-5 bg-gradient-to-b from-teal-600 to-blue-700 rounded-full transition-all duration-300" />
                   )}
                 </Link>
               ))}
@@ -191,7 +191,7 @@ const AstraLayout = () => {
               >
                 Status
                 {isActive("/astra/status") && (
-                  <span className="absolute left-1 top-1/2 -translate-y-1/2 w-1 h-5 bg-gradient-to-b from-fuchsia-600 to-blue-700 rounded-full transition-all duration-300" />
+                  <span className="absolute left-1 top-1/2 -translate-y-1/2 w-1 h-5 bg-gradient-to-b from-teal-600 to-blue-700 rounded-full transition-all duration-300" />
                 )}
               </Link>
             </div>
@@ -202,7 +202,7 @@ const AstraLayout = () => {
       <div id="top" />
       <Outlet />
 
-      <footer className="relative border-t border-[#1E1E30]/60 bg-[#030309]/45 backdrop-blur-md">
+      <footer className="relative border-t border-[#1E2430]/60 bg-[#030509]/45 backdrop-blur-md">
         <div className="container-responsive flex flex-col items-center justify-between gap-6 py-10 sm:flex-row">
           <div className="flex items-center gap-3">
             <img
@@ -214,7 +214,7 @@ const AstraLayout = () => {
               <p className="font-mono text-[12px] font-semibold uppercase tracking-[0.3em] text-white">
                 ASTRA
               </p>
-              <p className="mt-0.5 text-[11px] text-[#5C5C74]">
+              <p className="mt-0.5 text-[11px] text-[#5C6474]">
                 Anoneurx Lab · self-learning AI research
               </p>
             </div>
@@ -223,7 +223,7 @@ const AstraLayout = () => {
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             <Link
               to="/astra/status"
-              className="text-[13px] font-medium text-[#A5A5BE] transition-colors hover:text-white"
+              className="text-[13px] font-medium text-[#A5ACBE] transition-colors hover:text-white"
             >
               Status
             </Link>
@@ -231,14 +231,14 @@ const AstraLayout = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className="text-[13px] font-medium text-[#A5A5BE] transition-colors hover:text-white"
+                className="text-[13px] font-medium text-[#A5ACBE] transition-colors hover:text-white"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          <p className="font-mono text-[11px] uppercase tracking-wider text-[#5C5C74]">
+          <p className="font-mono text-[11px] uppercase tracking-wider text-[#5C6474]">
             © {new Date().getFullYear()} Anoneurx
           </p>
         </div>

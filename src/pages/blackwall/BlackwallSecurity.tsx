@@ -58,7 +58,7 @@ const BlackwallSecurity = () => (
         </div>
 
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mt-20 p-8 rounded-[2.5rem] border border-white/[0.06] bg-gradient-to-br from-emerald-500/5 to-transparent relative overflow-hidden"

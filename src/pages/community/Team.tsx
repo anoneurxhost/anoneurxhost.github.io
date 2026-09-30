@@ -13,7 +13,7 @@ import { rankRecords, isBrandQuery } from '@/lib/search';
 
 const allPeopleFromFile = (): TeamPortfolio[] => Object.values(teamPortfolios);
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 const slugifyDept = (d: string) => d.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
 type SortKey = 'relevance' | 'name-asc' | 'name-desc' | 'department' | 'availability';

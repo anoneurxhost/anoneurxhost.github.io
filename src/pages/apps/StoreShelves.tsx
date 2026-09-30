@@ -80,13 +80,13 @@ import {
 
 const StoreShelves = () => {
   const essentialApps = [
-    { name: "Microsoft Copilot", icon: Command, color: "from-blue-600 to-indigo-600", rating: 4.8, price: "Free" },
+    { name: "Microsoft Copilot", icon: Command, color: "from-blue-600 to-sky-600", rating: 4.8, price: "Free" },
     { name: "LinkedIn", icon: Linkedin, color: "from-sky-600 to-blue-700", rating: 4.2, price: "Free" },
     { name: "Adobe Acrobat Reader", icon: FileText, color: "from-red-600 to-red-800", rating: 4.4, price: "Free" },
     { name: "Threads", icon: Share2, color: "from-slate-800 to-black", rating: 4.6, price: "Free" },
     { name: "BreeZip: RAR & ZIP", icon: Layers, color: "from-blue-500 to-cyan-500", rating: 4.7, price: "Free" },
-    { name: "Adobe Photoshop", icon: Aperture, color: "from-blue-800 to-indigo-900", rating: 4.6, price: "Paid" },
-    { name: "Dolby Access", icon: Disc, color: "from-purple-600 to-blue-600", rating: 4.8, price: "Free" },
+    { name: "Adobe Photoshop", icon: Aperture, color: "from-blue-800 to-sky-900", rating: 4.6, price: "Paid" },
+    { name: "Dolby Access", icon: Disc, color: "from-blue-600 to-blue-600", rating: 4.8, price: "Free" },
     { name: "Animotica", icon: Film, color: "from-orange-500 to-amber-600", rating: 4.4, price: "Free" },
   ];
 

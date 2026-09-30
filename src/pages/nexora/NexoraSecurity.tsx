@@ -5,8 +5,8 @@ import NexoraLayout from "./NexoraLayout";
 const pillars = [
   { icon: Box, title: "Sandbox per Tab", desc: "Every tab runs in an isolated process with kernel-level confinement.", color: "from-blue-500 to-cyan-400" },
   { icon: Lock, title: "Site Isolation", desc: "Cross-site scripts can never read each other's data.", color: "from-emerald-500 to-teal-400" },
-  { icon: Eye, title: "Permission Prompts", desc: "Camera, microphone, location and notifications all require explicit per-site approval.", color: "from-purple-500 to-pink-400" },
-  { icon: Key, title: "Encrypted Sync", desc: "End-to-end encryption with a key only you hold.", color: "from-indigo-500 to-blue-400" },
+  { icon: Eye, title: "Permission Prompts", desc: "Camera, microphone, location and notifications all require explicit per-site approval.", color: "from-blue-500 to-rose-400" },
+  { icon: Key, title: "Encrypted Sync", desc: "End-to-end encryption with a key only you hold.", color: "from-sky-500 to-blue-400" },
   { icon: FileCheck, title: "Signed Releases", desc: "Every binary is signed with our GPG key — verify before you install.", color: "from-amber-500 to-orange-400" },
   { icon: Shield, title: "Zero-Day Response", desc: "Critical patches ship within 48 hours of disclosure, every time.", color: "from-rose-500 to-red-400" },
 ];
@@ -15,7 +15,7 @@ const NexoraSecurity = () => (
   <NexoraLayout>
     <section className="px-4 py-20">
       <div className="container-responsive max-w-6xl">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-14">
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-14">
           <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 border border-emerald-500/20 mb-4">
             <Shield className="h-5 w-5 text-emerald-300" />
           </div>
@@ -25,7 +25,7 @@ const NexoraSecurity = () => (
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
           {pillars.map((p, i) => (
-            <motion.div key={p.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.05 }} className="rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-2xl p-6">
+            <motion.div key={p.title} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.05 }} className="rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-2xl p-6">
               <div className={`h-11 w-11 rounded-xl bg-gradient-to-br ${p.color} flex items-center justify-center mb-4`}>
                 <p.icon className="h-5 w-5 text-white" />
               </div>

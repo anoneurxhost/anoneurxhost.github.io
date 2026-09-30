@@ -6,13 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Users, Star, ExternalLink, GitPullRequest, Code, ArrowRight, ArrowLeft, Bug, BookOpen, Shield, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 type ContributionType = "code" | "docs" | "security" | "bugs" | "performance";
 
 const contributionConfig: Record<ContributionType, { label: string; color: string; icon: typeof Code }> = {
   code: { label: "Code", color: "bg-blue-500/20 text-blue-300 border-blue-500/30", icon: Code },
-  docs: { label: "Documentation", color: "bg-purple-500/20 text-purple-300 border-purple-500/30", icon: BookOpen },
+  docs: { label: "Documentation", color: "bg-blue-500/20 text-blue-300 border-blue-500/30", icon: BookOpen },
   security: { label: "Security", color: "bg-red-500/20 text-red-300 border-red-500/30", icon: Shield },
   bugs: { label: "Bug Fixes", color: "bg-amber-500/20 text-amber-300 border-amber-500/30", icon: Bug },
   performance: { label: "Performance", color: "bg-green-500/20 text-green-300 border-green-500/30", icon: Zap },

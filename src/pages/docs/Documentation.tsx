@@ -166,7 +166,7 @@ const projectDocs: Record<string, ProjectDoc> = {
     name: "Arcadeum",
     icon: Gamepad2,
     description: "Gaming and entertainment platform",
-    color: "from-purple-500/20 to-pink-500/20",
+    color: "from-blue-500/20 to-rose-500/20",
     status: "beta",
     category: "Entertainment",
     versions: ["v2.0.0-beta (latest)", "v1.5.0", "v1.0.0"],

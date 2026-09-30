@@ -1,26 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, Sparkles } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import bgImage from "@/assets/background.jpeg";
 
 export const Hero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
-  const scale = useTransform(scrollY, [0, 400], [1, 0.95]);
-  const textY = useTransform(scrollY, [0, 400], [0, 100]);
+  const reduce = useReducedMotion();
 
   // Particle Canvas effect
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas || reduce) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     let animationFrameId: number;
+    let running = true;
     let width = (canvas.width = canvas.parentElement?.clientWidth || window.innerWidth);
     let height = (canvas.height = canvas.parentElement?.clientHeight || window.innerHeight);
 
@@ -31,7 +27,13 @@ export const Hero: React.FC = () => {
     };
     window.addEventListener("resize", handleResize);
 
-    const particleCount = Math.min(Math.floor(width / 15), 90);
+    const handleVisibility = () => {
+      running = document.visibilityState === "visible";
+      if (running) animationFrameId = requestAnimationFrame(render);
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    const particleCount = Math.min(Math.floor(width / 22), 40);
     const particles = Array.from({ length: particleCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
@@ -42,6 +44,7 @@ export const Hero: React.FC = () => {
     }));
 
     const render = () => {
+      if (!running) return;
       ctx.clearRect(0, 0, width, height);
 
       for (let i = 0; i < particles.length; i++) {
@@ -67,7 +70,7 @@ export const Hero: React.FC = () => {
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(99, 102, 241, ${0.15 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(59,130,246, ${0.15 * (1 - dist / 120)})`;
             ctx.lineWidth = 0.6;
             ctx.stroke();
           }
@@ -81,32 +84,22 @@ export const Hero: React.FC = () => {
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("visibilitychange", handleVisibility);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    setMousePos({
-      x: (clientX / innerWidth - 0.5) * 30,
-      y: (clientY / innerHeight - 0.5) * 30,
-    });
-  };
+  }, [reduce]);
 
   return (
     <section
       ref={containerRef}
-      onMouseMove={handleMouseMove}
       className="relative min-h-screen h-screen w-full flex items-center justify-center overflow-hidden bg-transparent text-white select-none"
       aria-label="Hero Section"
     >
       {/* Background Image Layer */}
       <div
-        className="absolute inset-0 z-0 bg-cover bg-center opacity-25 pointer-events-none transition-transform duration-500 ease-out"
+        className="absolute inset-0 z-0 bg-cover bg-center opacity-25 pointer-events-none"
         style={{
           backgroundImage: `url(${bgImage})`,
-          transform: `translate3d(${mousePos.x * 0.3}px, ${mousePos.y * 0.3}px, 0) scale(1.05)`,
         }}
       />
 
@@ -117,47 +110,26 @@ export const Hero: React.FC = () => {
       />
 
       {/* Hero Content */}
-      <motion.div
-        style={{ opacity, scale, y: textY }}
-        className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center space-y-6 pt-16"
-      >
-        {/* Subtitle Pill */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl text-[11px] sm:text-xs font-medium tracking-widest text-cyan-400 uppercase"
-        >
-          <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-spin-slow" />
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center space-y-6 pt-16">
+        {/* Subtitle Label */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-white/5 border border-white/10 backdrop-blur-md text-[11px] sm:text-xs font-medium tracking-widest text-cyan-400 uppercase">
           <span>WELCOME TO</span>
-        </motion.div>
+        </div>
 
         {/* Main Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-200 to-slate-400 font-brand drop-shadow-2xl"
-        >
+        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-200 to-slate-400 font-brand drop-shadow-2xl">
           ANONEURX
-        </motion.h1>
+        </h1>
 
         {/* Subtext Tagline */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
-          className="text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl font-light leading-relaxed tracking-wide text-balance"
-        >
+        <p className="text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl font-light leading-relaxed tracking-wide text-balance">
           Engineering software, artificial intelligence, cloud infrastructure, research and operating systems.
-        </motion.p>
-      </motion.div>
+        </p>
+      </div>
 
       {/* Scroll Down Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
+      <button
+        type="button"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 cursor-pointer opacity-70 hover:opacity-100 transition-opacity"
         onClick={() => {
           window.scrollTo({
@@ -167,15 +139,11 @@ export const Hero: React.FC = () => {
         }}
       >
         <span className="text-[10px] uppercase tracking-widest text-slate-400 font-mono">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ChevronDown className="w-4 h-4 text-cyan-400" />
-        </motion.div>
-      </motion.div>
+        <ChevronDown className="w-4 h-4 text-cyan-400" />
+      </button>
     </section>
   );
 };
 
 export default Hero;
+

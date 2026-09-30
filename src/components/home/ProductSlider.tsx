@@ -47,7 +47,7 @@ export const ProductSlider: React.FC = () => {
       image: blackwallImg,
       path: "/blackwall",
       tag: "Operating System",
-      badgeColor: "text-indigo-400 border-indigo-500/30 bg-indigo-500/10",
+      badgeColor: "text-sky-400 border-sky-500/30 bg-sky-500/10",
     },
     {
       id: "blackwall-server",
@@ -56,7 +56,7 @@ export const ProductSlider: React.FC = () => {
       image: blackwallServerImg,
       path: "/blackwall/server",
       tag: "Server OS",
-      badgeColor: "text-purple-400 border-purple-500/30 bg-purple-500/10",
+      badgeColor: "text-blue-400 border-blue-500/30 bg-blue-500/10",
     },
     {
       id: "app",
@@ -70,21 +70,31 @@ export const ProductSlider: React.FC = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
 
-  // Auto slide interval
+  // Auto slide interval, suspended while the user is interacting or the tab is hidden.
   useEffect(() => {
+    if (paused) return;
+    if (typeof document !== "undefined" && document.hidden) return;
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % products.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(interval);
-  }, [products.length]);
+  }, [products.length, paused]);
 
   const currentProduct = products[currentIndex];
 
   return (
-    <section className="relative py-12 px-4 sm:px-6 lg:px-8 bg-transparent text-white border-t border-white/5 overflow-hidden select-none">
+    <section
+      className="relative py-12 px-4 sm:px-6 lg:px-8 bg-transparent text-white border-t border-white/5 overflow-hidden select-none"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={() => setPaused(false)}
+    >
       {/* Background radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-to-r from-cyan-900/10 via-indigo-900/10 to-purple-900/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-to-r from-cyan-900/10 via-sky-900/10 to-blue-900/10 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto space-y-6">
         

@@ -18,7 +18,7 @@ const badgeVariants = cva(
         githubPill:
           "bg-[#0a0f1d]/90 border-[#2b3a60] text-[#b3c7ff] shadow-sm hover:border-[#425d99] hover:text-white hover:bg-[#0f172b] hover:shadow-[0_0_12px_rgba(79,110,247,0.25)]",
         profilePill:
-          "bg-[#0b1021]/80 border-[#2a385c] text-[#a5c2ff] hover:border-[#455c94] hover:text-white hover:bg-[#10172e] hover:shadow-[0_0_10px_rgba(99,102,241,0.2)]",
+          "bg-[#0b1021]/80 border-[#2a385c] text-[#a5c2ff] hover:border-[#455c94] hover:text-white hover:bg-[#10172e] hover:shadow-[0_0_10px_rgba(59,130,246,0.2)]",
         facultyPill:
           "bg-[#0a0e1c]/80 border-[#324574] text-[#b0c8ff] hover:border-[#526fb3] hover:text-white hover:bg-[#111930] hover:shadow-[0_0_10px_rgba(59,130,246,0.25)]",
         internPill:
@@ -129,11 +129,11 @@ export const predefinedBadgeMap: Record<string, string> = {
 
 export const cuteThemes = [
   {
-    // Lavender / Purple
-    text: "#c084fc",
-    bg: "rgba(168, 85, 247, 0.15)",
-    border: "rgba(168, 85, 247, 0.35)",
-    hoverBg: "rgba(168, 85, 247, 0.28)",
+    // Azure / Blue
+    text: "#60a5fa",
+    bg: "rgba(59, 130, 246, 0.15)",
+    border: "rgba(59, 130, 246, 0.35)",
+    hoverBg: "rgba(59, 130, 246, 0.28)",
   },
   {
     // Rose / Cute Pink
@@ -164,11 +164,11 @@ export const cuteThemes = [
     hoverBg: "rgba(245, 158, 11, 0.28)",
   },
   {
-    // Magenta / Fuchsia
-    text: "#e879f9",
-    bg: "rgba(217, 70, 239, 0.15)",
-    border: "rgba(217, 70, 239, 0.35)",
-    hoverBg: "rgba(217, 70, 239, 0.28)",
+    // Sea Green / Teal
+    text: "#2dd4bf",
+    bg: "rgba(20, 184, 166, 0.15)",
+    border: "rgba(20, 184, 166, 0.35)",
+    hoverBg: "rgba(20, 184, 166, 0.28)",
   },
   {
     // Sky / Ice Blue
@@ -178,11 +178,11 @@ export const cuteThemes = [
     hoverBg: "rgba(59, 130, 246, 0.28)",
   },
   {
-    // Indigo / Violet
-    text: "#818cf8",
-    bg: "rgba(99, 102, 241, 0.15)",
-    border: "rgba(99, 102, 241, 0.35)",
-    hoverBg: "rgba(99, 102, 241, 0.28)",
+    // Cerulean / Sky
+    text: "#38bdf8",
+    bg: "rgba(14, 165, 233, 0.15)",
+    border: "rgba(14, 165, 233, 0.35)",
+    hoverBg: "rgba(14, 165, 233, 0.28)",
   },
   {
     // Coral / Peach

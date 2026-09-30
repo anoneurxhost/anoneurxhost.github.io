@@ -304,7 +304,7 @@ const ReadPaper = () => {
                     {cover ? (
                       <img src={cover} alt={paper.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                     ) : (
-                      <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950">
+                      <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-slate-900 via-slate-800 to-sky-950">
                         <BookOpen className="w-16 h-16 text-blue-400/60 mb-4" />
                         <span className="text-xs uppercase tracking-widest text-blue-300/70 font-mono">
                           {paper.category}
@@ -340,13 +340,13 @@ const ReadPaper = () => {
                   </span>
                 </div>
 
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.1] bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.1] bg-gradient-to-r from-white via-blue-100 to-blue-200 bg-clip-text text-transparent">
                   {paper.title}
                 </h1>
 
                 {/* Author Block */}
                 <div className="flex items-center gap-3 p-4 rounded-xl glass backdrop-blur-md bg-white/5 border border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-sm shadow-md">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-600 to-blue-600 flex items-center justify-center text-white font-bold text-sm shadow-md">
                     {paper.authors[0]?.charAt(0) || "A"}
                   </div>
                   <div>
@@ -371,7 +371,7 @@ const ReadPaper = () => {
                   </div>
                   <div className="p-3.5 rounded-xl glass backdrop-blur-md bg-white/5 border border-white/10">
                     <div className="text-xs text-gray-400 flex items-center gap-1.5 mb-1">
-                      <Download className="w-3.5 h-3.5 text-purple-400" /> Downloads
+                      <Download className="w-3.5 h-3.5 text-blue-400" /> Downloads
                     </div>
                     <div className="text-lg font-bold text-white">{paper.downloads.toLocaleString()}</div>
                   </div>
@@ -390,7 +390,7 @@ const ReadPaper = () => {
                       setReading(true);
                       document.getElementById("paper-content")?.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-medium px-6 py-2.5 rounded-xl shadow-lg shadow-blue-500/25 transition duration-300"
+                    className="bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-500 hover:to-sky-500 text-white font-medium px-6 py-2.5 rounded-xl shadow-lg shadow-blue-500/25 transition duration-300"
                   >
                     <FileText className="w-4 h-4 mr-2" /> Start Reading
                   </Button>
@@ -452,7 +452,7 @@ const ReadPaper = () => {
                 {/* Full Content Sections Toggle */}
                 <div className="flex items-center justify-between p-4 rounded-xl glass backdrop-blur-md bg-white/5 border border-white/10">
                   <span className="text-white font-semibold text-base flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" /> Complete Research Paper
+                    <FileText className="w-5 h-5 text-blue-400" /> Complete Research Paper
                   </span>
                   <Button
                     onClick={() => setReading(!reading)}
@@ -492,7 +492,7 @@ const ReadPaper = () => {
                     <Card className="glass backdrop-blur-md bg-white/5 border border-white/10 shadow-xl">
                       <CardHeader className="border-b border-white/10">
                         <CardTitle className="text-xl text-white font-bold flex items-center gap-3">
-                          <span className="w-7 h-7 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-300 text-xs font-mono flex items-center justify-center">
+                          <span className="w-7 h-7 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-300 text-xs font-mono flex items-center justify-center">
                             02
                           </span>
                           Methodology & Architecture

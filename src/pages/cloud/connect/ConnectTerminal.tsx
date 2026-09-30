@@ -66,7 +66,7 @@ const ConnectTerminal = () => {
     >
       {!isLiveBackend() && <DemoBanner />}
 
-      <div className="rounded-2xl border border-white/10 bg-black/70 backdrop-blur-xl overflow-hidden">
+      <div className="rounded-xl border border-[var(--cc-border)] bg-[#0b0f14] shadow-[var(--cc-shadow)] overflow-hidden">
         <div className="px-4 py-2.5 border-b border-white/5 flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
           <span className="w-2.5 h-2.5 rounded-full bg-amber-400/70" />

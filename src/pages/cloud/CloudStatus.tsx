@@ -3,11 +3,11 @@ import { CheckCircle2, AlertTriangle, Clock, Server, Globe, Signal, Activity } f
 import CloudLayout from "./CloudLayout";
 
 const systems = [
-  { name: "Compute Engine", status: "Operational", color: "text-emerald-400" },
-  { name: "Object Storage", status: "Operational", color: "text-emerald-400" },
-  { name: "Global Network", status: "Degraded Performance", color: "text-amber-400", incident: "Increased latency in US-East" },
-  { name: "Dashboard & CLI", status: "Operational", color: "text-emerald-400" },
-  { name: "Payment Gateway", status: "Operational", color: "text-emerald-400" },
+  { name: "Compute Engine", status: "Design example", color: "text-emerald-400" },
+  { name: "Object Storage", status: "Design example", color: "text-emerald-400" },
+  { name: "Global Network", status: "Design example", color: "text-amber-400", incident: null },
+  { name: "Dashboard & CLI", status: "Design example", color: "text-emerald-400" },
+  { name: "Payment Gateway", status: "Design example", color: "text-emerald-400" },
 ];
 
 const CloudStatus = () => {
@@ -25,12 +25,9 @@ const CloudStatus = () => {
                     <p className="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Last check: 2 minutes ago</p>
                  </div>
               </div>
-              <div className="hidden md:flex items-center gap-6 text-right">
-                 <div>
-                    <p className="text-xl font-bold">99.98%</p>
-                    <p className="text-[9px] text-gray-500 uppercase tracking-widest">Uptime (30d)</p>
-                 </div>
-              </div>
+<div className="hidden md:flex items-center gap-6 text-right">
+       <p className="text-gray-500 text-sm">Status page is a design example only.</p>
+    </div>
           </div>
 
           <div className="grid gap-3">

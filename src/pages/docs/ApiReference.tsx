@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 8 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
@@ -67,7 +67,7 @@ const methodColors: Record<string, string> = {
   POST: "bg-blue-500/20 text-blue-400 border-blue-500/30",
   PUT: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
   DELETE: "bg-red-500/20 text-red-400 border-red-500/30",
-  PATCH: "bg-purple-500/20 text-purple-400 border-purple-500/30",
+  PATCH: "bg-blue-500/20 text-blue-400 border-blue-500/30",
 };
 
 const ApiReference = () => {

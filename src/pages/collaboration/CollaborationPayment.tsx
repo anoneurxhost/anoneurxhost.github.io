@@ -171,7 +171,7 @@ const CollaborationPayment = () => {
                 <Card className="glass backdrop-blur-md bg-white/5 border border-white/10">
                   <CardHeader>
                     <div className="flex items-center space-x-4 mb-4">
-                      <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white">
+                      <div className="p-3 bg-gradient-to-r from-blue-500 to-blue-500 rounded-full text-white">
                         {currentType.icon}
                       </div>
                       <div>

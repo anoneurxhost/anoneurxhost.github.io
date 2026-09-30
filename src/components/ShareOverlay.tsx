@@ -86,9 +86,9 @@ export const ShareOverlay = ({ isOpen, onClose, url, title = "", description = "
           <div className="absolute inset-0" onClick={onClose} />
 
           <motion.div
-            initial={{ scale: 0.95, opacity: 0, y: 20 }}
+            initial={{ scale: 0.95, opacity: 0, y: 8 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.95, opacity: 0, y: 20 }}
+            exit={{ scale: 0.95, opacity: 0, y: 8 }}
             className="relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 bg-black/80 backdrop-blur-xl p-6 sm:p-8 shadow-2xl"
           >
             <button

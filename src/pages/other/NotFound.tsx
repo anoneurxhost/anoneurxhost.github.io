@@ -37,7 +37,7 @@ const ErrorDisplay = ({
       {/* Universal Background */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-fixed bg-no-repeat transition-all duration-500 ease-in-out"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-500 ease-in-out"
           style={{ backgroundImage: `url(${isMobile ? images.universalMobile : images.universal})` }}
         />
         <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />

@@ -67,7 +67,7 @@ const Sponsors = () => {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-violet-500/30 to-fuchsia-500/30 flex items-center justify-center text-4xl font-bold text-white/80">
+                    <div className="w-full h-full bg-gradient-to-br from-cyan-500/30 to-teal-500/30 flex items-center justify-center text-4xl font-bold text-white/80">
                       {s.name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase()}
                     </div>
                   )}

@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const submittedProjects = [
   { id: 1, title: "AI-Powered Code Review Assistant", category: "AI & Machine Learning", status: "Approved", submittedBy: "Sarah Chen", date: "2024-03-15", techStack: ["Python", "GPT-4", "React"], teamSize: 4, description: "An intelligent code review tool that uses LLMs to provide contextual feedback on pull requests." },

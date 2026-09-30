@@ -21,7 +21,6 @@ const features = [
 
 const stats = [
   { value: "40%", label: "Faster", icon: Zap },
-  { value: "500k+", label: "Installs", icon: Rocket },
   { value: "Zero", label: "Trackers", icon: Shield },
   { value: "v2.8.4", label: "Stable", icon: Sparkles },
 ];
@@ -37,14 +36,14 @@ const Nexora = () => {
               <motion.div 
                 initial={{ opacity: 0, x: -20 }} 
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7 }}
+                transition={{ duration: 0.35 }}
               >
                 <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20 text-[10px] font-bold uppercase tracking-widest mb-6">
                   <Sparkles className="h-3 w-3 mr-1.5" /> Powered by Anoneurx · v2.8.4
                 </Badge>
                 <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.05]">
                   The browser <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400 italic">built for you.</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-sky-400 italic">built for you.</span>
                 </h1>
                 <p className="text-gray-400 text-sm md:text-base max-w-xl mb-8 leading-relaxed">
                   Nexora is a fast, private, AI-native browser. Block trackers, sync across devices, and experience a web that doesn't follow you.
@@ -61,14 +60,14 @@ const Nexora = () => {
                 </div>
                 <div className="mt-8 flex items-center gap-6 text-[10px] uppercase tracking-widest text-gray-500 font-bold">
                    <span className="flex items-center gap-2"><Lock className="w-3.5 h-3.5 text-blue-400" /> AES-256 Sync</span>
-                   <span className="flex items-center gap-2"><Globe className="w-3.5 h-3.5 text-purple-400" /> Multi-Platform</span>
+                   <span className="flex items-center gap-2"><Globe className="w-3.5 h-3.5 text-blue-400" /> Multi-Platform</span>
                 </div>
               </motion.div>
 
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }} 
                 animate={{ opacity: 1, scale: 1 }} 
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
                 className="relative"
               >
                 <div className="absolute -inset-10 bg-blue-500/10 blur-[100px] rounded-full" />
@@ -93,7 +92,7 @@ const Nexora = () => {
               {features.map((f, i) => (
                 <motion.div 
                   key={f.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 8 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.05 }}

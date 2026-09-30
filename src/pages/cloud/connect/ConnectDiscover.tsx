@@ -28,6 +28,9 @@ import DemoBanner from "./DemoBanner";
 
 const MAX_HOSTS = 4096;
 
+const dialogContent = "bg-white dark:bg-[#10151c] border-slate-200 dark:border-[#26313d] text-slate-900 dark:text-white";
+const inputCls = "bg-[var(--cc-surface-2)] border-[var(--cc-border)] text-[var(--cc-text)] placeholder:text-[var(--cc-muted-2)] h-10";
+
 const ConnectDiscover = () => {
   const navigate = useNavigate();
   const { connect } = useConnectSession();
@@ -125,75 +128,75 @@ const ConnectDiscover = () => {
     >
       {(demo || !isLiveBackend()) && <DemoBanner />}
 
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-5 md:p-6">
+      <div className="rounded-xl border border-[var(--cc-border)] bg-[var(--cc-surface)] shadow-[var(--cc-shadow)] p-5 md:p-6">
         <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1.5fr_auto] gap-4 items-end">
           <div className="space-y-1.5">
-            <Label className="text-xs text-slate-300">CIDR range</Label>
+            <Label className="text-xs text-[var(--cc-text-2)]">CIDR range</Label>
             <Input
               value={cidr}
               onChange={(e) => setCidr(e.target.value)}
               placeholder="192.168.1.0/24"
-              className="h-11 font-mono bg-white/[0.04] border-white/10 text-white placeholder:text-slate-500"
+              className={`h-11 font-mono ${inputCls}`}
             />
           </div>
           <div className="space-y-1.5">
-            <Label className="text-xs text-slate-300">Ports to probe</Label>
+            <Label className="text-xs text-[var(--cc-text-2)]">Ports to probe</Label>
             <Input
               value={portsRaw}
               onChange={(e) => setPortsRaw(e.target.value)}
               placeholder="22, 80, 443"
-              className="h-11 font-mono bg-white/[0.04] border-white/10 text-white placeholder:text-slate-500"
+              className={`h-11 font-mono ${inputCls}`}
             />
           </div>
           <Button
             onClick={runScan}
             disabled={scanning}
-            className="h-11 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-black font-semibold"
+            className="h-11 bg-sky-500 hover:bg-sky-600 text-white dark:bg-cyan-400 dark:hover:bg-cyan-300 dark:text-black font-semibold"
           >
             {scanning ? <Loader2 className="w-4 h-4 mr-1.5 animate-spin" /> : <Search className="w-4 h-4 mr-1.5" />}
             {scanning ? "Scanning…" : "Scan range"}
           </Button>
         </div>
 
-        <div className="mt-3 text-xs text-slate-400">
+        <div className="mt-3 text-xs text-[var(--cc-muted)]">
           {info ? (
             <span className="font-mono">
               {info.network}/{info.prefix} · {info.hosts.toLocaleString()} usable hosts · {info.first} → {info.last}
             </span>
           ) : (
-            <span className="text-amber-300/80">Enter a valid IPv4 CIDR (prefix /8 – /32).</span>
+            <span className="text-amber-600 dark:text-amber-400">Enter a valid IPv4 CIDR (prefix /8 – /32).</span>
           )}
         </div>
       </div>
 
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl overflow-hidden">
-        <div className="px-5 py-4 border-b border-white/5 text-sm font-semibold flex items-center justify-between">
+      <div className="rounded-xl border border-[var(--cc-border)] bg-[var(--cc-surface)] shadow-[var(--cc-shadow)] overflow-hidden">
+        <div className="px-5 py-3.5 border-b border-[var(--cc-border)] text-sm font-semibold text-[var(--cc-text)] flex items-center justify-between">
           <span>Discovered hosts</span>
-          {results && <span className="text-xs text-slate-500">{results.length} result(s)</span>}
+          {results && <span className="text-xs text-[var(--cc-muted)]">{results.length} result(s)</span>}
         </div>
 
         {scanning && (
-          <div className="p-10 text-center text-slate-400 text-sm">
-            <Loader2 className="w-5 h-5 animate-spin mx-auto mb-3 text-cyan-300" />
+          <div className="p-10 text-center text-sm text-[var(--cc-muted)]">
+            <Loader2 className="w-5 h-5 animate-spin mx-auto mb-3 text-[var(--cc-accent)]" />
             Probing {info?.hosts.toLocaleString()} addresses…
           </div>
         )}
 
         {!scanning && !results && (
-          <div className="p-10 text-center text-slate-500 text-sm">
-            <ShieldQuestion className="w-6 h-6 mx-auto mb-3 opacity-60" />
+          <div className="p-10 text-center text-sm text-[var(--cc-muted)]">
+            <ShieldQuestion className="w-6 h-6 mx-auto mb-3 opacity-60 text-[var(--cc-muted-2)]" />
             Run a scan to list reachable nodes on your network.
           </div>
         )}
 
         {!scanning && results?.length === 0 && (
-          <div className="p-10 text-center text-slate-500 text-sm">No hosts responded in this range.</div>
+          <div className="p-10 text-center text-sm text-[var(--cc-muted)]">No hosts responded in this range.</div>
         )}
 
         {!scanning && results && results.length > 0 && (
           <div className="overflow-x-auto">
             <table className="w-full text-sm min-w-[720px]">
-              <thead className="text-[11px] uppercase tracking-widest text-slate-500">
+              <thead className="text-[11px] uppercase tracking-widest text-[var(--cc-muted)]">
                 <tr>
                   <th className="text-left px-5 py-2 font-medium">IP</th>
                   <th className="text-left px-5 py-2 font-medium">Hostname</th>
@@ -203,20 +206,20 @@ const ConnectDiscover = () => {
                   <th className="text-right px-5 py-2 font-medium">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5">
+              <tbody className="divide-y divide-[var(--cc-border)]">
                 {results.map((h) => (
-                  <tr key={h.ip} className="hover:bg-white/[0.02]">
-                    <td className="px-5 py-3 font-mono text-slate-200">{h.ip}</td>
-                    <td className="px-5 py-3 text-slate-300">{h.hostname ?? "—"}</td>
-                    <td className="px-5 py-3 font-mono text-xs text-cyan-300/90">{h.openPorts.join(", ")}</td>
-                    <td className="px-5 py-3 text-slate-400">{h.os ?? "unknown"}</td>
-                    <td className="px-5 py-3 text-slate-400">{h.latencyMs} ms</td>
+                  <tr key={h.ip} className="hover:bg-[var(--cc-surface-2)]">
+                    <td className="px-5 py-3 font-mono text-[var(--cc-text)]">{h.ip}</td>
+                    <td className="px-5 py-3 text-[var(--cc-text-2)]">{h.hostname ?? "—"}</td>
+                    <td className="px-5 py-3 font-mono text-xs text-[var(--cc-accent)]">{h.openPorts.join(", ")}</td>
+                    <td className="px-5 py-3 text-[var(--cc-muted)]">{h.os ?? "unknown"}</td>
+                    <td className="px-5 py-3 text-[var(--cc-muted)]">{h.latencyMs} ms</td>
                     <td className="px-5 py-3 text-right">
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => openConnect(h)}
-                        className="border-cyan-400/30 bg-cyan-400/10 text-cyan-200 hover:bg-cyan-400/20"
+                        className="border-[var(--cc-accent-border)] bg-[var(--cc-accent-soft)] text-[var(--cc-accent)] hover:bg-[var(--cc-accent-soft)]"
                       >
                         <PlugZap className="w-3.5 h-3.5 mr-1" /> Connect
                       </Button>
@@ -230,10 +233,10 @@ const ConnectDiscover = () => {
       </div>
 
       <Dialog open={!!target} onOpenChange={(o) => !o && setTarget(null)}>
-        <DialogContent className="bg-[#0a0d12] border-white/10 text-white">
+        <DialogContent className={dialogContent}>
           <DialogHeader>
             <DialogTitle>Connect to {target?.hostname ?? target?.ip}</DialogTitle>
-            <DialogDescription className="text-slate-400">
+            <DialogDescription className="text-slate-600 dark:text-slate-400">
               Credentials are used once to open the session and are never stored.
             </DialogDescription>
           </DialogHeader>
@@ -241,20 +244,12 @@ const ConnectDiscover = () => {
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-1.5">
-                <Label className="text-xs text-slate-300">Username</Label>
-                <Input
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className="bg-white/[0.04] border-white/10 text-white h-10"
-                />
+                <Label className="text-xs text-slate-600 dark:text-slate-400">Username</Label>
+                <Input value={username} onChange={(e) => setUsername(e.target.value)} className={inputCls} />
               </div>
               <div className="space-y-1.5">
-                <Label className="text-xs text-slate-300">Port</Label>
-                <Input
-                  value={port}
-                  onChange={(e) => setPort(e.target.value)}
-                  className="bg-white/[0.04] border-white/10 text-white h-10 font-mono"
-                />
+                <Label className="text-xs text-slate-600 dark:text-slate-400">Port</Label>
+                <Input value={port} onChange={(e) => setPort(e.target.value)} className={`${inputCls} font-mono`} />
               </div>
             </div>
 
@@ -265,8 +260,8 @@ const ConnectDiscover = () => {
                   onClick={() => setAuthMode(m)}
                   className={`flex-1 rounded-lg border px-3 py-2 text-sm capitalize transition-colors ${
                     authMode === m
-                      ? "border-cyan-400/40 bg-cyan-400/10 text-cyan-200"
-                      : "border-white/10 bg-white/[0.03] text-slate-300 hover:bg-white/[0.06]"
+                      ? "border-[var(--cc-accent-border)] bg-[var(--cc-accent-soft)] text-[var(--cc-accent)]"
+                      : "border-[var(--cc-border)] bg-[var(--cc-surface-2)] text-[var(--cc-text-2)] hover:bg-[var(--cc-surface-hover)]"
                   }`}
                 >
                   {m === "password" ? "Password" : "SSH key"}
@@ -276,23 +271,23 @@ const ConnectDiscover = () => {
 
             {authMode === "password" ? (
               <div className="space-y-1.5">
-                <Label className="text-xs text-slate-300">Password</Label>
+                <Label className="text-xs text-slate-600 dark:text-slate-400">Password</Label>
                 <Input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="bg-white/[0.04] border-white/10 text-white h-10"
+                  className={inputCls}
                 />
               </div>
             ) : (
               <div className="space-y-1.5">
-                <Label className="text-xs text-slate-300">SSH key</Label>
+                <Label className="text-xs text-slate-600 dark:text-slate-400">SSH key</Label>
                 <Select value={keyId} onValueChange={setKeyId}>
-                  <SelectTrigger className="bg-white/[0.04] border-white/10 text-white h-10">
+                  <SelectTrigger className={inputCls}>
                     <SelectValue placeholder="Select a key" />
                   </SelectTrigger>
-                  <SelectContent className="bg-[#0a0d12] border-white/10 text-white">
+                  <SelectContent className="bg-white dark:bg-[#10151c] border-slate-200 dark:border-[#26313d] text-slate-900 dark:text-white">
                     {(keys ?? []).map((k) => (
                       <SelectItem key={k.id} value={k.id}>
                         {k.name} · {k.type}
@@ -308,14 +303,14 @@ const ConnectDiscover = () => {
             <Button
               variant="ghost"
               onClick={() => setTarget(null)}
-              className="text-slate-300 hover:bg-white/[0.06]"
+              className="text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/[0.06]"
             >
               Cancel
             </Button>
             <Button
               onClick={submitConnect}
               disabled={connecting}
-              className="bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold"
+              className="bg-sky-500 hover:bg-sky-600 text-white dark:bg-cyan-400 dark:hover:bg-cyan-300 dark:text-black font-semibold"
             >
               {connecting ? <Loader2 className="w-4 h-4 mr-1.5 animate-spin" /> : <PlugZap className="w-4 h-4 mr-1.5" />}
               Connect

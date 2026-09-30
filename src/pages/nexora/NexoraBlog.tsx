@@ -13,7 +13,7 @@ const NexoraBlog = () => (
   <NexoraLayout>
     <section className="px-4 py-20">
       <div className="container-responsive max-w-5xl">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-14">
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-14">
           <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10 border border-blue-500/20 mb-4">
             <Newspaper className="h-5 w-5 text-blue-300" />
           </div>
@@ -23,7 +23,7 @@ const NexoraBlog = () => (
 
         <div className="grid sm:grid-cols-2 gap-5">
           {posts.map((p, i) => (
-            <motion.article key={p.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.05 }} className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-2xl p-6 hover:border-blue-500/30 transition-all cursor-pointer">
+            <motion.article key={p.title} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.05 }} className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-2xl p-6 hover:border-blue-500/30 transition-all cursor-pointer">
               <div className="flex items-center gap-3 mb-4">
                 <span className="px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-300 border border-blue-500/25 text-[9px] uppercase tracking-widest">{p.tag}</span>
                 <div className="flex items-center gap-1.5 text-[10px] text-slate-500"><Calendar className="h-3 w-3" /> {p.date}</div>

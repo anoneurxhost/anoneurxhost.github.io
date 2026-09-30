@@ -32,7 +32,7 @@ const ApplyShell = ({
   <PageTransition>
     <div className="min-h-screen relative overflow-hidden">
       <div className="pointer-events-none absolute top-20 right-10 w-80 h-80 bg-primary/10 rounded-full blur-[140px]" />
-      <div className="pointer-events-none absolute bottom-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-[120px]" />
+      <div className="pointer-events-none absolute bottom-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-[120px]" />
 
       <section className="relative z-10 px-4 pt-20 pb-12">
         <div className="container mx-auto max-w-6xl">
@@ -43,7 +43,7 @@ const ApplyShell = ({
           </Button>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="text-center mb-10"
@@ -55,7 +55,7 @@ const ApplyShell = ({
             <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-3">
               {title}{" "}
               {highlight && (
-                <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
                   {highlight}
                 </span>
               )}

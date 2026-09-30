@@ -199,7 +199,7 @@ const PartnershipInquiry = () => {
 
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                      className="w-full bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700"
                       aria-label="Submit Partnership Inquiry"
                     >
                       <Send className="w-4 h-4 mr-2" />
@@ -231,7 +231,7 @@ const PartnershipInquiry = () => {
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <Users className="w-5 h-5 text-purple-400 mt-1" />
+                      <Users className="w-5 h-5 text-blue-400 mt-1" />
                       <div>
                         <h4 className="font-semibold text-white">
                           Expert Collaboration
@@ -269,7 +269,7 @@ const PartnershipInquiry = () => {
                       <span>Submit your partnership inquiry</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                      <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
                         2
                       </div>
                       <span>Initial review and assessment</span>

@@ -15,10 +15,10 @@ const services = [
 ];
 
 const projects = [
-  { title: "MedDiagnose AI", desc: "AI-powered radiology assistant deployed at 30+ hospitals.", tag: "Healthcare", img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop" },
-  { title: "RetailLens", desc: "Real-time shelf analytics for global retail chains.", tag: "Retail", img: "https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=600&h=400&fit=crop" },
-  { title: "FraudGuard", desc: "Realtime fraud detection processing 1M+ transactions/sec.", tag: "FinTech", img: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&h=400&fit=crop" },
-  { title: "SmartFarm AI", desc: "Crop yield prediction across 200K+ acres globally.", tag: "AgriTech", img: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&h=400&fit=crop" },
+  { title: "MedDiagnose AI", desc: "Radiology assistant prototype. Research only, not deployed in any hospital and not a medical device.", tag: "Healthcare", img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop" },
+  { title: "RetailLens", desc: "Shelf analytics for retail. No production deployment.", tag: "Retail", img: "https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=600&h=400&fit=crop" },
+  { title: "FraudGuard", desc: "Realtime fraud detection. Throughput not benchmarked in production.", tag: "FinTech", img: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&h=400&fit=crop" },
+  { title: "SmartFarm AI", desc: "Crop yield prediction. Pilots only, no commercial acreage.", tag: "AgriTech", img: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&h=400&fit=crop" },
 ];
 
 const ArtificialIntelligence = () => (
@@ -29,7 +29,7 @@ const ArtificialIntelligence = () => (
       {/* Hero */}
       <section className="relative px-4 pt-20 pb-12">
         <div className="container mx-auto max-w-7xl grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
             <Badge className="bg-blue-500/10 text-blue-300 border-blue-500/30 text-[10px] mb-3">
               <Sparkles className="w-3 h-3 mr-1.5" /> Artificial Intelligence
             </Badge>
@@ -79,7 +79,11 @@ const ArtificialIntelligence = () => (
       <section className="px-4 py-12">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-8">
-            <h2 className="text-xl md:text-2xl font-bold text-white mb-2">Featured AI Projects</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-white mb-2">Example project areas</h2>
+            <p className="text-sm text-gray-400 max-w-2xl mx-auto">
+              These describe work we can do, not systems we have deployed. None is a certified medical
+              device and none runs in a customer environment.
+            </p>
             <p className="text-sm text-gray-400">Real systems shipping real value.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

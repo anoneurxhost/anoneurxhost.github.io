@@ -25,7 +25,7 @@ const BlackwallScreenshots = () => {
     <BlackwallLayout>
       <section className="px-4 py-20">
         <div className="container-responsive max-w-6xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-14">
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-14">
             <span className="text-[10px] uppercase tracking-[0.3em] text-blue-400">Screenshots</span>
             <h1 className="mt-3 text-4xl sm:text-5xl font-bold">A tour of <span className="italic text-blue-300">Black Wall</span></h1>
             <p className="mt-4 text-sm text-slate-500 max-w-xl mx-auto">
@@ -38,7 +38,7 @@ const BlackwallScreenshots = () => {
               <motion.button
                 key={s.title}
                 onClick={() => setActive(i)}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}

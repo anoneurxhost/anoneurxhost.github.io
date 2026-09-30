@@ -6,15 +6,15 @@ import { Button } from "@/components/ui/button";
 import { MessageSquare, Users, Clock, ArrowRight, Pin, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
 
 const categories = [
   { name: "General Discussion", description: "Chat about anything tech-related", members: 4200, posts: 12800, threads: 3400, color: "from-blue-500/20 to-cyan-500/20", lastActive: "2 min ago" },
   { name: "Technical Help", description: "Get help with code, bugs, and architecture", members: 3100, posts: 9400, threads: 2100, color: "from-green-500/20 to-emerald-500/20", lastActive: "5 min ago" },
-  { name: "Project Showcase", description: "Share your work and get feedback", members: 2800, posts: 5600, threads: 1200, color: "from-purple-500/20 to-pink-500/20", lastActive: "12 min ago" },
+  { name: "Project Showcase", description: "Share your work and get feedback", members: 2800, posts: 5600, threads: 1200, color: "from-blue-500/20 to-rose-500/20", lastActive: "12 min ago" },
   { name: "Research & Papers", description: "Discuss latest research and publications", members: 1900, posts: 3200, threads: 780, color: "from-amber-500/20 to-orange-500/20", lastActive: "1 hour ago" },
   { name: "Career & Jobs", description: "Job postings, career advice, and mentorship", members: 2400, posts: 4100, threads: 950, color: "from-teal-500/20 to-green-500/20", lastActive: "30 min ago" },
-  { name: "Off-Topic", description: "Memes, hobbies, and non-tech chat", members: 3600, posts: 8200, threads: 2800, color: "from-rose-500/20 to-pink-500/20", lastActive: "Just now" },
+  { name: "Off-Topic", description: "Memes, hobbies, and non-tech chat", members: 3600, posts: 8200, threads: 2800, color: "from-rose-500/20 to-rose-500/20", lastActive: "Just now" },
 ];
 
 const trendingTopics = [
