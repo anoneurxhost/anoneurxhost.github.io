@@ -1245,6 +1245,40 @@ for (const [legacyId, canonicalId] of Object.entries(legacyProblemAliases)) {
 
 let count = 0;
 
+// `/opensource/:id` and `/opensource/:id/:subPage` are dynamic routes in the
+// SPA, but on static hosting they must exist as real files — otherwise GitHub
+// Pages answers 404 before the client router can pick them up.
+const OPEN_SOURCE_PROJECTS = [
+  { id: "blackwall", name: "Black Wall OS" },
+  { id: "authenticator", name: "Authenticator" },
+  { id: "lynx", name: "LYNX" },
+];
+const PROJECT_SUBPAGES = [
+  ["features", "Features", "Capabilities and technical highlights"],
+  ["download", "Download", "Releases, artefacts and install instructions"],
+  ["demo", "Demo", "A guided walkthrough of the interface"],
+  ["changelog", "Changelog", "Release history and version notes"],
+  ["roadmap", "Roadmap", "What ships next"],
+  ["faq", "FAQ", "Frequently asked questions"],
+  ["security", "Security", "Disclosure policy and threat model"],
+  ["privacy", "Privacy Policy", "Data practices"],
+  ["contributors", "Contributors", "Maintainers, contributors and testers"],
+];
+for (const project of OPEN_SOURCE_PROJECTS) {
+  routes.push({
+    path: `/opensource/${project.id}`,
+    title: `${project.name} — Anoneurx Open Source Project`,
+    description: `README, activity, maintainers and releases for ${project.name}, an Anoneurx open source project.`,
+  });
+  for (const [subPath, subTitle, subBlurb] of PROJECT_SUBPAGES) {
+    routes.push({
+      path: `/opensource/${project.id}/${subPath}`,
+      title: `${subTitle} — ${project.name}`,
+      description: `${subBlurb} for ${project.name}, an Anoneurx open source project.`,
+    });
+  }
+}
+
 for (const route of routes) {
   const canonicalPath = route.canonicalPath || route.path;
   const canonicalUrl = `${SITE}${canonicalPath === "/" ? "/" : canonicalPath}`;
