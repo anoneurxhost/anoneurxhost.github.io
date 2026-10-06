@@ -24,11 +24,6 @@ const Pay = () => {
   const amount = useMemo(() => searchParams.get("amount") || "129", [searchParams]);
   const category = useMemo(() => searchParams.get("category") || "Subscription", [searchParams]);
 
-  useEffect(() => {
-    document.title = "ANONEURX | Pay";
-    return () => { document.title = "ANONEURX |"; };
-  }, []);
-
   const [step, setStep] = useState<Step>("select");
   const [paymentMethod, setPaymentMethod] = useState<string>("card");
   const [submitting, setSubmitting] = useState(false);

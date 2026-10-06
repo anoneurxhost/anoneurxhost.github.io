@@ -64,10 +64,6 @@ function CodeBlock({ code, lang = "atlas" }: { code: string; lang?: string }) {
 }
 
 const Atlas = () => {
-  useEffect(() => {
-    document.title = "ANONEURX | ATLAS — Native UI at the speed of Rust";
-  }, []);
-
   return (
     <div className="relative min-h-screen text-white overflow-hidden">
       {/* Ambient glow */}

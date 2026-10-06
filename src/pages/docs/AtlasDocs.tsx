@@ -230,10 +230,6 @@ const AtlasDocs = () => {
   const [active, setActive] = useState(sections[0].id);
   const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    document.title = "ANONEURX | ATLAS Documentation";
-  }, []);
-
   const current = sections.find((s) => s.id === active) || sections[0];
   const filtered = sections.filter((s) => s.title.toLowerCase().includes(query.toLowerCase()));
 

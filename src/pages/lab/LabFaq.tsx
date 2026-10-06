@@ -13,7 +13,6 @@ const LabFaq = () => {
         title="FAQ"
         description="Frequently asked questions about Anoneurx Lab: research problems, joining the lab, eligibility, mentorship, publishing, and open source research."
         path="/lab/faq"
-        keywords="anoneurx lab faq, research lab questions, how to join, student eligibility, research mentorship, publishing research, open source research faq"
       />
       <div className="mx-auto max-w-3xl">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>

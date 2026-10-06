@@ -47,7 +47,6 @@ const BlackwallServer = () => {
   const [subscribed, setSubscribed] = useState(false);
 
   useEffect(() => {
-    document.title = "ANONEURX | Black Wall Server OS";
     setSubscribed(!!localStorage.getItem("blackwall_server_notify"));
   }, []);
 
@@ -68,7 +67,6 @@ const BlackwallServer = () => {
         title="Black Wall Server OS"
         description="Black Wall Server OS — a hardened Anoneurx operating system for servers. Zero-trust, container-native, air-gap capable. Launching December 2026."
         path="/blackwall/server"
-        keywords="black wall server, server os, hardened linux, zero trust, container native, air gap, secure server, anoneurx server"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",

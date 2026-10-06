@@ -14,13 +14,6 @@ export const BankingBackground = () => (
 );
 
 const BankingLayout = () => {
-  useEffect(() => {
-    document.title = "ANONEURX | Pay";
-    return () => {
-      document.title = "ANONEURX |";
-    };
-  }, []);
-
   return (
     <PageTransition>
       <div className="relative min-h-screen text-white overflow-hidden flex flex-col">

@@ -8,7 +8,7 @@
     "build": "vite build && node scripts/prerender-all-routes.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc -b --force",
     "preview": "vite preview"
   },
   "dependencies": {

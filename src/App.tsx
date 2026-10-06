@@ -111,9 +111,11 @@ const AstraLabPage = React.lazy(() => import('./pages/astra/AstraPages').then((m
 const AstraContributePage = React.lazy(() => import('./pages/astra/AstraPages').then((m) => ({ default: m.ContributePage })));
 
 // Documentation subpages
+const DocsHub = React.lazy(() => import('./pages/docs/DocsHub'));
 const DocsGettingStarted = React.lazy(() => import('./pages/docs/GettingStarted'));
 const DocsApiReference = React.lazy(() => import('./pages/docs/ApiReference'));
 const DocsDeployment = React.lazy(() => import('./pages/docs/Deployment'));
+const DocsContributions = React.lazy(() => import('./pages/docs/ContributionsGuide'));
 
 // Community subpages
 const CommunityEvents = React.lazy(() => import('./pages/community/Events'));
@@ -562,6 +564,7 @@ function App() {
                 <Route path="intern/:department/:name" element={<InternProfile />} />
 
                 <Route path="blogs" element={<OurBlogs />} />
+                <Route path="blog" element={<Navigate to="/blogs" replace />} />
                 <Route path="our-dev-team" element={<Navigate to="/people" replace />} />
                 <Route path="internships" element={<Internships />} />
                 <Route path="careers/internships" element={<Internships />} />
@@ -604,6 +607,11 @@ function App() {
                 <Route path="nexora/faq" element={<NexoraFAQ />} />
                 <Route path="docs/nexora" element={<NexoraDocs />} />
                 <Route path="nexora/docs" element={<NexoraDocs />} />
+                <Route path="docs" element={<DocsHub />} />
+                <Route path="docs/getting-started" element={<DocsGettingStarted />} />
+                <Route path="docs/api-reference" element={<DocsApiReference />} />
+                <Route path="docs/deployment" element={<DocsDeployment />} />
+                <Route path="docs/contributions" element={<DocsContributions />} />
                 <Route path="nexora/changelog" element={<NexoraChangelog />} />
                 <Route path="nexora/community" element={<NexoraCommunity />} />
                 <Route path="nexora/help" element={<NexoraHelp />} />

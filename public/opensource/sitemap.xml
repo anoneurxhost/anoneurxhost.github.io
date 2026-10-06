@@ -72,4 +72,24 @@
   <url><loc>https://anoneurx.com/opensource/authenticator/roadmap</loc><changefreq>weekly</changefreq><lastmod>2026-09-16</lastmod><priority>0.7</priority></url>
   <url><loc>https://anoneurx.com/opensource/authenticator/faq</loc><changefreq>monthly</changefreq><lastmod>2026-09-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://anoneurx.com/opensource/authenticator/download</loc><changefreq>monthly</changefreq><lastmod>2026-09-16</lastmod><priority>0.7</priority></url>
+
+  <!-- PROJECT: NEXORA -->
+  <url><loc>https://anoneurx.com/opensource/nexora</loc><changefreq>weekly</changefreq><lastmod>2026-10-03</lastmod><priority>0.9</priority></url>
+  <url><loc>https://anoneurx.com/opensource/nexora/features</loc><changefreq>monthly</changefreq><lastmod>2026-10-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/nexora/changelog</loc><changefreq>weekly</changefreq><lastmod>2026-10-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/nexora/security</loc><changefreq>monthly</changefreq><lastmod>2026-10-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/nexora/privacy</loc><changefreq>monthly</changefreq><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/opensource/nexora/contributors</loc><changefreq>weekly</changefreq><lastmod>2026-10-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/nexora/roadmap</loc><changefreq>weekly</changefreq><lastmod>2026-10-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/nexora/faq</loc><changefreq>monthly</changefreq><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/opensource/nexora/download</loc><changefreq>monthly</changefreq><lastmod>2026-10-03</lastmod><priority>0.7</priority></url>
+
+  <!-- PROJECT: LYNX -->
+  <url><loc>https://anoneurx.com/opensource/lynx</loc><changefreq>weekly</changefreq><lastmod>2026-10-03</lastmod><priority>0.9</priority></url>
+  <url><loc>https://anoneurx.com/opensource/lynx/features</loc><changefreq>monthly</changefreq><lastmod>2026-10-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/lynx/contributors</loc><changefreq>weekly</changefreq><lastmod>2026-10-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/lynx/security</loc><changefreq>monthly</changefreq><lastmod>2026-10-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/lynx/privacy</loc><changefreq>monthly</changefreq><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/opensource/lynx/roadmap</loc><changefreq>weekly</changefreq><lastmod>2026-10-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/opensource/lynx/faq</loc><changefreq>monthly</changefreq><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
 </urlset>

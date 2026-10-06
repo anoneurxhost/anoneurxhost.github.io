@@ -31,7 +31,7 @@ const ProjectLogo: React.FC<Props> = ({ name, logo, accent = "from-blue-500 to-c
         src={logo}
         alt={`${name} logo`}
         loading="lazy"
-        className={`${SIZES[size]} object-contain border border-white/10 bg-white/5 p-1.5 backdrop-blur-md ${className}`}
+        className={`${SIZES[size]} object-contain backdrop-blur-md ${className}`}
       />
     );
   }
@@ -39,7 +39,7 @@ const ProjectLogo: React.FC<Props> = ({ name, logo, accent = "from-blue-500 to-c
   return (
     <div
       aria-hidden
-      className={`${SIZES[size]} relative grid place-items-center overflow-hidden border border-white/15 bg-gradient-to-br ${accent} font-brand tracking-[0.15em] text-white shadow-lg shadow-black/40 ${className}`}
+      className={`${SIZES[size]} relative grid place-items-center overflow-hidden font-brand tracking-[0.15em] text-white shadow-lg shadow-black/40 ${className}`}
     >
       <span className="absolute inset-0 bg-black/25" />
       <span className="relative z-10">{initials || "AX"}</span>

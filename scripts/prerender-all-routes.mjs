@@ -15,24 +15,81 @@ const cssPath = cssMatch ? cssMatch[1] : "/assets/index.css";
 
 const SITE = "https://anoneurx.com";
 
-// Normalize page titles to the site-wide "ANONEURX |" format and drop a
-// leading/trailing brand word so titles never read "ANONEURX | Anoneurx ...".
-const formatTitle = (t) => {
-  let page = String(t || "")
-    .replace(/^(ANONEURX|Anoneurx)\s*[—|·:-]*\s*/i, "")
-    .replace(/\s*[—|·:-]\s*(ANONEURX|Anoneurx)\s*$/i, "")
+// Section registry, mirroring src/lib/seoSections.ts. Section landing pages keep
+// the brand prefix; pages inside a section are prefixed by the section instead:
+//   /opensource      -> "ANONEURX | Open Source"
+//   /opensource/lynx -> "OPEN SOURCE | LYNX"
+const SEO_SECTIONS = [
+  ["/nexora-ai", "Nexora AI", ["Nexora AI"]],
+  ["/opensource", "Open Source", ["Open Source", "Opensource"]],
+  ["/blackwall", "Black Wall", ["Black Wall", "Blackwall"]],
+  ["/blacklink", "Black Link", ["Black Link", "Blacklink"]],
+  ["/internships", "Internships", ["Internships"]],
+  ["/university", "University", ["Anoneurx University", "University"]],
+  ["/community", "Community", ["Anoneurx Community", "Community"]],
+  ["/hackathon", "Hackathon", ["Anoneurx Hackathon", "Hackathon"]],
+  ["/careers", "Careers", ["Careers"]],
+  ["/research", "Research", ["Anoneurx Research", "Research"]],
+  ["/cloud", "Anoneurx Cloud", ["Anoneurx Cloud", "Cloud"]],
+  ["/astra", "ASTRA", ["ASTRA", "Astra"]],
+  ["/nexora", "Nexora", ["Nexora"]],
+  ["/courses", "Courses", ["Courses"]],
+  ["/faculty", "Faculty", ["Faculty"]],
+  ["/intern", "Interns", ["Anoneurx Interns", "Interns"]],
+  ["/people", "People", ["Anoneurx Team", "People"]],
+  ["/arcadeum", "Arcadeum", ["Anoneurx Arcadeum", "Arcadeum"]],
+  ["/connect", "Connect", ["Anoneurx Connect", "Connect"]],
+  ["/docs", "Documentation", ["Documentation", "Docs"]],
+  ["/apps", "Apps", ["Anoneurx Apps", "Apps"]],
+  ["/blogs", "Blog", ["Anoneurx Blog", "Blog"]],
+  ["/pay", "Anoneurx Pay", ["Anoneurx Pay", "Pay"]],
+  ["/lab", "Lab", ["Anoneurx Lab", "Lab"]],
+  ["/notes", "Notes", ["Notes"]],
+  ["/atlas", "ATLAS", ["ATLAS Language", "ATLAS"]],
+];
+
+const findSection = (pathname) =>
+  SEO_SECTIONS.find(([prefix]) => pathname === prefix || pathname.startsWith(`${prefix}/`)) ?? null;
+
+// Strips brand and section noise so a title never reads
+// "OPEN SOURCE | Anoneurx Open Source Projects". Section-phrase stripping is
+// skipped on section landing pages, where the product name is the whole title.
+const cleanPageLabel = (raw, sectionWords, stripSection) => {
+  let label = String(raw || "")
+    .replace(/\s*[([][^)\]]*anoneurx[^)\]]*[)\]]\s*$/i, "")
+    .replace(/\s[—–·|]+\s*anoneurx\b[^—–·|]*$/i, "")
+    .replace(/\s+anoneurx$/i, "")
+    .replace(/\s*\|\s*anoneurx\s*$/i, "")
     .trim()
-    .replace(/^[\s|·—:-]+/, "");
-  return page ? `ANONEURX | ${page}` : "ANONEURX |";
+    .replace(/^anoneurx\s+/i, "")
+    .trim();
+
+  if (stripSection) {
+    for (const word of sectionWords ?? []) {
+      const stripped = label.replace(new RegExp(`^${word}\\s+`, "i"), "").trim();
+      if (stripped !== label && stripped.replace(/[^\p{L}\p{N}]/gu, "").length >= 3) {
+        label = stripped;
+        break;
+      }
+    }
+  }
+  return label.replace(/^[—–·|\s]+/, "").trim();
+};
+
+const formatTitle = (t, pathname = "/") => {
+  const section = findSection(pathname);
+  const isRoot = !section || pathname === section[0] || pathname === `${section[0]}/`;
+  const label = cleanPageLabel(t, section?.[2], !isRoot);
+  if (!label) return "ANONEURX";
+  return isRoot ? `ANONEURX | ${label}` : `${section[1].toUpperCase()} | ${label}`;
 };
 
 // Public indexable routes and their customized head SEO tags
 const routes = [
   {
     path: "/",
-    title: "Anoneurx — Innovative Software, OS, AI, Cloud & Open Source",
-    description: "Anoneurx builds innovative software, operating systems, AI, cloud, and open source technologies — Black Wall, Nexora, Anoneurx Cloud, Pay and Research.",
-    keywords: "anoneurx, blackwall os, nexora, anoneurx cloud, anoneurx pay, open source, artificial intelligence, robotics",
+    title: "Anoneurx — Black Wall OS, Nexora, Anoneurx Cloud & Open Source",
+    description: "Anoneurx builds Black Wall OS, the Nexora browser, Anoneurx Cloud, Anoneurx Pay and the ASTRA research lab, and maintains open source developer tools and published research.",
     jsonLd: [
       {
         "@context": "https://schema.org",
@@ -68,7 +125,6 @@ const routes = [
     path: "/verify",
     title: "Verify Anoneurx Participation",
     description: "Verify Anoneurx internship credentials, hackathon participation, developer team applications, and program opportunity records in real time. Official Anoneurx verification portal.",
-    keywords: "anoneurx verify, verify intern, anoneurx internship verification, hackathon verify, dev team verify, opportunity verify, verify certificate, anoneurx identity, verify credentials",
     jsonLd: [
       {
         "@context": "https://schema.org",
@@ -212,6 +268,69 @@ const routes = [
     path: "/blogs",
     title: "Anoneurx Blog",
     description: "Product updates, engineering deep-dives and community stories from Anoneurx.",
+  },
+  {
+    path: "/docs",
+    title: "Documentation Hub — Guides, API Reference & Deployment",
+    description:
+      "Documentation hub for Anoneurx — guides, API reference and deployment instructions, plus per-product docs for Black Wall OS, Nexora, ATLAS and Anoneurx Cloud.",
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        name: "Anoneurx Documentation",
+        url: `${SITE}/docs`,
+        description:
+          "Documentation hub for Anoneurx — guides, API reference and deployment instructions, plus per-product docs.",
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [{ "@type": "ListItem", position: 1, name: "Docs", item: `${SITE}/docs` }],
+      },
+    ],
+  },
+  {
+    path: "/docs/getting-started",
+    title: "Getting Started — Anoneurx Documentation",
+    description:
+      "Install the Anoneurx toolchain, clone your first project and run it locally in under ten minutes.",
+  },
+  {
+    path: "/docs/api-reference",
+    title: "API Reference — Anoneurx Documentation",
+    description:
+      "Endpoints, request and response shapes, authentication and rate limits for the public Anoneurx APIs.",
+  },
+  {
+    path: "/docs/deployment",
+    title: "Deployment Guide — Anoneurx Documentation",
+    description:
+      "Build, configure and ship Anoneurx services to production, including environment and rollout guidance.",
+  },
+  {
+    path: "/docs/contributions",
+    title: "Contribution Guide — Anoneurx Documentation",
+    description:
+      "How to report issues, propose changes and land a first contribution across Anoneurx repositories.",
+  },
+  {
+    path: "/docs/blackwall",
+    title: "Black Wall OS Documentation",
+    description:
+      "Black Wall OS documentation — installation, syscall bindings, architecture and the enclave security model.",
+  },
+  {
+    path: "/docs/nexora",
+    title: "Nexora Documentation",
+    description:
+      "Nexora browser documentation — configuration, sync, extensions and network privacy controls.",
+  },
+  {
+    path: "/docs/atlas",
+    title: "ATLAS Documentation",
+    description:
+      "ATLAS compiler and GPU renderer documentation — toolchain setup, language reference and backend notes.",
   },
   {
     path: "/blogs/all",
@@ -397,33 +516,31 @@ const routes = [
     path: "/astra",
     title: "ASTRA — Self-Learning AI Research (Anoneurx Lab)",
     description: "ASTRA is an Anoneurx Lab research project in self-learning AI — a model that records, reflects and improves from its own experience. 20B parameters today, architected for a 1T target. In development.",
-    keywords: "self-learning ai, self-improving ai, continual learning model, ai that learns from experience, astra ai research, anoneurx lab ai, ai research project 2026, autonomous ai agent, lifelong learning ai, machine learning research",
     jsonLd: [
       {
         "@context": "https://schema.org",
         "@type": "ResearchProject",
         name: "ASTRA",
         alternateName: "Anoneurx Self-Teaching Research AI",
-        keywords: "self-learning ai, continual learning, lifelong learning ai, ai research, self-improving ai, anoneurx lab",
         url: `${SITE}/astra`,
         description: "An Anoneurx Lab research project exploring models that learn continuously from experience. Current research scale: 20B parameters. Long-term architectural target: 1T parameters.",
         isPartOf: { "@type": "Organization", name: "Anoneurx Lab", url: `${SITE}/lab` },
       },
     ],
   },
-  { path: "/astra/what-is", title: "What is ASTRA? — Self-Learning AI Explained (Anoneurx Lab)", description: "What ASTRA is, what it is not, and the honest current state of this self-learning AI research project from Anoneurx Lab.", keywords: "what is self-learning ai, what is astra, self-teaching ai, ai that never stops learning, continual learning explained, ai that learns after training" },
-  { path: "/astra/learning-loop", title: "ASTRA Learning Loop — The Continual Learning Cycle (Anoneurx Lab)", description: "Perceive, reason, act, record, reflect, improve — the continual learning loop that lets ASTRA improve from real experience.", keywords: "ai learning loop, perceive reason act reflect, how ai learns from experience, reinforcement learning loop, self-improvement loop ai, continual learning pipeline" },
-  { path: "/astra/scale", title: "ASTRA Model Scale — From 20B to 1T Parameters (Anoneurx Lab)", description: "ASTRA is built at 20B parameters and architected for a 1T long-term target — scale is stated honestly, no inflated claims.", keywords: "ai model scale, 20b parameter model, 1 trillion parameter ai, llm scaling, model size vs capability, scaling laws ai" },
-  { path: "/astra/architecture", title: "ASTRA System Architecture — Reasoning, Memory and Tools (Anoneurx Lab)", description: "The reference architecture of ASTRA: interface, looping core, memory and tools built around a continual reasoning loop.", keywords: "ai system architecture, self-learning ai architecture, ai memory architecture, reasoning loop ai, agent architecture ai" },
-  { path: "/astra/self-learning", title: "ASTRA Self-Learning — Learning from Usage, Not Just Datasets (Anoneurx Lab)", description: "How ASTRA learns from usage — record, judge, update and consolidate — with guardrails, consent and no human retraining loop.", keywords: "self-learning ai, learning from usage, ai without human retraining, online machine learning, consent in ai, autonomous learning system" },
-  { path: "/astra/memory", title: "ASTRA Memory Pipeline — Episodic, Semantic and Procedural (Anoneurx Lab)", description: "ASTRA's episodic, semantic and procedural memory pipeline — how experience becomes lasting, recallable capability.", keywords: "ai memory, episodic memory ai, semantic memory ai, procedural memory ai, memory pipeline ai, long term memory for ai" },
-  { path: "/astra/research", title: "ASTRA Open Research Modules — Eight AI Problems (Anoneurx Lab)", description: "The eight open research problems behind ASTRA: continual learning, task generation, memory, self-evaluation, skill compounding, alignment, efficiency and honest evaluation.", keywords: "ai open problems, open source ai research, continual learning research, task generation ai, self-evaluation ai, alignment research" },
-  { path: "/astra/status", title: "ASTRA Project Status — Current Research Phase (Anoneurx Lab)", description: "The current, transparent status of ASTRA — phase, scale, learning method and evaluation state, reported as-is with no smoothing.", keywords: "astra status, ai research status 2026, self-learning ai progress, development phase ai, ai project updates" },
-  { path: "/astra/log", title: "ASTRA Development Log — Weekly AI Research Updates (Anoneurx Lab)", description: "ASTRA's development log — a running, honest record of what exists, what is active, and what does not.", keywords: "ai development log, astra updates, ai research log, project changelog ai, ai progress report" },
-  { path: "/astra/roadmap", title: "ASTRA Roadmap — From Foundations to a 1T Target (Anoneurx Lab)", description: "Phases, not promises — ASTRA's roadmap from foundations and memory to task generation, 100B and the 1T architectural target.", keywords: "ai roadmap, astra roadmap, ai milestones, 20b to 1t roadmap, ai development phases" },
-  { path: "/astra/philosophy", title: "ASTRA Principles — Honest, Consent-Based AI Development (Anoneurx Lab)", description: "Five principles ASTRA won't break: honesty, structural consent, capability before scale, transparency and safe self-improvement.", keywords: "ai principles, honest ai, consent based ai, transparent ai development, safe self-improving ai, ai ethics principles" },
-  { path: "/astra/lab", title: "Anoneurx Lab — Home of ASTRA AI Research (Anoneurx Lab)", description: "ASTRA is built inside the Anoneurx Lab — the research lab behind open problems in AI, cyber-physical security, robotics and systems.", keywords: "anoneurx lab, ai research lab, research laboratory ai, open research ai, ai research problems" },
-  { path: "/astra/contribute", title: "Contribute to ASTRA — Open AI Research Roles (Anoneurx Lab)", description: "Contribute to ASTRA — open research problems, join the Anoneurx Lab, or review and critique the code and evaluation.", keywords: "contribute to ai research, open source ai contribution, join ai research lab, ai research roles, ai volunteer research" },
+  { path: "/astra/what-is", title: "What is ASTRA? — Self-Learning AI Explained (Anoneurx Lab)", description: "What ASTRA is, what it is not, and the honest current state of this self-learning AI research project from Anoneurx Lab." },
+  { path: "/astra/learning-loop", title: "ASTRA Learning Loop — The Continual Learning Cycle (Anoneurx Lab)", description: "Perceive, reason, act, record, reflect, improve — the continual learning loop that lets ASTRA improve from real experience." },
+  { path: "/astra/scale", title: "ASTRA Model Scale — From 20B to 1T Parameters (Anoneurx Lab)", description: "ASTRA is built at 20B parameters and architected for a 1T long-term target — scale is stated honestly, no inflated claims." },
+  { path: "/astra/architecture", title: "ASTRA System Architecture — Reasoning, Memory and Tools (Anoneurx Lab)", description: "The reference architecture of ASTRA: interface, looping core, memory and tools built around a continual reasoning loop." },
+  { path: "/astra/self-learning", title: "ASTRA Self-Learning — Learning from Usage, Not Just Datasets (Anoneurx Lab)", description: "How ASTRA learns from usage — record, judge, update and consolidate — with guardrails, consent and no human retraining loop." },
+  { path: "/astra/memory", title: "ASTRA Memory Pipeline — Episodic, Semantic and Procedural (Anoneurx Lab)", description: "ASTRA's episodic, semantic and procedural memory pipeline — how experience becomes lasting, recallable capability." },
+  { path: "/astra/research", title: "ASTRA Open Research Modules — Eight AI Problems (Anoneurx Lab)", description: "The eight open research problems behind ASTRA: continual learning, task generation, memory, self-evaluation, skill compounding, alignment, efficiency and honest evaluation." },
+  { path: "/astra/status", title: "ASTRA Project Status — Current Research Phase (Anoneurx Lab)", description: "The current, transparent status of ASTRA — phase, scale, learning method and evaluation state, reported as-is with no smoothing." },
+  { path: "/astra/log", title: "ASTRA Development Log — Weekly AI Research Updates (Anoneurx Lab)", description: "ASTRA's development log — a running, honest record of what exists, what is active, and what does not." },
+  { path: "/astra/roadmap", title: "ASTRA Roadmap — From Foundations to a 1T Target (Anoneurx Lab)", description: "Phases, not promises — ASTRA's roadmap from foundations and memory to task generation, 100B and the 1T architectural target." },
+  { path: "/astra/philosophy", title: "ASTRA Principles — Honest, Consent-Based AI Development (Anoneurx Lab)", description: "Five principles ASTRA won't break: honesty, structural consent, capability before scale, transparency and safe self-improvement." },
+  { path: "/astra/lab", title: "Anoneurx Lab — Home of ASTRA AI Research (Anoneurx Lab)", description: "ASTRA is built inside the Anoneurx Lab — the research lab behind open problems in AI, cyber-physical security, robotics and systems." },
+  { path: "/astra/contribute", title: "Contribute to ASTRA — Open AI Research Roles (Anoneurx Lab)", description: "Contribute to ASTRA — open research problems, join the Anoneurx Lab, or review and critique the code and evaluation." },
   {
     path: "/docs/atlas",
     title: "ATLAS Documentation — Anoneurx",
@@ -553,6 +670,59 @@ const routes = [
     path: "/university",
     title: "Anoneurx University | Courses, Faculty & Programs",
     description: "Anoneurx University — degree programmes, certificates and short courses for engineers.",
+    jsonLd: [
+      ...[
+        {
+          title: "Artificial Intelligence",
+          description:
+            "Deep learning, natural language processing, computer vision and intelligent systems. Course material covers model training and evaluation.",
+        },
+        {
+          title: "Robotics & Automation",
+          description:
+            "Kinematics, control and autonomous systems. Course material covers simulation and hardware integration.",
+        },
+        {
+          title: "Space Technology",
+          description:
+            "Satellite systems, orbital mechanics and aerospace engineering. Course material covers ground segment design.",
+        },
+        {
+          title: "Distributed Systems",
+          description:
+            "Consensus, smart contracts and peer-to-peer architectures. Course material covers protocol design and analysis.",
+        },
+      ].map((program) => ({
+        "@context": "https://schema.org",
+        "@type": "Course",
+        name: program.title,
+        description: program.description,
+        url: `${SITE}/university/programs`,
+        inLanguage: "en",
+        provider: {
+          "@type": "EducationalOrganization",
+          name: "Anoneurx University",
+          url: `${SITE}/university`,
+        },
+        isAccessibleForFree: true,
+        offers: {
+          "@type": "Offer",
+          category: "Free",
+          price: "0",
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+          url: `${SITE}/university`,
+        },
+      })),
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "University", item: `${SITE}/university` },
+          { "@type": "ListItem", position: 2, name: "Programs", item: `${SITE}/university/programs` },
+        ],
+      },
+    ],
   },
   {
     path: "/courses",
@@ -848,199 +1018,166 @@ const routes = [
     path: "/lab",
     title: "Anoneurx Research Lab",
     description: "Open research problems, projects and opportunities at Anoneurx Lab — AI, cybersecurity, robotics and systems research.",
-    keywords: "anoneurx lab, research lab, open research, ai research, cybersecurity research, robotics research",
   },
   {
     path: "/lab/problems",
     title: "Research Problems — Anoneurx Lab",
     description: "Browse open research problems at Anoneurx Lab. Filter by area, difficulty and status.",
-    keywords: "research problems, open problems, anoneurx lab, ai, cybersecurity, robotics",
   },
   {
     path: "/lab/research",
     title: "Research — Anoneurx Lab",
     description: "Research papers, publications and ongoing experiments from Anoneurx Lab.",
-    keywords: "research papers, publications, anoneurx lab",
   },
   {
     path: "/lab/projects",
     title: "Projects — Anoneurx Lab",
     description: "Active and prototype projects at Anoneurx Lab.",
-    keywords: "lab projects, anoneurx projects, research projects",
   },
   {
     path: "/lab/people",
     title: "People — Anoneurx Lab",
     description: "Researchers, contributors and leads at Anoneurx Lab.",
-    keywords: "researchers, anoneurx lab team, research leads",
   },
   {
     path: "/lab/areas",
     title: "Research Areas — Anoneurx Lab",
     description: "Explore research areas at Anoneurx Lab — AI, cybersecurity, robotics, systems and more.",
-    keywords: "research areas, ai, cybersecurity, robotics, systems, anoneurx lab",
   },
   {
     path: "/lab/about",
     title: "About — Anoneurx Lab",
     description: "About Anoneurx Lab — mission, values and research philosophy.",
-    keywords: "about anoneurx lab, lab mission, research philosophy",
   },
   {
     path: "/lab/apply",
     title: "Apply — Anoneurx Lab",
     description: "Apply to join Anoneurx Lab as a student researcher.",
-    keywords: "apply, join lab, student researcher, anoneurx lab",
   },
   {
     path: "/lab/guide",
     title: "Research Guide — Anoneurx Lab",
     description: "How to select problems, write papers and contribute to research at Anoneurx Lab.",
-    keywords: "research guide, how to research, anoneurx lab guide",
   },
   {
     path: "/lab/faq",
     title: "FAQ — Anoneurx Lab",
     description: "Frequently asked questions about Anoneurx Lab.",
-    keywords: "faq, anoneurx lab, research lab faq",
   },
   {
     path: "/lab/problems/anxrp001",
     title: "Early Security Warning for Autonomous Systems — Anoneurx Lab",
     description: "Develop an early warning system that detects security anomalies in autonomous vehicle sensor networks before they propagate to decision-making layers.",
-    keywords: "early security warning, autonomous systems, anomaly detection, anoneurx lab",
   },
   {
     path: "/lab/problems/anxrp002",
     title: "Federated Learning Privacy in Healthcare Data — Anoneurx Lab",
     description: "Design a federated learning framework that enables cross-hospital model training while provably preserving patient privacy through differential privacy guarantees.",
-    keywords: "federated learning, healthcare privacy, differential privacy, anoneurx lab",
   },
   {
     path: "/lab/problems/anxrp003",
     title: "Real-time SLAM for Indoor Drone Navigation — Anoneurx Lab",
     description: "Build a lightweight SLAM system that runs on resource-constrained drone hardware for GPS-denied indoor navigation.",
-    keywords: "slam, indoor drone, navigation, anoneurx lab",
   },
   {
     path: "/lab/problems/anxrp004",
     title: "Neural Network Quantization for Edge AI — Anoneurx Lab",
     description: "Investigate mixed-precision quantization techniques that maintain model accuracy while enabling inference on microcontroller-class hardware.",
-    keywords: "quantization, edge ai, microcontroller, anoneurx lab",
   },
   {
     path: "/lab/problems/anxrp005",
     title: "Adversarial Robustness of Code Generation Models — Anoneurx Lab",
     description: "Study how LLM-based code assistants can be manipulated to generate vulnerable or malicious code, and develop defenses.",
-    keywords: "adversarial robustness, code generation, llm security, anoneurx lab",
   },
   {
     path: "/lab/problems/anxrp006",
     title: "Zero-Knowledge Proofs for IoT Device Authentication — Anoneurx Lab",
     description: "Implement lightweight zero-knowledge proof protocols for authenticating IoT devices without revealing device identity or credentials.",
-    keywords: "zero-knowledge proofs, iot authentication, cryptography, anoneurx lab",
   },
   {
     path: "/lab/problems/anxrp007",
     title: "Semantic Code Search in Large Monorepos — Anoneurx Lab",
     description: "Build a semantic code search engine that understands intent rather than keywords, enabling developers to find relevant code across millions of lines.",
-    keywords: "semantic code search, monorepos, code understanding, anoneurx lab",
   },
   {
     path: "/lab/problems/anxrp008",
     title: "Formal Verification of Smart Contract Compositions — Anoneurx Lab",
     description: "Develop automated formal verification tools that can prove safety properties of composed smart contracts across DeFi protocols.",
-    keywords: "formal verification, smart contracts, defi, anoneurx lab",
   },
   {
     path: "/lab/problems/anxosq7mkr",
     title: "Before the Breach — Anoneurx Lab",
     description: "Predictive cybersecurity at the operating-system level. Investigate whether subtle behavioral changes can identify a measurable pre-attack state before an actual compromise occurs.",
-    keywords: "pre-attack detection, os security, predictive cybersecurity, anoneurx lab",
   },
   {
     path: "/lab/problems/anxbwt4xpl",
     title: "Self-Defending OS — Anoneurx Lab",
     description: "Investigate an operating-system architecture capable of continuously learning system behavior, constructing a runtime security model, and adaptively changing defensive policies.",
-    keywords: "self-defending os, adaptive security, behavior-adaptive, anoneurx lab",
   },
   {
     path: "/lab/problems/anxron8cvd",
     title: "Robot Self-Trust — Anoneurx Lab",
     description: "Investigate whether an autonomous robot can determine when its own perception of reality has become unreliable or potentially compromised.",
-    keywords: "robot self-trust, perception reliability, cross-sensor trust, anoneurx lab",
   },
   {
     path: "/lab/problems/anxbwr6zqm",
     title: "Black Wall for Robots — Anoneurx Lab",
     description: "Investigate a cyber-physical security architecture where a secure runtime prevents compromised software from producing physically dangerous robot behavior.",
-    keywords: "black wall, cyber-physical security, robot safety, anoneurx lab",
   },
   {
     path: "/lab/problems/anxrok3fwt",
     title: "Cyber-Physical Threat Horizon — Anoneurx Lab",
     description: "Investigate whether cyber-physical systems can predict a dangerous physical consequence several seconds before it occurs.",
-    keywords: "threat horizon, cyber-physical, predictive security, anoneurx lab",
   },
   {
     path: "/lab/problems/anxcsv9lxp",
     title: "Self-Learning Security Baseline — Anoneurx Lab",
     description: "Investigate whether an autonomous system can learn its own operational security baseline instead of relying entirely on manually written security rules.",
-    keywords: "self-learning security, adaptive baseline, autonomous security, anoneurx lab",
   },
   {
     path: "/blacklink",
     title: "Anoneurx Black Link — Secure Server Management",
     description: "Securely connect to and manage your Linux infrastructure with Anoneurx Black Link.",
-    keywords: "anoneurx black link, server management, linux, infrastructure, secure connection",
   },
   {
     path: "/blacklink/features",
     title: "Features — Anoneurx Black Link",
     description: "Terminal, files, processes, services, metrics, logs, network and security — all through one secure connection.",
-    keywords: "anoneurx black link features, remote terminal, server monitoring, file management",
   },
   {
     path: "/blacklink/how-it-works",
     title: "How It Works — Anoneurx Black Link",
     description: "Learn how Anoneurx Black Link orchestrates the dashboard, connection layer, Agent and Linux system.",
-    keywords: "anoneurx black link how it works, architecture, agent, connection",
   },
   {
     path: "/blacklink/security",
     title: "Security — Anoneurx Black Link",
     description: "Designed around trust: encrypted sessions, server identity, least privilege, capability-based access and auditability.",
-    keywords: "anoneurx black link security, encrypted sessions, least privilege, audit",
   },
   {
     path: "/blacklink/agent",
     title: "Anoneurx Black Link Agent",
     description: "Install the Anoneurx Black Link Agent and securely connect your Linux server to Anoneurx Black Link.",
-    keywords: "anoneurx black link agent, install, linux server, early access",
   },
   {
     path: "/blacklink/docs",
     title: "Documentation — Anoneurx Black Link",
     description: "Guides and references for installing, configuring and integrating Anoneurx Black Link.",
-    keywords: "anoneurx black link docs, documentation, guide, api",
   },
   {
     path: "/blacklink/pricing",
     title: "Pricing — Anoneurx Black Link",
     description: "Simple infrastructure. Transparent pricing. Plans coming soon.",
-    keywords: "anoneurx black link pricing, plans, infrastructure",
   },
   {
     path: "/blacklink/status",
     title: "Status — Anoneurx Black Link",
     description: "Current state of Anoneurx Black Link services.",
-    keywords: "anoneurx black link status, uptime, services",
   },
   {
     path: "/blacklink/changelog",
     title: "Changelog — Anoneurx Black Link",
     description: "Release notes for Anoneurx Black Link.",
-    keywords: "anoneurx black link changelog, release notes, versions",
   },
 ];
 
@@ -1054,17 +1191,22 @@ const aliases = [
   { path: "/careers/hackathon/verify", canonical: "/verify" },
   { path: "/careers/join-dev-team/verify", canonical: "/verify" },
   { path: "/careers/other-opportunities/verify", canonical: "/verify" },
+  { path: "/blog", canonical: "/blogs" },
 ];
 
-const verifyRoute = routes.find((r) => r.path === "/verify");
 for (const alias of aliases) {
+  const canonicalRoute = routes.find((r) => r.path === alias.canonical);
+  if (!canonicalRoute) {
+    console.warn(`  ! alias ${alias.path} -> ${alias.canonical}: canonical route not found`);
+    continue;
+  }
   routes.push({
     path: alias.path,
     canonicalPath: alias.canonical,
-    title: verifyRoute.title,
-    description: verifyRoute.description,
-    keywords: verifyRoute.keywords,
-    jsonLd: verifyRoute.jsonLd,
+    title: canonicalRoute.title,
+    description: canonicalRoute.description,
+    ogImage: canonicalRoute.ogImage,
+    jsonLd: canonicalRoute.jsonLd,
   });
 }
 
@@ -1096,7 +1238,6 @@ for (const [legacyId, canonicalId] of Object.entries(legacyProblemAliases)) {
     canonicalPath,
     title: canonicalRoute.title,
     description: canonicalRoute.description,
-    keywords: canonicalRoute.keywords,
     jsonLd: canonicalRoute.jsonLd,
   });
 }
@@ -1107,9 +1248,11 @@ let count = 0;
 for (const route of routes) {
   const canonicalPath = route.canonicalPath || route.path;
   const canonicalUrl = `${SITE}${canonicalPath === "/" ? "/" : canonicalPath}`;
-  const title = formatTitle(route.title);
+  const title = formatTitle(route.title, route.path);
   const description = route.description;
-  const keywords = route.keywords || "anoneurx, software, cloud, ai, os, open source";
+  const ogImageUrl = /^(https?:)?\/\//.test(route.ogImage || "")
+    ? route.ogImage
+    : `${SITE}${route.ogImage || "/og-default.png"}`;
   const jsonLd = route.jsonLd || [
     {
       "@context": "https://schema.org",
@@ -1130,20 +1273,24 @@ for (const route of routes) {
   <title data-rh="true">${title}</title>
   <meta data-rh="true" name="description" content="${description}" />
   <meta name="author" content="Anoneurx" />
-  <meta data-rh="true" name="keywords" content="${keywords}" />
   <meta data-rh="true" name="robots" content="index, follow" />
 
   <link data-rh="true" rel="canonical" href="${canonicalUrl}" />
 
   <meta property="og:site_name" content="Anoneurx" />
-  <meta data-rh="true" property="og:title" content="${title}" />
-  <meta data-rh="true" property="og:description" content="${description}" />
-  <meta data-rh="true" property="og:type" content="website" />
-  <meta data-rh="true" property="og:url" content="${canonicalUrl}" />
+  <meta property="og:title" content="${title}" />
+  <meta property="og:description" content="${description}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="${canonicalUrl}" />
+  <meta property="og:image" content="${ogImageUrl}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Anoneurx" />
 
-  <meta data-rh="true" name="twitter:card" content="summary" />
-  <meta data-rh="true" name="twitter:title" content="${title}" />
-  <meta data-rh="true" name="twitter:description" content="${description}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${title}" />
+  <meta name="twitter:description" content="${description}" />
+  <meta name="twitter:image" content="${ogImageUrl}" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

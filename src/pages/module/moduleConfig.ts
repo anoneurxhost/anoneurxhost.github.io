@@ -98,16 +98,16 @@ export const opensourceConfig: ModuleConfig = {
 };
 
 export const blackwallConfig: ModuleConfig = {
-  module: "Blackwall OS",
+  module: "Black Wall OS",
   email: "blackwall@anoneurx.com",
   theme: "dark",
   contact: {
     path: "/blackwall/contact",
-    title: "Contact Blackwall OS",
+    title: "Contact Black Wall OS",
     description:
-      "Reach the Blackwall OS team — engineering, security disclosure, OEM and press at blackwall@anoneurx.com.",
+      "Reach the Black Wall OS team — engineering, security disclosure, OEM and press at blackwall@anoneurx.com.",
     intro:
-      "Hardware enablement, deployment questions, OEM programs and security reports for Blackwall OS.",
+      "Hardware enablement, deployment questions, OEM programs and security reports for Black Wall OS.",
     channels: [
       { label: "Engineering", email: "blackwall@anoneurx.com", note: "Kernel, drivers and hardware enablement." },
       { label: "Security disclosure", email: "security@anoneurx.com", note: "Signed reports, 24-hour acknowledgement." },

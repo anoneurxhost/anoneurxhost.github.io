@@ -75,7 +75,7 @@ const OSSponsorshipInquiry = () => {
           </span>
         </h1>
         <p className="max-w-2xl mx-auto text-lg leading-relaxed text-white/70">
-          Fund the work that keeps Blackwall OS and Anoneurx open source free forever. Choose a tier, pick a project, and support the maintainers.
+          Fund the work that keeps Black Wall OS and Anoneurx open source free forever. Choose a tier, pick a project, and support the maintainers.
         </p>
       </div>
 
@@ -139,7 +139,7 @@ const OSSponsorshipInquiry = () => {
                     <SelectValue placeholder="Select a project (optional)" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="blackwall">Blackwall OS</SelectItem>
+                    <SelectItem value="blackwall">Black Wall OS</SelectItem>
                     <SelectItem value="authenticator">Authenticator</SelectItem>
                     <SelectItem value="all">All Anoneurx open source</SelectItem>
                   </SelectContent>

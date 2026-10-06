@@ -11,7 +11,6 @@ const LabProjects = () => {
         title="Research Projects"
         description="Anoneurx Lab research problems that evolved into real prototypes and products. From research to implementation to Anoneurx technology."
         path="/lab/projects"
-        keywords="anoneurx projects, research prototypes, research to product, open source research projects, lab projects, technology implementations, student projects"
       />
       <div className="mx-auto max-w-7xl">
         <div className="mb-10">

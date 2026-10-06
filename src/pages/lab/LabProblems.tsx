@@ -32,7 +32,6 @@ const LabProblems = () => {
         title="Open Problems"
         description="Browse open research problems at Anoneurx Lab across AI, cybersecurity, robotics, and systems. Find a real research problem that matches your skills and work on it."
         path="/lab/problems"
-        keywords="research problems, open problems, research problems for students, ai research problems, cybersecurity research topics, ml research, computer science projects, student research opportunities, research board"
       />
       <div className="mx-auto max-w-7xl">
         {/* Header */}

@@ -85,7 +85,7 @@ export const apiService = new ApiService();
 // Specific API endpoints with isolated fallbacks
 export const staffApi = {
   getAll: (filters?: any) => 
-    apiService.get<PaginatedResponse<any>>(`/staff?${new URLSearchParams(filters).toString()}`, { data: [], total: 0, page: 1, limit: 10 }),
+    apiService.get<PaginatedResponse<any>>(`/staff?${new URLSearchParams(filters).toString()}`, { data: [], total: 0, page: 1, limit: 10, totalPages: 0 }),
   getById: (id: string) => apiService.get<any>(`/staff/${id}`),
   create: (data: any) => apiService.post<any>('/staff', data),
   update: (id: string, data: any) => apiService.put<any>(`/staff/${id}`, data),
@@ -103,7 +103,7 @@ export const departmentApi = {
 
 export const projectApi = {
   getAll: (filters?: any) => 
-    apiService.get<PaginatedResponse<any>>(`/projects?${new URLSearchParams(filters).toString()}`, { data: [], total: 0, page: 1, limit: 10 }),
+    apiService.get<PaginatedResponse<any>>(`/projects?${new URLSearchParams(filters).toString()}`, { data: [], total: 0, page: 1, limit: 10, totalPages: 0 }),
   getById: (id: string) => apiService.get<any>(`/projects/${id}`),
   create: (data: any) => apiService.post<any>('/projects', data),
   update: (id: string, data: any) => apiService.put<any>(`/projects/${id}`, data),
@@ -118,7 +118,7 @@ export const analyticsApi = {
 
 export const internApi = {
   getAll: (filters?: any) => 
-    apiService.get<PaginatedResponse<any>>(`/interns?${new URLSearchParams(filters).toString()}`, { data: [], total: 0, page: 1, limit: 10 }),
+    apiService.get<PaginatedResponse<any>>(`/interns?${new URLSearchParams(filters).toString()}`, { data: [], total: 0, page: 1, limit: 10, totalPages: 0 }),
   getById: (id: string) => apiService.get<any>(`/interns/${id}`),
   create: (data: any) => apiService.post<any>('/interns', data),
   update: (id: string, data: any) => apiService.put<any>(`/interns/${id}`, data),
@@ -127,7 +127,7 @@ export const internApi = {
 
 export const applicationApi = {
   getAll: (filters?: any) => 
-    apiService.get<PaginatedResponse<any>>(`/applications?${new URLSearchParams(filters).toString()}`, { data: [], total: 0, page: 1, limit: 10 }),
+    apiService.get<PaginatedResponse<any>>(`/applications?${new URLSearchParams(filters).toString()}`, { data: [], total: 0, page: 1, limit: 10, totalPages: 0 }),
   getById: (id: string) => apiService.get<any>(`/applications/${id}`),
   create: (data: any) => apiService.post<any>('/applications', data),
   updateStatus: (id: string, data: any) => apiService.patch<any>(`/applications/${id}/status`, data),

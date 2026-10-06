@@ -11,7 +11,6 @@ const LabGuide = () => {
         title="Research Guide"
         description="A complete research guide for university students: how to select a problem, do a literature review, find research gaps, design experiments, evaluate, write papers, and publish."
         path="/lab/guide"
-        keywords="research guide, how to do research, literature review, research gap, designing experiments, research methodology, writing a research paper, git github workflow, research ethics, publishing research, student research guide"
       />
       <div className="mx-auto max-w-4xl">
         <Link to="/lab" className="inline-flex items-center gap-2 text-gray-500 text-sm hover:text-white transition-colors mb-8">

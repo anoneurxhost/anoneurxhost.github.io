@@ -99,6 +99,28 @@
     box-sizing: border-box;
   }
 
+  /* Visible keyboard focus. `focus-visible` keeps the ring off mouse clicks
+     while guaranteeing a high-contrast indicator for keyboard users, which
+     the default UA outline often fails to provide on the dark surfaces. */
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Windows High Contrast / forced-colors mode: outline is the only reliable
+     signal left once background colors are stripped by the OS. */
+  @media (forced-colors: active) {
+    :focus-visible {
+      outline: 3px solid Highlight;
+      outline-offset: 2px;
+    }
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
   /* ============================================================
      Premium Minimalist (Light) Theme
      Applied via body.theme-light — used on all non-dark routes.

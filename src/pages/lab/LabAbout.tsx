@@ -20,7 +20,6 @@ const LabAbout = () => {
         title="About the Lab"
         description="Why Anoneurx Lab exists: open research, real problems, student-driven study of AI, cybersecurity, robotics, and systems. Open by default. Rigorous by design."
         path="/lab/about"
-        keywords="anoneurx lab about, open research philosophy, research lab mission, student research participation, open source research, research evaluation, how research problems are selected"
       />
       <div className="mx-auto max-w-4xl">
         {/* Header */}

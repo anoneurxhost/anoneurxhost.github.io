@@ -43,7 +43,6 @@ export default function Faculty() {
         title="Faculty"
         description="Meet the professors, researchers and academics leading Anoneurx University's departments in AI, Robotics, Cyber Security, and more."
         path="/faculty"
-        keywords="anoneurx university, faculty, professors, academics, researchers, ai department, robotics, cyber security, university courses"
       />
 
       <div className="min-h-screen pt-28 pb-24 relative overflow-hidden">

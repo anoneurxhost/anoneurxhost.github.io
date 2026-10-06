@@ -69,7 +69,9 @@ const PublicLayout = () => {
   const isProjectDetail = location.pathname === '/opensource/blackwall'
     || location.pathname.startsWith('/opensource/blackwall/')
     || location.pathname === '/opensource/authenticator'
-    || location.pathname.startsWith('/opensource/authenticator/');
+    || location.pathname.startsWith('/opensource/authenticator/')
+    || location.pathname === '/opensource/lynx'
+    || location.pathname.startsWith('/opensource/lynx/');
   const isLabProblemDetail = location.pathname.startsWith('/lab/problems/') && location.pathname !== '/lab/problems';
   const hideNavAndFooter = isAuthPage || isPaymentPage || isProfilePage || isVerifyPage || isProjectDetail || isLabProblemDetail;
 

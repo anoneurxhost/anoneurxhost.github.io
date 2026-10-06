@@ -208,7 +208,7 @@ const ModuleContact = ({
                     ["General", "hello@anoneurx.com"],
                     ["University", "university@anoneurx.com"],
                     ["Open Source", "opensource@anoneurx.com"],
-                    ["Blackwall OS", "blackwall@anoneurx.com"],
+                    ["Black Wall OS", "blackwall@anoneurx.com"],
                     ["Anoneurx Pay", "pay@anoneurx.com"],
                     ["Anoneurx Cloud", "cloud@anoneurx.com"],
                   ].map(([l, e]) => (

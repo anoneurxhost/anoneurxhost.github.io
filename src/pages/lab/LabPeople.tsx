@@ -10,7 +10,6 @@ const LabPeople = () => {
         title="Researchers"
         description="Student researchers and research leads at Anoneurx Lab working on AI, systems, cybersecurity, and robotics research."
         path="/lab/people"
-        keywords="anoneurx researchers, student researchers, research leads, ai researchers, cybersecurity researchers, computer science students, research team"
       />
       <div className="mx-auto max-w-7xl">
         <div className="mb-10">

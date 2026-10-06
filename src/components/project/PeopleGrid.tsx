@@ -17,8 +17,17 @@ const getInitials = (name: string) =>
     .toUpperCase();
 
 /** Contributor / tester grid — avatars link to GitHub when available, otherwise show local profile. */
-const PeopleGrid: React.FC<Props> = ({ people, compact = false }) => (
-  <div className={`grid gap-3 ${compact ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"}`}>
+const PeopleGrid: React.FC<Props> = ({ people, compact = false }) => {
+  if (!people || people.length === 0) {
+    return (
+      <p className="text-sm text-slate-400">
+        Nobody listed yet — this project is looking for its first contributors.
+      </p>
+    );
+  }
+
+  return (
+    <div className={`grid gap-3 ${compact ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"}`}>
     {people.map((p) => {
       const hasGithub = !!p.github;
       const initials = getInitials(p.name);
@@ -79,7 +88,8 @@ const PeopleGrid: React.FC<Props> = ({ people, compact = false }) => (
         </div>
       );
     })}
-  </div>
-);
+    </div>
+  );
+};
 
 export default PeopleGrid;

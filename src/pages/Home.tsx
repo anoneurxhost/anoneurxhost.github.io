@@ -6,10 +6,6 @@ import ProductSlider from "@/components/home/ProductSlider";
 import Research from "@/components/home/Research";
 
 export const Home: React.FC = () => {
-  useEffect(() => {
-    document.title = "ANONEURX |";
-  }, []);
-
   const jsonLdOrganization = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -17,7 +13,7 @@ export const Home: React.FC = () => {
     url: "https://anoneurx.com",
     logo: "https://anoneurx.com/assets/logo.jpeg",
     description:
-      "Anoneurx builds innovative software, operating systems, AI, cloud, research, developer tools, and open source technologies.",
+      "Anoneurx builds Black Wall OS, the Nexora browser, Anoneurx Cloud, Anoneurx Pay and the ASTRA research lab, and maintains open source developer tools and published research.",
     sameAs: [
       "https://github.com/anoneurx",
       "https://twitter.com/anoneurx",
@@ -35,11 +31,10 @@ export const Home: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="Building the Future of Software, AI, Cloud & Open Source"
-        description="Anoneurx is a modern technology organization building Software, Operating Systems (Black Wall), Artificial Intelligence, Cloud Infrastructure, Research, Developer Tools, and Open Source."
+        title="Anoneurx — Black Wall OS, Nexora, Anoneurx Cloud & Open Source"
+        description="Anoneurx builds Black Wall OS, the Nexora browser, Anoneurx Cloud, Anoneurx Pay and the ASTRA research lab, and maintains open source developer tools and published research."
         path="/"
         jsonLd={jsonLdOrganization}
-        keywords="anoneurx, software, ai, cloud, open source, operating system, black wall, technology, developer tools, research, innovation, free, download"
       />
 
       <main className="w-full bg-transparent text-white selection:bg-cyan-500 selection:text-black overflow-x-hidden">

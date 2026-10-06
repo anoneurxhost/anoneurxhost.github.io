@@ -103,7 +103,7 @@ export const teamPortfolios: Record<string, TeamPortfolio> = {
       { title: 'Management', description: 'Fractional CTO and engineering leadership.' },
     ],
     projects: [
-      { title: 'Blackwall OS', description: 'A hardened Linux distribution focused on privacy and developer ergonomics.', tech: ['Rust', 'Linux', 'Wayland'], image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&w=900&q=80', demo: '/blackwall', github: 'https://github.com/anoneurx' },
+      { title: 'Black Wall OS', description: 'A hardened Linux distribution focused on privacy and developer ergonomics.', tech: ['Rust', 'Linux', 'Wayland'], image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&w=900&q=80', demo: '/blackwall', github: 'https://github.com/anoneurx' },
       { title: 'ATLAS Language', description: 'A modern UI language for GPU-accelerated apps.', tech: ['Rust', 'WebGPU', 'Compilers'], image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80', demo: '/atlas' },
       { title: 'Nexora Browser', description: 'A privacy-first browser with built-in zero-trust networking.', tech: ['Chromium', 'Rust', 'TypeScript'], image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80', demo: '/nexora' },
     ],
@@ -143,12 +143,12 @@ export const teamPortfolios: Record<string, TeamPortfolio> = {
       { year: '2018', title: 'Started CS Journey', description: 'Began formal computer science studies at NUST.' },
       { year: '2020', title: 'First Systems Project', description: 'Built first compiler prototype in Rust.' },
       { year: '2023', title: 'Founded Anoneurx', description: 'Started Anoneurx as a deep-tech research lab.' },
-      { year: '2025', title: 'Launched Blackwall & ATLAS', description: 'Public releases of OS and language.' },
+      { year: '2025', title: 'Launched Black Wall & ATLAS', description: 'Public releases of OS and language.' },
     ],
     media: [
       { type: 'image', url: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=900&q=80', caption: 'Talk at DevConf 2024' },
       { type: 'image', url: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=900&q=80', caption: 'Lab setup' },
-      { type: 'image', url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80', caption: 'Building Blackwall' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80', caption: 'Building Black Wall' },
     ],
     availability: [
       { label: 'Open Source', status: 'open' },
@@ -161,11 +161,11 @@ export const teamPortfolios: Record<string, TeamPortfolio> = {
       { q: 'Do you take on freelance projects?', a: 'Rarely. Most time goes to Anoneurx, but selective consulting is open.' },
       { q: 'How can I collaborate?', a: 'Reach out via email or through the careers portal for structured opportunities.' },
     ],
-    currentFocus: ['Blackwall OS v2', 'ATLAS 0.3 compiler', 'Anoneurx Cloud'],
-    nowBuilding: ['ATLAS GPU renderer', 'Blackwall package manager', 'Sovereign auth gateway'],
+    currentFocus: ['Black Wall OS v2', 'ATLAS 0.3 compiler', 'Anoneurx Cloud'],
+    nowBuilding: ['ATLAS GPU renderer', 'Black Wall package manager', 'Sovereign auth gateway'],
     ventures: [
       { name: 'Anoneurx', description: 'Deep-tech research lab and product studio.' },
-      { name: 'Blackwall', description: 'Hardened operating system.' },
+      { name: 'Black Wall', description: 'Hardened operating system.' },
       { name: 'Nexora', description: 'Privacy-first browser.' },
     ],
     philosophy: 'Build small, sharp tools. Optimize for clarity. Respect the user. Ship.',

@@ -23,7 +23,6 @@ const LabHome = () => {
         title="Anoneurx Research Lab"
         description="Anoneurx Lab discovers difficult problems in AI, cybersecurity, robotics, and systems — and gives students a place to solve them. Real problems. Open research."
         path="/lab"
-        keywords="anoneurx lab, open research, research lab, student research, ai research, cybersecurity research, robotics research, open problems, research problems for students, computer science research, machine learning research"
       />
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center px-4">

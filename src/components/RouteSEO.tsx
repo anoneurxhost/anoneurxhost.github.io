@@ -2,6 +2,7 @@ import { useLocation, useParams, matchPath } from "react-router-dom";
 import SEO from "./SEO";
 import detailedResearchData from "@/data/detailedResearchData.json";
 import jsonResearchPapers from "@/data/researchPapers.json";
+import { projects } from "@/pages/opensource/data";
 import { shortIdSlug } from "@/lib/utils";
 
 /**
@@ -21,7 +22,6 @@ type Entry = {
   /** Overrides the canonical/og:url path (used by /share/* aliases). */
   canonicalPath?: string;
   noindex?: boolean;
-  keywords?: string;
 };
 
 /** Research paper metadata used to build unique /read and /share head tags. */
@@ -97,7 +97,6 @@ const paperEntry = (id: string | undefined, canonicalPath: string): Entry => {
         publisher: { "@type": "Organization", name: "Anoneurx", url: SITE },
         isPartOf: paper.journal ? { "@type": "Periodical", name: paper.journal } : undefined,
         identifier: paper.doi,
-        keywords: paper.category,
       },
       BREADCRUMB([
         { name: "Research", item: "/research" },
@@ -109,6 +108,31 @@ const paperEntry = (id: string | undefined, canonicalPath: string): Entry => {
 
 
 const SITE = "https://anoneurx.com";
+
+/** Course titles/descriptions mirror the program cards on /university. */
+const UNIVERSITY_PROGRAMS = [
+  {
+    title: "Artificial Intelligence",
+    description:
+      "Deep learning, natural language processing, computer vision and intelligent systems. Course material covers model training and evaluation.",
+  },
+  {
+    title: "Robotics & Automation",
+    description:
+      "Kinematics, control and autonomous systems. Course material covers simulation and hardware integration.",
+  },
+  {
+    title: "Space Technology",
+    description:
+      "Satellite systems, orbital mechanics and aerospace engineering. Course material covers ground segment design.",
+  },
+  {
+    title: "Distributed Systems",
+    description:
+      "Consensus, smart contracts and peer-to-peer architectures. Course material covers protocol design and analysis.",
+  },
+];
+
 const BREADCRUMB = (items: { name: string; item: string }[]) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -139,6 +163,23 @@ const humanize = (s?: string) =>
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ");
 
+/** Display names are authored in the registry (e.g. "LYNX", "Black Wall OS"). */
+const projectName = (id?: string) =>
+  projects.find((p) => p.id === id)?.name ?? humanize(id);
+
+/** Titles and per-page blurbs for /opensource/:id/:subPage. */
+const SUBPAGE_META: Record<string, { title: string; description: string }> = {
+  features: { title: "Features", description: "Capabilities and technical highlights" },
+  download: { title: "Download", description: "Releases, artefacts and install instructions" },
+  demo: { title: "Demo", description: "A guided walkthrough of the interface" },
+  changelog: { title: "Changelog", description: "Release history and version notes" },
+  roadmap: { title: "Roadmap", description: "What ships next" },
+  faq: { title: "FAQ", description: "Frequently asked questions" },
+  security: { title: "Security", description: "Disclosure policy and threat model" },
+  privacy: { title: "Privacy Policy", description: "Data practices" },
+  contributors: { title: "Contributors", description: "Maintainers, contributors and testers" },
+};
+
 const PERSON = (name: string, path: string, jobTitle: string, department?: string) => ({
   "@context": "https://schema.org",
   "@type": "Person",
@@ -160,10 +201,9 @@ const ARTICLE = (id: string, path: string) => ({
 // Exact-path map. For dynamic routes we fall back to pattern matching below.
 const map: Record<string, Entry> = {
   "/": {
-    title: "Anoneurx — Innovative Software, OS, AI, Cloud & Open Source",
+    title: "Anoneurx — Black Wall OS, Nexora, Anoneurx Cloud & Open Source",
     description:
-      "Anoneurx builds innovative software, operating systems, AI, cloud, and open source technologies — Black Wall, Nexora, Anoneurx Cloud, Pay and Research.",
-    keywords: "anoneurx, software, operating systems, ai, cloud, open source, black wall, nexora, anoneurx pay, innovation",
+      "Anoneurx builds Black Wall OS, the Nexora browser, Anoneurx Cloud, Anoneurx Pay and the ASTRA research lab, and maintains open source developer tools and published research.",
     jsonLd: [
       {
         "@context": "https://schema.org",
@@ -186,43 +226,50 @@ const map: Record<string, Entry> = {
       },
     ],
   },
-  "/blacklink": { title: "Anoneurx Black Link — Secure Server Management", description: "Securely connect to and manage your Linux infrastructure with Anoneurx Black Link.", keywords: "anoneurx black link, server management, linux, infrastructure, secure connection, agent" },
-  "/blacklink/features": { title: "Features — Anoneurx Black Link", description: "Terminal, files, processes, services, metrics, logs, network and security — all through one secure connection.", keywords: "anoneurx black link features, remote terminal, server monitoring, file management" },
-  "/blacklink/how-it-works": { title: "How It Works — Anoneurx Black Link", description: "Learn how Anoneurx Black Link orchestrates the dashboard, connection layer, Agent and Linux system.", keywords: "anoneurx black link how it works, architecture, agent, connection" },
-  "/blacklink/security": { title: "Security — Anoneurx Black Link", description: "Designed around trust: encrypted sessions, server identity, least privilege, capability-based access and auditability.", keywords: "anoneurx black link security, encrypted sessions, least privilege, audit" },
-  "/blacklink/agent": { title: "Anoneurx Black Link Agent", description: "Install the Anoneurx Black Link Agent and securely connect your Linux server to Anoneurx Black Link.", keywords: "anoneurx black link agent, install, linux server, early access" },
-  "/blacklink/docs": { title: "Documentation — Anoneurx Black Link", description: "Guides and references for installing, configuring and integrating Anoneurx Black Link.", keywords: "anoneurx black link docs, documentation, guide, api" },
-  "/blacklink/pricing": { title: "Pricing — Anoneurx Black Link", description: "Simple infrastructure. Transparent pricing. Plans coming soon.", keywords: "anoneurx black link pricing, plans, infrastructure" },
-  "/blacklink/status": { title: "Status — Anoneurx Black Link", description: "Current state of Anoneurx Black Link services.", keywords: "anoneurx black link status, uptime, services" },
-  "/blacklink/changelog": { title: "Changelog — Anoneurx Black Link", description: "Release notes for Anoneurx Black Link.", keywords: "anoneurx black link changelog, release notes, versions" },
-  "/blacklink/auth": { title: "Black Link Authentication — Anoneurx", description: "Sign in to Anoneurx Black Link.", keywords: "anoneurx black link login, sign in, authentication" },
-  "/about": { title: "About Anoneurx", description: "Anoneurx is a global software company shipping operating systems, AI, cloud and open source infrastructure for developers.", keywords: "about anoneurx, company, software, operating systems, ai, cloud, open source, developers" },
-  "/contact": { title: "Contact Anoneurx", description: "Get in touch with Anoneurx for partnerships, support, press or general enquiries.", keywords: "contact anoneurx, support, partnerships, press, enquiries, get in touch" },
-  "/people": { title: "Anoneurx Team — Engineers, Researchers & Designers", description: "Meet the engineers, researchers and designers of Anoneurx across every department.", keywords: "anoneurx team, engineers, researchers, designers, people, departments" },
-  "/careers": { title: "Careers at Anoneurx", description: "Join Anoneurx — engineering, research, design and operations roles across our global teams.", keywords: "anoneurx careers, jobs, hiring, engineering, research, design, operations" },
-  "/careers/join": { title: "Join Anoneurx", description: "Apply to open Anoneurx roles and become part of our global engineering team.", keywords: "join anoneurx, apply, engineering team, jobs, open roles" },
-  "/careers/hackathon": { title: "Anoneurx Hackathon", description: "Compete in the Anoneurx Hackathon — global challenges, prizes and recruitment fast-track.", keywords: "anoneurx hackathon, coding competition, prizes, recruitment, developer challenge" },
-  "/careers/join-dev-team": { title: "Join the Anoneurx Dev Team", description: "Apply to join the core Anoneurx development team.", keywords: "anoneurx dev team, join developers, apply, core team, engineering" },
-  "/careers/other-opportunities": { title: "Other Opportunities at Anoneurx", description: "Fellowships, grants and partnerships beyond full-time roles.", keywords: "anoneurx fellowships, grants, partnerships, opportunities, non-engineering roles" },
-  "/internships": { title: "Anoneurx Internships", description: "Paid, remote-friendly internships across engineering, research, design and product.", keywords: "anoneurx internships, paid intern, remote intern, engineering, research, design" },
-  "/hackathon": { title: "Anoneurx Hackathon", description: "Register for the Anoneurx global hackathon and build something remarkable.", keywords: "anoneurx hackathon, global hackathon, register, coding competition, build" },
-  "/community": { title: "Anoneurx Community", description: "Events, forums, mentorship and leaderboards — the Anoneurx developer community.", keywords: "anoneurx community, events, forums, mentorship, leaderboard, developers" },
-  "/community/events": { title: "Community Events", description: "Upcoming meetups, workshops and conferences from the Anoneurx community.", keywords: "anoneurx events, meetups, workshops, conferences, community" },
-  "/community/events/upcoming": { title: "Upcoming Community Events", description: "Every upcoming Anoneurx community event in one place.", keywords: "upcoming events, anoneurx community, meetups, workshops, conferences" },
-  "/community/events/past": { title: "Past Community Events", description: "Recaps and recordings of past Anoneurx community events.", keywords: "past events, anoneurx community, recaps, recordings, event archive" },
-  "/community/events/host": { title: "Host an Anoneurx Event", description: "Run a local Anoneurx meetup, workshop or hackathon — request sponsorship and swag.", keywords: "host anoneurx event, meetup, workshop, sponsorship, local event, hackathon" },
-  "/community/leaderboard": { title: "Community Leaderboard", description: "Top Anoneurx community contributors ranked by activity and impact.", keywords: "anoneurx leaderboard, top contributors, community rankings, activity, impact" },
-  "/community/mentorship": { title: "Mentorship Program", description: "Apply for the Anoneurx mentorship program and grow alongside experienced engineers.", keywords: "anoneurx mentorship, mentor, grow, engineers, learning, career development" },
-  "/community/forums": { title: "Community Forums", description: "Discuss code, releases, roadmaps and ideas with the Anoneurx community.", keywords: "anoneurx forums, discussion, code, releases, roadmaps, community support" },
-  "/blogs": { title: "Anoneurx Blog", description: "Product updates, engineering deep-dives and community stories from Anoneurx.", keywords: "anoneurx blog, product updates, engineering, community stories, articles" },
-  "/blogs/all": { title: "All Articles — Anoneurx Blog", description: "The full archive of Anoneurx blog posts across engineering, research and product.", keywords: "anoneurx blog archive, all articles, engineering, research, product posts" },
-  "/research": { title: "Anoneurx Research", description: "Applied research from Anoneurx across AI, systems, distributed compute and security.", keywords: "anoneurx research, ai research, systems, distributed compute, security, papers" },
-  "/view-in-journal": { title: "Research Journal — Anoneurx", description: "Browse published Anoneurx research papers in journal format.", keywords: "anoneurx research journal, published papers, academic, browse research" },
-  "/strategic-kpis": { title: "Strategic KPIs — Anoneurx", description: "Anoneurx research strategy, milestones and KPIs.", keywords: "anoneurx kpis, strategy, milestones, research goals, key performance indicators" },
+  "/blacklink": { title: "Anoneurx Black Link — Secure Server Management", description: "Securely connect to and manage your Linux infrastructure with Anoneurx Black Link." },
+  "/blacklink/features": { title: "Features — Anoneurx Black Link", description: "Terminal, files, processes, services, metrics, logs, network and security — all through one secure connection." },
+  "/blacklink/how-it-works": { title: "How It Works — Anoneurx Black Link", description: "Learn how Anoneurx Black Link orchestrates the dashboard, connection layer, Agent and Linux system." },
+  "/blacklink/security": { title: "Security — Anoneurx Black Link", description: "Designed around trust: encrypted sessions, server identity, least privilege, capability-based access and auditability." },
+  "/blacklink/agent": { title: "Anoneurx Black Link Agent", description: "Install the Anoneurx Black Link Agent and securely connect your Linux server to Anoneurx Black Link." },
+  "/blacklink/docs": { title: "Documentation — Anoneurx Black Link", description: "Guides and references for installing, configuring and integrating Anoneurx Black Link." },
+  "/blacklink/pricing": { title: "Pricing — Anoneurx Black Link", description: "Simple infrastructure. Transparent pricing. Plans coming soon." },
+  "/blacklink/status": { title: "Status — Anoneurx Black Link", description: "Current state of Anoneurx Black Link services." },
+  "/blacklink/changelog": { title: "Changelog — Anoneurx Black Link", description: "Release notes for Anoneurx Black Link." },
+  "/blacklink/auth": { title: "Black Link Authentication — Anoneurx", description: "Sign in to Anoneurx Black Link." },
+  "/about": { title: "About Anoneurx", description: "Anoneurx is a global software company shipping operating systems, AI, cloud and open source infrastructure for developers." },
+  "/contact": { title: "Contact Anoneurx", description: "Get in touch with Anoneurx for partnerships, support, press or general enquiries." },
+  "/people": { title: "Anoneurx Team — Engineers, Researchers & Designers", description: "Meet the engineers, researchers and designers of Anoneurx across every department." },
+  "/careers": { title: "Careers at Anoneurx", description: "Join Anoneurx — engineering, research, design and operations roles across our global teams." },
+  "/careers/join": { title: "Join Anoneurx", description: "Apply to open Anoneurx roles and become part of our global engineering team." },
+  "/careers/hackathon": { title: "Anoneurx Hackathon", description: "Compete in the Anoneurx Hackathon — global challenges, prizes and recruitment fast-track." },
+  "/careers/join-dev-team": { title: "Join the Anoneurx Dev Team", description: "Apply to join the core Anoneurx development team." },
+  "/careers/other-opportunities": { title: "Other Opportunities at Anoneurx", description: "Fellowships, grants and partnerships beyond full-time roles." },
+  "/internships": { title: "Anoneurx Internships", description: "Paid, remote-friendly internships across engineering, research, design and product." },
+  "/hackathon": { title: "Anoneurx Hackathon", description: "Register for the Anoneurx global hackathon and build something remarkable." },
+  "/community": { title: "Anoneurx Community", description: "Events, forums, mentorship and leaderboards — the Anoneurx developer community." },
+  "/community/events": { title: "Community Events", description: "Upcoming meetups, workshops and conferences from the Anoneurx community." },
+  "/community/events/upcoming": { title: "Upcoming Community Events", description: "Every upcoming Anoneurx community event in one place." },
+  "/community/events/past": { title: "Past Community Events", description: "Recaps and recordings of past Anoneurx community events." },
+  "/community/events/host": { title: "Host an Anoneurx Event", description: "Run a local Anoneurx meetup, workshop or hackathon — request sponsorship and swag." },
+  "/community/leaderboard": { title: "Community Leaderboard", description: "Top Anoneurx community contributors ranked by activity and impact." },
+  "/community/mentorship": { title: "Mentorship Program", description: "Apply for the Anoneurx mentorship program and grow alongside experienced engineers." },
+  "/community/forums": { title: "Community Forums", description: "Discuss code, releases, roadmaps and ideas with the Anoneurx community." },
+  "/blogs": { title: "Anoneurx Blog", description: "Product updates, engineering deep-dives and community stories from Anoneurx." },
+  "/blogs/all": { title: "All Articles — Anoneurx Blog", description: "The full archive of Anoneurx blog posts across engineering, research and product." },
+  "/docs": { title: "Documentation Hub — Guides, API Reference & Deployment", description: "Documentation hub for Anoneurx — guides, API reference and deployment instructions, plus per-product docs for Black Wall OS, Nexora, ATLAS and Anoneurx Cloud." },
+  "/docs/getting-started": { title: "Getting Started — Anoneurx Documentation", description: "Install the Anoneurx toolchain, clone your first project and run it locally in under ten minutes." },
+  "/docs/api-reference": { title: "API Reference — Anoneurx Documentation", description: "Endpoints, request and response shapes, authentication and rate limits for the public Anoneurx APIs." },
+  "/docs/deployment": { title: "Deployment Guide — Anoneurx Documentation", description: "Build, configure and ship Anoneurx services to production, including environment and rollout guidance." },
+  "/docs/contributions": { title: "Contribution Guide — Anoneurx Documentation", description: "How to report issues, propose changes and land a first contribution across Anoneurx repositories." },
+  "/docs/blackwall": { title: "Black Wall OS Documentation", description: "Black Wall OS documentation — installation, syscall bindings, architecture and the enclave security model." },
+  "/docs/nexora": { title: "Nexora Documentation", description: "Nexora browser documentation — configuration, sync, extensions and network privacy controls." },
+  "/docs/atlas": { title: "ATLAS Documentation", description: "ATLAS compiler and GPU renderer documentation — toolchain setup, language reference and backend notes." },
+  "/research": { title: "Anoneurx Research", description: "Applied research from Anoneurx across AI, systems, distributed compute and security." },
+  "/view-in-journal": { title: "Research Journal — Anoneurx", description: "Browse published Anoneurx research papers in journal format." },
+  "/strategic-kpis": { title: "Strategic KPIs — Anoneurx", description: "Anoneurx research strategy, milestones and KPIs." },
   "/opensource": {
     title: "Anoneurx Open Source — Projects, Libraries & Templates",
     description: "Explore Anoneurx open source — projects, libraries, packages, templates and VS Code extensions. Free forever, community-driven.",
-    keywords: "anoneurx open source, projects, libraries, packages, templates, vscode extensions, free, community",
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
@@ -231,145 +278,171 @@ const map: Record<string, Entry> = {
       description: "The Anoneurx open source ecosystem — projects, libraries, packages, templates and VS Code extensions.",
     },
   },
-  "/opensource/about": { title: "About Anoneurx Open Source", description: "Why Anoneurx invests in open source and how the community is governed.", keywords: "about anoneurx open source, governance, community, investment, open source" },
-  "/opensource/projects": { title: "Anoneurx Open Source Projects", description: "Every open source project maintained by Anoneurx and its community.", keywords: "anoneurx open source projects, repositories, community, free software" },
-  "/opensource/organizations": { title: "Open Source Organizations", description: "Organizations and working groups inside the Anoneurx open source ecosystem.", keywords: "anoneurx organizations, working groups, open source, community governance" },
-  "/opensource/libraries": { title: "Open Source Libraries", description: "Reusable Anoneurx libraries you can drop into your project today.", keywords: "anoneurx libraries, reusable code, open source, drop-in, developer tools" },
-  "/opensource/packages": { title: "Open Source Packages", description: "Anoneurx packages across npm, cargo, pip and go registries.", keywords: "anoneurx packages, npm, cargo, pip, go, open source, registries" },
-  "/opensource/templates": { title: "Open Source Templates", description: "Starter templates for every Anoneurx stack — CLI, web, edge and services.", keywords: "anoneurx templates, starter, cli, web, edge, open source, boilerplate" },
-  "/opensource/vscode-extensions": { title: "VS Code Extensions", description: "Official Anoneurx VS Code extensions — language support, tokens and DevTools.", keywords: "anoneurx vscode, extensions, language support, tokens, devtools, open source" },
-  "/opensource/showcase": { title: "Showcase — Anoneurx Open Source", description: "Real products the community has built using Anoneurx open source projects.", keywords: "anoneurx showcase, community projects, built with anoneurx, open source" },
-  "/opensource/roadmaps": { title: "Roadmaps — Anoneurx Open Source", description: "Public roadmaps for every major Anoneurx open source project.", keywords: "anoneurx roadmaps, project roadmap, open source, planned features, development" },
-  "/opensource/releases": { title: "Releases — Anoneurx Open Source", description: "The latest releases and changelogs across Anoneurx open source.", keywords: "anoneurx releases, changelogs, open source, latest updates, versions" },
-  "/opensource/discussions": { title: "Discussions — Anoneurx Open Source", description: "Community discussions, RFCs and support threads.", keywords: "anoneurx discussions, rfc, community, support, open source forum" },
-  "/contributors": { title: "Anoneurx Contributors", description: "The engineers, designers and researchers who contribute to Anoneurx open source.", keywords: "anoneurx contributors, engineers, designers, researchers, open source" },
-  "/sponsors": { title: "Anoneurx Sponsors", description: "Companies and organizations that sponsor Anoneurx open source and community programs.", keywords: "anoneurx sponsors, sponsorship, companies, organizations, open source funding" },
+  "/opensource/about": { title: "About Anoneurx Open Source", description: "Why Anoneurx invests in open source and how the community is governed." },
+  "/opensource/projects": { title: "Anoneurx Open Source Projects", description: "Every open source project maintained by Anoneurx and its community." },
+  "/opensource/organizations": { title: "Open Source Organizations", description: "Organizations and working groups inside the Anoneurx open source ecosystem." },
+  "/opensource/libraries": { title: "Open Source Libraries", description: "Reusable Anoneurx libraries you can drop into your project today." },
+  "/opensource/packages": { title: "Open Source Packages", description: "Anoneurx packages across npm, cargo, pip and go registries." },
+  "/opensource/templates": { title: "Open Source Templates", description: "Starter templates for every Anoneurx stack — CLI, web, edge and services." },
+  "/opensource/vscode-extensions": { title: "VS Code Extensions", description: "Official Anoneurx VS Code extensions — language support, tokens and DevTools." },
+  "/opensource/showcase": { title: "Showcase — Anoneurx Open Source", description: "Real products the community has built using Anoneurx open source projects." },
+  "/opensource/roadmaps": { title: "Roadmaps — Anoneurx Open Source", description: "Public roadmaps for every major Anoneurx open source project." },
+  "/opensource/releases": { title: "Releases — Anoneurx Open Source", description: "The latest releases and changelogs across Anoneurx open source." },
+  "/opensource/discussions": { title: "Discussions — Anoneurx Open Source", description: "Community discussions, RFCs and support threads." },
+  "/contributors": { title: "Anoneurx Contributors", description: "The engineers, designers and researchers who contribute to Anoneurx open source." },
+  "/sponsors": { title: "Anoneurx Sponsors", description: "Companies and organizations that sponsor Anoneurx open source and community programs." },
   "/blackwall": {
     title: "Black Wall OS — Anoneurx Secure Operating System",
     description: "Black Wall is Anoneurx's privacy-first operating system: hardened Rust core, zero telemetry, blazing performance and blockchain-backed identity.",
-    keywords: "black wall os, anoneurx, secure os, privacy, download, free, open source, rust, hardened kernel",
     jsonLd: SOFTWARE("Black Wall OS", "/blackwall", "Privacy-first operating system with hardened kernel, zero telemetry and Rust core."),
   },
-  "/blackwall/download": { title: "Download Black Wall OS", description: "Get Black Wall OS ISO images, checksums and installation guides.", keywords: "download black wall os, iso, checksums, installation, free download, anoneurx" },
-  "/blackwall/features": { title: "Black Wall OS Features", description: "Every feature of Black Wall OS — kernel, security, performance, DX.", keywords: "black wall features, kernel, security, performance, developer experience, anoneurx" },
-  "/blackwall/screenshots": { title: "Black Wall OS Screenshots", description: "Screenshots of the Black Wall desktop, terminal, installer and tooling.", keywords: "black wall screenshots, desktop, terminal, installer, anoneurx os" },
-  "/blackwall/showcase": { title: "Black Wall Showcase", description: "Real hardware, real workloads — Black Wall in production.", keywords: "black wall showcase, production, hardware, real world, anoneurx" },
-  "/blackwall/about": { title: "About Black Wall OS", description: "The mission, team and philosophy behind Black Wall OS.", keywords: "about black wall os, mission, team, philosophy, anoneurx operating system" },
-  "/blackwall/faq": { title: "Black Wall FAQ", description: "Frequently asked questions about Black Wall OS.", keywords: "black wall faq, frequently asked questions, anoneurx os, help" },
-  "/blackwall/architecture": { title: "Black Wall Architecture", description: "Kernel, userland and enclave architecture of Black Wall OS.", keywords: "black wall architecture, kernel, userland, enclave, anoneurx os, design" },
-  "/blackwall/security": { title: "Black Wall Security", description: "Security model, threat model and audits for Black Wall OS.", keywords: "black wall security, threat model, audits, privacy, hardened, anoneurx" },
-  "/blackwall/performance": { title: "Black Wall Performance", description: "Boot times, memory footprint and workload benchmarks for Black Wall OS.", keywords: "black wall performance, boot time, memory, benchmarks, speed, anoneurx" },
+  "/blackwall/download": { title: "Download Black Wall OS", description: "Get Black Wall OS ISO images, checksums and installation guides." },
+  "/blackwall/features": { title: "Black Wall OS Features", description: "Every feature of Black Wall OS — kernel, security, performance, DX." },
+  "/blackwall/screenshots": { title: "Black Wall OS Screenshots", description: "Screenshots of the Black Wall desktop, terminal, installer and tooling." },
+  "/blackwall/showcase": { title: "Black Wall Showcase", description: "Real hardware, real workloads — Black Wall in production." },
+  "/blackwall/about": { title: "About Black Wall OS", description: "The mission, team and philosophy behind Black Wall OS." },
+  "/blackwall/faq": { title: "Black Wall FAQ", description: "Frequently asked questions about Black Wall OS." },
+  "/blackwall/architecture": { title: "Black Wall Architecture", description: "Kernel, userland and enclave architecture of Black Wall OS." },
+  "/blackwall/security": { title: "Black Wall Security", description: "Security model, threat model and audits for Black Wall OS." },
+  "/blackwall/performance": { title: "Black Wall Performance", description: "Boot times, memory footprint and workload benchmarks for Black Wall OS." },
   "/blackwall/server": {
     title: "Black Wall Server OS — Coming December 2026",
     description: "Black Wall Server OS — a hardened Anoneurx operating system for servers. Zero-trust, container-native, air-gap capable. Coming Dec 2026.",
-    keywords: "black wall server os, anoneurx, server operating system, zero-trust, container, hardened, download, free",
     jsonLd: SOFTWARE("Black Wall Server OS", "/blackwall/server", "Hardened server operating system by Anoneurx. Zero-trust, container-native. Coming December 2026.", {
       releaseDate: "2026-12",
       applicationSubCategory: "ServerApplication",
     }),
   },
-  "/nexora": { title: "Nexora — AI-Augmented Private Browser", description: "Nexora is the fast, private, AI-augmented browser from Anoneurx.", keywords: "nexora, anoneurx, ai browser, private browser, download, free, open source, secure" },
-  "/nexora/download": { title: "Download Nexora Browser", description: "Download Nexora for macOS, Windows and Linux.", keywords: "download nexora, browser download, macos, windows, linux, free, anoneurx" },
-  "/nexora/features": { title: "Nexora Features", description: "Every feature in Nexora — AI, privacy, performance and productivity.", keywords: "nexora features, ai, privacy, performance, productivity, anoneurx browser" },
-  "/nexora/screenshots": { title: "Nexora Screenshots", description: "Screenshots of the Nexora browser interface.", keywords: "nexora screenshots, browser interface, ui, anoneurx browser" },
-  "/nexora/about": { title: "About Nexora", description: "The mission and roadmap behind Nexora.", keywords: "about nexora, mission, roadmap, anoneurx browser, private browsing" },
-  "/nexora/faq": { title: "Nexora FAQ", description: "Frequently asked questions about Nexora.", keywords: "nexora faq, frequently asked questions, help, anoneurx browser" },
-  "/nexora/docs": { title: "Nexora Documentation", description: "Guides, references and API docs for Nexora.", keywords: "nexora docs, documentation, api, guides, references, developer" },
-  "/nexora/changelog": { title: "Nexora Changelog", description: "Release notes for every Nexora version.", keywords: "nexora changelog, release notes, versions, updates, anoneurx browser" },
-  "/nexora/community": { title: "Nexora Community", description: "Join the Nexora community — forums, chat and events.", keywords: "nexora community, forums, chat, events, anoneurx browser" },
-  "/nexora/help": { title: "Nexora Help Center", description: "Troubleshooting, setup and support for Nexora.", keywords: "nexora help, troubleshooting, setup, support, anoneurx browser" },
-  "/nexora/privacy": { title: "Nexora Privacy Policy", description: "How Nexora protects your data — the privacy policy in full.", keywords: "nexora privacy, privacy policy, data protection, anoneurx browser" },
-  "/nexora/terms": { title: "Nexora Terms of Service", description: "The terms of service for using Nexora.", keywords: "nexora terms, terms of service, legal, anoneurx browser" },
-  "/nexora/security": { title: "Nexora Security", description: "The Nexora security model, disclosures and bug bounty.", keywords: "nexora security, bug bounty, security model, disclosures, anoneurx" },
-  "/nexora/compare": { title: "Nexora vs Other Browsers", description: "How Nexora stacks up against Chrome, Firefox, Edge, Brave and Safari.", keywords: "nexora vs chrome, nexora vs firefox, browser comparison, anoneurx, private browsing" },
-  "/nexora/developers": { title: "Nexora for Developers", description: "Build extensions and web experiences for Nexora.", keywords: "nexora developers, extensions, web development, anoneurx browser, api" },
-  "/nexora/blog": { title: "Nexora Blog", description: "Product updates and engineering deep-dives from the Nexora team.", keywords: "nexora blog, product updates, engineering, anoneurx browser, articles" },
-  "/nexora-ai": { title: "Nexora AI", description: "The Nexora AI assistant — private, local and lightning fast.", keywords: "nexora ai, ai assistant, private ai, local ai, anoneurx, fast ai" },
-  "/switch-to-nexora": { title: "Switch to Nexora", description: "Import your bookmarks, history and passwords from any browser in one click.", keywords: "switch to nexora, import bookmarks, migration, browser switch, anoneurx" },
-  "/why-nexora": { title: "Why Nexora", description: "The four reasons developers switch to Nexora.", keywords: "why nexora, reasons to switch, developer browser, anoneurx, private browsing" },
-  "/atlas": { title: "ATLAS Language — Anoneurx", description: "ATLAS is Anoneurx's systems programming language with memory safety and zero-cost abstractions.", keywords: "atlas language, anoneurx, systems programming, memory safety, rust, zero-cost abstractions" },
+  "/nexora": { title: "Nexora — AI-Augmented Private Browser", description: "Nexora is the fast, private, AI-augmented browser from Anoneurx." },
+  "/nexora/download": { title: "Download Nexora Browser", description: "Download Nexora for macOS, Windows and Linux." },
+  "/nexora/features": { title: "Nexora Features", description: "Every feature in Nexora — AI, privacy, performance and productivity." },
+  "/nexora/screenshots": { title: "Nexora Screenshots", description: "Screenshots of the Nexora browser interface." },
+  "/nexora/about": { title: "About Nexora", description: "The mission and roadmap behind Nexora." },
+  "/nexora/faq": { title: "Nexora FAQ", description: "Frequently asked questions about Nexora." },
+  "/nexora/docs": { title: "Nexora Documentation", description: "Guides, references and API docs for Nexora." },
+  "/nexora/changelog": { title: "Nexora Changelog", description: "Release notes for every Nexora version." },
+  "/nexora/community": { title: "Nexora Community", description: "Join the Nexora community — forums, chat and events." },
+  "/nexora/help": { title: "Nexora Help Center", description: "Troubleshooting, setup and support for Nexora." },
+  "/nexora/privacy": { title: "Nexora Privacy Policy", description: "How Nexora protects your data — the privacy policy in full." },
+  "/nexora/terms": { title: "Nexora Terms of Service", description: "The terms of service for using Nexora." },
+  "/nexora/security": { title: "Nexora Security", description: "The Nexora security model, disclosures and bug bounty." },
+  "/nexora/compare": { title: "Nexora vs Other Browsers", description: "How Nexora stacks up against Chrome, Firefox, Edge, Brave and Safari." },
+  "/nexora/developers": { title: "Nexora for Developers", description: "Build extensions and web experiences for Nexora." },
+  "/nexora/blog": { title: "Nexora Blog", description: "Product updates and engineering deep-dives from the Nexora team." },
+  "/nexora-ai": { title: "Nexora AI", description: "The Nexora AI assistant — private, local and lightning fast." },
+  "/switch-to-nexora": { title: "Switch to Nexora", description: "Import your bookmarks, history and passwords from any browser in one click." },
+  "/why-nexora": { title: "Why Nexora", description: "The four reasons developers switch to Nexora." },
+  "/atlas": { title: "ATLAS Language — Anoneurx", description: "ATLAS is Anoneurx's systems programming language with memory safety and zero-cost abstractions." },
   "/astra": {
     title: "ASTRA — Self-Learning AI Research (Anoneurx Lab)",
     description: "ASTRA is an Anoneurx Lab research project in self-learning AI — a model that records, reflects and improves from its own experience. 20B parameters today, architected for a 1T target. In development.",
-    keywords: "self-learning ai, self-improving ai, continual learning model, ai that learns from experience, astra ai research, anoneurx lab ai, ai research project 2026, autonomous ai agent, lifelong learning ai, machine learning research",
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "ResearchProject",
       name: "ASTRA",
       alternateName: "Anoneurx Self-Teaching Research AI",
-      keywords: "self-learning ai, continual learning, lifelong learning ai, ai research, self-improving ai, anoneurx lab",
       url: `${SITE}/astra`,
       description: "An Anoneurx Lab research project exploring models that learn continuously from experience. Current research scale: 20B parameters. Long-term architectural target: 1T parameters.",
       isPartOf: { "@type": "Organization", name: "Anoneurx Lab", url: `${SITE}/lab` },
     },
   },
-  "/astra/what-is": { title: "What is ASTRA? — Self-Learning AI Explained (Anoneurx Lab)", description: "What ASTRA is, what it is not, and the honest current state of this self-learning AI research project from Anoneurx Lab.", keywords: "what is self-learning ai, what is astra, self-teaching ai, ai that never stops learning, continual learning explained, ai research project, anoneurx, ai that learns after training" },
-  "/astra/learning-loop": { title: "ASTRA Learning Loop — The Continual Learning Cycle (Anoneurx Lab)", description: "Perceive, reason, act, record, reflect, improve — the continual learning loop that lets ASTRA improve from real experience.", keywords: "ai learning loop, perceive reason act reflect, how ai learns from experience, reinforcement learning loop, self-improvement loop ai, continual learning pipeline, ai loop cycle, feedback loop in ai" },
-  "/astra/scale": { title: "ASTRA Model Scale — From 20B to 1T Parameters (Anoneurx Lab)", description: "ASTRA is built at 20B parameters and architected for a 1T long-term target — scale is stated honestly, no inflated claims.", keywords: "ai model scale, 20b parameter model, 1 trillion parameter ai, llm scaling, model size vs capability, scaling laws ai, anoneurx 20b to 1t, ai research scale" },
-  "/astra/architecture": { title: "ASTRA System Architecture — Reasoning, Memory and Tools (Anoneurx Lab)", description: "The reference architecture of ASTRA: interface, looping core, memory and tools built around a continual reasoning loop.", keywords: "ai system architecture, self-learning ai architecture, ai memory architecture, reasoning loop ai, agent architecture ai, modular ai design, ai core planner" },
-  "/astra/self-learning": { title: "ASTRA Self-Learning — Learning from Usage, Not Just Datasets (Anoneurx Lab)", description: "How ASTRA learns from usage — record, judge, update and consolidate — with guardrails, consent and no human retraining loop.", keywords: "self-learning ai, learning from usage, ai without human retraining, online machine learning, consent in ai, autonomous learning system, ai guardrails" },
-  "/astra/memory": { title: "ASTRA Memory Pipeline — Episodic, Semantic and Procedural (Anoneurx Lab)", description: "ASTRA's episodic, semantic and procedural memory pipeline — how experience becomes lasting, recallable capability.", keywords: "ai memory, episodic memory ai, semantic memory ai, procedural memory ai, memory pipeline ai, long term memory for ai, ai recall, memory architecture ai" },
-  "/astra/research": { title: "ASTRA Open Research Modules — Eight AI Problems (Anoneurx Lab)", description: "The eight open research problems behind ASTRA: continual learning, task generation, memory, self-evaluation, skill compounding, alignment, efficiency and honest evaluation.", keywords: "ai open problems, open source ai research, continual learning research, task generation ai, self-evaluation ai, alignment research, ai training efficiency, honest ai evaluation, research modules ai" },
-  "/astra/status": { title: "ASTRA Project Status — Current Research Phase (Anoneurx Lab)", description: "The current, transparent status of ASTRA — phase, scale, learning method and evaluation state, reported as-is with no smoothing.", keywords: "astra status, ai research status 2026, self-learning ai progress, development phase ai, ai project updates, ai development status" },
-  "/astra/log": { title: "ASTRA Development Log — Weekly AI Research Updates (Anoneurx Lab)", description: "ASTRA's development log — a running, honest record of what exists, what is active, and what does not.", keywords: "ai development log, astra updates, ai research log, project changelog ai, ai progress report, ai milestones 2026" },
-  "/astra/roadmap": { title: "ASTRA Roadmap — From Foundations to a 1T Target (Anoneurx Lab)", description: "Phases, not promises — ASTRA's roadmap from foundations and memory to task generation, 100B and the 1T architectural target.", keywords: "ai roadmap, astra roadmap, ai milestones, 20b to 1t roadmap, ai development phases, ai long term plan" },
-  "/astra/philosophy": { title: "ASTRA Principles — Honest, Consent-Based AI Development (Anoneurx Lab)", description: "Five principles ASTRA won't break: honesty, structural consent, capability before scale, transparency and safe self-improvement.", keywords: "ai principles, honest ai, consent based ai, transparent ai development, safe self-improving ai, ai ethics principles, ai safety principles" },
-  "/astra/lab": { title: "Anoneurx Lab — Home of ASTRA AI Research (Anoneurx Lab)", description: "ASTRA is built inside the Anoneurx Lab — the research lab behind open problems in AI, cyber-physical security, robotics and systems.", keywords: "anoneurx lab, ai research lab, research laboratory ai, open research ai, ai lab projects, ai research problems" },
-  "/astra/contribute": { title: "Contribute to ASTRA — Open AI Research Roles (Anoneurx Lab)", description: "Contribute to ASTRA — open research problems, join the Anoneurx Lab, or review and critique the code and evaluation.", keywords: "contribute to ai research, open source ai contribution, join ai research lab, ai research roles, ai volunteer research, research problem solving" },
-  "/apps": { title: "Anoneurx Apps — Discover Powerful Apps", description: "The Anoneurx apps marketplace — curated apps from global developers, malware scanned and privacy focused.", keywords: "anoneurx apps, marketplace, curated apps, developers, privacy, malware scanned" },
-  "/apps/browse": { title: "Browse Apps — Anoneurx", description: "Browse every app on the Anoneurx marketplace.", keywords: "browse apps, anoneurx marketplace, discover apps, curated" },
-  "/apps/categories": { title: "App Categories — Anoneurx", description: "Discover apps by category on the Anoneurx marketplace.", keywords: "app categories, anoneurx marketplace, browse by category, discover" },
-  "/apps/developers": { title: "Anoneurx Developers", description: "Ship your app on Anoneurx — publishing, revenue share and analytics.", keywords: "anoneurx developers, publish app, revenue share, analytics, app store" },
-  "/apps/about": { title: "About Anoneurx Apps", description: "The story behind the Anoneurx apps marketplace.", keywords: "about anoneurx apps, marketplace story, app store, anoneurx" },
-  "/apps/submit": { title: "Submit an App — Anoneurx", description: "Submit your app to the Anoneurx marketplace.", keywords: "submit app, anoneurx marketplace, publish, developer, app submission" },
-  "/pay": { title: "Anoneurx Pay — Modern Digital Banking", description: "Anoneurx Pay is a global, modern digital banking platform for individuals and businesses.", keywords: "anoneurx pay, digital banking, finance, download, free, secure, open source" },
-  "/pay/features": { title: "Anoneurx Pay Features", description: "Every feature of Anoneurx Pay — accounts, cards, transfers, savings and business tools.", keywords: "anoneurx pay features, accounts, cards, transfers, savings, business banking" },
-  "/pay/security": { title: "Anoneurx Pay Security", description: "How Anoneurx Pay protects your money — encryption, fraud detection and compliance.", keywords: "anoneurx pay security, encryption, fraud detection, compliance, safe banking" },
-  "/pay/about": { title: "About Anoneurx Pay", description: "The mission and licences behind Anoneurx Pay.", keywords: "about anoneurx pay, mission, licences, digital banking, anoneurx" },
-  "/pay/download": { title: "Download Anoneurx Pay", description: "Download the Anoneurx Pay app for iOS and Android.", keywords: "download anoneurx pay, ios, android, mobile app, banking app, free" },
-  "/pay/signup": { title: "Open an Anoneurx Pay Account", description: "Open a personal or business Anoneurx Pay account online in minutes.", keywords: "anoneurx pay signup, open account, personal, business, banking registration" },
-  "/pay/faq": { title: "Anoneurx Pay FAQ", description: "Frequently asked questions about Anoneurx Pay.", keywords: "anoneurx pay faq, frequently asked questions, banking help, support" },
-  "/checkout": { title: "Checkout — Anoneurx", description: "Securely complete your payment on Anoneurx.", keywords: "anoneurx checkout, payment, secure checkout, buy, transaction" },
-  "/cloud": { title: "Anoneurx Cloud — Global Cloud Infrastructure", description: "Anoneurx Cloud — VMs, GPU servers, Kubernetes, object storage and CDN across global regions.", keywords: "anoneurx cloud, vm, gpu, kubernetes, storage, cdn, download, free, open source" },
-  "/cloud/products": { title: "Anoneurx Cloud Products", description: "Every Anoneurx Cloud product — compute, storage, networking, AI and databases.", keywords: "anoneurx cloud products, compute, storage, networking, ai, databases" },
-  "/cloud/pricing": { title: "Anoneurx Cloud Pricing", description: "Transparent, predictable pricing across every Anoneurx Cloud product.", keywords: "anoneurx cloud pricing, cost, pricing, transparent, cloud cost" },
-  "/cloud/docs": { title: "Anoneurx Cloud Docs", description: "Guides, references and API docs for Anoneurx Cloud.", keywords: "anoneurx cloud docs, documentation, api, guides, references, developer" },
-  "/cloud/status": { title: "Anoneurx Cloud Status", description: "Live status of every Anoneurx Cloud region and service.", keywords: "anoneurx cloud status, uptime, outage, region, service health" },
-  "/cloud/security": { title: "Anoneurx Cloud Security", description: "Compliance, certifications and security posture of Anoneurx Cloud.", keywords: "anoneurx cloud security, compliance, certifications, data protection" },
-  "/cloud/compute/virtual-machines": { title: "Virtual Machines — Anoneurx Cloud", description: "High-performance VMs across global regions on Anoneurx Cloud.", keywords: "virtual machines, anoneurx cloud, vps, cloud compute, high performance" },
-  "/cloud/compute/gpu-servers": { title: "GPU Servers — Anoneurx Cloud", description: "NVIDIA and AMD GPU servers for AI training and inference on Anoneurx Cloud.", keywords: "gpu servers, nvidia, amd, ai training, inference, anoneurx cloud" },
-  "/cloud/compute/bare-metal": { title: "Bare Metal Servers — Anoneurx Cloud", description: "Dedicated bare metal servers with hourly billing on Anoneurx Cloud.", keywords: "bare metal servers, dedicated, hourly billing, anoneurx cloud, high performance" },
-  "/cloud/compute/kubernetes": { title: "Managed Kubernetes — Anoneurx Cloud", description: "Production-ready managed Kubernetes on Anoneurx Cloud.", keywords: "managed kubernetes, k8s, container orchestration, anoneurx cloud, production" },
-  "/cloud/storage/object": { title: "Object Storage — Anoneurx Cloud", description: "S3-compatible object storage on Anoneurx Cloud.", keywords: "object storage, s3 compatible, anoneurx cloud, cloud storage" },
-  "/cloud/storage/block": { title: "Block Storage — Anoneurx Cloud", description: "High-performance NVMe block storage on Anoneurx Cloud.", keywords: "block storage, nvme, anoneurx cloud, high performance, persistent storage" },
-  "/cloud/storage/backup": { title: "Backup Vault — Anoneurx Cloud", description: "Encrypted backup vault with instant restore on Anoneurx Cloud.", keywords: "backup vault, encrypted backup, instant restore, anoneurx cloud" },
-  "/cloud/storage/archive": { title: "Archive Storage — Anoneurx Cloud", description: "Cold archive storage at the best per-TB price on Anoneurx Cloud.", keywords: "archive storage, cold storage, per-tb price, anoneurx cloud, backup" },
-  "/artificial-intelligence": { title: "Artificial Intelligence — Anoneurx", description: "Anoneurx AI — research, applied models, edge inference and enterprise deployments.", keywords: "anoneurx ai, artificial intelligence, machine learning, edge inference, enterprise ai" },
-  "/robotics-systems": { title: "Robotics Systems — Anoneurx", description: "Robotics research and platforms from Anoneurx — perception, control and autonomy.", keywords: "anoneurx robotics, perception, control, autonomy, robotics systems" },
-  "/space-projects": { title: "Space Projects — Anoneurx", description: "Anoneurx space projects — satellite imagery, ground stations and edge compute in orbit.", keywords: "anoneurx space, satellite, ground stations, edge compute, orbit" },
-  "/web-development": { title: "Web Development — Anoneurx", description: "Anoneurx builds high-performance web applications, platforms and design systems.", keywords: "anoneurx web development, web apps, platforms, design systems, performance" },
-  "/blockchain-systems": { title: "Blockchain Systems — Anoneurx", description: "Anoneurx builds blockchain infrastructure and applied cryptography systems.", keywords: "anoneurx blockchain, cryptography, distributed ledger, web3, infrastructure" },
-  "/operating-systems": { title: "Operating Systems — Anoneurx", description: "Every operating system from Anoneurx — Black Wall, Black Wall Server and more.", keywords: "anoneurx operating systems, black wall, server os, secure os, privacy" },
-  "/investment-opportunities": { title: "Investment Opportunities — Anoneurx", description: "Explore investment opportunities across the Anoneurx portfolio.", keywords: "anoneurx investment, venture capital, funding, portfolio, startup" },
-  "/partnership-inquiry": { title: "Partnership Inquiry — Anoneurx", description: "Submit a partnership inquiry to Anoneurx.", keywords: "anoneurx partnership, inquiry, business, collaboration, partner" },
-  "/collaboration": { title: "Collaborate with Anoneurx", description: "Research, product and enterprise collaboration with Anoneurx.", keywords: "anoneurx collaboration, research, enterprise, partner, joint project" },
-  "/collaboration/form": { title: "Collaboration Form — Anoneurx", description: "Start a collaboration with Anoneurx.", keywords: "anoneurx collaboration form, submit, research, enterprise, partnership" },
-  "/university": { title: "Anoneurx University | Courses, Faculty & Programs", description: "Anoneurx University — degree programmes, certificates and short courses for the next generation of engineers.", keywords: "anoneurx university, courses, education, faculty, programs, learn, engineering" },
-  "/courses": { title: "Courses — Anoneurx University", description: "Every course from Anoneurx University — engineering, AI, systems, design and more.", keywords: "anoneurx courses, university, engineering, ai, systems, design, learn" },
-  "/faculty": { title: "Anoneurx University Faculty — Professors & Researchers", description: "Meet the faculty behind Anoneurx University — professors, researchers and educators across every department.", keywords: "anoneurx faculty, professors, researchers, educators, university, departments" },
-  "/notes": { title: "Notes — Anoneurx", description: "Study notes, cheatsheets and reference material curated by Anoneurx.", keywords: "anoneurx notes, study notes, cheatsheets, reference, learning" },
-  "/arcadeum": { title: "Anoneurx Arcadeum", description: "Anoneurx Arcadeum — indie games, engines and creator tools.", keywords: "anoneurx arcadeum, indie games, game engine, creator tools, gaming" },
-  "/privacy": { title: "Privacy Policy — Anoneurx", description: "How Anoneurx protects your data — the privacy policy in full.", keywords: "anoneurx privacy, privacy policy, data protection, gdpr, user data" },
-  "/terms": { title: "Terms of Service — Anoneurx", description: "The terms of service for using Anoneurx products.", keywords: "anoneurx terms, terms of service, legal, conditions, usage policy" },
-  "/cookies": { title: "Cookie Policy — Anoneurx", description: "How Anoneurx uses cookies on its websites and apps.", keywords: "anoneurx cookies, cookie policy, tracking, consent, gdpr" },
-  "/auth": { title: "Sign in — Anoneurx", description: "Sign in to Anoneurx.", keywords: "anoneurx login, sign in, account, authentication, secure login" },
-  "/login": { title: "Log in — Anoneurx", description: "Log in to Anoneurx.", keywords: "anoneurx login, log in, account, authentication, secure access" },
-  "/signup": { title: "Create your Anoneurx account", description: "Create a free Anoneurx account.", keywords: "anoneurx signup, create account, register, free account, join anoneurx" },
-  "/reportbug": { title: "Report a Bug — Anoneurx", description: "Report a bug in any Anoneurx product.", keywords: "anoneurx report bug, bug report, feedback, issue, support" },
+  "/astra/what-is": { title: "What is ASTRA? — Self-Learning AI Explained (Anoneurx Lab)", description: "What ASTRA is, what it is not, and the honest current state of this self-learning AI research project from Anoneurx Lab." },
+  "/astra/learning-loop": { title: "ASTRA Learning Loop — The Continual Learning Cycle (Anoneurx Lab)", description: "Perceive, reason, act, record, reflect, improve — the continual learning loop that lets ASTRA improve from real experience." },
+  "/astra/scale": { title: "ASTRA Model Scale — From 20B to 1T Parameters (Anoneurx Lab)", description: "ASTRA is built at 20B parameters and architected for a 1T long-term target — scale is stated honestly, no inflated claims." },
+  "/astra/architecture": { title: "ASTRA System Architecture — Reasoning, Memory and Tools (Anoneurx Lab)", description: "The reference architecture of ASTRA: interface, looping core, memory and tools built around a continual reasoning loop." },
+  "/astra/self-learning": { title: "ASTRA Self-Learning — Learning from Usage, Not Just Datasets (Anoneurx Lab)", description: "How ASTRA learns from usage — record, judge, update and consolidate — with guardrails, consent and no human retraining loop." },
+  "/astra/memory": { title: "ASTRA Memory Pipeline — Episodic, Semantic and Procedural (Anoneurx Lab)", description: "ASTRA's episodic, semantic and procedural memory pipeline — how experience becomes lasting, recallable capability." },
+  "/astra/research": { title: "ASTRA Open Research Modules — Eight AI Problems (Anoneurx Lab)", description: "The eight open research problems behind ASTRA: continual learning, task generation, memory, self-evaluation, skill compounding, alignment, efficiency and honest evaluation." },
+  "/astra/status": { title: "ASTRA Project Status — Current Research Phase (Anoneurx Lab)", description: "The current, transparent status of ASTRA — phase, scale, learning method and evaluation state, reported as-is with no smoothing." },
+  "/astra/log": { title: "ASTRA Development Log — Weekly AI Research Updates (Anoneurx Lab)", description: "ASTRA's development log — a running, honest record of what exists, what is active, and what does not." },
+  "/astra/roadmap": { title: "ASTRA Roadmap — From Foundations to a 1T Target (Anoneurx Lab)", description: "Phases, not promises — ASTRA's roadmap from foundations and memory to task generation, 100B and the 1T architectural target." },
+  "/astra/philosophy": { title: "ASTRA Principles — Honest, Consent-Based AI Development (Anoneurx Lab)", description: "Five principles ASTRA won't break: honesty, structural consent, capability before scale, transparency and safe self-improvement." },
+  "/astra/lab": { title: "Anoneurx Lab — Home of ASTRA AI Research (Anoneurx Lab)", description: "ASTRA is built inside the Anoneurx Lab — the research lab behind open problems in AI, cyber-physical security, robotics and systems." },
+  "/astra/contribute": { title: "Contribute to ASTRA — Open AI Research Roles (Anoneurx Lab)", description: "Contribute to ASTRA — open research problems, join the Anoneurx Lab, or review and critique the code and evaluation." },
+  "/apps": { title: "Anoneurx Apps — Discover Powerful Apps", description: "The Anoneurx apps marketplace — curated apps from global developers, malware scanned and privacy focused." },
+  "/apps/browse": { title: "Browse Apps — Anoneurx", description: "Browse every app on the Anoneurx marketplace." },
+  "/apps/categories": { title: "App Categories — Anoneurx", description: "Discover apps by category on the Anoneurx marketplace." },
+  "/apps/developers": { title: "Anoneurx Developers", description: "Ship your app on Anoneurx — publishing, revenue share and analytics." },
+  "/apps/about": { title: "About Anoneurx Apps", description: "The story behind the Anoneurx apps marketplace." },
+  "/apps/submit": { title: "Submit an App — Anoneurx", description: "Submit your app to the Anoneurx marketplace." },
+  "/pay": { title: "Anoneurx Pay — Modern Digital Banking", description: "Anoneurx Pay is a global, modern digital banking platform for individuals and businesses." },
+  "/pay/features": { title: "Anoneurx Pay Features", description: "Every feature of Anoneurx Pay — accounts, cards, transfers, savings and business tools." },
+  "/pay/security": { title: "Anoneurx Pay Security", description: "How Anoneurx Pay protects your money — encryption, fraud detection and compliance." },
+  "/pay/about": { title: "About Anoneurx Pay", description: "The mission and licences behind Anoneurx Pay." },
+  "/pay/download": { title: "Download Anoneurx Pay", description: "Download the Anoneurx Pay app for iOS and Android." },
+  "/pay/signup": { title: "Open an Anoneurx Pay Account", description: "Open a personal or business Anoneurx Pay account online in minutes." },
+  "/pay/faq": { title: "Anoneurx Pay FAQ", description: "Frequently asked questions about Anoneurx Pay." },
+  "/checkout": { title: "Checkout — Anoneurx", description: "Securely complete your payment on Anoneurx." },
+  "/cloud": { title: "Anoneurx Cloud — Global Cloud Infrastructure", description: "Anoneurx Cloud — VMs, GPU servers, Kubernetes, object storage and CDN across global regions." },
+  "/cloud/products": { title: "Anoneurx Cloud Products", description: "Every Anoneurx Cloud product — compute, storage, networking, AI and databases." },
+  "/cloud/pricing": { title: "Anoneurx Cloud Pricing", description: "Transparent, predictable pricing across every Anoneurx Cloud product." },
+  "/cloud/docs": { title: "Anoneurx Cloud Docs", description: "Guides, references and API docs for Anoneurx Cloud." },
+  "/cloud/status": { title: "Anoneurx Cloud Status", description: "Live status of every Anoneurx Cloud region and service." },
+  "/cloud/security": { title: "Anoneurx Cloud Security", description: "Compliance, certifications and security posture of Anoneurx Cloud." },
+  "/cloud/compute/virtual-machines": { title: "Virtual Machines — Anoneurx Cloud", description: "High-performance VMs across global regions on Anoneurx Cloud." },
+  "/cloud/compute/gpu-servers": { title: "GPU Servers — Anoneurx Cloud", description: "NVIDIA and AMD GPU servers for AI training and inference on Anoneurx Cloud." },
+  "/cloud/compute/bare-metal": { title: "Bare Metal Servers — Anoneurx Cloud", description: "Dedicated bare metal servers with hourly billing on Anoneurx Cloud." },
+  "/cloud/compute/kubernetes": { title: "Managed Kubernetes — Anoneurx Cloud", description: "Production-ready managed Kubernetes on Anoneurx Cloud." },
+  "/cloud/storage/object": { title: "Object Storage — Anoneurx Cloud", description: "S3-compatible object storage on Anoneurx Cloud." },
+  "/cloud/storage/block": { title: "Block Storage — Anoneurx Cloud", description: "High-performance NVMe block storage on Anoneurx Cloud." },
+  "/cloud/storage/backup": { title: "Backup Vault — Anoneurx Cloud", description: "Encrypted backup vault with instant restore on Anoneurx Cloud." },
+  "/cloud/storage/archive": { title: "Archive Storage — Anoneurx Cloud", description: "Cold archive storage at the best per-TB price on Anoneurx Cloud." },
+  "/artificial-intelligence": { title: "Artificial Intelligence — Anoneurx", description: "Anoneurx AI — research, applied models, edge inference and enterprise deployments." },
+  "/robotics-systems": { title: "Robotics Systems — Anoneurx", description: "Robotics research and platforms from Anoneurx — perception, control and autonomy." },
+  "/space-projects": { title: "Space Projects — Anoneurx", description: "Anoneurx space projects — satellite imagery, ground stations and edge compute in orbit." },
+  "/web-development": { title: "Web Development — Anoneurx", description: "Anoneurx builds high-performance web applications, platforms and design systems." },
+  "/blockchain-systems": { title: "Blockchain Systems — Anoneurx", description: "Anoneurx builds blockchain infrastructure and applied cryptography systems." },
+  "/operating-systems": { title: "Operating Systems — Anoneurx", description: "Every operating system from Anoneurx — Black Wall, Black Wall Server and more." },
+  "/investment-opportunities": { title: "Investment Opportunities — Anoneurx", description: "Explore investment opportunities across the Anoneurx portfolio." },
+  "/partnership-inquiry": { title: "Partnership Inquiry — Anoneurx", description: "Submit a partnership inquiry to Anoneurx." },
+  "/collaboration": { title: "Collaborate with Anoneurx", description: "Research, product and enterprise collaboration with Anoneurx." },
+  "/collaboration/form": { title: "Collaboration Form — Anoneurx", description: "Start a collaboration with Anoneurx." },
+  "/university": {
+    title: "Anoneurx University | Courses, Faculty & Programs",
+    description: "Anoneurx University — degree programmes, certificates and short courses for the next generation of engineers.",
+    jsonLd: [
+      ...UNIVERSITY_PROGRAMS.map((program) => ({
+        "@context": "https://schema.org",
+        "@type": "Course",
+        name: program.title,
+        description: program.description,
+        url: `${SITE}/university/programs`,
+        inLanguage: "en",
+        provider: {
+          "@type": "EducationalOrganization",
+          name: "Anoneurx University",
+          url: `${SITE}/university`,
+        },
+        isAccessibleForFree: true,
+        offers: {
+          "@type": "Offer",
+          category: "Free",
+          price: "0",
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+          url: `${SITE}/university`,
+        },
+      })),
+      BREADCRUMB([
+        { name: "University", item: "/university" },
+        { name: "Programs", item: "/university/programs" },
+      ]),
+    ],
+  },
+  "/courses": { title: "Courses — Anoneurx University", description: "Every course from Anoneurx University — engineering, AI, systems, design and more." },
+  "/faculty": { title: "Anoneurx University Faculty — Professors & Researchers", description: "Meet the faculty behind Anoneurx University — professors, researchers and educators across every department." },
+  "/notes": { title: "Notes — Anoneurx", description: "Study notes, cheatsheets and reference material curated by Anoneurx." },
+  "/arcadeum": { title: "Anoneurx Arcadeum", description: "Anoneurx Arcadeum — indie games, engines and creator tools." },
+  "/privacy": { title: "Privacy Policy — Anoneurx", description: "How Anoneurx protects your data — the privacy policy in full." },
+  "/terms": { title: "Terms of Service — Anoneurx", description: "The terms of service for using Anoneurx products." },
+  "/cookies": { title: "Cookie Policy — Anoneurx", description: "How Anoneurx uses cookies on its websites and apps." },
+  "/auth": { title: "Sign in — Anoneurx", description: "Sign in to Anoneurx." },
+  "/login": { title: "Log in — Anoneurx", description: "Log in to Anoneurx." },
+  "/signup": { title: "Create your Anoneurx account", description: "Create a free Anoneurx account." },
+  "/reportbug": { title: "Report a Bug — Anoneurx", description: "Report a bug in any Anoneurx product." },
   "/verify": {
     title: "Verify Anoneurx Participation",
     description: "Verify Anoneurx internship credentials, hackathon participation, developer team applications, and program opportunity records in real time. Official Anoneurx verification portal.",
-    keywords: "anoneurx verify, verify intern, anoneurx internship verification, hackathon verify, dev team verify, opportunity verify, verify certificate, anoneurx identity, verify credentials",
     jsonLd: [
       {
         "@context": "https://schema.org",
@@ -386,7 +459,6 @@ const map: Record<string, Entry> = {
   "/intern/verify": {
     title: "Verify Anoneurx Intern",
     description: "Verify an Anoneurx intern instantly. Confirm internship credentials, department, batch, status, certificates and service records using an intern ID or email address.",
-    keywords: "anoneurx intern, anoneurx internship, verify intern, internship verification, intern verification, anoneurx intern verify, anoneurx internship certificate, verify internship certificate, anoneurx intern id, intern status check",
     jsonLd: [
       {
         "@context": "https://schema.org",
@@ -438,38 +510,37 @@ const map: Record<string, Entry> = {
       },
     ],
   },
-  "/university/programs": { title: "Programs — Anoneurx University", description: "Degree programmes, certificates and short courses at Anoneurx University across engineering, AI, systems and design.", keywords: "anoneurx university programs, degrees, certificates, courses, education, learn" },
-  "/university/admissions": { title: "Admissions — Anoneurx University", description: "How to apply to Anoneurx University — intakes, requirements, scholarships and the step-by-step admissions timeline.", keywords: "anoneurx university admissions, apply, requirements, scholarships, intake" },
-  "/university/research": { title: "Research — Anoneurx University", description: "Research labs, groups and publications at Anoneurx University spanning AI, quantum, robotics and secure systems.", keywords: "anoneurx university research, labs, publications, ai, quantum, robotics" },
-  "/university/campus-life": { title: "Campus Life — Anoneurx University", description: "Student clubs, hackathons, labs, housing and community life at Anoneurx University.", keywords: "anoneurx university campus, student life, clubs, hackathons, housing" },
-  "/university/faculty": { title: "Faculty — Anoneurx University", description: "Professors, researchers and lecturers of Anoneurx University with full academic portfolios.", keywords: "anoneurx university faculty, professors, researchers, lecturers, academic" },
-  "/university/contact": { title: "Contact Anoneurx University", description: "Reach Anoneurx University — admissions, faculty, registrar and student services at university@anoneurx.com.", keywords: "contact anoneurx university, admissions, faculty, registrar, support" },
-  "/university/support": { title: "Anoneurx University Support", description: "Help with enrolment, courses, certificates, billing and student accounts at Anoneurx University.", keywords: "anoneurx university support, enrolment, courses, billing, student help" },
-  "/opensource/contact": { title: "Contact Anoneurx Open Source", description: "Reach the Anoneurx Open Source program — maintainers, security disclosure, sponsorship and community at opensource@anoneurx.com.", keywords: "contact anoneurx open source, maintainers, security, sponsorship, community" },
-  "/opensource/partnership-inquiry": { title: "Sponsor an Open Source Project — Anoneurx", description: "Fund the open source work behind Blackwall OS and Anoneurx. Choose a sponsorship tier, pick a project, and support the maintainers.", keywords: "anoneurx open source sponsorship, fund, sponsor, maintainers, open source" },
-  "/opensource/support": { title: "Anoneurx Open Source Support", description: "Help with Anoneurx open source projects — builds, packages, contributions, licensing and security reports.", keywords: "anoneurx open source support, builds, packages, licensing, security" },
-  "/opensource/contribute": { title: "Contribute to Anoneurx Open Source", description: "Start contributing to Anoneurx open source — good first issues, contribution workflow, review process and rewards.", keywords: "anoneurx contribute, open source, contribution workflow, good first issues, rewards" },
-  "/opensource/contribute/apply": { title: "Apply to Contribute — Anoneurx Open Source", description: "Apply to join the Anoneurx open source contributor program — pick a project, area of interest and get matched with a maintainer.", keywords: "anoneurx contributor program, apply, open source, maintainer, project" },
-  "/blackwall/contact": { title: "Contact Blackwall OS", description: "Reach the Blackwall OS team — engineering, security disclosure, OEM and press at blackwall@anoneurx.com.", keywords: "contact blackwall os, security disclosure, oem, press, anoneurx" },
-  "/pay/contact": { title: "Contact Anoneurx Pay", description: "Reach Anoneurx Pay — accounts, disputes, business banking and compliance at pay@anoneurx.com.", keywords: "contact anoneurx pay, accounts, disputes, business banking, compliance" },
-  "/pay/support": { title: "Anoneurx Pay Support", description: "Help with Anoneurx Pay — cards, transfers, disputes, verification and business accounts.", keywords: "anoneurx pay support, cards, transfers, disputes, verification, help" },
-  "/cloud/contact": { title: "Contact Anoneurx Cloud", description: "Reach Anoneurx Cloud — sales, architecture, billing and enterprise support at cloud@anoneurx.com.", keywords: "contact anoneurx cloud, sales, architecture, billing, enterprise support" },
+  "/university/programs": { title: "Programs — Anoneurx University", description: "Degree programmes, certificates and short courses at Anoneurx University across engineering, AI, systems and design." },
+  "/university/admissions": { title: "Admissions — Anoneurx University", description: "How to apply to Anoneurx University — intakes, requirements, scholarships and the step-by-step admissions timeline." },
+  "/university/research": { title: "Research — Anoneurx University", description: "Research labs, groups and publications at Anoneurx University spanning AI, quantum, robotics and secure systems." },
+  "/university/campus-life": { title: "Campus Life — Anoneurx University", description: "Student clubs, hackathons, labs, housing and community life at Anoneurx University." },
+  "/university/faculty": { title: "Faculty — Anoneurx University", description: "Professors, researchers and lecturers of Anoneurx University with full academic portfolios." },
+  "/university/contact": { title: "Contact Anoneurx University", description: "Reach Anoneurx University — admissions, faculty, registrar and student services at university@anoneurx.com." },
+  "/university/support": { title: "Anoneurx University Support", description: "Help with enrolment, courses, certificates, billing and student accounts at Anoneurx University." },
+  "/opensource/contact": { title: "Contact Anoneurx Open Source", description: "Reach the Anoneurx Open Source program — maintainers, security disclosure, sponsorship and community at opensource@anoneurx.com." },
+  "/opensource/partnership-inquiry": { title: "Sponsor an Open Source Project — Anoneurx", description: "Fund the open source work behind Black Wall OS and Anoneurx. Choose a sponsorship tier, pick a project, and support the maintainers." },
+  "/opensource/support": { title: "Anoneurx Open Source Support", description: "Help with Anoneurx open source projects — builds, packages, contributions, licensing and security reports." },
+  "/opensource/contribute": { title: "Contribute to Anoneurx Open Source", description: "Start contributing to Anoneurx open source — good first issues, contribution workflow, review process and rewards." },
+  "/opensource/contribute/apply": { title: "Apply to Contribute — Anoneurx Open Source", description: "Apply to join the Anoneurx open source contributor program — pick a project, area of interest and get matched with a maintainer." },
+  "/blackwall/contact": { title: "Contact Black Wall OS", description: "Reach the Black Wall OS team — engineering, security disclosure, OEM and press at blackwall@anoneurx.com." },
+  "/pay/contact": { title: "Contact Anoneurx Pay", description: "Reach Anoneurx Pay — accounts, disputes, business banking and compliance at pay@anoneurx.com." },
+  "/pay/support": { title: "Anoneurx Pay Support", description: "Help with Anoneurx Pay — cards, transfers, disputes, verification and business accounts." },
+  "/cloud/contact": { title: "Contact Anoneurx Cloud", description: "Reach Anoneurx Cloud — sales, architecture, billing and enterprise support at cloud@anoneurx.com." },
 
   "/ceo": {
     title: "Muhammad Qasim — Founder & CEO of Anoneurx",
     description: "Meet Muhammad Qasim, founder and CEO of Anoneurx — vision, leadership message, milestones and focus areas.",
-    keywords: "muhammad qasim, anoneurx ceo, founder, leadership, vision, milestones",
     jsonLd: [
       PERSON("Muhammad Qasim", "/ceo", "Founder & Chief Executive Officer"),
       BREADCRUMB([{ name: "Anoneurx", item: "/" }, { name: "CEO", item: "/ceo" }]),
     ],
   },
-  "/intern": { title: "Anoneurx Interns — Engineering, Research & Design", description: "Every Anoneurx intern across AI, Robotics, Cyber Security, Data Science and more.", keywords: "anoneurx interns, internship, engineering, research, design, cyber security" },
-  "/opensource/repos": { title: "Repositories — Anoneurx Open Source", description: "Every public Anoneurx repository — stars, languages, activity and maintainers.", keywords: "anoneurx repositories, github, open source, code, maintainers, stars" },
-  "/opensource/events": { title: "Events — Anoneurx Open Source", description: "Open source events, sprints and release parties from the Anoneurx community.", keywords: "anoneurx open source events, sprints, release parties, community, hackathon" },
-  "/opensource/search": { title: "Search Anoneurx Open Source", description: "Search projects, repositories, libraries, packages, templates and events across Anoneurx open source.", keywords: "search anoneurx open source, projects, repositories, libraries, packages" },
-  "/blackwall/support": { title: "Black Wall OS Support", description: "Help with Black Wall OS — installation, drivers, hardening, updates and security reports.", keywords: "blackwall os support, installation, drivers, hardening, updates, security" },
-  "/pay/open-account": { title: "Anoneurx Pay Account Details", description: "Complete your Anoneurx Pay account details to finish opening your account.", keywords: "anoneurx pay account, open account, account details, banking signup" },
+  "/intern": { title: "Anoneurx Interns — Engineering, Research & Design", description: "Every Anoneurx intern across AI, Robotics, Cyber Security, Data Science and more." },
+  "/opensource/repos": { title: "Repositories — Anoneurx Open Source", description: "Every public Anoneurx repository — stars, languages, activity and maintainers." },
+  "/opensource/events": { title: "Events — Anoneurx Open Source", description: "Open source events, sprints and release parties from the Anoneurx community." },
+  "/opensource/search": { title: "Search Anoneurx Open Source", description: "Search projects, repositories, libraries, packages, templates and events across Anoneurx open source." },
+  "/blackwall/support": { title: "Black Wall OS Support", description: "Help with Black Wall OS — installation, drivers, hardening, updates and security reports." },
+  "/pay/open-account": { title: "Anoneurx Pay Account Details", description: "Complete your Anoneurx Pay account details to finish opening your account." },
 };
 
 // Pattern-based fallbacks for dynamic routes
@@ -576,17 +647,38 @@ const patterns: { pattern: string; build: (params: Record<string, string | undef
   },
   {
     pattern: "/opensource/:id",
-    build: (p) => ({
-      title: `${humanize(p.id)} — Anoneurx Open Source Project`,
-      description: `README, activity, maintainers and releases for the ${humanize(p.id)} Anoneurx open source project.`,
-      jsonLd: {
-        "@context": "https://schema.org",
-        "@type": "SoftwareSourceCode",
-        name: humanize(p.id),
-        url: `${SITE}/opensource/${p.id}`,
-        codeRepository: `${SITE}/opensource/repos/${p.id}`,
-      },
-    }),
+    build: (p) => {
+      const name = projectName(p.id);
+      return {
+        title: `${name} — Anoneurx Open Source Project`,
+        description: `README, activity, maintainers and releases for ${name}, an Anoneurx open source project.`,
+        jsonLd: {
+          "@context": "https://schema.org",
+          "@type": "SoftwareSourceCode",
+          name,
+          url: `${SITE}/opensource/${p.id}`,
+          codeRepository: `${SITE}/opensource/repos/${p.id}`,
+        },
+      };
+    },
+  },
+  {
+    pattern: "/opensource/:id/:subPage",
+    build: (p) => {
+      const name = projectName(p.id);
+      const sub = SUBPAGE_META[p.subPage as string] ?? SUBPAGE_META.features;
+      return {
+        title: `${sub.title} — ${name}`,
+        description: `${sub.description} for ${name}, an Anoneurx open source project.`,
+        jsonLd: [
+          BREADCRUMB([
+            { name: "Open Source", item: "/opensource" },
+            { name, item: `/opensource/${p.id}` },
+            { name: sub.title, item: `/opensource/${p.id}/${p.subPage}` },
+          ]),
+        ],
+      };
+    },
   },
   {
     pattern: "/opensource/repos/:id",
@@ -646,14 +738,14 @@ const RouteSEO = () => {
 
   const exact = map[pathname];
   if (exact) {
-    return <SEO title={exact.title} description={exact.description} path={pathname} type={exact.type} jsonLd={exact.jsonLd} noindex={noindex || exact.noindex} keywords={exact.keywords} />;
+    return <SEO title={exact.title} description={exact.description} path={pathname} type={exact.type} jsonLd={exact.jsonLd} noindex={noindex || exact.noindex} />;
   }
 
   for (const p of patterns) {
     const match = matchPath(p.pattern, pathname);
     if (match) {
       const entry = p.build(match.params as Record<string, string | undefined>);
-      return <SEO title={entry.title} description={entry.description} path={entry.canonicalPath ?? pathname} type={entry.type} jsonLd={entry.jsonLd} noindex={noindex || entry.noindex} keywords={entry.keywords} />;
+      return <SEO title={entry.title} description={entry.description} path={entry.canonicalPath ?? pathname} type={entry.type} jsonLd={entry.jsonLd} noindex={noindex || entry.noindex} />;
 
     }
   }

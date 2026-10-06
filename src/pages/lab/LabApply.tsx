@@ -20,7 +20,6 @@ const LabApply = () => {
         title="Join the Lab"
         description="Apply to join Anoneurx Lab. Choose a research problem, submit your application, and work with a team to conduct research and build real technology."
         path="/lab/apply"
-        keywords="join research lab, apply research, student research application, research opportunities, how to join anoneurx lab, participate in research, research mentorship"
       />
       <div className="mx-auto max-w-4xl">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>

@@ -9,7 +9,6 @@ const LabAreas = () => {
         title="Research Areas"
         description="Research domains at Anoneurx Lab — AI & machine learning, cybersecurity, robotics, autonomous systems, systems & OS, data science, IoT & edge, AI safety, and more."
         path="/lab/areas"
-        keywords="research areas, ai machine learning, cybersecurity research, robotics research, autonomous systems, operating systems research, data science, iot edge computing, human computer interaction, ai safety, frontier research"
       />
       <div className="mx-auto max-w-7xl">
         <div className="mb-10">

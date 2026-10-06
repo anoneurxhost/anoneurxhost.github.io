@@ -13,13 +13,6 @@ export const NexoraBackground = () => (
 );
 
 const NexoraLayout = ({ children }: { children: ReactNode }) => {
-  useEffect(() => {
-    document.title = "ANONEURX | Nexora";
-    return () => {
-      document.title = "ANONEURX |";
-    };
-  }, []);
-
   return (
     <PageTransition>
       <div className="relative min-h-screen text-white overflow-hidden flex flex-col">

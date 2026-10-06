@@ -1,5 +1,7 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
+import { useLocation } from "react-router-dom";
 import PageTransition from "@/components/PageTransition";
+import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 
 interface AppsLayoutProps {
@@ -8,16 +10,11 @@ interface AppsLayoutProps {
 }
 
 const AppsLayout = ({ children, title = "Anoneurx Apps" }: AppsLayoutProps) => {
-  useEffect(() => {
-    const cleanTitle = title.replace(/^(ANONEURX|Anoneurx)\s*/i, "");
-    document.title = cleanTitle ? `ANONEURX | ${cleanTitle}` : "ANONEURX |";
-    return () => {
-      document.title = "ANONEURX |";
-    };
-  }, [title]);
+  const { pathname } = useLocation();
 
   return (
     <PageTransition>
+      <SEO title={title} path={pathname} />
       <div className="relative min-h-screen flex flex-col">
         <motion.main
           initial={{ opacity: 0, y: 10 }}

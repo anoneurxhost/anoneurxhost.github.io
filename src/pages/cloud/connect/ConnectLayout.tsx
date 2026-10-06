@@ -11,13 +11,6 @@ const ConnectLayout = () => {
   // Flip Tailwind's `.dark` variant to match the OS (tokens switch on their own).
   useSystemTheme();
 
-  useEffect(() => {
-    document.title = "ANONEURX | Black Wall Cloud Connect";
-    return () => {
-      document.title = "ANONEURX |";
-    };
-  }, []);
-
   return (
     <div className="h-screen w-screen overflow-hidden bg-[var(--cc-bg)] text-[var(--cc-text)] flex selection:bg-cyan-500/30 selection:text-cyan-950 dark:selection:text-cyan-50">
       <ConnectSidebar />

@@ -2,13 +2,6 @@ import { ReactNode, useEffect } from "react";
 import PageTransition from "@/components/PageTransition";
 
 const CloudLayout = ({ children }: { children: ReactNode }) => {
-  useEffect(() => {
-    document.title = "ANONEURX | Cloud";
-    return () => {
-      document.title = "ANONEURX |";
-    };
-  }, []);
-
   return (
     <PageTransition>
       <div className="relative min-h-screen text-white flex flex-col">

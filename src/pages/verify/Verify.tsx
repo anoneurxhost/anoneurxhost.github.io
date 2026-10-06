@@ -154,7 +154,6 @@ const Verify: React.FC = () => {
         title="Verify Anoneurx Credentials"
         description="Verify Anoneurx intern, hackathon, and university credentials instantly. Confirm internship certificates, hackathon awards, and academic records using an ID or email address."
         path="/verify"
-        keywords="anoneurx verify, verify intern, verify hackathon certificate, verify university record, anoneurx credential verification, intern id lookup, hackathon verification, university transcript check"
         jsonLd={[
           {
             "@context": "https://schema.org",

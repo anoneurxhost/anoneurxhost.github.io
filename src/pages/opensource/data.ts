@@ -1,6 +1,7 @@
 // Static seed data for the Open Source module.
 import blackwallIcon from "@/assets/appicons/blackwall.png";
 import authenticatorIcon from "@/assets/appicons/authenticator.png";
+import lynxIcon from "@/assets/appicons/lynx.png";
 
 export type Project = { id: string; name: string; description: string; language: string; stars: number; tags: string[]; image?: string };
 export type Org = { id: string; name: string; description: string; members: number; projects: number };
@@ -19,58 +20,59 @@ export type Contributor = { id: string; name: string; commits: number; role: str
 export type Showcase = { id: string; name: string; author: string; description: string; project: string };
 
 export const projects: Project[] = [
-  { id: "blackwall", name: "Blackwall OS", description: "Privacy-first operating system with hardened kernel and secure enclaves.", language: "C / Rust", stars: 9800, tags: ["os", "security"], image: blackwallIcon },
+  { id: "blackwall", name: "Black Wall OS", description: "Privacy-first operating system with hardened kernel and secure enclaves.", language: "C / Rust", stars: 9800, tags: ["os", "security"], image: blackwallIcon },
   { id: "authenticator", name: "Authenticator", description: "Privacy-focused 2FA & Passkey authenticator with native biometric lock, encrypted backup, and zero-knowledge security.", language: "TypeScript / React", stars: 11400, tags: ["auth", "security", "biometrics", "2fa"], image: authenticatorIcon },
+  { id: "lynx", name: "LYNX", description: "An independent, privacy-focused web search engine — no query logs, explainable ranking, and crawler ethics as a structural constraint.", language: "Rust / TypeScript", stars: 0, tags: ["search", "privacy", "crawler", "agpl"], image: lynxIcon },
 ];
 
 export const organizations: Org[] = [
   { id: "anoneurx-labs", name: "Anoneurx Labs", description: "Core research and systems group.", members: 84, projects: 2 },
-  { id: "blackwall-collective", name: "Blackwall Collective", description: "Contributors advancing OS security.", members: 56, projects: 1 },
+  { id: "blackwall-collective", name: "Black Wall Collective", description: "Contributors advancing OS security.", members: 56, projects: 1 },
 ];
 
 export const libraries: Library[] = [
-  { id: "blackwall-syscalls", name: "blackwall-syscalls", description: "Safe bindings to the Blackwall syscall surface.", language: "C", downloads: "220K" },
+  { id: "blackwall-syscalls", name: "blackwall-syscalls", description: "Safe bindings to the Black Wall syscall surface.", language: "C", downloads: "220K" },
 ];
 
 export const packages: Pkg[] = [
-  { id: "cargo-blackwall", name: "blackwall-sys", registry: "cargo", version: "0.4.0", description: "Blackwall syscall bindings." },
+  { id: "cargo-blackwall", name: "blackwall-sys", registry: "cargo", version: "0.4.0", description: "Black Wall syscall bindings." },
 ];
 
 export const templates: Template[] = [
-  { id: "blackwall-service", name: "Blackwall Service", stack: "C / Rust", description: "System service template with sandboxing." },
+  { id: "blackwall-service", name: "Black Wall Service", stack: "C / Rust", description: "System service template with sandboxing." },
 ];
 
 export const extensions: Extension[] = [
-  { id: "blackwall-syscalls-ext", name: "Blackwall Syscalls", description: "Reference for Blackwall syscalls and errno.", installs: "34K" },
+  { id: "blackwall-syscalls-ext", name: "Black Wall Syscalls", description: "Reference for Black Wall syscalls and errno.", installs: "34K" },
 ];
 
 export const docs: Doc[] = [
-  { id: "blackwall-security", title: "Blackwall Security Model", category: "Systems", excerpt: "The threat model and enclave architecture." },
+  { id: "blackwall-security", title: "Black Wall Security Model", category: "Systems", excerpt: "The threat model and enclave architecture." },
 ];
 
 export const posts: Post[] = [
-  { id: "blackwall-audit", title: "Blackwall Audit Results", author: "Priya Rao", date: "2026-01-17", tags: ["security"], excerpt: "Findings from our third independent security audit." },
+  { id: "blackwall-audit", title: "Black Wall Audit Results", author: "Priya Rao", date: "2026-01-17", tags: ["security"], excerpt: "Findings from our third independent security audit." },
   { id: "authenticator-release", title: "Authenticator 1.0 Released", author: "Insha", date: "2026-08-31", tags: ["auth", "release"], excerpt: "Native biometric lock, multi-factor authenticator & encrypted backup export." },
 ];
 
 export const roadmaps: Roadmap[] = [
-  { id: "blackwall-q3", project: "Blackwall OS", quarter: "Q3 2026", items: ["Enclave attestation", "USB isolation", "New installer"] },
+  { id: "blackwall-q3", project: "Black Wall OS", quarter: "Q3 2026", items: ["Enclave attestation", "USB isolation", "New installer"] },
   { id: "authenticator-q3", project: "Authenticator", quarter: "Q3 2026", items: ["Native Passkeys WebAuthn", "Biometric Vault Lock v2", "Cloud Encrypted Sync"] },
 ];
 
 export const releases: Release[] = [
-  { id: "blackwall-0-8", project: "Blackwall OS", version: "0.8.0", date: "2026-03-22", notes: "New enclave attestation and hardened networking." },
+  { id: "blackwall-0-8", project: "Black Wall OS", version: "0.8.0", date: "2026-03-22", notes: "New enclave attestation and hardened networking." },
   { id: "authenticator-1-0", project: "Authenticator", version: "1.0.0", date: "2026-08-31", notes: "Native biometric lock, multi-factor authenticator & .aax backup export." },
 ];
 
 export const discussions: Discussion[] = [
-  { id: "d5", title: "Blackwall installer — hardware compatibility", author: "Priya Rao", replies: 23, category: "Support" },
+  { id: "d5", title: "Black Wall installer — hardware compatibility", author: "Priya Rao", replies: 23, category: "Support" },
   { id: "d6", title: "Authenticator native biometrics RFC", author: "Sofia Kim", replies: 45, category: "RFC" },
 ];
 
 export const events: Event[] = [
   { id: "e1", name: "AnoneurxConf 2026", date: "2026-09-18", type: "Hybrid", location: "Berlin + Online" },
-  { id: "e5", name: "Blackwall Security Workshop", date: "2026-10-02", type: "In-Person", location: "Zürich" },
+  { id: "e5", name: "Black Wall Security Workshop", date: "2026-10-02", type: "In-Person", location: "Zürich" },
   { id: "e6", name: "Authenticator Security Summit", date: "2026-11-14", type: "Virtual", location: "Online" },
 ];
 

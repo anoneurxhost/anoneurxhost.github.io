@@ -34,7 +34,6 @@ const BlackwallPerformance = () => (
               <div className="h-12 w-12 rounded-2xl bg-amber-500/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                 <m.icon className="h-6 w-6 text-amber-500" />
               </div>
-              <div className="text-3xl font-bold mb-1 tracking-tight">{m.value}</div>
               <div className="text-xs font-semibold text-amber-500 uppercase tracking-widest mb-3">{m.label}</div>
               <p className="text-xs text-slate-500 leading-relaxed">{m.desc}</p>
             </motion.div>

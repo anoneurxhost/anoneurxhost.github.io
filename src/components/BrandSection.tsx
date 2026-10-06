@@ -106,7 +106,7 @@ export const BrandSection = () => {
           <span className="text-xl font-bold tracking-tighter text-white font-brand">BLACK WALL</span>
         </Link>
         <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-4">
-          Blackwall is a system designed for privacy, speed, and deep integration with the Anoneurx ecosystem.
+          Black Wall is a system designed for privacy, speed, and deep integration with the Anoneurx ecosystem.
         </p>
         <SocialRow />
       </div>

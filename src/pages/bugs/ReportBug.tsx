@@ -34,7 +34,7 @@ const ReportBug = () => {
   };
 
   const productInfo = isBlackwall ? {
-    title: "Blackwall OS Intelligence",
+    title: "Black Wall OS Intelligence",
     description: "Provide system-level diagnostics for kernel-level bugs.",
     tips: [
       { icon: Code, text: "Include kernel panic logs or stack traces if available." },

@@ -39,7 +39,6 @@ const LabProblemDetail = () => {
         description={`${problem.description} — An open research problem at Anoneurx Lab (${problem.code}). Difficulty: ${problem.difficulty}. Status: ${problem.status}.`}
         path={`/lab/problems/${problem.id}`}
         type="article"
-        keywords={`anoneurx research, ${problem.code}, research problem, open research, ${problem.areas.join(", ")}, student research, ai research challenges, cybersecurity research, robotics research`}
       />
       <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-[1fr_240px]">
       <div className="min-w-0 rounded-2xl border border-white/5 bg-black/10 backdrop-blur-xl p-6 md:p-10">

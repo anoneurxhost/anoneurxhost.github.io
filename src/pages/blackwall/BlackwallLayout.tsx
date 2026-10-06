@@ -13,13 +13,6 @@ export const BlackwallBackground = () => (
 );
 
 const BlackwallLayout = ({ children }: { children: ReactNode }) => {
-  useEffect(() => {
-    document.title = "ANONEURX | Black Wall";
-    return () => {
-      document.title = "ANONEURX |";
-    };
-  }, []);
-
   return (
     <PageTransition>
       <div className="relative min-h-screen text-white overflow-hidden flex flex-col">

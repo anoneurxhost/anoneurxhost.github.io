@@ -1,7 +1,27 @@
 import { projects as fallbackProjects } from "./data";
 import { blackwallExtra } from "@/data/blackwallData";
 import { authenticatorExtra } from "@/data/authenticatorData";
+import { lynxExtra } from "@/data/lynxData";
 import { ProjectExtra } from "@/data/types";
+
+/** Per-project overrides for the derived detail view — status, licence and headline stats. */
+const OVERRIDES: Record<string, Partial<Record<"version" | "license" | "stats" | "downloads", unknown>>> = {
+  lynx: {
+    version: "v0.1.0 · design phase",
+    license: "AGPL-3.0-or-later",
+    stats: [
+      { label: "Threats Modelled", value: "35", subtext: "T01–T35, with residual risk", accentColor: "purple" },
+      { label: "Architecture Decisions", value: "21", subtext: "Numbered ADRs", accentColor: "cyan" },
+      { label: "Documented", value: "114K", subtext: "Words of design spec", accentColor: "emerald" },
+      { label: "Status", value: "Design", subtext: "Phase 0 in progress", accentColor: "amber" },
+    ],
+    downloads: [
+      { name: "anoneurx/lynx", size: "source", version: "main", target: "Rust + TypeScript", url: "https://github.com/anoneurx/lynx" },
+      { name: "specification.md", size: "docs", version: "v0.1", target: "Reference spec", url: "https://github.com/anoneurx/lynx/blob/main/docs/architecture/specification.md" },
+      { name: "PRIVACY.md", size: "docs", version: "v0.1", target: "Privacy commitments", url: "https://github.com/anoneurx/lynx/blob/main/PRIVACY.md" },
+    ],
+  },
+};
 
 /** Resolve a project slug into basic detail data + presentation extras. */
 export function resolveProject(
@@ -26,11 +46,16 @@ export function resolveProject(
     case "authenticator":
       extra = authenticatorExtra;
       break;
+    case "lynx":
+      extra = lynxExtra;
+      break;
     case "blackwall":
     default:
       extra = blackwallExtra;
       break;
   }
+
+  const override = OVERRIDES[key] ?? {};
 
   const project = {
     id: basic.id,
@@ -81,6 +106,7 @@ export function resolveProject(
       { name: `${basic.id}-latest.tar.gz`, size: "12 MB", version: "v1.0.0", target: "All Systems", url: `#download-${basic.id}` },
     ],
     bibtex: `@article{anoneurx2026${basic.id},\n  title={${basic.name}: ${basic.description}},\n  author={Anoneurx Maintainers},\n  year={2026},\n  url={https://opensource.anoneurx.com/project/${basic.id}}\n}`,
+    ...override,
   };
 
   return { project, extra };

@@ -58,7 +58,7 @@ function AnimatedSection({ children, className = "" }: { children: React.ReactNo
 
 export const AuthenticatorPrivacy: React.FC = () => {
   const [activeSection, setActiveSection] = useState("sec-1");
-  const sectionRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+  const sectionRefs = useRef<Map<string, HTMLElement>>(new Map());
 
   const sections = [
     { id: "sec-1", num: "01", title: "Introduction", icon: <Info className="h-4 w-4" /> },
@@ -94,7 +94,7 @@ export const AuthenticatorPrivacy: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const registerRef = (id: string, el: HTMLDivElement | null) => {
+  const registerRef = (id: string, el: HTMLElement | null) => {
     if (el) sectionRefs.current.set(id, el);
   };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, CheckCircle2, CircleDashed, Clock, Download, HelpCircle, Lock, ShieldCheck } from "lucide-react";
+import { ArrowLeft, CheckCircle2, CircleDashed, Clock, Download, HelpCircle, Heart, Lock, ShieldCheck, Users } from "lucide-react";
 import ProjectShell from "@/components/project/ProjectShell";
 import ContentSidebar, { TocItem } from "@/components/project/ContentSidebar";
 import PeopleGrid from "@/components/project/PeopleGrid";
@@ -106,10 +106,11 @@ const ProjectSubPage: React.FC = () => {
   if (kind === "roadmap") toc = extra.roadmap.map((r) => ({ id: slug(r.quarter), label: r.quarter }));
   if (kind === "faq") toc = extra.faq.map((f) => ({ id: slug(f.q), label: f.q }));
   if (kind === "contributors")
-    return [
-      { id: "sponsors", label: "Sponsors" },
+    toc = [
+      ...(extra.sponsors && extra.sponsors.length > 0 ? [{ id: "sponsors", label: "Sponsors" }] : []),
       { id: "contributors", label: "Contributors" },
       { id: "testers", label: "Testers & QA" },
+      { id: "join", label: "Ways to help" },
     ];
   if (kind === "download")
     toc = [
@@ -308,11 +309,52 @@ sha256sum -c ${project.id}-release.sha256`}</pre>
               )}
               <Card id="contributors">
                 <h2 className="mb-4 text-lg font-semibold text-white">Contributors</h2>
-                <PeopleGrid people={extra.contributors} />
+                {extra.contributors.length > 0 ? (
+                  <PeopleGrid people={extra.contributors} />
+                ) : (
+                  <p className="text-sm text-slate-400">No contributions have landed yet — this project is looking for its first.</p>
+                )}
               </Card>
               <Card id="testers">
                 <h2 className="mb-4 text-lg font-semibold text-white">Testers &amp; QA</h2>
-                <PeopleGrid people={extra.testers} compact />
+                {extra.testers.length > 0 ? (
+                  <PeopleGrid people={extra.testers} compact />
+                ) : (
+                  <p className="text-sm text-slate-400">
+                    No dedicated test team yet. Hardware, accessibility and regression coverage is currently unstaffed — see
+                    ways to help below.
+                  </p>
+                )}
+              </Card>
+              <Card id="join">
+                <h2 className="mb-2 text-lg font-semibold text-white">Ways to help</h2>
+                <p className="mb-5 text-sm leading-relaxed text-slate-400">
+                  This project is maintained in the open. Reviewing the design, attacking the threat model and testing
+                  the privacy claims are all as valuable as writing code — a reviewer who has never read the codebase
+                  is exactly the reviewer the design is written for.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    to="/opensource/contribute"
+                    className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-teal-500"
+                  >
+                    <Users className="h-4 w-4" /> Contribute
+                  </Link>
+                  <a
+                    href={`${project.githubUrl}/issues/new?template=security_report.md`}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white hover:bg-white/10"
+                  >
+                    <ShieldCheck className="h-4 w-4 text-emerald-300" /> Report a vulnerability
+                  </a>
+                  <Link
+                    to="/opensource/sponsors"
+                    className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white hover:bg-white/10"
+                  >
+                    <Heart className="h-4 w-4 text-rose-300" /> Sponsor the work
+                  </Link>
+                </div>
               </Card>
             </>
           )}

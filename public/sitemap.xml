@@ -120,6 +120,13 @@
   <url><loc>https://anoneurx.com/nexora/about</loc><changefreq>monthly</changefreq><lastmod>2026-09-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://anoneurx.com/nexora/faq</loc><changefreq>monthly</changefreq><lastmod>2026-09-16</lastmod><priority>0.5</priority></url>
   <url><loc>https://anoneurx.com/docs/nexora</loc><changefreq>monthly</changefreq><lastmod>2026-09-16</lastmod><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/docs</loc><changefreq>weekly</changefreq><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://anoneurx.com/docs/getting-started</loc><changefreq>monthly</changefreq><lastmod>2026-10-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/docs/api-reference</loc><changefreq>monthly</changefreq><lastmod>2026-10-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/docs/deployment</loc><changefreq>monthly</changefreq><lastmod>2026-10-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/docs/contributions</loc><changefreq>monthly</changefreq><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://anoneurx.com/docs/blackwall</loc><changefreq>monthly</changefreq><lastmod>2026-10-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://anoneurx.com/docs/atlas</loc><changefreq>monthly</changefreq><lastmod>2026-09-16</lastmod><priority>0.7</priority></url>
   <url><loc>https://anoneurx.com/nexora/changelog</loc><changefreq>weekly</changefreq><lastmod>2026-09-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://anoneurx.com/nexora/community</loc><changefreq>monthly</changefreq><lastmod>2026-09-16</lastmod><priority>0.5</priority></url>
   <url><loc>https://anoneurx.com/nexora/help</loc><changefreq>monthly</changefreq><lastmod>2026-09-16</lastmod><priority>0.5</priority></url>

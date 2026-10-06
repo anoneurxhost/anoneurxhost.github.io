@@ -25,6 +25,7 @@ export type ProjectExtra = {
     shots: { src: string; label: string; caption: string }[];
     requirements: string[];
   };
+  mobileScreenshots?: { src: string; label: string; caption: string }[];
   contributors: Person[];
   testers: Person[];
   sponsors?: Person[];
