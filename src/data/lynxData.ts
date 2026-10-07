@@ -4,6 +4,7 @@ import lynxLogo from "@/assets/appicons/lynx.png";
 export const lynxContributors: Person[] = [
   { name: "Muhammad Qasim", github: "itskashie", role: "Founder · Architecture", focus: "Search ranking & privacy model" },
   { name: "Nimrah Nabeel", github: "Nimrah-Nabeel", role: "Contributor", focus: "Search ranking & evaluation" },
+  { name: "Zainab Faisal", github: "zainabfaisal2105-dev", role: "Contributor", focus: "Search ranking & evaluation" },
 ];
 
 export const lynxTesters: Person[] = [
