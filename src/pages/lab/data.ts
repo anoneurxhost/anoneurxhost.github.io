@@ -448,6 +448,64 @@ export const problems: Problem[] = [
   },
 ];
 
+/** Curated problems kept out of the generated set so they are easy to spot and edit. */
+export const curatedProblems: Problem[] = [
+  {
+    id: "anxcsbwnn2",
+    code: "ANX-CS-002",
+    title: "Black Wall: Neural Network Self-Defending OS",
+    areas: ["Cybersecurity", "AI", "Systems"],
+    difficulty: "Expert",
+    status: "Open",
+    suitableFor: ["Systems", "AI", "Cybersecurity", "CS", "Embedded"],
+    teamSize: "3-5",
+    description: "Investigate whether the operating system itself can host neural network models that watch, model and defend the machine continuously — a self-defending OS in which learned defence models are a first-class part of the kernel and the security policy.",
+    whyItMatters: "Security tooling today sits on top of the OS and is blind to what happens below it. If the system could learn what its own kernel, processes and hardware behaviour look like when healthy, it could recognise an intrusion in progress rather than only the damage after it. Black Wall is the attempt to make the operating system defend itself.",
+    researchGap: "Where a learned defence model should live inside an operating system — user space, kernel space, or split across both — and how to run inference on kernel telemetry at syscall rates without adding unacceptable overhead remains largely open. Equally open is how such a model stays trustworthy when the very kernel it watches can be compromised.",
+    researchQuestions: [
+      "Where in the OS should a learned defence model live to see enough telemetry without hurting latency?",
+      "Can neural inference on syscall, scheduler and memory telemetry run at line rate on commodity hardware?",
+      "How does a self-defending OS detect that its own defence model has been tampered with?",
+      "What does a learned defence model add over classical kernel integrity and intrusion detection mechanisms?",
+    ],
+    technologies: ["Rust", "eBPF", "Linux Kernel", "ONNX Runtime", "TensorRT"],
+    skills: ["Operating Systems", "Machine Learning", "Systems Programming", "Cybersecurity"],
+    supervisor: "Muhammad Qasim",
+    deliverables: [
+      "Design and prototype of a learned defence layer inside an operating system",
+      "Overhead and detection benchmark against classical kernel security mechanisms",
+      "Research paper on the boundaries and trust model of a self-defending OS",
+    ],
+  },
+  {
+    id: "anxrne4k9z",
+    code: "ANX-RN-001",
+    title: "Adaptive Noise-Resilient Anomaly Detection for Drifting Sensor Streams",
+    areas: ["Data Science", "AI", "IoT"],
+    difficulty: "Intermediate",
+    status: "Open",
+    suitableFor: ["DS", "AI", "CS", "Embedded"],
+    teamSize: "2-3",
+    description: "Develop anomaly detection that keeps working when sensor streams drift, recalibrate and change noise characteristics over time, instead of assuming a fixed, stationary baseline.",
+    whyItMatters: "Real deployments drift: sensors degrade, environments change and calibration ages. A detector tuned on one week of data quietly fails the next, and a failing detector is worse than no detector because it is trusted. Adaptive detection keeps the system honest over its whole lifetime.",
+    researchGap: "Most anomaly detection methods assume a stationary distribution. How to separate genuine concept drift from gradually worsening sensor noise — and update the model accordingly without absorbing anomalies into the baseline — is still an open modelling problem.",
+    researchQuestions: [
+      "How can a detector tell benign concept drift apart from a genuine anomaly in progress?",
+      "What update rule keeps false positives stable as noise characteristics change over months?",
+      "How much historical data must be retained to stay robust without unbounded growth?",
+      "How do adaptive detectors compare with static baselines on long-horizon deployment data?",
+    ],
+    technologies: ["Python", "scikit-learn", "PyTorch", "InfluxDB", "Grafana"],
+    skills: ["Machine Learning", "Time-Series Analysis", "Data Engineering", "Statistics"],
+    supervisor: "Muhammad Qasim",
+    deliverables: [
+      "Adaptive detection framework for drifting sensor streams",
+      "Open drift and noise benchmark with public evaluation harness",
+      "Research paper on separating concept drift from sensor degradation",
+    ],
+  },
+];
+
 export const legacyProblemIds: Record<string, string> = {
   "anx-rp-001": "anxrp001",
   "anx-rp-002": "anxrp002",
@@ -463,6 +521,8 @@ export const legacyProblemIds: Record<string, string> = {
   anxbwR6ZQM: "anxbwr6zqm",
   anxroK3FWT: "anxrok3fwt",
   anxcsV9LXP: "anxcsv9lxp",
+  ANXCSBWN2: "anxcsbwnn2",
+  ANXRNE4K9Z: "anxrne4k9z",
 };
 
 export const researchPapers: ResearchPaper[] = [
@@ -664,3 +724,9 @@ export const guideSections = [
     content: "Aim for workshops and conferences in your field. We support submission to arXiv for preprints. The Lab can provide feedback on manuscripts and help with submission logistics.",
   },
 ];
+
+for (const problem of curatedProblems) {
+  if (!problems.some((existing) => existing.id === problem.id)) {
+    problems.push(problem);
+  }
+}

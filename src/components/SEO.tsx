@@ -70,14 +70,14 @@ const composeTitle = (title: string | undefined, path: string, override?: string
   const section = findSeoSection(path);
   const isRoot = !section || isSectionRoot(path, section);
 
-  if (!title) return override ? `${BRAND} | ${override}` : BRAND;
+  if (!title) return override ? override : BRAND;
 
   const label = cleanPageLabel(title, section?.words ?? [], !isRoot);
   if (!label) return BRAND;
 
   if (override) return `${override} | ${label}`;
   if (section && !isRoot) return `${section.label.toUpperCase()} | ${label}`;
-  return `${BRAND} | ${label}`;
+  return label;
 };
 
 /**

@@ -72,8 +72,11 @@ const PublicLayout = () => {
     || location.pathname.startsWith('/opensource/authenticator/')
     || location.pathname === '/opensource/lynx'
     || location.pathname.startsWith('/opensource/lynx/');
-  const isLabProblemDetail = location.pathname.startsWith('/lab/problems/') && location.pathname !== '/lab/problems';
-  const hideNavAndFooter = isAuthPage || isPaymentPage || isProfilePage || isVerifyPage || isProjectDetail || isLabProblemDetail;
+  // The whole /lab section renders its own navigation and footer. Paths are
+  // compared without the trailing slash because the site serves "/lab/".
+  const labPath = location.pathname.replace(/\/+$/, '') || '/';
+  const isLabSection = labPath === '/lab' || labPath.startsWith('/lab/');
+  const hideNavAndFooter = isAuthPage || isPaymentPage || isProfilePage || isVerifyPage || isProjectDetail || isLabSection;
 
   return (
     <div className="min-h-screen relative">

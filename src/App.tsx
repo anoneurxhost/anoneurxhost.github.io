@@ -320,14 +320,16 @@ const LabLayout = React.lazy(() => import('./pages/lab/LabLayout'));
 const LabHome = React.lazy(() => import('./pages/lab/LabHome'));
 const LabProblems = React.lazy(() => import('./pages/lab/LabProblems'));
 const LabProblemDetail = React.lazy(() => import('./pages/lab/LabProblemDetail'));
-const LabResearch = React.lazy(() => import('./pages/lab/LabResearch'));
 const LabProjects = React.lazy(() => import('./pages/lab/LabProjects'));
-const LabPeople = React.lazy(() => import('./pages/lab/LabPeople'));
+const LabProjectDetail = React.lazy(() => import('./pages/lab/LabProjectDetail'));
 const LabAreas = React.lazy(() => import('./pages/lab/LabAreas'));
 const LabAbout = React.lazy(() => import('./pages/lab/LabAbout'));
 const LabApply = React.lazy(() => import('./pages/lab/LabApply'));
+const LabPeople = React.lazy(() => import('./pages/lab/LabPeople'));
 const LabGuide = React.lazy(() => import('./pages/lab/LabGuide'));
 const LabFaq = React.lazy(() => import('./pages/lab/LabFaq'));
+const LabPolicies = React.lazy(() => import('./pages/lab/LabPolicies'));
+const LabPolicy = React.lazy(() => import('./pages/lab/LabPolicy'));
 
 
 const CourseDetail = React.lazy(() => import('./pages/courses/CourseDetail'));
@@ -724,14 +726,21 @@ function App() {
                   <Route index element={<LabHome />} />
                   <Route path="problems" element={<LabProblems />} />
                   <Route path="problems/:id" element={<LabProblemRoute />} />
-                  <Route path="research" element={<LabResearch />} />
                   <Route path="projects" element={<LabProjects />} />
-                  <Route path="people" element={<LabPeople />} />
+                  <Route path="projects/:slug" element={<LabProjectDetail />} />
                   <Route path="areas" element={<LabAreas />} />
+                  <Route path="people" element={<LabPeople />} />
                   <Route path="about" element={<LabAbout />} />
                   <Route path="apply" element={<LabApply />} />
                   <Route path="guide" element={<LabGuide />} />
                   <Route path="faq" element={<LabFaq />} />
+                  <Route path="policies" element={<LabPolicies />} />
+                  <Route path="privacy" element={<LabPolicy slug="privacy" />} />
+                  <Route path="cookies" element={<LabPolicy slug="cookies" />} />
+                  <Route path="terms" element={<LabPolicy slug="terms" />} />
+                  <Route path="accessibility" element={<LabPolicy slug="accessibility" />} />
+                  <Route path="ethics" element={<LabPolicy slug="ethics" />} />
+                  <Route path="security" element={<LabPolicy slug="security" />} />
                 </Route>
               </Route>
 

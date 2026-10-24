@@ -73,9 +73,7 @@ const Navigation = () => {
   ] : isLab ? [
     { name: "Home", path: "/lab" },
     { name: "Problems", path: "/lab/problems" },
-    { name: "Research", path: "/lab/research" },
     { name: "Projects", path: "/lab/projects" },
-    { name: "People", path: "/lab/people" },
     { name: "About", path: "/lab/about" },
   ] : isUniversity ? [
     { name: "University", path: "/university" },

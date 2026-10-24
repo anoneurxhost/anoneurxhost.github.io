@@ -88,7 +88,7 @@ const formatTitle = (t, pathname = "/") => {
 const routes = [
   {
     path: "/",
-    title: "Anoneurx — Black Wall OS, Nexora, Anoneurx Cloud & Open Source",
+    title: "Anoneurx",
     description: "Anoneurx builds Black Wall OS, the Nexora browser, Anoneurx Cloud, Anoneurx Pay and the ASTRA research lab, and maintains open source developer tools and published research.",
     jsonLd: [
       {
@@ -1025,19 +1025,9 @@ const routes = [
     description: "Browse open research problems at Anoneurx Lab. Filter by area, difficulty and status.",
   },
   {
-    path: "/lab/research",
-    title: "Research — Anoneurx Lab",
-    description: "Research papers, publications and ongoing experiments from Anoneurx Lab.",
-  },
-  {
     path: "/lab/projects",
     title: "Projects — Anoneurx Lab",
     description: "Active and prototype projects at Anoneurx Lab.",
-  },
-  {
-    path: "/lab/people",
-    title: "People — Anoneurx Lab",
-    description: "Researchers, contributors and leads at Anoneurx Lab.",
   },
   {
     path: "/lab/areas",
@@ -1055,6 +1045,31 @@ const routes = [
     description: "Apply to join Anoneurx Lab as a student researcher.",
   },
   {
+    path: "/lab/people",
+    title: "People — Anoneurx Lab",
+    description: "Researchers, contributors and leads at Anoneurx Lab.",
+  },
+  {
+    path: "/lab/policies",
+    title: "Policies & Legal — Anoneurx Lab",
+    description: "Anoneurx Lab governance: privacy, cookies, terms of use, accessibility, research ethics and security disclosure.",
+  },
+  {
+    path: "/lab/privacy",
+    title: "Privacy Policy — Anoneurx Lab",
+    description: "How Anoneurx Lab collects, uses, shares and protects personal information.",
+  },
+  {
+    path: "/lab/cookies",
+    title: "Cookie Policy — Anoneurx Lab",
+    description: "The cookies and browser storage used by the Anoneurx Lab website and how to control them.",
+  },
+  {
+    path: "/lab/terms",
+    title: "Terms of Use — Anoneurx Lab",
+    description: "Terms that apply when you use the Anoneurx Lab website and its research.",
+  },
+  {
     path: "/lab/guide",
     title: "Research Guide — Anoneurx Lab",
     description: "How to select problems, write papers and contribute to research at Anoneurx Lab.",
@@ -1063,6 +1078,21 @@ const routes = [
     path: "/lab/faq",
     title: "FAQ — Anoneurx Lab",
     description: "Frequently asked questions about Anoneurx Lab.",
+  },
+  {
+    path: "/lab/accessibility",
+    title: "Accessibility Statement — Anoneurx Lab",
+    description: "Anoneurx Lab accessibility commitments, WCAG 2.2 AA target, known limitations and feedback route.",
+  },
+  {
+    path: "/lab/ethics",
+    title: "Research Ethics & Integrity — Anoneurx Lab",
+    description: "The ethical and integrity standards applied to research at Anoneurx Lab.",
+  },
+  {
+    path: "/lab/security",
+    title: "Security & Responsible Disclosure — Anoneurx Lab",
+    description: "How to report a vulnerability in Anoneurx Lab systems, scope and safe harbour.",
   },
   {
     path: "/lab/problems/anxrp001",
@@ -1133,6 +1163,32 @@ const routes = [
     path: "/lab/problems/anxcsv9lxp",
     title: "Self-Learning Security Baseline — Anoneurx Lab",
     description: "Investigate whether an autonomous system can learn its own operational security baseline instead of relying entirely on manually written security rules.",
+  },
+  {
+    path: "/lab/problems/anxcsbwnn2",
+    title: "Black Wall: Neural Network Self-Defending OS — Anoneurx Lab",
+    description: "Investigate whether the operating system itself can host neural network models that watch, model and defend the machine continuously, as a first-class part of the kernel and security policy.",
+  },
+  {
+    path: "/lab/problems/anxrne4k9z",
+    title: "Adaptive Noise-Resilient Anomaly Detection for Drifting Sensor Streams — Anoneurx Lab",
+    description: "Develop anomaly detection that keeps working when sensor streams drift, recalibrate and change noise characteristics, instead of assuming a fixed, stationary baseline.",
+  },
+
+  {
+    path: "/lab/projects/anx-sentinel",
+    title: "ANX Sentinel — Anoneurx Lab",
+    description: "Real-time anomaly detection library for autonomous vehicle CAN bus networks, written in Rust for deterministic performance.",
+  },
+  {
+    path: "/lab/projects/dp-flmed",
+    title: "DP-FLMed — Anoneurx Lab",
+    description: "Federated learning framework with differential privacy guarantees for medical imaging, built on Flower with formal privacy accounting.",
+  },
+  {
+    path: "/lab/projects/edgelang",
+    title: "EdgeLang — Anoneurx Lab",
+    description: "A domain-specific language for programming quantized neural networks on microcontrollers, compiling to TFLite and ONNX.",
   },
   {
     path: "/blacklink",
@@ -1326,9 +1382,36 @@ for (const route of routes) {
   <meta name="twitter:description" content="${description}" />
   <meta name="twitter:image" content="${ogImageUrl}" />
 
+  <meta name="theme-color" content="#0A0A0B" id="theme-color" />
+
+  <!-- Runs before first paint: flags that JavaScript is available (used by the
+       lab reveal animations) and applies a remembered lab theme without a flash. -->
+  <script>
+    (function () {
+      try {
+        var root = document.documentElement;
+        root.classList.add("js");
+
+        var stored = null;
+        try { stored = window.localStorage.getItem("anoneurx-lab-theme"); } catch (e) {}
+        if (stored !== "light" && stored !== "dark") { stored = null; }
+
+        var systemDark = !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        var path = window.location.pathname;
+
+        if (path === "/lab" || path.indexOf("/lab/") === 0) {
+          if (stored) { root.setAttribute("data-theme", stored); }
+          var theme = stored || (systemDark ? "dark" : "light");
+          var meta = document.getElementById("theme-color");
+          if (meta) { meta.setAttribute("content", theme === "light" ? "#FAFAFA" : "#0A0A0B"); }
+        }
+      } catch (e) {}
+    })();
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="icon" type="image/png" href="/assets/logo.png" />
 

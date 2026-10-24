@@ -1,44 +1,94 @@
-import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import {
+  AlertTriangle,
+  ArrowRight,
+  Bot,
+  Brain,
+  Cpu,
+  Database,
+  Server,
+  Shield,
+  Wifi,
+  type LucideIcon,
+} from "lucide-react";
 import SEO from "@/components/SEO";
-import { researchAreas } from "./data";
+import LabPageHead from "@/components/lab/LabPageHead";
+import LabShell from "@/components/lab/LabShell";
+import Reveal from "@/components/lab/Reveal";
+import { problems, researchAreas } from "./data";
+
+const AREA_ICONS: Record<string, LucideIcon> = {
+  Brain,
+  Shield,
+  Bot,
+  Cpu,
+  Server,
+  Database,
+  Wifi,
+  AlertTriangle,
+};
+
+/** Problem records use shorter area names than the area cards, so the
+ *  mapping is explicit: each card counts the problems filed under its name. */
+const AREA_COVERAGE: Record<string, string[]> = {
+  "ai-ml": ["AI"],
+  cybersecurity: ["Cybersecurity"],
+  robotics: ["Robotics"],
+  "autonomous-systems": ["Autonomous Systems"],
+  "systems-os": ["Systems"],
+  "data-science": ["Data Science"],
+  "iot-edge": ["IoT"],
+  "ai-safety": ["AI Safety"],
+};
 
 const LabAreas = () => {
+  const countForArea = (areaId: string) =>
+    problems.filter((problem) =>
+      problem.areas.some((item) => (AREA_COVERAGE[areaId] ?? []).includes(item)),
+    ).length;
+
   return (
-    <div className="min-h-screen px-4 py-14 md:py-20">
+    <LabShell>
       <SEO
         title="Research Areas"
         description="Research domains at Anoneurx Lab — AI & machine learning, cybersecurity, robotics, autonomous systems, systems & OS, data science, IoT & edge, AI safety, and more."
         path="/lab/areas"
       />
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-10">
-          <span className="text-[10px] uppercase tracking-[0.3em] text-emerald-400 font-bold">Research Domains</span>
-          <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Research Areas</h1>
-          <p className="mt-2 text-gray-500 text-sm max-w-2xl">
-            Explore the domains where Anoneurx Lab is pushing the boundaries of knowledge.
-          </p>
-        </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {researchAreas.map((area, i) => (
-            <motion.div
-              key={area.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="p-6 rounded-xl bg-black/10 backdrop-blur-xl border border-white/5 hover:border-emerald-500/30 transition-all group"
-            >
-              <h3 className="text-lg font-bold mb-2 group-hover:text-emerald-400 transition-colors">{area.name}</h3>
-              <p className="text-gray-400 text-xs mb-4 leading-relaxed">{area.description}</p>
-              <div className="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">
-                {area.problemCount} open problem{area.problemCount !== 1 ? "s" : ""}
-              </div>
-            </motion.div>
-          ))}
+      <section className="lab-section lab-page">
+        <div className="lab-container">
+          <LabPageHead
+            eyebrow="Research domains"
+            title="Research areas"
+            lead="Problems are filed under the area they belong to, but the datasets, evaluation harnesses and model checkpoints are shared across all of them."
+            back={{ to: "/lab", label: "Research lab" }}
+          />
+
+          <div className="lab-grid-4">
+            {researchAreas.map((area, index) => {
+              const Icon = AREA_ICONS[area.icon] ?? Brain;
+              const count = countForArea(area.id);
+              return (
+                <Reveal key={area.id} delay={index * 40}>
+                  <article className="lab-card lab-area-card" style={{ height: "100%" }}>
+                    <Icon className="lab-area-card__icon" aria-hidden="true" />
+                    <h2 className="lab-area-card__title">{area.name}</h2>
+                    <p className="lab-area-card__desc">{area.description}</p>
+                    <p className="lab-count">
+                      {count} open problem{count === 1 ? "" : "s"}
+                    </p>
+                    <Link className="lab-link-arrow" to="/lab/problems">
+                      Browse problems
+                      <ArrowRight className="lab-btn__icon" aria-hidden="true" />
+                    </Link>
+                  </article>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </LabShell>
   );
 };
 

@@ -31,7 +31,7 @@ export const Home: React.FC = () => {
   return (
     <PageTransition>
       <SEO
-        title="Anoneurx — Black Wall OS, Nexora, Anoneurx Cloud & Open Source"
+        title="Anoneurx"
         description="Anoneurx builds Black Wall OS, the Nexora browser, Anoneurx Cloud, Anoneurx Pay and the ASTRA research lab, and maintains open source developer tools and published research."
         path="/"
         jsonLd={jsonLdOrganization}

@@ -1,79 +1,75 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ExternalLink, GitBranch } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import SEO from "@/components/SEO";
+import LabPageHead from "@/components/lab/LabPageHead";
+import LabShell from "@/components/lab/LabShell";
+import Reveal from "@/components/lab/Reveal";
 import { labProjects } from "./data";
 
-const LabProjects = () => {
-  return (
-    <div className="min-h-screen px-4 py-14 md:py-20">
-      <SEO
-        title="Research Projects"
-        description="Anoneurx Lab research problems that evolved into real prototypes and products. From research to implementation to Anoneurx technology."
-        path="/lab/projects"
-      />
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-10">
-          <span className="text-[10px] uppercase tracking-[0.3em] text-emerald-400 font-bold">Projects</span>
-          <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Research → Prototype → Product</h1>
-          <p className="mt-2 text-gray-500 text-sm max-w-2xl">
-            Problems that have evolved into actual implementations. Anoneurx research becomes real technology.
-          </p>
-        </div>
+const pipeline = ["Problem", "Research", "Prototype", "Product"];
 
-        {/* Pipeline */}
-        <div className="mb-12 flex items-center justify-center gap-2 text-xs text-gray-500">
-          {["Problem", "Research", "Prototype", "Project", "Product"].map((step, i) => (
-            <div key={step} className="flex items-center gap-2">
-              <span className={`px-3 py-1.5 rounded-lg font-bold uppercase tracking-wider ${
-                i < 3 ? "bg-emerald-500/10 text-emerald-400" : "bg-white/5 text-gray-500"
-              }`}>
-                {step}
-              </span>
-              {i < 4 && <span className="text-gray-600">→</span>}
-            </div>
+const LabProjects = () => (
+  <LabShell>
+    <SEO
+      title="Research Projects"
+      description="Anoneurx Lab research problems that evolved into real prototypes and products. From research to implementation to Anoneurx technology."
+      path="/lab/projects"
+    />
+
+    <section className="lab-section lab-page">
+      <div className="lab-container">
+        <LabPageHead
+          eyebrow="Projects"
+          title="Research, prototype, product"
+          lead="Problems that have crossed from the problem board into running code. Each project keeps its link to the study that started it."
+          back={{ to: "/lab", label: "Research lab" }}
+        />
+
+        <ol className="lab-pipeline" aria-label="Project pipeline">
+          {pipeline.map((step, index) => (
+            <li className="lab-pipeline__step" key={step}>
+              <span className="lab-mono">{String(index + 1).padStart(2, "0")}</span>
+              {step}
+              {index < pipeline.length - 1 && (
+                <ArrowRight className="lab-btn__icon" aria-hidden="true" />
+              )}
+            </li>
           ))}
-        </div>
+        </ol>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {labProjects.map((project, i) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="p-6 rounded-xl bg-black/10 backdrop-blur-xl border border-white/5 hover:border-emerald-500/30 transition-all group"
-            >
-              <div className="flex items-center gap-2 mb-3">
-                <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
-                  project.status === "Active" ? "bg-emerald-500/10 text-emerald-400" :
-                  project.status === "Prototype" ? "bg-blue-500/10 text-blue-400" :
-                  "bg-gray-500/10 text-gray-400"
-                }`}>
-                  {project.status}
-                </span>
-                <span className="text-[10px] text-gray-500">{project.area}</span>
-              </div>
-              <h3 className="text-lg font-bold mb-2 group-hover:text-emerald-400 transition-colors">{project.title}</h3>
-              <p className="text-gray-400 text-xs mb-4 leading-relaxed">{project.description}</p>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1 text-[10px] text-gray-500">
-                  <GitBranch className="h-3 w-3" />
-                  {project.researchers.join(", ")}
+        <div className="lab-grid-3">
+          {labProjects.map((project, index) => (
+            <Reveal key={project.id} delay={index * 60}>
+              <article className="lab-card lab-feature-card" style={{ height: "100%" }}>
+                <div className="lab-mono-tags">
+                  <span>{project.area}</span>
+                  <span>{project.status}</span>
                 </div>
-                {project.problemId && (
-                  <Link to={`/lab/problems/${project.problemId}`} className="text-emerald-400 text-[10px] hover:underline flex items-center gap-1">
-                    View Problem <ExternalLink className="h-3 w-3" />
+                <h2 className="lab-feature-card__title">
+                  <Link to={`/lab/projects/${project.slug}`}>{project.title}</Link>
+                </h2>
+                <p className="lab-feature-card__outcome">{project.description}</p>
+                <p className="lab-muted" style={{ fontSize: "0.9rem" }}>
+                  {project.researchers.join(", ")}
+                </p>
+                <div className="lab-link-row">
+                  <Link className="lab-link-arrow" to={`/lab/projects/${project.slug}`}>
+                    View project
+                    <ArrowRight className="lab-btn__icon" aria-hidden="true" />
                   </Link>
-                )}
-              </div>
-            </motion.div>
+                  {project.problemId && (
+                    <Link className="lab-btn lab-btn--ghost lab-btn--sm" to={`/lab/problems/${project.problemId}`}>
+                      Related problem
+                    </Link>
+                  )}
+                </div>
+              </article>
+            </Reveal>
           ))}
         </div>
       </div>
-    </div>
-  );
-};
+    </section>
+  </LabShell>
+);
 
 export default LabProjects;

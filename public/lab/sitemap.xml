@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- ANONEURX LAB SITEMAP -->
-  <!-- Dynamic pages (problems/:id, research/:slug, projects/:slug, people/:username, areas/:slug)
+  <!-- Dynamic pages (problems/:id, research/:slug, projects/:slug, areas/:slug)
        are generated at runtime and should be added programmatically. They are intentionally
        not hardcoded here. -->
 
@@ -21,13 +21,6 @@
   <lastmod>2026-09-16</lastmod>
   </url>
 
-  <!-- RESEARCH -->
-  <url>
-    <loc>https://anoneurx.com/lab/research</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  <lastmod>2026-09-16</lastmod>
-  </url>
 
   <!-- PROJECTS -->
   <url>
@@ -42,7 +35,7 @@
     <loc>https://anoneurx.com/lab/people</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  <lastmod>2026-09-16</lastmod>
+  <lastmod>2026-10-23</lastmod>
   </url>
 
   <!-- RESEARCH AREAS -->

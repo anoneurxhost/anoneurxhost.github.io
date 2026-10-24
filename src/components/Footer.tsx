@@ -227,7 +227,6 @@ const Footer = () => {
         { name: "Open Problems", path: "/lab/problems" },
         { name: "Research Areas", path: "/lab/areas" },
         { name: "Projects", path: "/lab/projects" },
-        { name: "Papers", path: "/lab/research" },
       ]
     },
     {
@@ -236,7 +235,7 @@ const Footer = () => {
         { name: "Join the Lab", path: "/lab/apply" },
         { name: "Research Guide", path: "/lab/guide" },
         { name: "For Students", path: "/lab/apply" },
-        { name: "For Researchers", path: "/lab/people" },
+        { name: "For Researchers", path: "/lab/areas" },
         { name: "FAQ", path: "/lab/faq" },
       ]
     },

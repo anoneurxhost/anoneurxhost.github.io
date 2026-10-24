@@ -1,60 +1,79 @@
-import { motion } from "framer-motion";
-import { Users, GitCommit } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import SEO from "@/components/SEO";
+import LabPageHead from "@/components/lab/LabPageHead";
+import LabShell from "@/components/lab/LabShell";
+import Reveal from "@/components/lab/Reveal";
 import { researchers } from "./data";
 
-const LabPeople = () => {
-  return (
-    <div className="min-h-screen px-4 py-14 md:py-20">
-      <SEO
-        title="Researchers"
-        description="Student researchers and research leads at Anoneurx Lab working on AI, systems, cybersecurity, and robotics research."
-        path="/lab/people"
-      />
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-10">
-          <span className="text-[10px] uppercase tracking-[0.3em] text-emerald-400 font-bold">Team</span>
-          <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Researchers</h1>
-          <p className="mt-2 text-gray-500 text-sm max-w-2xl">
-            Students and research leads contributing to Anoneurx Lab.
-          </p>
-        </div>
+const initials = (name: string) =>
+  name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase())
+    .join("");
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {researchers.map((person, i) => (
-            <motion.div
-              key={person.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="p-6 rounded-xl bg-black/10 backdrop-blur-xl border border-white/5 hover:border-emerald-500/30 transition-all group"
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="h-12 w-12 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-                  <Users className="h-5 w-5 text-emerald-400" />
+const LabPeople = () => (
+  <LabShell>
+    <SEO
+      title="People"
+      description="Researchers, student researchers and contributors at Anoneurx Lab — the people behind the lab's open problems, projects and publications."
+      path="/lab/people"
+    />
+
+    <section className="lab-section lab-page">
+      <div className="lab-container">
+        <LabPageHead
+          eyebrow="People"
+          title="People"
+          lead="The lab is small on purpose: each problem has a named lead and a scoped team, so credit and responsibility are both explicit."
+          back={{ to: "/lab", label: "Research lab" }}
+        />
+
+        <div className="lab-grid-3">
+          {researchers.map((person, index) => (
+            <Reveal key={person.id} delay={index * 50}>
+              <article className="lab-card lab-person" style={{ height: "100%" }}>
+                <div className="lab-person__head">
+                  <span className="lab-person__avatar" aria-hidden="true">
+                    {initials(person.name)}
+                  </span>
+                  <div>
+                    <h2 className="lab-person__name">{person.name}</h2>
+                    <p className="lab-person__role">{person.role}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-sm font-bold">{person.name}</h3>
-                  <p className="text-emerald-400/80 text-[10px] font-bold uppercase tracking-wider">{person.role}</p>
+                <p className="lab-person__bio">{person.bio}</p>
+                <div className="lab-mono-tags">
+                  {person.areas.map((area) => (
+                    <span key={area}>{area}</span>
+                  ))}
                 </div>
-              </div>
-              <p className="text-gray-400 text-xs mb-4 leading-relaxed">{person.bio}</p>
-              <div className="flex flex-wrap gap-1.5 mb-3">
-                {person.areas.map((area) => (
-                  <span key={area} className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 text-gray-400">{area}</span>
-                ))}
-              </div>
-              <div className="flex items-center gap-1.5 text-[10px] text-gray-500">
-                <GitCommit className="h-3 w-3" />
-                {person.contributions} contributions
-              </div>
-            </motion.div>
+                <p className="lab-mono lab-muted" style={{ fontSize: "0.75rem" }}>
+                  {person.contributions} contribution{person.contributions === 1 ? "" : "s"}
+                </p>
+              </article>
+            </Reveal>
           ))}
         </div>
+
+        <div className="lab-detail__cta">
+          <h2>Work with the lab</h2>
+          <p>Placements are scoped to a single problem with a named supervisor and a deliverable.</p>
+          <div className="lab-hero__actions" style={{ justifyContent: "center" }}>
+            <Link className="lab-btn lab-btn--primary" to="/lab/apply">
+              Apply to the lab
+              <ArrowRight className="lab-btn__icon" aria-hidden="true" />
+            </Link>
+            <Link className="lab-btn lab-btn--ghost" to="/lab/problems">
+              Browse problems
+            </Link>
+          </div>
+        </div>
       </div>
-    </div>
-  );
-};
+    </section>
+  </LabShell>
+);
 
 export default LabPeople;
