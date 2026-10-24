@@ -1,6 +1,8 @@
 import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import { resolve, dirname } from "path";
+import { spawn } from "child_process";
 import { fileURLToPath } from "url";
+import { chromium } from "playwright";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const dist = resolve(__dirname, "../dist");
@@ -14,6 +16,8 @@ const jsPath = jsMatch ? jsMatch[1] : "/assets/index.js";
 const cssPath = cssMatch ? cssMatch[1] : "/assets/index.css";
 
 const SITE = "https://anoneurx.com";
+const PREVIEW_PORT = 4173;
+const PREVIEW_URL = `http://localhost:${PREVIEW_PORT}`;
 
 // Section registry, mirroring src/lib/seoSections.ts. Section landing pages keep
 // the brand prefix; pages inside a section are prefixed by the section instead:
@@ -42,7 +46,7 @@ const SEO_SECTIONS = [
   ["/docs", "Documentation", ["Documentation", "Docs"]],
   ["/apps", "Apps", ["Anoneurx Apps", "Apps"]],
   ["/blogs", "Blog", ["Anoneurx Blog", "Blog"]],
-  ["/pay", "Anoneurx Pay", ["Anoneurx Pay", "Pay"]],
+  ["/pay", "Anoneurx Pay", ["Pay"]],
   ["/lab", "Lab", ["Anoneurx Lab", "Lab"]],
   ["/notes", "Notes", ["Notes"]],
   ["/atlas", "ATLAS", ["ATLAS Language", "ATLAS"]],
@@ -329,8 +333,7 @@ const routes = [
   {
     path: "/docs/atlas",
     title: "ATLAS Documentation",
-    description:
-      "ATLAS compiler and GPU renderer documentation — toolchain setup, language reference and backend notes.",
+    description: "ATLAS compiler and GPU renderer documentation — toolchain setup, language reference and backend notes.",
   },
   {
     path: "/blogs/all",
@@ -1018,6 +1021,23 @@ const routes = [
     path: "/lab",
     title: "Anoneurx Research Lab",
     description: "Open research problems, projects and opportunities at Anoneurx Lab — AI, cybersecurity, robotics and systems research.",
+    ogImage: "/og-lab.png",
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "ResearchOrganization",
+        name: "Anoneurx Lab",
+        url: `${SITE}/lab`,
+        description:
+          "Anoneurx Lab publishes open research problems in AI, cybersecurity, robotics and systems, and supervises student teams working on them.",
+        parentOrganization: {
+          "@type": "Organization",
+          name: "Anoneurx",
+          url: SITE,
+        },
+        knowsAbout: ["Artificial intelligence", "Cybersecurity", "Robotics", "Systems"],
+      },
+    ],
   },
   {
     path: "/lab/problems",
@@ -1174,7 +1194,6 @@ const routes = [
     title: "Adaptive Noise-Resilient Anomaly Detection for Drifting Sensor Streams — Anoneurx Lab",
     description: "Develop anomaly detection that keeps working when sensor streams drift, recalibrate and change noise characteristics, instead of assuming a fixed, stationary baseline.",
   },
-
   {
     path: "/lab/projects/anx-sentinel",
     title: "ANX Sentinel — Anoneurx Lab",
@@ -1299,8 +1318,6 @@ for (const [legacyId, canonicalId] of Object.entries(legacyProblemAliases)) {
 }
 
 
-let count = 0;
-
 // `/opensource/:id` and `/opensource/:id/:subPage` are dynamic routes in the
 // SPA, but on static hosting they must exist as real files — otherwise GitHub
 // Pages answers 404 before the client router can pick them up.
@@ -1335,28 +1352,14 @@ for (const project of OPEN_SOURCE_PROJECTS) {
   }
 }
 
-for (const route of routes) {
-  const canonicalPath = route.canonicalPath || route.path;
-  const canonicalUrl = `${SITE}${canonicalPath === "/" ? "/" : canonicalPath}`;
-  const title = formatTitle(route.title, route.path);
-  const description = route.description;
-  const ogImageUrl = /^(https?:)?\/\//.test(route.ogImage || "")
-    ? route.ogImage
-    : `${SITE}${route.ogImage || "/og-default.png"}`;
-  const jsonLd = route.jsonLd || [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      name: title,
-      url: canonicalUrl,
-      description: description,
-      publisher: { "@type": "Organization", name: "Anoneurx", url: SITE },
-    },
-  ];
-
-  // data-rh="true" lets react-helmet-async replace these tags after hydration
-  // instead of appending duplicates (duplicate canonicals make Google ignore both).
-  const headContent = `
+/**
+ * Builds the head section with custom SEO tags. Adds light/dark theme-color
+ * (F-03) and uses the route's ogImage when supplied (F-02).
+ */
+const buildHead = (title, description, canonicalUrl, ogImageUrl, jsonLd) => {
+  const themeColorDark = "#0A0A0B";
+  const themeColorLight = "#FAFAFA";
+  return `
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -1382,7 +1385,10 @@ for (const route of routes) {
   <meta name="twitter:description" content="${description}" />
   <meta name="twitter:image" content="${ogImageUrl}" />
 
-  <meta name="theme-color" content="#0A0A0B" id="theme-color" />
+  <!-- Light/dark theme colors (F-03) -->
+  <meta name="theme-color" content="${themeColorLight}" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="${themeColorDark}" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
 
   <!-- Runs before first paint: flags that JavaScript is available (used by the
        lab reveal animations) and applies a remembered lab theme without a flash. -->
@@ -1403,7 +1409,7 @@ for (const route of routes) {
           if (stored) { root.setAttribute("data-theme", stored); }
           var theme = stored || (systemDark ? "dark" : "light");
           var meta = document.getElementById("theme-color");
-          if (meta) { meta.setAttribute("content", theme === "light" ? "#FAFAFA" : "#0A0A0B"); }
+          if (meta) { meta.setAttribute("content", theme === "light" ? "${themeColorLight}" : "${themeColorDark}"); }
         }
       } catch (e) {}
     })();
@@ -1411,7 +1417,7 @@ for (const route of routes) {
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="icon" type="image/png" href="/assets/logo.png" />
 
@@ -1434,23 +1440,89 @@ for (const route of routes) {
 
   <script type="module" crossorigin src="${jsPath}"></script>
   <link rel="stylesheet" crossorigin href="${cssPath}">`;
+};
 
-  const htmlResult = SRC.replace(/<head>[\s\S]*?<\/head>/, `<head>${headContent}\n</head>`);
+let count = 0;
 
-  if (route.path === "/") {
-    writeFileSync(resolve(dist, "index.html"), htmlResult, "utf-8");
-  } else {
-    const slug = route.path.slice(1);
-    // /about/index.html serves /about/ ; about.html makes /about itself a 200
-    // instead of a 301 to the trailing-slash URL (sitemap + canonical are slashless).
-    const outDir = resolve(dist, slug);
-    mkdirSync(outDir, { recursive: true });
-    writeFileSync(resolve(outDir, "index.html"), htmlResult, "utf-8");
-    mkdirSync(dirname(resolve(dist, `${slug}.html`)), { recursive: true });
-    writeFileSync(resolve(dist, `${slug}.html`), htmlResult, "utf-8");
+(async () => {
+  // 1. Build the app
+  console.log("▶ Building app for prerender...");
+  await new Promise((resolve, reject) => {
+    const build = spawn("npx", ["vite", "build"], { stdio: "inherit" });
+    build.on("close", (code) => (code === 0 ? resolve() : reject(new Error(`build exited ${code}`))));
+  });
+
+  // 2. Start the preview server so Playwright can fetch real routes
+  console.log("▶ Starting vite preview on port", PREVIEW_PORT);
+  const preview = spawn("npx", ["vite", "preview", "--port", String(PREVIEW_PORT), "--host"], {
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  preview.stdout.on("data", (d) => process.stdout.write(`[preview] ${d}`));
+  preview.stderr.on("data", (d) => process.stderr.write(`[preview] ${d}`));
+
+  // Wait for preview server to be ready
+  await new Promise((resolve) => setTimeout(resolve, 6000));
+
+  // 3. Launch Playwright and render each route
+  const browser = await chromium.launch({ args: ["--no-sandbox", "--disable-setuid-sandbox"] });
+
+  // Give React a moment to hydrate after navigation
+  const RENDER_WAIT_MS = 2000;
+
+  for (const route of routes) {
+    const canonicalPath = route.canonicalPath || route.path;
+    const canonicalUrl = `${SITE}${canonicalPath === "/" ? "/" : canonicalPath}`;
+    const title = formatTitle(route.title, route.path);
+    const description = route.description;
+    const ogImageUrl = /^(https?:)?\/\//.test(route.ogImage || "")
+      ? route.ogImage
+      : `${SITE}${route.ogImage || "/og-default.png"}`;
+    const jsonLd = route.jsonLd || [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: title,
+        url: canonicalUrl,
+        description: description,
+        publisher: { "@type": "Organization", name: "Anoneurx", url: SITE },
+      },
+    ];
+
+    // Render the route with Playwright to get real body content (fixes F-01)
+    // Each route gets its own page to avoid memory buildup / crashes.
+    let bodyHtml = '<div id="root"></div>';
+    const page = await browser.newPage();
+    try {
+      await page.goto(`${PREVIEW_URL}${route.path}`, { waitUntil: "networkidle", timeout: 30000 });
+      await new Promise((resolve) => setTimeout(resolve, RENDER_WAIT_MS));
+      bodyHtml = await page.evaluate(() => document.body.innerHTML);
+    } catch (err) {
+      console.warn(`  ! failed to render ${route.path}: ${err.message}`);
+    }
+    await page.close();
+
+    const headContent = buildHead(title, description, canonicalUrl, ogImageUrl, jsonLd);
+    const fullHtml = `<!DOCTYPE html>\n<html lang="en">\n<head>${headContent}\n</head>\n<body>${bodyHtml}</body>\n</html>`;
+
+    if (route.path === "/") {
+      writeFileSync(resolve(dist, "index.html"), fullHtml, "utf-8");
+    } else {
+      const slug = route.path.slice(1);
+      const outDir = resolve(dist, slug);
+      mkdirSync(outDir, { recursive: true });
+      writeFileSync(resolve(outDir, "index.html"), fullHtml, "utf-8");
+      mkdirSync(dirname(resolve(dist, `${slug}.html`)), { recursive: true });
+      writeFileSync(resolve(dist, `${slug}.html`), fullHtml, "utf-8");
+    }
+    count++;
+    if (count % 25 === 0) console.log(`  …${count} routes rendered`);
   }
-  count++;
-}
 
+  await browser.close();
+  preview.kill();
 
-console.log(`✓ Prerendered ${count} public routes for SEO & HTTP 200 OK indexability!`);
+  console.log(`✓ Prerendered ${count} public routes with server-rendered body content!`);
+})().catch((err) => {
+  console.error("Prerender failed:", err);
+  process.exit(1);
+});
