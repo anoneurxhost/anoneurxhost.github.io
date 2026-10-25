@@ -7,7 +7,8 @@ const SITE = "https://anoneurx.com";
 const BRAND = "ANONEURX";
 
 /** 1200x630 social card used whenever a page does not supply its own. */
-const DEFAULT_OG_IMAGE = "/og-default.png";
+const DEFAULT_OG_IMAGE = "/og-image.png";
+const LAB_OG_IMAGE = "/og-image.png";
 
 interface SEOProps {
   /** Page label, e.g. "LYNX". The section prefix is added automatically. */
@@ -105,7 +106,8 @@ const SEO = ({
   const url = canonicalUrl(path);
   const absolute = (value?: string) =>
     !value || value.startsWith("http") ? value : `${SITE}${value.startsWith("/") ? value : `/${value}`}`;
-  const ogImage = absolute(image || DEFAULT_OG_IMAGE) as string;
+  const defaultImage = path === "/lab" || path.startsWith("/lab/") ? LAB_OG_IMAGE : DEFAULT_OG_IMAGE;
+  const ogImage = absolute(image || defaultImage) as string;
 
   const ldArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 

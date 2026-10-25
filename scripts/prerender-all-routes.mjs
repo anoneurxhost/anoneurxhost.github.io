@@ -1622,9 +1622,12 @@ let count = 0;
       logicalCanonical === "/" ? `${SITE}${LOCALE}/` : `${SITE}${LOCALE}${logicalCanonical}`;
     const title = route.titleOverride || formatTitle(route.title, route.path);
     const description = route.description;
+    const defaultOgImage = route.path === "/lab" || route.path.startsWith("/lab/")
+      ? "/og-image.png"
+      : "/og-image.png";
     const ogImageUrl = /^(https?:)?\/\//.test(route.ogImage || "")
       ? route.ogImage
-      : `${SITE}${route.ogImage || "/og-default.png"}`;
+      : `${SITE}${route.ogImage || defaultOgImage}`;
     const jsonLd = route.jsonLd || [
       {
         "@context": "https://schema.org",
