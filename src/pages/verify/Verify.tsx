@@ -159,7 +159,7 @@ const Verify: React.FC = () => {
             "@context": "https://schema.org",
             "@type": "WebApplication",
             name: "Anoneurx Unified Verification Portal",
-            url: `${SITE}/verify`,
+            url: `${SITE}/en-us/verify`,
             applicationCategory: "BusinessApplication",
             description: "Verify Anoneurx intern, hackathon, and university credentials in one place.",
             publisher: { "@type": "Organization", name: "Anoneurx", url: SITE },

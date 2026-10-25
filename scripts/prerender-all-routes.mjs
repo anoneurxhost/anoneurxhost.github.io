@@ -16,6 +16,11 @@ const jsPath = jsMatch ? jsMatch[1] : "/assets/index.js";
 const cssPath = cssMatch ? cssMatch[1] : "/assets/index.css";
 
 const SITE = "https://anoneurx.com";
+// Every public page lives under this locale prefix (see src/lib/site.ts).
+// Canonical pages are written under dist/en-us/… and additionally copied to
+// their legacy unprefixed location so old URLs stay 200 and are canonicalised
+// onto the new address by the client rewrite in src/main.tsx.
+const LOCALE = "/en-us";
 const PREVIEW_PORT = 4173;
 const PREVIEW_URL = `http://localhost:${PREVIEW_PORT}`;
 
@@ -89,6 +94,57 @@ const formatTitle = (t, pathname = "/") => {
 };
 
 // Public indexable routes and their customized head SEO tags
+const BLOG_POST_ROUTES = [
+  {
+    path: "/lab/blog/robot-perception-self-trust",
+    title: "Grounding robot perception in doubt — Anoneurx Lab",
+    description:
+      "A robot that cannot tell when its own perception is unreliable is a hazard. We argue for a self-trust layer that reasons about contradictions across sensors.",
+  },
+  {
+    path: "/lab/blog/self-learning-security-baseline",
+    title: "Teaching a system its own definition of normal — Anoneurx Lab",
+    description:
+      "Hand-written security rules go stale the moment a deployment changes. Early lessons from building a security baseline that learns itself.",
+  },
+  {
+    path: "/lab/blog/quantizing-bert-256kb",
+    title: "Fitting a language model into 256 kilobytes — Anoneurx Lab",
+    description:
+      "Our 4.2-bit BERT reaches 94.1% accuracy inside 256 KB of RAM on a Cortex-M4. What the accuracy-vs-bits curve actually looks like.",
+  },
+  {
+    path: "/lab/blog/federated-learning-privacy-accounting",
+    title: "Privacy accounting in practice — Anoneurx Lab",
+    description:
+      "What differential privacy budgets mean when twelve simulated hospitals train one chest X-ray model through federated learning.",
+  },
+  {
+    path: "/lab/blog/adversarial-code-assistants",
+    title: "Attacking the assistant — Anoneurx Lab",
+    description:
+      "The prompt shapes that steer LLM code assistants toward insecure output — and the defense that actually moved the needle.",
+  },
+  {
+    path: "/lab/blog/cyber-physical-threat-horizon",
+    title: "Measuring the threat horizon — Anoneurx Lab",
+    description:
+      "Between the first anomalous signal and the physical damage there is a window. We want to measure it and make it a first-class security metric.",
+  },
+  {
+    path: "/lab/blog/why-we-publish-open-problems",
+    title: "Why we publish our open problems — Anoneurx Lab",
+    description:
+      "Every problem on our board is published with its research gap, its weaknesses and its unanswered questions. Here is what that buys.",
+  },
+  {
+    path: "/lab/blog/astra-learning-loop",
+    title: "The ASTRA learning loop — Anoneurx Lab",
+    description:
+      "ASTRA is our research project on self-learning AI — a model built to remember its experience and improve behaviour across episodes.",
+  },
+];
+
 const routes = [
   {
     path: "/",
@@ -1027,7 +1083,7 @@ const routes = [
         "@context": "https://schema.org",
         "@type": "ResearchOrganization",
         name: "Anoneurx Lab",
-        url: `${SITE}/lab`,
+        url: `${SITE}/en-us/lab`,
         description:
           "Anoneurx Lab publishes open research problems in AI, cybersecurity, robotics and systems, and supervises student teams working on them.",
         parentOrganization: {
@@ -1043,6 +1099,92 @@ const routes = [
     path: "/lab/problems",
     title: "Research Problems — Anoneurx Lab",
     description: "Browse open research problems at Anoneurx Lab. Filter by area, difficulty and status.",
+  },
+  {
+    path: "/lab/problems/secure-boot-integrity",
+    title: "Establishing a Verifiable Boot Chain for Black Wall — Anoneurx Lab",
+    description: "Establish a verifiable chain of trust from UEFI firmware through the bootloader to the running kernel, including signature verification, boot measurements and recovery from verification failures.",
+  },
+  {
+    path: "/lab/problems/reliable-boot-architecture",
+    title: "A Reliable Boot Architecture for Virtualized and Physical Systems — Anoneurx Lab",
+    description: "Investigate why Black Wall does not yet boot consistently across QEMU, UEFI-based physical machines and future hardware, and build stage-level diagnostics that separate firmware, bootloader, kernel and display failures.",
+  },
+  {
+    path: "/lab/problems/kernel-memory-isolation",
+    title: "Enforcing Memory Isolation in a Security-Oriented Operating System — Anoneurx Lab",
+    description: "Restrict unauthorised memory access and contain kernel defects through stronger kernel/user boundaries, permission enforcement and component isolation.",
+  },
+  {
+    path: "/lab/problems/self-defending-operating-system",
+    title: "Designing a Self-Defending Operating System Architecture — Anoneurx Lab",
+    description: "Design an operating-system architecture that continuously evaluates security conditions, detects suspicious system changes and applies controlled defensive responses.",
+  },
+  {
+    path: "/lab/problems/hardware-trust-boundaries",
+    title: "Establishing Trust Boundaries Between Black Wall and Hardware — Anoneurx Lab",
+    description: "Evaluate hardware trust, isolate peripherals and reduce the risks introduced by compromised firmware or unauthorised device access.",
+  },
+  {
+    path: "/lab/problems/robotics-security-architecture",
+    title: "A Security Architecture for Black Wall in Autonomous Robotic Systems — Anoneurx Lab",
+    description: "Isolate robotic workloads, constrain actuator access, authenticate component communication and keep behaviour predictable when software or the network fails.",
+  },
+  {
+    path: "/lab/problems/distributed-system-communication",
+    title: "Authenticated and Resilient Communication for Distributed Black Wall Systems — Anoneurx Lab",
+    description: "Secure communication between distributed Black Wall machines and robotic nodes while limiting the impact of compromised nodes, interrupted connectivity and unauthorised commands.",
+  },
+  {
+    path: "/lab/problems/secure-os-updates",
+    title: "Verifiable Updates and Rollback Protection for Black Wall — Anoneurx Lab",
+    description: "Design an update architecture that verifies authenticity, resists unauthorised modification, recovers safely from interrupted installs and restricts unauthorised downgrades.",
+  },
+  {
+    path: "/lab/problems/privacy-preserving-telemetry",
+    title: "Security Monitoring Without Unnecessary Data Collection — Anoneurx Lab",
+    description: "Provide useful security monitoring while minimising the collection, exposure and retention of sensitive system information.",
+  },
+  {
+    path: "/lab/problems/workload-isolation",
+    title: "Containing Untrusted Workloads Through OS-Level Isolation — Anoneurx Lab",
+    description: "Isolate applications and services with different trust levels, restrict access to sensitive resources and limit the consequences of a compromised workload.",
+  },
+  {
+    path: "/lab/problems/system-integrity-monitoring",
+    title: "Tamper-Evident Integrity Monitoring for Critical OS Components — Anoneurx Lab",
+    description: "Detect unauthorised changes to protected files, executables, configuration and security policy, and distinguish them from legitimate updates.",
+  },
+  {
+    path: "/lab/problems/fail-safe-os-recovery",
+    title: "Fail-Safe Operating-System Behavior Under Security and Hardware Failures — Anoneurx Lab",
+    description: "Define how Black Wall should respond when security services, authentication, storage, networking or hardware fail, including controlled degradation and recovery.",
+  },
+  {
+    path: "/lab/blog",
+    title: "Blog — Anoneurx Lab",
+    description: "Write-ups of the research happening inside Anoneurx Lab — robotics, cybersecurity, AI, systems and the way the lab works.",
+  },
+  ...BLOG_POST_ROUTES,
+  {
+    path: "/lab/careers",
+    title: "Careers — Anoneurx Lab",
+    description: "Student researcher placements, research fellowships and engineering roles on open problems at Anoneurx Lab.",
+  },
+  {
+    path: "/lab/programs",
+    title: "Programs — Anoneurx Lab",
+    description: "Anoneurx Lab programs for students and faculty — placements, mentored sprints, co-supervision and research grants.",
+  },
+  {
+    path: "/lab/resources",
+    title: "Resources — Anoneurx Lab",
+    description: "Datasets, tools and open source published by Anoneurx Lab — the shared infrastructure every research problem runs on.",
+  },
+  {
+    path: "/lab/teams",
+    title: "Teams — Anoneurx Lab",
+    description: "The collaborative research teams behind Anoneurx Lab's open problems, projects and publications.",
   },
   {
     path: "/lab/projects",
@@ -1405,7 +1547,7 @@ const buildHead = (title, description, canonicalUrl, ogImageUrl, jsonLd) => {
         var systemDark = !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
         var path = window.location.pathname;
 
-        if (path === "/lab" || path.indexOf("/lab/") === 0) {
+        if (path === "/en-us/lab" || path.indexOf("/en-us/lab/") === 0) {
           if (stored) { root.setAttribute("data-theme", stored); }
           var theme = stored || (systemDark ? "dark" : "light");
           var meta = document.getElementById("theme-color");
@@ -1470,8 +1612,12 @@ let count = 0;
   const RENDER_WAIT_MS = 2000;
 
   for (const route of routes) {
-    const canonicalPath = route.canonicalPath || route.path;
-    const canonicalUrl = `${SITE}${canonicalPath === "/" ? "/" : canonicalPath}`;
+    const logicalCanonical = route.canonicalPath || route.path;
+    const isAlias = Boolean(route.canonicalPath);
+    // Canonical URLs always carry the locale prefix; logical paths stay
+    // unprefixed so the section-registry matching keeps working.
+    const canonicalUrl =
+      logicalCanonical === "/" ? `${SITE}${LOCALE}/` : `${SITE}${LOCALE}${logicalCanonical}`;
     const title = formatTitle(route.title, route.path);
     const description = route.description;
     const ogImageUrl = /^(https?:)?\/\//.test(route.ogImage || "")
@@ -1490,10 +1636,12 @@ let count = 0;
 
     // Render the route with Playwright to get real body content (fixes F-01)
     // Each route gets its own page to avoid memory buildup / crashes.
+    // The SPA mounts under the /en-us basename, so the rendered URL is prefixed.
     let bodyHtml = '<div id="root"></div>';
     const page = await browser.newPage();
     try {
-      await page.goto(`${PREVIEW_URL}${route.path}`, { waitUntil: "networkidle", timeout: 30000 });
+      const renderPath = route.path === "/" ? LOCALE : `${LOCALE}${route.path}`;
+      await page.goto(`${PREVIEW_URL}${renderPath}`, { waitUntil: "networkidle", timeout: 30000 });
       await new Promise((resolve) => setTimeout(resolve, RENDER_WAIT_MS));
       bodyHtml = await page.evaluate(() => document.body.innerHTML);
     } catch (err) {
@@ -1504,16 +1652,41 @@ let count = 0;
     const headContent = buildHead(title, description, canonicalUrl, ogImageUrl, jsonLd);
     const fullHtml = `<!DOCTYPE html>\n<html lang="en">\n<head>${headContent}\n</head>\n<body>${bodyHtml}</body>\n</html>`;
 
-    if (route.path === "/") {
-      writeFileSync(resolve(dist, "index.html"), fullHtml, "utf-8");
-    } else {
-      const slug = route.path.slice(1);
-      const outDir = resolve(dist, slug);
-      mkdirSync(outDir, { recursive: true });
-      writeFileSync(resolve(outDir, "index.html"), fullHtml, "utf-8");
-      mkdirSync(dirname(resolve(dist, `${slug}.html`)), { recursive: true });
-      writeFileSync(resolve(dist, `${slug}.html`), fullHtml, "utf-8");
-    }
+    /**
+     * Writes a route to dist in two places:
+     *   canonical routes -> dist/en-us/{path}/index.html (canonical address)
+     *                      dist/{path}/index.html       (legacy 200 copy)
+     *   alias routes     -> dist/en-us/{aliasPath}/…     (prefixed alias)
+     *                      dist/{aliasPath}/…           (legacy alias)
+     *
+     * Every copy carries the canonical head, and src/main.tsx rewrites the
+     * browser URL in place so each page renders from one canonical address.
+     */
+    const writeFilePair = (logicalPath) => {
+      if (logicalPath === "/") {
+        writeFileSync(resolve(dist, "index.html"), fullHtml, "utf-8");
+        mkdirSync(resolve(dist, "en-us"), { recursive: true });
+        writeFileSync(resolve(dist, "en-us", "index.html"), fullHtml, "utf-8");
+      } else {
+        const slug = logicalPath.slice(1);
+        const prefixedSlug = `en-us/${slug}`;
+
+        const prefixedDir = resolve(dist, "en-us", slug);
+        mkdirSync(prefixedDir, { recursive: true });
+        writeFileSync(resolve(prefixedDir, "index.html"), fullHtml, "utf-8");
+        mkdirSync(dirname(resolve(dist, `${prefixedSlug}.html`)), { recursive: true });
+        writeFileSync(resolve(dist, `${prefixedSlug}.html`), fullHtml, "utf-8");
+
+        const legacyDir = resolve(dist, slug);
+        mkdirSync(legacyDir, { recursive: true });
+        writeFileSync(resolve(legacyDir, "index.html"), fullHtml, "utf-8");
+        mkdirSync(dirname(resolve(dist, `${slug}.html`)), { recursive: true });
+        writeFileSync(resolve(dist, `${slug}.html`), fullHtml, "utf-8");
+      }
+    };
+    // Canonical routes write the dual (prefixed + legacy) pair; the homepage
+    // is written to dist/index.html plus dist/en-us/index.html.
+    writeFilePair(route.path);
     count++;
     if (count % 25 === 0) console.log(`  …${count} routes rendered`);
   }

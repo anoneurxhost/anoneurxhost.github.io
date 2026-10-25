@@ -12,10 +12,14 @@ export type LabTheme = "light" | "dark";
 
 const STORAGE_KEY = "anoneurx-lab-theme";
 
-/** Browser UI colour that matches each lab theme. */
+/**
+ * The 2026 lab design is light-only (Google Research style), so both named
+ * themes map onto the white canvas; the stored choice is kept in localStorage
+ * for compatibility but no longer changes the palette.
+ */
 const THEME_COLORS: Record<LabTheme, string> = {
-  light: "#FAFAFA",
-  dark: "#0A0A0B",
+  light: "#FFFFFF",
+  dark: "#FFFFFF",
 };
 
 /** The rest of the site is dark, so the lab page restores this on unmount. */
@@ -31,21 +35,6 @@ type LabThemeContextValue = {
 };
 
 const LabThemeContext = createContext<LabThemeContextValue | null>(null);
-
-const readStoredTheme = (): LabTheme | null => {
-  try {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    return stored === "light" || stored === "dark" ? stored : null;
-  } catch {
-    // Private mode or blocked storage — fall back to the system preference.
-    return null;
-  }
-};
-
-const systemTheme = (): LabTheme => {
-  if (typeof window === "undefined" || !window.matchMedia) return "light";
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-};
 
 /**
  * Writes the resolved theme to <html data-theme>. The attribute is the single
@@ -76,24 +65,16 @@ const applyThemeColor = (color: string) => {
 /**
  * Theme state for the research lab page.
  *
- * The initial value is read from the DOM attribute written by the pre-paint
- * bootstrap script, which keeps the first client render identical to the
- * server-rendered markup and avoids a flash of the wrong theme.
+ * The 2026 redesign is light-only (Google Research style): the resolved theme
+ * is always light, and the browser UI colour is kept in sync with it. The
+ * context interface is unchanged for the components that still read it.
  */
 export const LabThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<LabTheme>(() => {
-    if (typeof document === "undefined") return "light";
-    const stored = readStoredTheme();
-    if (stored) return stored;
-    const attr = document.documentElement.getAttribute("data-theme");
-    return attr === "dark" ? "dark" : attr === "light" ? "light" : systemTheme();
-  });
+  // Light-only design: the resolved theme is always light regardless of any
+  // stored choice or OS preference.
+  const [theme] = useState<LabTheme>("light");
 
-  const [followsSystem, setFollowsSystem] = useState<boolean>(() => {
-    if (typeof window === "undefined") return true;
-    // Only an explicit, remembered choice leaves the system theme.
-    return readStoredTheme() === null;
-  });
+  const [followsSystem] = useState<boolean>(false);
 
   // Keep the document attribute and the browser UI colour in sync.
   useEffect(() => {
@@ -109,28 +90,12 @@ export const LabThemeProvider = ({ children }: { children: ReactNode }) => {
     [],
   );
 
-  // Follow the OS while the visitor has not made an explicit choice.
-  useEffect(() => {
-    if (!followsSystem || typeof window === "undefined" || !window.matchMedia) return;
-    const query = window.matchMedia("(prefers-color-scheme: dark)");
-    const onChange = (event: MediaQueryListEvent) => {
-      setTheme(event.matches ? "dark" : "light");
-    };
-    query.addEventListener("change", onChange);
-    return () => query.removeEventListener("change", onChange);
-  }, [followsSystem]);
-
   const toggleTheme = useCallback(() => {
-    setTheme((current) => {
-      const next: LabTheme = current === "dark" ? "light" : "dark";
-      setFollowsSystem(false);
-      try {
-        window.localStorage.setItem(STORAGE_KEY, next);
-      } catch {
-        // Storage unavailable — the choice still applies for this visit.
-      }
-      return next;
-    });
+    try {
+      window.localStorage.setItem(STORAGE_KEY, "light");
+    } catch {
+      // Storage unavailable — the choice still applies for this visit.
+    }
   }, []);
 
   const value = useMemo<LabThemeContextValue>(

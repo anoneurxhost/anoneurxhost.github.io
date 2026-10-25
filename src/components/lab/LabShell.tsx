@@ -1,5 +1,5 @@
 import { useEffect, type ReactNode } from "react";
-import labLogo from "@/assets/lab/logo.jpg";
+import labLogo from "@/assets/logo.jpeg";
 import LabFooter from "./LabFooter";
 import LabNav from "./LabNav";
 import { LabThemeProvider } from "./LabThemeProvider";

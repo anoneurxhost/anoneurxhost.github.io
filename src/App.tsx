@@ -330,6 +330,12 @@ const LabGuide = React.lazy(() => import('./pages/lab/LabGuide'));
 const LabFaq = React.lazy(() => import('./pages/lab/LabFaq'));
 const LabPolicies = React.lazy(() => import('./pages/lab/LabPolicies'));
 const LabPolicy = React.lazy(() => import('./pages/lab/LabPolicy'));
+const LabBlog = React.lazy(() => import('./pages/lab/LabBlog'));
+const LabBlogPost = React.lazy(() => import('./pages/lab/LabBlogPost'));
+const LabCareers = React.lazy(() => import('./pages/lab/LabCareers'));
+const LabPrograms = React.lazy(() => import('./pages/lab/LabPrograms'));
+const LabResources = React.lazy(() => import('./pages/lab/LabResources'));
+const LabTeams = React.lazy(() => import('./pages/lab/LabTeams'));
 
 
 const CourseDetail = React.lazy(() => import('./pages/courses/CourseDetail'));
@@ -438,7 +444,7 @@ const NotFound = React.lazy(() => import('./pages/other/NotFound'));
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/en-us">
       <AuthProvider>
         <NavigationProvider>
           <UserProvider>
@@ -725,11 +731,18 @@ function App() {
                 <Route path="lab" element={<LabLayout />}>
                   <Route index element={<LabHome />} />
                   <Route path="problems" element={<LabProblems />} />
+                  <Route path="black-wall" element={<Navigate to="/lab/problems" replace />} />
                   <Route path="problems/:id" element={<LabProblemRoute />} />
                   <Route path="projects" element={<LabProjects />} />
                   <Route path="projects/:slug" element={<LabProjectDetail />} />
                   <Route path="areas" element={<LabAreas />} />
                   <Route path="people" element={<LabPeople />} />
+                  <Route path="teams" element={<LabTeams />} />
+                  <Route path="blog" element={<LabBlog />} />
+                  <Route path="blog/:slug" element={<LabBlogPost />} />
+                  <Route path="careers" element={<LabCareers />} />
+                  <Route path="programs" element={<LabPrograms />} />
+                  <Route path="resources" element={<LabResources />} />
                   <Route path="about" element={<LabAbout />} />
                   <Route path="apply" element={<LabApply />} />
                   <Route path="guide" element={<LabGuide />} />

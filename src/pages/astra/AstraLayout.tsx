@@ -23,6 +23,7 @@ const FOOTER_LINKS = [
 ];
 
 const SITE = "https://anoneurx.com";
+import { canonicalUrl } from "@/lib/site";
 
 const AstraLayout = () => {
   const location = useLocation();
@@ -64,14 +65,14 @@ const AstraLayout = () => {
           name="description"
           content="ASTRA is an Anoneurx Lab research project in self-learning AI — a model that records, reflects and improves from its own experience. 20B parameters today, architected for a 1T target. In development."
         />
-        <link rel="canonical" href={`${SITE}/astra`} />
+        <link rel="canonical" href={canonicalUrl("/astra")} />
         <meta property="og:title" content="ANONEURX | ASTRA — Self-Learning AI Research" />
         <meta
           property="og:description"
           content="ASTRA is an Anoneurx Lab research project in self-learning AI — a model that records, reflects and improves from its own experience. 20B parameters today, architected for a 1T target."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${SITE}/astra`} />
+        <meta property="og:url" content={canonicalUrl("/astra")} />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="ANONEURX | ASTRA — Self-Learning AI Research" />
         <meta
@@ -84,10 +85,10 @@ const AstraLayout = () => {
             "@type": "ResearchProject",
             name: "ASTRA",
             alternateName: "Anoneurx Self-Teaching Research AI",
-            url: `${SITE}/astra`,
+            url: canonicalUrl("/astra"),
             description:
               "ASTRA is an Anoneurx Lab research project exploring models that learn continuously from experience. Current research scale: 20B parameters. Long-term architectural target: 1T parameters.",
-            isPartOf: { "@type": "Organization", name: "Anoneurx Lab", url: `${SITE}/lab` },
+            isPartOf: { "@type": "Organization", name: "Anoneurx Lab", url: canonicalUrl("/lab") },
           })}
         </script>
       </Helmet>

@@ -179,7 +179,7 @@ export const refCode = (doc: PdfDocumentLike) =>
   doc.verificationId || `ANX/DOC/${doc.type.replace(/[^A-Z]/gi, "").slice(0, 4).toUpperCase()}`;
 
 export const verifyUrl = (doc: PdfDocumentLike) =>
-  `https://anoneurx.com/intern/verify?doc=${encodeURIComponent(doc.verificationId ?? "")}`;
+  `https://anoneurx.com/en-us/intern/verify?doc=${encodeURIComponent(doc.verificationId ?? "")}`;
 
 export const today = () =>
   new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });

@@ -2,37 +2,35 @@ import { Link } from "react-router-dom";
 
 const FOOTER_SECTIONS = [
   {
-    title: "Lab",
+    title: "Research",
     links: [
       { label: "Research areas", href: "/lab/areas" },
+      { label: "Open problems", href: "/lab/problems" },
       { label: "Projects", href: "/lab/projects" },
-      { label: "Research", href: "/research" },
-
     ],
   },
   {
-    title: "Join",
+    title: "Resources",
     links: [
-      { label: "Apply to the lab", href: "/lab/apply" },
+      { label: "Datasets & tools", href: "/lab/resources" },
+      { label: "Open source", href: "/opensource" },
       { label: "Research guide", href: "/lab/guide" },
-      { label: "FAQ", href: "/lab/faq" },
     ],
   },
   {
-    title: "Policies & legal",
+    title: "Engage",
     links: [
-      { label: "Accessibility", href: "/lab/accessibility" },
-      { label: "Research ethics", href: "/lab/ethics" },
-      { label: "Security", href: "/lab/security" },
+      { label: "Blog", href: "/lab/blog" },
+      { label: "Programs", href: "/lab/programs" },
+      { label: "Careers", href: "/lab/careers" },
     ],
   },
 ];
 
 const BOTTOM_LINKS = [
+  { label: "About", href: "/lab/about" },
   { label: "Policies", href: "/lab/policies" },
-  { label: "People", href: "/lab/people" },
   { label: "Privacy", href: "/lab/privacy" },
-  { label: "Cookies", href: "/lab/cookies" },
   { label: "Terms", href: "/lab/terms" },
   { label: "Accessibility", href: "/lab/accessibility" },
 ];
@@ -44,8 +42,8 @@ const LabFooter = () => (
         <div>
           <p className="lab-eyebrow">Anoneurx Lab</p>
           <p className="lab-muted" style={{ marginTop: "var(--space-2)", maxWidth: "42ch" }}>
-            Open research problems in AI, cybersecurity, robotics and systems — worked on in the open,
-            with published results and reproducible code.
+            Open research problems in Cybersecurity, Robotics and Systems — worked on in the
+            open, with published results and reproducible code.
           </p>
         </div>
 

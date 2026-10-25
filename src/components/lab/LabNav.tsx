@@ -1,28 +1,127 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import LabLogo from "./LabLogo";
-import { useLabTheme } from "./LabThemeProvider";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import {
+  ArrowRight,
+  Bot,
+  BookOpen,
+  Brain,
+  ChevronDown,
+  Code2,
+  Database,
+  FlaskConical,
+  GraduationCap,
+  Server,
+  Shield,
+  Users,
+  Wrench,
+} from "lucide-react";
+import logo from "@/assets/logo.jpeg";
 
-// Each item points at the dedicated page, never at a landing-page anchor.
-const NAV_LINKS = [
-  { to: "/lab/areas", label: "Research" },
-  { to: "/lab/problems", label: "Problems" },
-  { to: "/lab/projects", label: "Projects" },
-  { to: "/lab/apply", label: "Opportunities" },
+/**
+ * Lab navigation in the Microsoft Research style: a quiet bar of section links
+ * where each section opens a hover mega-menu panel with grouped, described
+ * links. Light-only, matching the Google Research design language.
+ */
+
+type MegaLink = {
+  label: string;
+  to: string;
+  desc?: string;
+  icon?: typeof Brain;
+  tone?: string;
+};
+
+type MegaCol = {
+  label?: string;
+  narrow?: boolean;
+  links: MegaLink[];
+};
+
+type NavSection = {
+  id: string;
+  label: string;
+  to: string;
+  /** When present, hovering the section opens this mega panel. */
+  mega?: {
+    summary?: string;
+    cols: MegaCol[];
+    foot?: { label: string; to: string };
+  };
+};
+
+const NAV_SECTIONS: NavSection[] = [
+  {
+    id: "research",
+    label: "Research",
+    to: "/lab/areas",
+    mega: {
+      cols: [
+        {
+          label: "Focus areas",
+          links: [
+            { label: "AI & Machine Learning", to: "/lab/areas#ai-ml", desc: "Learning systems, code intelligence and representation research.", icon: Brain, tone: "blue" },
+            { label: "Cybersecurity", to: "/lab/areas#cybersecurity", desc: "Threat detection, cryptography and privacy engineering.", icon: Shield, tone: "red" },
+            { label: "Robotics", to: "/lab/areas#robotics", desc: "Perception, autonomy and physically safe control.", icon: Bot, tone: "teal" },
+            { label: "Systems & OS", to: "/lab/areas#systems-os", desc: "Operating systems, distributed runtime and performance.", icon: Server, tone: "green" },
+          ],
+        },
+        {
+          label: "Research output",
+          narrow: true,
+          links: [
+            { label: "Open problems", to: "/lab/problems", desc: "Real gaps in the literature — claim one and work it." },
+            { label: "Projects", to: "/lab/projects", desc: "Prototypes and libraries built from the problems." },
+            { label: "Publications", to: "/research", desc: "Papers, preprints and technical reports." },
+            { label: "ASTRA", to: "/astra", desc: "Self-learning AI research across the memory loop." },
+          ],
+        },
+      ],
+      foot: { label: "See all research areas", to: "/lab/areas" },
+    },
+  },
+  {
+    id: "resources",
+    label: "Resources",
+    to: "/lab/resources",
+    mega: {
+      summary: "Everything the lab builds and shares: datasets, tooling and open source.",
+      cols: [
+        {
+          label: "Explore",
+          links: [
+            { label: "Datasets", to: "/lab/resources#datasets", desc: "Telemetry, benchmarks and evaluation data published by the lab.", icon: Database, tone: "green" },
+            { label: "Tools & services", to: "/lab/resources#tools", desc: "The harnesses and infrastructure problems are run on.", icon: Wrench, tone: "purple" },
+            { label: "Open source", to: "/lab/resources#opensource", desc: "Code released under open licenses, maintained publicly.", icon: Code2, tone: "orange" },
+            { label: "Research guide", to: "/lab/guide", desc: "How we pick problems, run studies and publish.", icon: BookOpen, tone: "blue" },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: "programs",
+    label: "Programs",
+    to: "/lab/programs",
+    mega: {
+      summary: "Engagement programs for students and faculty who want to work with the lab.",
+      cols: [
+        {
+          label: "Engage with us",
+          links: [
+            { label: "Student programs", to: "/lab/programs#students", desc: "Placements, mentored sprints and the open-problem board.", icon: GraduationCap, tone: "yellow" },
+            { label: "Faculty programs", to: "/lab/programs#faculty", desc: "Co-supervision, shared problems and joint publications.", icon: FlaskConical, tone: "green" },
+            { label: "Apply to the lab", to: "/lab/apply", desc: "Routes into the lab and what each track expects.", icon: Users, tone: "pink" },
+          ],
+        },
+      ],
+      foot: { label: "See all programs", to: "/lab/programs" },
+    },
+  },
+  { id: "blog", label: "Blog", to: "/lab/blog" },
+  { id: "team", label: "Team", to: "/lab/people" },
+  { id: "careers", label: "Careers", to: "/lab/careers" },
+  { id: "about", label: "About", to: "/lab/about" },
 ];
-
-const SunIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true" focusable="false">
-    <circle cx="12" cy="12" r="4.2" />
-    <path d="M12 2.6v2.2M12 19.2v2.2M4.2 12H2M22 12h-2.2M6.3 6.3 4.8 4.8M19.2 19.2l-1.5-1.5M17.7 6.3l1.5-1.5M4.8 19.2l1.5-1.5" />
-  </svg>
-);
-
-const MoonIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
-    <path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z" />
-  </svg>
-);
 
 const MenuIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true" focusable="false">
@@ -36,38 +135,47 @@ const CloseIcon = () => (
   </svg>
 );
 
+const MegaChevron = () => <ChevronDown className="lab-mega__chevron" aria-hidden="true" />;
+
 const LabNav = () => {
-  const { theme, toggleTheme } = useLabTheme();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [openSection, setOpenSection] = useState<string | null>(null);
+  const location = useLocation();
 
-  // Elevate the pinned bar once the page has scrolled beneath it.
+  // Close everything on navigation.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    setMenuOpen(false);
+    setOpenSection(null);
+  }, [location.pathname]);
 
-  // Close the mobile menu when the viewport grows past the breakpoint.
+  // Close on Escape and when the viewport grows past the breakpoint.
   useEffect(() => {
-    if (!menuOpen) return;
-    const query = window.matchMedia("(min-width: 821px)");
-    const onChange = (event: MediaQueryListEvent) => {
-      if (event.matches) setMenuOpen(false);
+    if (!menuOpen && !openSection) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        setOpenSection(null);
+      }
     };
-    query.addEventListener("change", onChange);
-    return () => query.removeEventListener("change", onChange);
-  }, [menuOpen]);
+    const onResize = () => {
+      if (window.innerWidth > 1020) setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [menuOpen, openSection]);
 
-  const isDark = theme === "dark";
+  const navClass = ({ isActive }: { isActive: boolean }) => (isActive ? "is-active" : undefined);
 
   return (
-    <header className={`lab-header ${scrolled ? "is-scrolled" : ""}`}>
+    <header className="lab-header">
       <div className="lab-container">
         <div className="lab-nav-row">
           <Link className="lab-brand" to="/lab">
-            <LabLogo className="lab-brand__mark" />
+            <img className="lab-brand__mark" src={logo} alt="" />
             <span>Anoneurx Lab</span>
           </Link>
 
@@ -77,13 +185,102 @@ const LabNav = () => {
             aria-label="Lab sections"
           >
             <ul className="lab-nav-list">
-              {NAV_LINKS.map((link) => (
-                <li key={link.to}>
-                  <NavLink to={link.to} onClick={() => setMenuOpen(false)}>
-                    {link.label}
-                  </NavLink>
-                </li>
-              ))}
+              {NAV_SECTIONS.map((section) => {
+                if (!section.mega) {
+                  return (
+                    <li key={section.id}>
+                      <NavLink
+                        to={section.to}
+                        className={navClass}
+                        onClick={() => setMenuOpen(false)}
+                        aria-current={location.pathname === section.to ? "page" : undefined}
+                      >
+                        {section.label}
+                      </NavLink>
+                    </li>
+                  );
+                }
+
+                return (
+                  <li
+                    key={section.id}
+                    className={`lab-mega ${openSection === section.id ? "is-open" : ""}`}
+                    onMouseEnter={() => setOpenSection(section.id)}
+                    onMouseLeave={() =>
+                      setOpenSection((current) => (current === section.id ? null : current))
+                    }
+                  >
+                    <NavLink
+                      to={section.to}
+                      className={({ isActive }) => `lab-mega__trigger ${navClass({ isActive }) ?? ""}`}
+                      onClick={() => setOpenSection(null)}
+                    >
+                      {section.label}
+                      <MegaChevron />
+                    </NavLink>
+
+                    <div
+                      className="lab-mega-panel"
+                      onMouseLeave={() =>
+                        setOpenSection((current) => (current === section.id ? null : current))
+                      }
+                    >
+                      {section.mega.summary && (
+                        <p className="lab-mega__label" style={{ textTransform: "none", letterSpacing: 0, fontSize: "0.85rem" }}>
+                          {section.mega.summary}
+                        </p>
+                      )}
+                      <div className="lab-mega__grid">
+                        {section.mega.cols.map((col, colIndex) => (
+                          <div key={colIndex} className={`lab-mega__col ${col.narrow ? "lab-mega__col--narrow" : ""}`}>
+                            {col.label && <p className="lab-mega__label">{col.label}</p>}
+                            <div className="lab-mega__list">
+                              {col.links.map((link) => (
+                                <Link
+                                  key={link.label}
+                                  className="lab-mega__link"
+                                  to={link.to}
+                                  onClick={() => {
+                                    setOpenSection(null);
+                                    setMenuOpen(false);
+                                  }}
+                                >
+                                  <span className="lab-mega__item-label">
+                                    {link.icon && (
+                                      <span className={`lab-mega__item-icon lab-mega__item-icon--${link.tone ?? "blue"}`}>
+                                        <link.icon aria-hidden="true" />
+                                      </span>
+                                    )}
+                                    {link.label}
+                                  </span>
+                                  {link.desc && <span className="lab-mega__desc">{link.desc}</span>}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {section.mega.foot && (
+                        <div className="lab-mega__foot">
+                          <Link
+                            className="lab-link-arrow"
+                            style={{ margin: 0 }}
+                            to={section.mega.foot.to}
+                            onClick={() => {
+                              setOpenSection(null);
+                              setMenuOpen(false);
+                            }}
+                          >
+                            {section.mega.foot.label}
+                            <ArrowRight aria-hidden="true" />
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
 
             <Link
@@ -96,17 +293,6 @@ const LabNav = () => {
           </nav>
 
           <div className="lab-nav-actions">
-            <button
-              type="button"
-              className="lab-icon-btn"
-              onClick={toggleTheme}
-              aria-pressed={isDark}
-              aria-label="Toggle theme"
-              title={isDark ? "Switch to light theme" : "Switch to dark theme"}
-            >
-              {isDark ? <SunIcon /> : <MoonIcon />}
-            </button>
-
             <Link className="lab-btn lab-btn--primary lab-nav-cta" to="/lab/apply">
               Join the lab
             </Link>

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { findSeoSection, isSectionRoot } from "@/lib/seoSections";
+import { canonicalUrl } from "@/lib/site";
 
 const SITE = "https://anoneurx.com";
 const BRAND = "ANONEURX";
@@ -98,7 +99,7 @@ const SEO = ({
   section,
 }: SEOProps) => {
   const fullTitle = composeTitle(title, path, section);
-  const url = `${SITE}${path}`;
+  const url = canonicalUrl(path);
   const absolute = (value?: string) =>
     !value || value.startsWith("http") ? value : `${SITE}${value.startsWith("/") ? value : `/${value}`}`;
   const ogImage = absolute(image || DEFAULT_OG_IMAGE) as string;

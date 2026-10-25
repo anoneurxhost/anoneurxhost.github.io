@@ -4,6 +4,7 @@ import detailedResearchData from "@/data/detailedResearchData.json";
 import jsonResearchPapers from "@/data/researchPapers.json";
 import { projects } from "@/pages/opensource/data";
 import { shortIdSlug } from "@/lib/utils";
+import { canonicalUrl } from "@/lib/site";
 
 /**
  * Site-wide SEO injector. Mounted once in PublicLayout, it looks up the current
@@ -91,7 +92,7 @@ const paperEntry = (id: string | undefined, canonicalPath: string): Entry => {
         "@type": "ScholarlyArticle",
         headline: paper.title,
         abstract: clamp(paper.abstract, 400),
-        url: `${SITE}${readPath}`,
+        url: canonicalUrl(readPath),
         datePublished: paper.date,
         author: paper.authors.map((a) => ({ "@type": "Person", name: a })),
         publisher: { "@type": "Organization", name: "Anoneurx", url: SITE },
@@ -140,7 +141,7 @@ const BREADCRUMB = (items: { name: string; item: string }[]) => ({
     "@type": "ListItem",
     position: i + 1,
     name: it.name,
-    item: `${SITE}${it.item}`,
+    item: canonicalUrl(it.item),
   })),
 });
 
@@ -148,7 +149,7 @@ const SOFTWARE = (name: string, path: string, description: string, extra: object
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   name,
-  url: `${SITE}${path}`,
+  url: canonicalUrl(path),
   applicationCategory: "DeveloperApplication",
   operatingSystem: "Cross-platform",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
@@ -184,7 +185,7 @@ const PERSON = (name: string, path: string, jobTitle: string, department?: strin
   "@context": "https://schema.org",
   "@type": "Person",
   name,
-  url: `${SITE}${path}`,
+  url: canonicalUrl(path),
   jobTitle,
   worksFor: { "@type": "Organization", name: "Anoneurx", url: SITE },
   ...(department ? { memberOf: { "@type": "Organization", name: `Anoneurx ${department}` } } : {}),
@@ -194,7 +195,7 @@ const ARTICLE = (id: string, path: string) => ({
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
   headline: `Anoneurx Research Paper ${id}`,
-  url: `${SITE}${path}`,
+  url: canonicalUrl(path),
   publisher: { "@type": "Organization", name: "Anoneurx", url: SITE },
 });
 
@@ -220,7 +221,7 @@ const map: Record<string, Entry> = {
         url: SITE,
         potentialAction: {
           "@type": "SearchAction",
-          target: `${SITE}/apps/browse?q={search_term_string}`,
+          target: `${canonicalUrl("/apps/browse")}?q={search_term_string}`,
           "query-input": "required name=search_term_string",
         },
       },
@@ -274,7 +275,7 @@ const map: Record<string, Entry> = {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
       name: "Anoneurx Open Source",
-      url: `${SITE}/opensource`,
+      url: canonicalUrl("/opensource"),
       description: "The Anoneurx open source ecosystem — projects, libraries, packages, templates and VS Code extensions.",
     },
   },
@@ -341,9 +342,9 @@ const map: Record<string, Entry> = {
       "@type": "ResearchProject",
       name: "ASTRA",
       alternateName: "Anoneurx Self-Teaching Research AI",
-      url: `${SITE}/astra`,
+      url: canonicalUrl("/astra"),
       description: "An Anoneurx Lab research project exploring models that learn continuously from experience. Current research scale: 20B parameters. Long-term architectural target: 1T parameters.",
-      isPartOf: { "@type": "Organization", name: "Anoneurx Lab", url: `${SITE}/lab` },
+      isPartOf: { "@type": "Organization", name: "Anoneurx Lab", url: canonicalUrl("/lab") },
     },
   },
   "/astra/what-is": { title: "What is ASTRA? — Self-Learning AI Explained (Anoneurx Lab)", description: "What ASTRA is, what it is not, and the honest current state of this self-learning AI research project from Anoneurx Lab." },
@@ -406,12 +407,12 @@ const map: Record<string, Entry> = {
         "@type": "Course",
         name: program.title,
         description: program.description,
-        url: `${SITE}/university/programs`,
+        url: canonicalUrl("/university/programs"),
         inLanguage: "en",
         provider: {
           "@type": "EducationalOrganization",
           name: "Anoneurx University",
-          url: `${SITE}/university`,
+          url: canonicalUrl("/university"),
         },
         isAccessibleForFree: true,
         offers: {
@@ -420,7 +421,7 @@ const map: Record<string, Entry> = {
           price: "0",
           priceCurrency: "USD",
           availability: "https://schema.org/InStock",
-          url: `${SITE}/university`,
+          url: canonicalUrl("/university"),
         },
       })),
       BREADCRUMB([
@@ -448,7 +449,7 @@ const map: Record<string, Entry> = {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         name: "Anoneurx Verification Portal",
-        url: `${SITE}/verify`,
+        url: canonicalUrl("/verify"),
         applicationCategory: "BusinessApplication",
         description: "Verify Anoneurx internship credentials and hackathon participation certificates in real time.",
         publisher: { "@type": "Organization", name: "Anoneurx", url: SITE },
@@ -464,7 +465,7 @@ const map: Record<string, Entry> = {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         name: "Anoneurx Internship Verification Portal",
-        url: `${SITE}/verify?mode=internship`,
+        url: `${canonicalUrl("/verify")}?mode=internship`,
         applicationCategory: "BusinessApplication",
         description: "Verify Anoneurx intern credentials, certificates, and service records in real time using an intern ID or email address.",
         publisher: { "@type": "Organization", name: "Anoneurx", url: SITE },
@@ -474,8 +475,8 @@ const map: Record<string, Entry> = {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Anoneurx", item: SITE },
-          { "@type": "ListItem", position: 2, name: "Interns", item: `${SITE}/intern` },
-          { "@type": "ListItem", position: 3, name: "Verify", item: `${SITE}/verify?mode=internship` },
+          { "@type": "ListItem", position: 2, name: "Interns", item: canonicalUrl("/intern") },
+          { "@type": "ListItem", position: 3, name: "Verify", item: `${canonicalUrl("/verify")}?mode=internship` },
         ],
       },
       {
@@ -565,7 +566,7 @@ const patterns: { pattern: string; build: (params: Record<string, string | undef
           "@context": "https://schema.org",
           "@type": "Person",
           name: humanize(p.name),
-          url: `${SITE}/people/${p.name}`,
+          url: canonicalUrl(`/people/${p.name}`),
           jobTitle: "Team Member",
           worksFor: { "@type": "Organization", name: "Anoneurx", url: SITE },
           alternateName: `${humanize(p.name)} — Anoneurx`,
@@ -584,7 +585,7 @@ const patterns: { pattern: string; build: (params: Record<string, string | undef
           "@context": "https://schema.org",
           "@type": "Person",
           name: humanize(p.name),
-          url: `${SITE}/people/${p.dept}/${p.name}`,
+          url: canonicalUrl(`/people/${p.dept}/${p.name}`),
           jobTitle: `Team Member, ${humanize(p.dept)}`,
           worksFor: { "@type": "Organization", name: "Anoneurx", url: SITE },
           alternateName: `${humanize(p.name)} — Anoneurx`,
@@ -607,7 +608,7 @@ const patterns: { pattern: string; build: (params: Record<string, string | undef
           "@context": "https://schema.org",
           "@type": "Person",
           name: humanize(p.name),
-          url: `${SITE}/faculty/${p.department}/${p.name}`,
+          url: canonicalUrl(`/faculty/${p.department}/${p.name}`),
           jobTitle: `Professor, ${humanize(p.department)}`,
           worksFor: { "@type": "Organization", name: "Anoneurx University", url: SITE },
           affiliation: { "@type": "EducationalOrganization", name: "Anoneurx University" },
@@ -632,7 +633,7 @@ const patterns: { pattern: string; build: (params: Record<string, string | undef
           "@context": "https://schema.org",
           "@type": "Person",
           name: humanize(p.name),
-          url: `${SITE}/intern/${p.department}/${p.name}`,
+          url: canonicalUrl(`/intern/${p.department}/${p.name}`),
           jobTitle: `Intern, ${humanize(p.department)}`,
           worksFor: { "@type": "Organization", name: "Anoneurx", url: SITE },
           alternateName: `${humanize(p.name)} — Anoneurx`,
@@ -656,8 +657,8 @@ const patterns: { pattern: string; build: (params: Record<string, string | undef
           "@context": "https://schema.org",
           "@type": "SoftwareSourceCode",
           name,
-          url: `${SITE}/opensource/${p.id}`,
-          codeRepository: `${SITE}/opensource/repos/${p.id}`,
+          url: canonicalUrl(`/opensource/${p.id}`),
+          codeRepository: canonicalUrl(`/opensource/repos/${p.id}`),
         },
       };
     },
@@ -689,8 +690,8 @@ const patterns: { pattern: string; build: (params: Record<string, string | undef
         "@context": "https://schema.org",
         "@type": "SoftwareSourceCode",
         name: humanize(p.id),
-        url: `${SITE}/opensource/repos/${p.id}`,
-        codeRepository: `${SITE}/opensource/repos/${p.id}`,
+        url: canonicalUrl(`/opensource/repos/${p.id}`),
+        codeRepository: canonicalUrl(`/opensource/repos/${p.id}`),
       },
     }),
   },

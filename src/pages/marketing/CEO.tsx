@@ -22,7 +22,7 @@ const CEO: React.FC = () => {
     description: ceo.about.bio,
     image: ceo.photo,
     email: ceo.email,
-    url: "https://anoneurx.com/ceo",
+    url: "https://anoneurx.com/en-us/ceo",
     sameAs: [ceo.linkedin, ceo.github, ceo.twitter, ceo.website].filter(Boolean),
     alumniOf: ceo.education?.map((e) => ({ "@type": "EducationalOrganization", name: e.school })),
   };

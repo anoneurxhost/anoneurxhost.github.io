@@ -1,3 +1,5 @@
+import { blackWallProblems } from "./blackWall";
+
 export type ResearchArea = {
   id: string;
   name: string;
@@ -6,23 +8,59 @@ export type ResearchArea = {
   problemCount: number;
 };
 
+export type ProblemStatus =
+  | "Open"
+  | "In Progress"
+  | "Solved"
+  | "Open Research Problem"
+  | "Under Investigation";
+
+export type ProblemResource = {
+  label: string;
+  href: string;
+  description?: string;
+  external?: boolean;
+};
+
 export type Problem = {
   id: string;
-  code: string;
+  /**
+   * Optional legacy display code. Research collections that use descriptive
+   * identifiers leave this unset and show `id` instead, so no numeric code is
+   * invented for them.
+   */
+  code?: string;
+  /** Stable URL slug. Defaults to `id` when omitted. */
+  slug?: string;
+  /** Marks an entry as part of a named collection (e.g. "black-wall"). */
+  collection?: "black-wall";
+  category?: string;
   title: string;
   areas: string[];
   difficulty: "Beginner" | "Intermediate" | "Advanced" | "Expert";
-  status: "Open" | "In Progress" | "Solved";
-  suitableFor: string[];
-  teamSize: string;
+  status: ProblemStatus;
+  suitableFor?: string[];
+  teamSize?: string;
   description: string;
+  problemStatement?: string;
   whyItMatters: string;
-  researchGap: string;
+  researchGap?: string;
   researchQuestions: string[];
-  technologies: string[];
-  skills: string[];
-  supervisor: string;
-  deliverables: string[];
+  researchObjectives?: string[];
+  technicalChallenges?: string[];
+  expectedOutcome?: string;
+  tags?: string[];
+  technologies?: string[];
+  skills?: string[];
+  supervisor?: string;
+  deliverables?: string[];
+  relatedResearch?: string[];
+  resources?: ProblemResource[];
+  /** Only set when a verifiable publication date exists. */
+  publishedAt?: string;
+  updatedAt?: string;
+  /** Explains the current evidence for an open or in-progress status. */
+  statusNote?: string;
   repo?: string;
   repoLabel?: string;
 };
@@ -726,6 +764,15 @@ export const guideSections = [
 ];
 
 for (const problem of curatedProblems) {
+  if (!problems.some((existing) => existing.id === problem.id)) {
+    problems.push(problem);
+  }
+}
+
+// The Black Wall collection is part of the main board as well as its own
+// collection page, so a reader can reach these problems from either entry
+// point without duplicating the content.
+for (const problem of blackWallProblems) {
   if (!problems.some((existing) => existing.id === problem.id)) {
     problems.push(problem);
   }

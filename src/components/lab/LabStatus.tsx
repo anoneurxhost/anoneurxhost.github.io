@@ -3,7 +3,11 @@ import type { Problem } from "@/pages/lab/data";
 import { statusLabel } from "@/pages/lab/homeData";
 
 const variant = (status: Problem["status"]): "open" | "progress" | "solved" =>
-  status === "Open" ? "open" : status === "In Progress" ? "progress" : "solved";
+  status === "Solved"
+    ? "solved"
+    : status === "In Progress" || status === "Under Investigation"
+      ? "progress"
+      : "open";
 
 const LabStatus = ({ status }: { status: Problem["status"] }) => (
   <span className={`lab-badge lab-badge--${variant(status)}`}>

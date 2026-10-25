@@ -6,17 +6,29 @@ import App from "./App.tsx";
 import { ErrorBoundary } from "./pages/other/NotFound.tsx";
 import "./index.css";
 import "./styles/lab.css";
-import logo from "./assets/logo.png";
+import logo from "./assets/logo.jpeg";
 
-// GitHub Pages serves the prerendered file as both `/lab` and `/lab/index.html`.
-// Rewrite the file form to the clean URL before the router mounts so every
-// address for a page renders the same content.
-const pathname = window.location.pathname;
+// Every public page lives under the /en-us locale prefix. Legacy addresses
+// (and the "/{path}/index.html" form GitHub Pages serves) are rewritten in
+// place before the router mounts, so each page always renders from a single
+// canonical URL without a full page reload.
+const LOCALE_PREFIX = "/en-us";
+
+let pathname = window.location.pathname;
 if (pathname.endsWith("/index.html")) {
+  pathname = pathname.slice(0, -"/index.html".length) || "/";
   window.history.replaceState(
     null,
     "",
-    `${pathname.slice(0, -"/index.html".length) || "/"}${window.location.search}${window.location.hash}`,
+    `${pathname}${window.location.search}${window.location.hash}`,
+  );
+}
+if (!pathname.startsWith(LOCALE_PREFIX)) {
+  const rest = pathname === "/" ? "" : pathname;
+  window.history.replaceState(
+    null,
+    "",
+    `${LOCALE_PREFIX}${rest}${window.location.search}${window.location.hash}`,
   );
 }
 
@@ -28,11 +40,8 @@ const favicon =
   document.querySelector("link[rel='icon']") || document.createElement("link");
 
 favicon.setAttribute("rel", "icon");
-// An SVG icon (used by the lab page) is left alone.
-if (favicon.getAttribute("type") !== "image/svg+xml") {
-  favicon.setAttribute("type", "image/png");
-  favicon.setAttribute("href", logo);
-}
+favicon.setAttribute("type", "image/jpeg");
+favicon.setAttribute("href", logo);
 document.head.appendChild(favicon);
 
 const root = createRoot(container);

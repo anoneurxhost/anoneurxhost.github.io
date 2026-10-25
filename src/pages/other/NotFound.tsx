@@ -73,8 +73,8 @@ const ErrorDisplay = ({
             
             <Button
               onClick={() => {
-                if (window.location.pathname !== "/") {
-                  window.location.href = "/";
+                if (window.location.pathname !== "/en-us" && window.location.pathname !== "/en-us/") {
+                  window.location.href = "/en-us/";
                 }
               }}
               className="px-8 py-6 rounded-lg bg-gradient-to-r from-red-500 to-red-600 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30 transition-all duration-300 text-xs font-bold uppercase tracking-[0.2em]"

@@ -41,9 +41,22 @@ export const areaProblemAreas: Record<string, string[]> = {
 
 export type AreaFilter = (typeof areaFilters)[number];
 
-export type StatusFilter = "All" | "Open" | "In progress" | "Solved";
+export type StatusFilter =
+  | "All"
+  | "Open"
+  | "In progress"
+  | "Open Research Problem"
+  | "Under Investigation"
+  | "Solved";
 
-export const statusFilters: StatusFilter[] = ["All", "Open", "In progress", "Solved"];
+export const statusFilters: StatusFilter[] = [
+  "All",
+  "Open",
+  "In progress",
+  "Open Research Problem",
+  "Under Investigation",
+  "Solved",
+];
 
 /** Maps a stored problem status onto the label used across the landing page. */
 export const statusLabel = (status: Problem["status"]): string =>

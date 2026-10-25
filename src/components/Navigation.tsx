@@ -176,7 +176,7 @@ const Navigation = () => {
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') {
                     const val = (e.target as HTMLInputElement).value;
-                    window.location.href = `/apps/browse?q=${encodeURIComponent(val)}`;
+                    window.location.href = `/en-us/apps/browse?q=${encodeURIComponent(val)}`;
                   }
                 }}
               />
@@ -276,7 +276,7 @@ const Navigation = () => {
                   className="w-full h-10 pl-10 pr-4 rounded-xl bg-white/5 border border-white/10 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-blue-500/40"
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') {
-                      window.location.href = `/apps/browse?q=${encodeURIComponent((e.target as HTMLInputElement).value)}`;
+                      window.location.href = `/en-us/apps/browse?q=${encodeURIComponent((e.target as HTMLInputElement).value)}`;
                     }
                   }}
                 />

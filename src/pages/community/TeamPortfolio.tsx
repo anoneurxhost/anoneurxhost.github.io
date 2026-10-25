@@ -33,7 +33,7 @@ const TeamPortfolio: React.FC = () => {
       description: (profile.about?.bio || profile.tagline).slice(0, 140),
       image: profile.photo,
       email: profile.email,
-      url: `https://anoneurx.com/people/${profile.slug}`,
+      url: `https://anoneurx.com/en-us/people/${profile.slug}`,
       sameAs: [profile.linkedin, profile.github, profile.twitter, profile.website].filter(Boolean),
       alumniOf: profile.education?.map((e) => ({ '@type': 'EducationalOrganization', name: e.school })),
     },
@@ -41,8 +41,8 @@ const TeamPortfolio: React.FC = () => {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Team', item: 'https://anoneurx.com/people' },
-        { '@type': 'ListItem', position: 2, name: profile.name, item: `https://anoneurx.com/people/${profile.slug}` },
+        { '@type': 'ListItem', position: 1, name: 'Team', item: 'https://anoneurx.com/en-us/people' },
+        { '@type': 'ListItem', position: 2, name: profile.name, item: `https://anoneurx.com/en-us/people/${profile.slug}` },
       ],
     },
   ];
@@ -80,7 +80,7 @@ const TeamPortfolio: React.FC = () => {
         <div className="container-responsive max-w-6xl">
           <Breadcrumb className="mb-4">
             <BreadcrumbList>
-              <BreadcrumbItem><BreadcrumbLink href="/people">Team</BreadcrumbLink></BreadcrumbItem>
+              <BreadcrumbItem><BreadcrumbLink href="/en-us/people">Team</BreadcrumbLink></BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem><BreadcrumbPage>{profile.name}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>

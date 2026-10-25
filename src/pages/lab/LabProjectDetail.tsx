@@ -4,7 +4,7 @@ import SEO from "@/components/SEO";
 import LabShell from "@/components/lab/LabShell";
 import { labProjects, problems, researchPapers } from "./data";
 
-const SITE = "https://anoneurx.com";
+import { canonicalUrl } from "@/lib/site";
 
 const LabProjectDetail = () => {
   const { slug } = useParams();
@@ -27,9 +27,9 @@ const LabProjectDetail = () => {
     "@type": "CreativeWork",
     name: project.title,
     description: project.description,
-    url: `${SITE}/lab/projects/${project.slug}`,
+    url: `${canonicalUrl(`/lab/projects/${project.slug}`)}`,
     about: project.area,
-    creator: { "@type": "Organization", name: "Anoneurx Lab", url: `${SITE}/lab` },
+    creator: { "@type": "Organization", name: "Anoneurx Lab", url: canonicalUrl("/lab") },
   };
 
   return (
@@ -66,7 +66,7 @@ const LabProjectDetail = () => {
                 {problem ? (
                   <>
                     <p>
-                      <span className="lab-mono">{problem.code}</span> — {problem.title}
+                      <span className="lab-mono">{problem.code ?? problem.id}</span> — {problem.title}
                     </p>
                     <p className="lab-muted">{problem.description}</p>
                     <Link className="lab-link-arrow" to={`/lab/problems/${problem.id}`}>
@@ -129,7 +129,7 @@ const LabProjectDetail = () => {
                 </div>
                 <div>
                   <dt>Problem</dt>
-                  <dd>{problem ? problem.code : "Not linked"}</dd>
+                  <dd>{problem ? (problem.code ?? problem.id) : "Not linked"}</dd>
                 </div>
                 <div>
                   <dt>Team</dt>

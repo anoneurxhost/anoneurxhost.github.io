@@ -44,15 +44,15 @@ const InternProfile: React.FC = () => {
       description: person.bio,
       image: person.photo,
       email: person.email,
-      url: `https://anoneurx.com${path}`,
+      url: `https://anoneurx.com/en-us${path}`,
       alumniOf: person.university ? { "@type": "EducationalOrganization", name: person.university } : undefined,
     },
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Interns", item: "https://anoneurx.com/intern" },
-        { "@type": "ListItem", position: 2, name: person.name, item: `https://anoneurx.com${path}` },
+        { "@type": "ListItem", position: 1, name: "Interns", item: "https://anoneurx.com/en-us/intern" },
+        { "@type": "ListItem", position: 2, name: person.name, item: `https://anoneurx.com/en-us${path}` },
       ],
     },
   ];
@@ -71,7 +71,7 @@ const InternProfile: React.FC = () => {
         <div className="container-responsive max-w-5xl text-white">
           <Breadcrumb className="mb-4">
             <BreadcrumbList>
-              <BreadcrumbItem><BreadcrumbLink href="/intern">Interns</BreadcrumbLink></BreadcrumbItem>
+              <BreadcrumbItem><BreadcrumbLink href="/en-us/intern">Interns</BreadcrumbLink></BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem><BreadcrumbPage>{person.name}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>

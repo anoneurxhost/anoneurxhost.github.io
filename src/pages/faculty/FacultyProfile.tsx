@@ -35,7 +35,7 @@ const FacultyProfile: React.FC = () => {
       description: person.bio,
       image: person.photo,
       email: person.email,
-      url: `https://anoneurx.com/faculty/${department}/${name}`,
+      url: `https://anoneurx.com/en-us/faculty/${department}/${name}`,
       alumniOf: person.education?.map((e) => ({ "@type": "EducationalOrganization", name: e.school })),
       sameAs: [person.scholar, person.orcid].filter(Boolean),
     },
@@ -43,9 +43,9 @@ const FacultyProfile: React.FC = () => {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "University", item: "https://anoneurx.com/university" },
-        { "@type": "ListItem", position: 2, name: "Faculty", item: "https://anoneurx.com/faculty" },
-        { "@type": "ListItem", position: 3, name: person.name, item: `https://anoneurx.com/faculty/${department}/${name}` },
+        { "@type": "ListItem", position: 1, name: "University", item: "https://anoneurx.com/en-us/university" },
+        { "@type": "ListItem", position: 2, name: "Faculty", item: "https://anoneurx.com/en-us/faculty" },
+        { "@type": "ListItem", position: 3, name: person.name, item: `https://anoneurx.com/en-us/faculty/${department}/${name}` },
       ],
     },
   ];
@@ -63,9 +63,9 @@ const FacultyProfile: React.FC = () => {
         <div className="container-responsive max-w-5xl text-white">
           <Breadcrumb className="mb-4">
             <BreadcrumbList>
-              <BreadcrumbItem><BreadcrumbLink href="/university">University</BreadcrumbLink></BreadcrumbItem>
+              <BreadcrumbItem><BreadcrumbLink href="/en-us/university">University</BreadcrumbLink></BreadcrumbItem>
               <BreadcrumbSeparator />
-              <BreadcrumbItem><BreadcrumbLink href="/faculty">Faculty</BreadcrumbLink></BreadcrumbItem>
+              <BreadcrumbItem><BreadcrumbLink href="/en-us/faculty">Faculty</BreadcrumbLink></BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem><BreadcrumbPage>{person.name}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>

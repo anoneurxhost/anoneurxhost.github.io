@@ -8,9 +8,20 @@ import LabStatus from "@/components/lab/LabStatus";
 import { problems } from "./data";
 
 const difficulties = ["All", "Beginner", "Intermediate", "Advanced", "Expert"];
-const statuses = ["All", "Open", "In Progress", "Solved"];
+/** Statuses are derived from the data so collection statuses stay filterable. */
+const statuses = ["All", ...Array.from(new Set(problems.map((problem) => problem.status)))];
 /** The board filters on the areas problems are actually tagged with. */
 const areas = ["All", ...Array.from(new Set(problems.flatMap((problem) => problem.areas))).sort()];
+const areaBadgeStyles: Record<string, string> = {
+  AI: "!bg-[#f3e8fd] !text-[#8430ce]",
+  "AI & Machine Learning": "!bg-[#f3e8fd] !text-[#8430ce]",
+  Cybersecurity: "!bg-[#fce8e6] !text-[#d93025]",
+  Robotics: "!bg-[#e4f7fb] !text-[#087f8c]",
+  Systems: "!bg-[#e6f4ea] !text-[#188038]",
+  "Systems & OS": "!bg-[#e6f4ea] !text-[#188038]",
+  "Autonomous Systems": "!bg-[#fef7e0] !text-[#b06000]",
+  "Data Science": "!bg-[#e8f0fe] !text-[#174ea6]",
+};
 
 const LabProblems = () => {
   const [query, setQuery] = useState("");
@@ -27,7 +38,10 @@ const LabProblems = () => {
       if (!term) return true;
       return (
         problem.title.toLowerCase().includes(term) ||
-        problem.code.toLowerCase().includes(term) ||
+        problem.id.toLowerCase().includes(term) ||
+        (problem.code ?? "").toLowerCase().includes(term) ||
+        (problem.category ?? "").toLowerCase().includes(term) ||
+        (problem.tags ?? []).some((tag) => tag.toLowerCase().includes(term)) ||
         problem.description.toLowerCase().includes(term)
       );
     });
@@ -72,85 +86,48 @@ const LabProblems = () => {
               />
             </div>
 
-            <div className="lab-filter-row">
-              <label className="lab-filter-label" htmlFor="board-area">
-                Area
-              </label>
-              <select
-                id="board-area"
-                className="lab-select"
-                value={area}
-                onChange={(event) => setArea(event.target.value)}
-              >
-                {areas.map((entry) => (
-                  <option key={entry} value={entry}>
-                    {entry}
-                  </option>
-                ))}
-              </select>
-
-              <label className="lab-filter-label" htmlFor="board-status">
-                Status
-              </label>
-              <select
-                id="board-status"
-                className="lab-select"
-                value={status}
-                onChange={(event) => setStatus(event.target.value)}
-              >
-                {statuses.map((entry) => (
-                  <option key={entry} value={entry}>
-                    {entry}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="lab-filter-row">
-              <span className="lab-filter-label">Difficulty</span>
-              <div className="lab-chips" role="group" aria-label="Filter problems by difficulty">
-                {difficulties.map((entry) => (
-                  <button
-                    key={entry}
-                    type="button"
-                    className="lab-chip"
-                    aria-pressed={difficulty === entry}
-                    onClick={() => setDifficulty(entry)}
-                  >
-                    {entry}
-                  </button>
-                ))}
-              </div>
-            </div>
-
             <p className="lab-count" aria-live="polite">
               {filtered.length} of {problems.length} problems
             </p>
           </div>
 
-          <div className="lab-problems">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {filtered.map((problem) => (
-              <article className="lab-problem" key={problem.id}>
-                <div>
-                  <h2 className="lab-problem__title">
-                    <Link to={`/lab/problems/${problem.id}`}>{problem.title}</Link>
-                  </h2>
-                  <p className="lab-problem__abstract">{problem.description}</p>
+
+              <Link key={problem.id} to={`/lab/problems/${problem.id}`}>
+                <article className="group flex min-h-[300px] min-w-0 flex-col gap-3 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 shadow-[var(--shadow-card)] transition hover:border-[var(--border-strong)] hover:shadow-[var(--shadow-lift)] max-md:min-h-0">
+                <div className="flex items-center justify-end gap-2">
+                  <LabStatus status={problem.status} />
                 </div>
-                <div className="lab-problem__meta">
+                <div className="min-w-0 flex-1">
+                  <h2 className="!text-lg font-semibold leading-snug">
+                    {problem.title}
+                  </h2>
+                  <p className="mt-2 line-clamp-2 text-sm leading-relaxed !text-[#5f6368]">{problem.description}</p>
+                </div>
+                <div className="flex min-h-7 flex-wrap content-start items-center gap-1.5">
                   <LabDifficulty difficulty={problem.difficulty} />
                   {problem.areas.map((entry) => (
-                    <span className="lab-tag" key={entry}>
+                    <span
+                      className={`inline-flex items-center rounded-full px-2 py-0.5 text-[0.68rem] font-medium ${
+                        areaBadgeStyles[entry] ?? "!bg-[#f1f3f4] !text-[#5f6368]"
+                      }`}
+                      key={entry}
+                    >
                       {entry}
                     </span>
                   ))}
-                  <LabStatus status={problem.status} />
                 </div>
-                <p className="lab-problem__gap">
-                  <span className="lab-problem__gap-label">Research gap</span>
-                  {problem.researchGap}
+                <p className="line-clamp-3 border-t border-[var(--border)] pt-3 text-xs leading-relaxed !text-[#3c4043]">
+                  <span className="mb-1 block font-mono text-[0.62rem] uppercase tracking-wider text-[var(--muted)]">
+                    {problem.researchGap ? "Research gap" : "Research area"}
+                  </span>
+                  {problem.researchGap ?? problem.category ?? problem.areas[0]}
                 </p>
+               
               </article>
+              </Link>
+            
             ))}
 
             {filtered.length === 0 && (

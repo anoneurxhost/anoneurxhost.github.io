@@ -269,7 +269,7 @@ const ReadPaper = () => {
 
   const cover = COVERS[paper.paperId];
   const origin = typeof window !== "undefined" ? window.location.origin : "https://anoneurx.com";
-  const shareUrl = `${origin}/share/read/${paper.paperId}`;
+  const shareUrl = `${origin}/en-us/share/read/${paper.paperId}`;
 
   return (
     <PageTransition>
