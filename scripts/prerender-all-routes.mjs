@@ -1077,7 +1077,7 @@ const routes = [
     path: "/lab",
     title: "Anoneurx Research Lab",
     description: "Open research problems, projects and opportunities at Anoneurx Lab — AI, cybersecurity, robotics and systems research.",
-    ogImage: "/og-lab.png",
+    ogImage: "/og-image.png",
     jsonLd: [
       {
         "@context": "https://schema.org",
@@ -1097,8 +1097,10 @@ const routes = [
   },
   {
     path: "/lab/problems",
-    title: "Research Problems — Anoneurx Lab",
-    description: "Browse open research problems at Anoneurx Lab. Filter by area, difficulty and status.",
+    title: "Anoneurx Lab | Open Research",
+    titleOverride: "Anoneurx Lab | Open Research",
+    description: "Explore open research problems in cybersecurity, operating systems, robotics, and autonomous systems at Anoneurx Lab.",
+    ogImage: "/og-image.png",
   },
   {
     path: "/lab/problems/secure-boot-integrity",
@@ -1618,7 +1620,7 @@ let count = 0;
     // unprefixed so the section-registry matching keeps working.
     const canonicalUrl =
       logicalCanonical === "/" ? `${SITE}${LOCALE}/` : `${SITE}${LOCALE}${logicalCanonical}`;
-    const title = formatTitle(route.title, route.path);
+    const title = route.titleOverride || formatTitle(route.title, route.path);
     const description = route.description;
     const ogImageUrl = /^(https?:)?\/\//.test(route.ogImage || "")
       ? route.ogImage

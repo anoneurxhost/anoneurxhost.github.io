@@ -323,43 +323,7 @@ const LabProblemDetail = () => {
               )}
             </div>
 
-            <aside className="lab-detail__sidebar" aria-label="Problem details">
-              <section className="lab-sidebar-card">
-                <h2 className="border-b border-[var(--border)] px-3 py-2 text-[0.68rem] font-semibold leading-tight">
-                  Problem details
-                </h2>
-                <dl className="lab-sidebar-card__details">
-                  <div>
-                    <dt>{isBlackWall ? "Research ID" : "Code"}</dt>
-                    <dd className="lab-mono">{displayId}</dd>
-                  </div>
-                  <div>
-                    <dt>Status</dt>
-                    <dd>{statusLabel(problem.status)}</dd>
-                  </div>
-                  <div>
-                    <dt>Difficulty</dt>
-                    <dd>{problem.difficulty}</dd>
-                  </div>
-                  {problem.category && (
-                    <div>
-                      <dt>Category</dt>
-                      <dd>{problem.category}</dd>
-                    </div>
-                  )}
-                  <div>
-                    <dt>Areas</dt>
-                    <dd>{problem.areas.join(", ")}</dd>
-                  </div>
-                  {problem.updatedAt && (
-                    <div>
-                      <dt>Updated</dt>
-                      <dd>{problem.updatedAt}</dd>
-                    </div>
-                  )}
-                </dl>
-              </section>
-
+            <aside className="lab-detail__sidebar" aria-label="On this page">
               <nav className="lab-detail__toc" aria-label="On this page">
                 <p className="lab-detail__toc-title">On this page</p>
                 <ol>

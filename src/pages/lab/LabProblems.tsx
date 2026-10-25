@@ -58,7 +58,9 @@ const LabProblems = () => {
     <LabShell>
       <SEO
         title="Open Problems"
-        description="Browse open research problems at Anoneurx Lab across AI, cybersecurity, robotics, and systems. Find a real research problem that matches your skills and work on it."
+        titleOverride="Anoneurx Lab | Open Research"
+        description="Explore open research problems in cybersecurity, operating systems, robotics, and autonomous systems at Anoneurx Lab."
+        image="/og-image.png"
         path="/lab/problems"
       />
 

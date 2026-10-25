@@ -1688,43 +1688,6 @@ body.lab-body {
   min-width: 0;
 }
 
-.lab-sidebar-card {
-  overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  background: var(--surface-sunken);
-  box-shadow: var(--shadow-card);
-}
-
-.lab-sidebar-card__details {
-  padding: 4px 12px;
-}
-
-.lab-sidebar-card__details > div {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 5px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.68rem;
-}
-
-.lab-sidebar-card__details > div:last-child {
-  border-bottom: 0;
-}
-
-.lab-sidebar-card__details dt {
-  color: var(--muted);
-}
-
-.lab-sidebar-card__details dd {
-  max-width: 68%;
-  text-align: right;
-  overflow-wrap: anywhere;
-  color: var(--text);
-}
-
 .lab-detail__list {
   display: flex;
   flex-direction: column;
@@ -1817,6 +1780,10 @@ body.lab-body {
 
 @media (max-width: 900px) {
   .lab-detail__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-problem-detail .lab-detail__grid {
     grid-template-columns: 1fr;
   }
 

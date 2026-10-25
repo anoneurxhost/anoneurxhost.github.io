@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">ANONEURX LAB</title>
+  <desc id="description">Anoneurx Lab open research</desc>
+  <rect width="1200" height="630" fill="#050505"/>
+  <image href="/logo.png" x="485" y="92" width="230" height="230" preserveAspectRatio="xMidYMid meet"/>
+  <text x="600" y="430" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="700" letter-spacing="8" text-anchor="middle">ANONEURX LAB</text>
+  <rect x="490" y="474" width="220" height="3" rx="1.5" fill="#a855f7"/>
+</svg>

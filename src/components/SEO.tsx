@@ -12,6 +12,8 @@ const DEFAULT_OG_IMAGE = "/og-default.png";
 interface SEOProps {
   /** Page label, e.g. "LYNX". The section prefix is added automatically. */
   title?: string;
+  /** Exact document/social title for pages that need to bypass section composition. */
+  titleOverride?: string;
   description?: string;
   path?: string;
   image?: string;
@@ -90,6 +92,7 @@ const composeTitle = (title: string | undefined, path: string, override?: string
  */
 const SEO = ({
   title,
+  titleOverride,
   description = "Anoneurx builds open source software, the Black Wall operating system, Nexora browser, ASTRA research, Anoneurx Cloud, Anoneurx Pay and Anoneurx University.",
   path = "/",
   image,
@@ -98,7 +101,7 @@ const SEO = ({
   noindex,
   section,
 }: SEOProps) => {
-  const fullTitle = composeTitle(title, path, section);
+  const fullTitle = titleOverride ?? composeTitle(title, path, section);
   const url = canonicalUrl(path);
   const absolute = (value?: string) =>
     !value || value.startsWith("http") ? value : `${SITE}${value.startsWith("/") ? value : `/${value}`}`;
