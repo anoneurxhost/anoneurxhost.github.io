@@ -1596,7 +1596,7 @@ let count = 0;
 
   // 2. Start the preview server so Playwright can fetch real routes
   console.log("▶ Starting vite preview on port", PREVIEW_PORT);
-  const preview = spawn("npx", ["vite", "preview", "--port", String(PREVIEW_PORT), "--host"], {
+  const preview = spawn(process.execPath, [resolve("node_modules/vite/bin/vite.js"), "preview", "--port", String(PREVIEW_PORT), "--host"], {
     stdio: ["ignore", "pipe", "pipe"],
   });
   preview.stdout.on("data", (d) => process.stdout.write(`[preview] ${d}`));
