@@ -150,6 +150,7 @@ const routes = [
     path: "/",
     title: "Anoneurx",
     description: "Anoneurx builds Black Wall OS, the Nexora browser, Anoneurx Cloud, Anoneurx Pay and the ASTRA research lab, and maintains open source developer tools and published research.",
+    ogImage: "/og-home.png",
     jsonLd: [
       {
         "@context": "https://schema.org",
@@ -822,6 +823,7 @@ const routes = [
     path: "/opensource",
     title: "Anoneurx Open Source — Projects, Libraries & Templates",
     description: "Explore Anoneurx open source — projects, libraries, packages, templates and VS Code extensions. Free forever, community-driven.",
+    ogImage: "/og-opensource.png",
   },
   {
     path: "/opensource/about",
@@ -1486,12 +1488,14 @@ for (const project of OPEN_SOURCE_PROJECTS) {
     path: `/opensource/${project.id}`,
     title: `${project.name} — Anoneurx Open Source Project`,
     description: `README, activity, maintainers and releases for ${project.name}, an Anoneurx open source project.`,
+    ogImage: project.id === "lynx" ? "/lynx-og-image.png" : undefined,
   });
   for (const [subPath, subTitle, subBlurb] of PROJECT_SUBPAGES) {
     routes.push({
       path: `/opensource/${project.id}/${subPath}`,
       title: `${subTitle} — ${project.name}`,
       description: `${subBlurb} for ${project.name}, an Anoneurx open source project.`,
+      ogImage: project.id === "lynx" ? "/lynx-og-image.png" : undefined,
     });
   }
 }

@@ -18,6 +18,7 @@ import { canonicalUrl } from "@/lib/site";
 type Entry = {
   title: string;
   description: string;
+  image?: string;
   type?: "website" | "article";
   jsonLd?: object | object[];
   /** Overrides the canonical/og:url path (used by /share/* aliases). */
@@ -271,6 +272,7 @@ const map: Record<string, Entry> = {
   "/opensource": {
     title: "Anoneurx Open Source — Projects, Libraries & Templates",
     description: "Explore Anoneurx open source — projects, libraries, packages, templates and VS Code extensions. Free forever, community-driven.",
+    image: "/og-opensource.png",
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
@@ -653,6 +655,7 @@ const patterns: { pattern: string; build: (params: Record<string, string | undef
       return {
         title: `${name} — Anoneurx Open Source Project`,
         description: `README, activity, maintainers and releases for ${name}, an Anoneurx open source project.`,
+        image: p.id === "lynx" ? "/lynx-og-image.png" : undefined,
         jsonLd: {
           "@context": "https://schema.org",
           "@type": "SoftwareSourceCode",
@@ -671,6 +674,7 @@ const patterns: { pattern: string; build: (params: Record<string, string | undef
       return {
         title: `${sub.title} — ${name}`,
         description: `${sub.description} for ${name}, an Anoneurx open source project.`,
+        image: p.id === "lynx" ? "/lynx-og-image.png" : undefined,
         jsonLd: [
           BREADCRUMB([
             { name: "Open Source", item: "/opensource" },
@@ -739,14 +743,14 @@ const RouteSEO = () => {
 
   const exact = map[pathname];
   if (exact) {
-    return <SEO title={exact.title} description={exact.description} path={pathname} type={exact.type} jsonLd={exact.jsonLd} noindex={noindex || exact.noindex} />;
+    return <SEO title={exact.title} description={exact.description} path={pathname} image={exact.image} type={exact.type} jsonLd={exact.jsonLd} noindex={noindex || exact.noindex} />;
   }
 
   for (const p of patterns) {
     const match = matchPath(p.pattern, pathname);
     if (match) {
       const entry = p.build(match.params as Record<string, string | undefined>);
-      return <SEO title={entry.title} description={entry.description} path={entry.canonicalPath ?? pathname} type={entry.type} jsonLd={entry.jsonLd} noindex={noindex || entry.noindex} />;
+      return <SEO title={entry.title} description={entry.description} path={entry.canonicalPath ?? pathname} image={entry.image} type={entry.type} jsonLd={entry.jsonLd} noindex={noindex || entry.noindex} />;
 
     }
   }
