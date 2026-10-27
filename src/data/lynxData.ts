@@ -17,21 +17,33 @@ export const lynxExtra: ProjectExtra = {
   accent: "from-amber-400 to-orange-500",
   storeLinks: {
     desktop: [
-      { label: "Clone the repository", url: "https://github.com/anoneurx/lynx" },
-      { label: "Read the specification", url: "https://github.com/anoneurx/lynx/blob/main/docs/architecture/specification.md" },
+      { label: "Release v0.1.0", url: "https://github.com/anoneurx/lynx/releases/tag/v0.1.0" },
+      { label: "Source archive (tar.gz)", url: "https://github.com/anoneurx/lynx/archive/refs/tags/v0.1.0.tar.gz" },
+      { label: "Source archive (zip)", url: "https://github.com/anoneurx/lynx/archive/refs/tags/v0.1.0.zip" },
+      { label: "Read the specification", url: "https://github.com/anoneurx/lynx/blob/v0.1.0/docs/architecture/specification.md" },
     ],
   },
   contributors: lynxContributors,
   testers: lynxTesters,
   features: [
     {
+      title: "Own index, end to end",
+      desc: "Crawl → index → rank → serve is one owned pipeline under robots.txt. No Bing or Google syndication anywhere in the loop — the gap that leaves most 'private' engines serving rented links (a 2024 Bing API outage took several of them down with it).",
+      tag: "Independence",
+    },
+    {
       title: "Privacy is structural",
       desc: "The query is parsed into an AST at the handler boundary and the raw string is dropped. There is nothing for a logger to log.",
       tag: "Privacy",
     },
     {
-      title: "Explainable ranking",
-      desc: "Every served result carries its full per-signal breakdown. score(doc) = f(doc_id, index_generation, ranking_config_version, query), so any past ranking can be recomputed.",
+      title: "Fail-closed AI answers",
+      desc: "Astra (optional, off by default) strips every sentence that lacks a verified [n] citation and refuses rather than guesses — no invented provenance, the failure mode all eight AI search tools showed in the CJR Tow Center study. Below-trust pages are withheld from grounding by the source-trust gate.",
+      tag: "AI answers",
+    },
+    {
+      title: "Explainable ranking — per result, on request",
+      desc: "explain=true renders a per-result 'Why this ranking?' disclosure with the full signal vector (lexical, freshness, quality, authority, context, spam) and the ranking-config version. No mainstream engine lets a user see, for a single request, why one page ranked above another.",
       tag: "Ranking",
     },
     {
@@ -58,8 +70,23 @@ export const lynxExtra: ProjectExtra = {
   changelog: [
     {
       version: "v0.1.0",
-      date: "Oct 2026",
-      kind: "Design release",
+      date: "Oct 27, 2026",
+      kind: "First end-to-end release",
+      notes: [
+        "§Z implementation order complete (steps 1–22): crawl, parse, index, query, rank, serve — 56 test suites green at every gated commit",
+        "Gap 1, the rented result list: fully owned pipeline (robots.txt crawler, own sealed index generations, own BM25F ranker) — no Bing/Google syndication anywhere in the loop",
+        "Gap 2, unverified AI citations (per the CJR Tow Center study of eight AI search tools): Astra strips every sentence without a verified [n] citation, refuses rather than guesses, and applies a source-trust gate (ai.min_source_trust) to what it grounds from",
+        "Gap 3, ranking opacity: explain=true returns the per-result signal vector (lexical, freshness, quality, authority, context, spam) — the HTML SERP renders a per-result 'Why this ranking?' disclosure with the ranking-config version",
+        "API: JSON + server-rendered HTML SERP, operators (site:, intitle:, inanchor:, \"phrase\", after:, OR), fuzzy suggestions, keyset pagination, no-store everywhere",
+        "Production broker bootstrap: serves a sealed Tantivy generation from index.dir, refuses to boot in production without one (fixes 'empty index by accident')",
+        "Full-loop smoke test over three real services: verified answer merges with provenance into the real index; identical search served from the answer cache; a grounding-ignoring model fails closed",
+        "Release rehearsal: ndcg@10 0.966 / mrr@10 1.000 / recall@100 0.889 on the v0 judged set; p50 0.57–1.71 ms; ~1,820 req/s burst (small-corpus conditions)",
+      ],
+    },
+    {
+      version: "Phase 0",
+      date: "Jul–Oct 2026",
+      kind: "Architecture (pre-release)",
       notes: [
         "Two-plane architecture split: query plane never touches untrusted content, crawl plane never sees a user query",
         "Threat model with 35 numbered threats, each with impact, likelihood, mitigation and residual risk",
@@ -84,7 +111,7 @@ export const lynxExtra: ProjectExtra = {
   faq: [
     {
       q: "Is there a running LYNX search engine?",
-      a: "Not yet. The repository is in its design phase and contains the complete architecture, threat model, data model and engineering plan. Production code is written against these documents, not before them.",
+      a: "Yes — v0.1.0 (Oct 27, 2026) is the first end-to-end release: crawler, indexer, query processor, ranker, public API and the optional Astra answer layer, all gated by 56 green test suites at every commit. It is prototype-scale: the corpus is small, and scale work is Phase 6.",
     },
     {
       q: "Is LYNX anonymous?",
@@ -110,11 +137,15 @@ export const lynxExtra: ProjectExtra = {
       q: "Does the AI answer layer read my query?",
       a: "Astra is off by default. Retrieval happens first and independently, Astra is an extra response field, it has no tools, no memory and no agent loop, and it fails closed rather than returning partially verified citations.",
     },
+    {
+      q: "What makes it different from DuckDuckGo / Startpage / Brave?",
+      a: "Three survey-backed structural gaps: (1) most privacy alternatives rent their organic web links from Bing/Google syndication — LYNX owns the whole crawl→index→rank→serve loop; (2) AI search answers cite poorly (CJR Tow Center 2025 tested eight tools, all had citation problems) — LYNX fails closed with verified [n] citations and a source-trust gate; (3) ranking opacity — LYNX renders a per-result 'Why this ranking?' signal vector on request.",
+    },
   ],
   roadmap: [
     {
       quarter: "Phase 0 — Architecture",
-      status: "active",
+      status: "shipped",
       items: [
         "Accept ADRs 0001–0021",
         "Give every open question an owner and a first experiment",
@@ -123,62 +154,63 @@ export const lynxExtra: ProjectExtra = {
     },
     {
       quarter: "Phase 1 — Search prototype",
-      status: "planned",
+      status: "shipped",
       items: [
         "Query processor: lexer, parser, AST, operators, normalisation",
         "SearchIndexReader trait behind an in-memory fake and a real Tantivy reader",
         "BM25F ranker with field weights, phrase queries, freshness and quality",
         "End-to-end /api/v1/search with the full middleware stack",
-        "Evaluation harness: judged query set, NDCG@10, Recall@50, MRR@10, golden rankings",
+        "Evaluation harness: judged query set with NDCG@10, Recall and MRR golden gates",
       ],
     },
     {
       quarter: "Phase 2 — Crawler",
-      status: "planned",
+      status: "shipped",
       items: [
-        "Frontier with per-host budgets and politeness tokens",
+        "Frontier with per-host politeness, daily budgets and trap detection",
         "robots.txt as a policy input, never a trust input",
-        "SSRF safety gate, streaming downloader caps, parser bounds",
+        "SSRF safety gate, streaming downloader caps, bounded parser",
         "Extracted-text-only indexing with canonicalisation and tracking-param stripping",
       ],
     },
     {
       quarter: "Phase 3 — Real search engine",
-      status: "planned",
+      status: "shipped (§Z steps 9–15)",
       items: [
-        "Scale the crawl with better frontier prioritisation, sitemaps and feeds",
-        "Link graph and domain-capped PageRank authority",
-        "Near-duplicate clusters via SimHash and MinHash",
-        "Full operator set including filetype:, intitle:, inurl: and before:/after:",
+        "Link graph authority fields and near-duplicate handling in the ranker",
+        "Full operator set including intitle:, inanchor:, count operators and after:/before:",
         "Suggestions from corpus statistics, never from query logs",
-        "Multi-language detection, stopwords, stemmers and index fields",
+        "Sealed index generations: production refuses to boot without one",
+        "Grow the corpus: frontier prioritisation and multi-scale crawl capacity (next)",
       ],
     },
     {
       quarter: "Phase 4 — Privacy hardening",
-      status: "planned",
+      status: "shipped (§Z steps 16–17)",
       items: [
-        "Privacy invariants enforced as tests, not as review comments",
-        "Ship lynx-verify-privacy as a release artefact so anyone can check the claims",
-        "Zero-downtime index generations with 24h rollback",
+        "Privacy invariants enforced as retrieval jobs and CI checks, not as review comments",
+        "no-store on every response and third-party asset policy refused at config validation",
+        "Production privacy check and retention registry shipped in the release",
       ],
     },
     {
       quarter: "Phase 5 — Astra (AI answers)",
-      status: "planned",
+      status: "shipped (§Z steps 18–22)",
       items: [
-        "Optional grounded answers with deterministic citation validation",
-        "Prompt-injection defences as an architectural property, not a prompt",
-        "Self-hosted Llama-3-8B path via vLLM or Ollama",
+        "Optional grounded answers with sentence-level citation validation, off by default",
+        "Prompt-injection defences as an architectural property — the sandboxed answer plane, two-field prompt, no tools",
+        "Source-trust gate (ai.min_source_trust) and kill switch, token budget, circuit breaker, answer cache",
+        "v0.1 limit stated: verification is sentence-level but content-blind; the NLI pass is future work",
       ],
     },
     {
       quarter: "Phase 6 — Scale & distribution",
       status: "planned",
       items: [
-        "Multi-shard index with documented capacity targets",
+        "Multi-shard index with per-shard top-K and a global rerank; shard coordinator",
         "Horizontal crawl worker scaling with a measured claim-latency trigger",
-        "Federated and third-party embedding path",
+        "Region awareness, reader replication, DR drills rehearsed not just written",
+        "Shared budget counter for multi-replica Astra deployments (Redis)",
       ],
     },
   ],
@@ -243,7 +275,14 @@ export const lynxExtra: ProjectExtra = {
     {
       title: "Known limitations",
       body: [
-        "There is no code to attack yet — the project is in its design phase. These are the risks the design accepts on purpose, stated before implementation rather than after an incident.",
+        "v0.1.0 ships real code under the honest-claims principle. The accepted risks are stated before an incident, not after one — including the AI-answer blast-radius limits (sentence-level, content-blind verification in v0.1) and prototype-scale corpus coverage.",
+      ],
+      bullets: [
+        "The index is small compared with commercial engines — coverage, not correctness, is the shortfall",
+        "AI answer verification does not yet prove truth (no entailment pass); it bounds blast radius",
+        "Budget, circuit breaker and answer cache are process-local in v0.1 (single-replica assumption)",
+        "Novel prompt-injection evasions may slip past the detector; the containment guarantees do not depend on it",
+        "Provider-level log access and upstream network proxies remain outside LYNX's control, stated as such",
       ],
     },
   ],

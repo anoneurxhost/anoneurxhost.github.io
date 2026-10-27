@@ -7,18 +7,20 @@ import { ProjectExtra } from "@/data/types";
 /** Per-project overrides for the derived detail view — status, licence and headline stats. */
 const OVERRIDES: Record<string, Partial<Record<"version" | "license" | "stats" | "downloads", unknown>>> = {
   lynx: {
-    version: "v0.1.0 · design phase",
+    version: "v0.1.0 · released",
     license: "AGPL-3.0-or-later",
     stats: [
-      { label: "Threats Modelled", value: "35", subtext: "T01–T35, with residual risk", accentColor: "purple" },
-      { label: "Architecture Decisions", value: "21", subtext: "Numbered ADRs", accentColor: "cyan" },
-      { label: "Documented", value: "114K", subtext: "Words of design spec", accentColor: "emerald" },
-      { label: "Status", value: "Design", subtext: "Phase 0 in progress", accentColor: "amber" },
+      { label: "Release", value: "v0.1.0", subtext: "First end-to-end release · Oct 27, 2026", accentColor: "emerald" },
+      { label: "Test suites", value: "56", subtext: "Green at every gated commit", accentColor: "purple" },
+      { label: "Quality gates", value: "0.966 NDCG@10", subtext: "v0 judged set · MRR@10 1.000", accentColor: "cyan" },
+      { label: "Status", value: "Shipped", subtext: "Phases 0–5 · Phase 6 next", accentColor: "amber" },
     ],
     downloads: [
-      { name: "anoneurx/lynx", size: "source", version: "main", target: "Rust + TypeScript", url: "https://github.com/anoneurx/lynx" },
-      { name: "specification.md", size: "docs", version: "v0.1", target: "Reference spec", url: "https://github.com/anoneurx/lynx/blob/main/docs/architecture/specification.md" },
-      { name: "PRIVACY.md", size: "docs", version: "v0.1", target: "Privacy commitments", url: "https://github.com/anoneurx/lynx/blob/main/PRIVACY.md" },
+      { name: "anoneurx/lynx (source)", size: "source", version: "v0.1.0", target: "Rust + TypeScript", url: "https://github.com/anoneurx/lynx" },
+      { name: "lynx-v0.1.0.tar.gz", size: "source archive", version: "v0.1.0", target: "All platforms", url: "https://github.com/anoneurx/lynx/archive/refs/tags/v0.1.0.tar.gz" },
+      { name: "lynx-v0.1.0.zip", size: "source archive", version: "v0.1.0", target: "All platforms", url: "https://github.com/anoneurx/lynx/archive/refs/tags/v0.1.0.zip" },
+      { name: "specification.md", size: "docs", version: "v0.1.0", target: "Reference spec", url: "https://github.com/anoneurx/lynx/blob/v0.1.0/docs/architecture/specification.md" },
+      { name: "PRIVACY.md", size: "docs", version: "v0.1.0", target: "Privacy commitments", url: "https://github.com/anoneurx/lynx/blob/v0.1.0/PRIVACY.md" },
     ],
   },
 };
