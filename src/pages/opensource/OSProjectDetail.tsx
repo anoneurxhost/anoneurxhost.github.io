@@ -5,6 +5,7 @@ import {
   ArrowLeft,
   ArrowRight,
   Check,
+  Download,
   Github,
   Heart,
   Share2,
@@ -119,9 +120,13 @@ export const OSProjectDetail: React.FC = () => {
             <p className="mb-4 max-w-3xl text-lg font-light text-slate-200">{project.subtitle}</p>
             <p className="mb-7 max-w-3xl font-light leading-relaxed text-slate-400">{project.description}</p>
 
-            <StoreBadges extra={extra} className="mb-5" />
-
             <div className="flex flex-wrap items-center gap-3 text-sm">
+              <Link
+                to={`/opensource/${project.id}/download`}
+                className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 font-semibold text-white backdrop-blur-md hover:bg-white/10"
+              >
+                <Download className="h-4 w-4" /> Download
+              </Link>
               <a
                 href={project.githubUrl}
                 target="_blank"
