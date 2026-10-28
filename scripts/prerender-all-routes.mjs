@@ -398,11 +398,13 @@ const routes = [
     path: "/benchmark",
     title: "Benchmarks — Anoneurx",
     description: "Reproducible benchmarks for Anoneurx systems, including LYNX search quality, latency, indexing and crawler performance.",
+    ogImage: "/og-images/og-image.png",
   },
   {
     path: "/benchmark/lynx",
     title: "LYNX Benchmarks — Anoneurx",
     description: "Standardized benchmarks for LYNX search quality, API latency, index building, crawler throughput and hardware baselines.",
+    ogImage: "/og-images/og-image.png",
   },
   {
     path: "/blogs/all",
@@ -1646,8 +1648,8 @@ let count = 0;
     const title = route.titleOverride || formatTitle(route.title, route.path);
     const description = route.description;
     const defaultOgImage = route.path === "/lab" || route.path.startsWith("/lab/")
-      ? "/og-images/og-image.png"
-      : "/og-images/og-image.png";
+      ? "/og-images/og-lab.png"
+      : "/og-images/og-home.png";
     const ogImageUrl = /^(https?:)?\/\//.test(route.ogImage || "")
       ? route.ogImage
       : `${SITE}${route.ogImage || defaultOgImage}`;

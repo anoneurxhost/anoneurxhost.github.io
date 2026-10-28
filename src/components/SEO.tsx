@@ -7,8 +7,8 @@ const SITE = "https://anoneurx.com";
 const BRAND = "ANONEURX";
 
 /** 1200x630 social card used whenever a page does not supply its own. */
-const DEFAULT_OG_IMAGE = "/og-images/og-image.png";
-const LAB_OG_IMAGE = "/og-images/og-image.png";
+const DEFAULT_OG_IMAGE = "/og-images/og-home.png";
+const LAB_OG_IMAGE = "/og-images/og-lab.png";
 
 interface SEOProps {
   /** Page label, e.g. "LYNX". The section prefix is added automatically. */

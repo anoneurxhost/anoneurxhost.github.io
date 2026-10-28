@@ -266,8 +266,8 @@ const map: Record<string, Entry> = {
   "/docs/blackwall": { title: "Black Wall OS Documentation", description: "Black Wall OS documentation — installation, syscall bindings, architecture and the enclave security model." },
   "/docs/nexora": { title: "Nexora Documentation", description: "Nexora browser documentation — configuration, sync, extensions and network privacy controls." },
   "/docs/atlas": { title: "ATLAS Documentation", description: "ATLAS compiler and GPU renderer documentation — toolchain setup, language reference and backend notes." },
-  "/benchmark": { title: "Benchmarks — Anoneurx", description: "Reproducible benchmarks for Anoneurx systems, including LYNX search quality, latency, indexing and crawler performance." },
-  "/benchmark/lynx": { title: "LYNX Benchmarks — Anoneurx", description: "Standardized benchmarks for LYNX search quality, API latency, index building, crawler throughput and hardware baselines." },
+  "/benchmark": { title: "Benchmarks — Anoneurx", description: "Reproducible benchmarks for Anoneurx systems, including LYNX search quality, latency, indexing and crawler performance.", image: "/og-images/og-image.png" },
+  "/benchmark/lynx": { title: "LYNX Benchmarks — Anoneurx", description: "Standardized benchmarks for LYNX search quality, API latency, index building, crawler throughput and hardware baselines.", image: "/og-images/og-image.png" },
   "/research": {
     title: "Anoneurx Research",
     description: "Applied research from Anoneurx across AI, systems, distributed compute and security.",
