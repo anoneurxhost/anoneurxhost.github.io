@@ -150,7 +150,7 @@ const routes = [
     path: "/",
     title: "Anoneurx",
     description: "Anoneurx builds Black Wall OS, the Nexora browser, Anoneurx Cloud, Anoneurx Pay and the ASTRA research lab, and maintains open source developer tools and published research.",
-    ogImage: "/og-home.png",
+    ogImage: "/og-images/og-home.png",
     jsonLd: [
       {
         "@context": "https://schema.org",
@@ -279,6 +279,7 @@ const routes = [
     path: "/research",
     title: "Anoneurx Research",
     description: "Applied research from Anoneurx across AI, systems, distributed compute and security.",
+    ogImage: "/og-images/research-og-image.png",
   },
   {
     path: "/view-in-journal",
@@ -401,6 +402,7 @@ const routes = [
     path: "/blackwall",
     title: "Black Wall OS — Anoneurx Secure Operating System",
     description: "Black Wall is Anoneurx's privacy-first operating system: hardened Rust core, zero telemetry, blazing performance and blockchain-backed identity.",
+    ogImage: "/og-images/blackwall/og-imageblackwall.jpg",
   },
   {
     path: "/blackwall/download",
@@ -823,7 +825,7 @@ const routes = [
     path: "/opensource",
     title: "Anoneurx Open Source — Projects, Libraries & Templates",
     description: "Explore Anoneurx open source — projects, libraries, packages, templates and VS Code extensions. Free forever, community-driven.",
-    ogImage: "/og-opensource.png",
+    ogImage: "/og-images/og-opensource.png",
   },
   {
     path: "/opensource/about",
@@ -1079,7 +1081,7 @@ const routes = [
     path: "/lab",
     title: "Anoneurx Research Lab",
     description: "Open research problems, projects and opportunities at Anoneurx Lab — AI, cybersecurity, robotics and systems research.",
-    ogImage: "/og-image.png",
+    ogImage: "/og-images/lab-og-image.png",
     jsonLd: [
       {
         "@context": "https://schema.org",
@@ -1102,7 +1104,7 @@ const routes = [
     title: "Anoneurx Lab | Open Research",
     titleOverride: "Anoneurx Lab | Open Research",
     description: "Explore open research problems in cybersecurity, operating systems, robotics, and autonomous systems at Anoneurx Lab.",
-    ogImage: "/og-image.png",
+    ogImage: "/og-images/og-image.png",
   },
   {
     path: "/lab/problems/secure-boot-integrity",
@@ -1484,18 +1486,24 @@ const PROJECT_SUBPAGES = [
   ["contributors", "Contributors", "Maintainers, contributors and testers"],
 ];
 for (const project of OPEN_SOURCE_PROJECTS) {
+  const projectOgImageMap = {
+    blackwall: "/og-images/opensource/projects/og-image-blackwall.jpg",
+    authenticator: "/og-images/opensource/projects/og-image-auth.jpg",
+    lynx: "/og-images/opensource/projects/og-image-lynx.jpg",
+  };
+
   routes.push({
     path: `/opensource/${project.id}`,
     title: `${project.name} — Anoneurx Open Source Project`,
     description: `README, activity, maintainers and releases for ${project.name}, an Anoneurx open source project.`,
-    ogImage: project.id === "lynx" ? "/lynx-og-image.png" : undefined,
+    ogImage: projectOgImageMap[project.id] ?? undefined,
   });
   for (const [subPath, subTitle, subBlurb] of PROJECT_SUBPAGES) {
     routes.push({
       path: `/opensource/${project.id}/${subPath}`,
       title: `${subTitle} — ${project.name}`,
       description: `${subBlurb} for ${project.name}, an Anoneurx open source project.`,
-      ogImage: project.id === "lynx" ? "/lynx-og-image.png" : undefined,
+      ogImage: projectOgImageMap[project.id] ?? undefined,
     });
   }
 }
@@ -1627,8 +1635,8 @@ let count = 0;
     const title = route.titleOverride || formatTitle(route.title, route.path);
     const description = route.description;
     const defaultOgImage = route.path === "/lab" || route.path.startsWith("/lab/")
-      ? "/og-image.png"
-      : "/og-image.png";
+      ? "/og-images/og-image.png"
+      : "/og-images/og-image.png";
     const ogImageUrl = /^(https?:)?\/\//.test(route.ogImage || "")
       ? route.ogImage
       : `${SITE}${route.ogImage || defaultOgImage}`;

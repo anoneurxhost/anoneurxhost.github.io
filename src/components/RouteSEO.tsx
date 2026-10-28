@@ -266,13 +266,17 @@ const map: Record<string, Entry> = {
   "/docs/blackwall": { title: "Black Wall OS Documentation", description: "Black Wall OS documentation — installation, syscall bindings, architecture and the enclave security model." },
   "/docs/nexora": { title: "Nexora Documentation", description: "Nexora browser documentation — configuration, sync, extensions and network privacy controls." },
   "/docs/atlas": { title: "ATLAS Documentation", description: "ATLAS compiler and GPU renderer documentation — toolchain setup, language reference and backend notes." },
-  "/research": { title: "Anoneurx Research", description: "Applied research from Anoneurx across AI, systems, distributed compute and security." },
+  "/research": {
+    title: "Anoneurx Research",
+    description: "Applied research from Anoneurx across AI, systems, distributed compute and security.",
+    image: "/og-images/research-og-image.png",
+  },
   "/view-in-journal": { title: "Research Journal — Anoneurx", description: "Browse published Anoneurx research papers in journal format." },
   "/strategic-kpis": { title: "Strategic KPIs — Anoneurx", description: "Anoneurx research strategy, milestones and KPIs." },
   "/opensource": {
     title: "Anoneurx Open Source — Projects, Libraries & Templates",
     description: "Explore Anoneurx open source — projects, libraries, packages, templates and VS Code extensions. Free forever, community-driven.",
-    image: "/og-opensource.png",
+    image: "/og-images/og-opensource.png",
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
@@ -297,6 +301,7 @@ const map: Record<string, Entry> = {
   "/blackwall": {
     title: "Black Wall OS — Anoneurx Secure Operating System",
     description: "Black Wall is Anoneurx's privacy-first operating system: hardened Rust core, zero telemetry, blazing performance and blockchain-backed identity.",
+    image: "/og-images/blackwall/og-imageblackwall.jpg",
     jsonLd: SOFTWARE("Black Wall OS", "/blackwall", "Privacy-first operating system with hardened kernel, zero telemetry and Rust core."),
   },
   "/blackwall/download": { title: "Download Black Wall OS", description: "Get Black Wall OS ISO images, checksums and installation guides." },
@@ -652,10 +657,15 @@ const patterns: { pattern: string; build: (params: Record<string, string | undef
     pattern: "/opensource/:id",
     build: (p) => {
       const name = projectName(p.id);
+      const imageMap: Record<string, string> = {
+        blackwall: "/og-images/opensource/projects/og-image-blackwall.jpg",
+        authenticator: "/og-images/opensource/projects/og-image-auth.jpg",
+        lynx: "/og-images/opensource/projects/og-image-lynx.jpg",
+      };
       return {
         title: `${name} — Anoneurx Open Source Project`,
         description: `README, activity, maintainers and releases for ${name}, an Anoneurx open source project.`,
-        image: p.id === "lynx" ? "/lynx-og-image.png" : undefined,
+        image: imageMap[p.id] ?? undefined,
         jsonLd: {
           "@context": "https://schema.org",
           "@type": "SoftwareSourceCode",
@@ -671,10 +681,15 @@ const patterns: { pattern: string; build: (params: Record<string, string | undef
     build: (p) => {
       const name = projectName(p.id);
       const sub = SUBPAGE_META[p.subPage as string] ?? SUBPAGE_META.features;
+      const imageMap: Record<string, string> = {
+        blackwall: "/og-images/opensource/projects/og-image-blackwall.jpg",
+        authenticator: "/og-images/opensource/projects/og-image-auth.jpg",
+        lynx: "/og-images/opensource/projects/og-image-lynx.jpg",
+      };
       return {
         title: `${sub.title} — ${name}`,
         description: `${sub.description} for ${name}, an Anoneurx open source project.`,
-        image: p.id === "lynx" ? "/lynx-og-image.png" : undefined,
+        image: imageMap[p.id] ?? undefined,
         jsonLd: [
           BREADCRUMB([
             { name: "Open Source", item: "/opensource" },

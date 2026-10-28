@@ -60,7 +60,7 @@ const LabProblems = () => {
         title="Open Problems"
         titleOverride="Anoneurx Lab | Open Research"
         description="Explore open research problems in cybersecurity, operating systems, robotics, and autonomous systems at Anoneurx Lab."
-        image="/og-image.png"
+        image="/og-images/og-image.png"
         path="/lab/problems"
       />
 
