@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { navLinks, projects } from "./data";
 
 const OpenSourceHome = () => {
@@ -75,8 +75,6 @@ const OpenSourceHome = () => {
                   {p.language}
                 </span>
 
-                <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                {p.stars.toLocaleString()}
               </div>
 
               <h3 className="mt-5 text-xl font-semibold transition group-hover:text-sky-300">

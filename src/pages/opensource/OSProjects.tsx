@@ -7,7 +7,6 @@ import { useOSCollection } from "./useOSCollection";
 import { motion } from "framer-motion";
 
 const sorts = [
-  { value: "popular", label: "Most stars", compare: (a: Project, b: Project) => b.stars - a.stars },
   { value: "alpha", label: "Alphabetical", compare: (a: Project, b: Project) => a.name.localeCompare(b.name) },
 ];
 

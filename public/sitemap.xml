@@ -97,6 +97,9 @@
   <!-- OPEN SOURCE -->
   <url><loc>https://anoneurx.com/en-us/opensource</loc><changefreq>weekly</changefreq><lastmod>2026-09-16</lastmod><priority>0.9</priority></url>
 
+  <!-- BENCHMARKS -->
+  <url><loc>https://anoneurx.com/en-us/benchmark/lynx</loc><changefreq>monthly</changefreq><lastmod>2026-10-28</lastmod><priority>0.8</priority></url>
+
   <!-- CONTRIBUTIONS -->
   <url><loc>https://anoneurx.com/en-us/contributions/how-to-contribute</loc><changefreq>monthly</changefreq><lastmod>2026-09-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://anoneurx.com/en-us/contributions/review-progress</loc><changefreq>monthly</changefreq><lastmod>2026-09-16</lastmod><priority>0.5</priority></url>

@@ -58,14 +58,10 @@ const OSAbout = () => {
 
         {/* Stats Section */}
         <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-10 md:p-14 mb-20 text-center">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             <div>
               <div className="text-3xl md:text-5xl font-extrabold text-white mb-2">10M+</div>
               <div className="text-white/50 text-xs font-medium uppercase tracking-wider">Downloads</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-5xl font-extrabold text-white mb-2">50k+</div>
-              <div className="text-white/50 text-xs font-medium uppercase tracking-wider">GitHub Stars</div>
             </div>
             <div>
               <div className="text-3xl md:text-5xl font-extrabold text-white mb-2">500+</div>

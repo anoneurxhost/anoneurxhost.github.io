@@ -49,6 +49,7 @@ const SEO_SECTIONS = [
   ["/arcadeum", "Arcadeum", ["Anoneurx Arcadeum", "Arcadeum"]],
   ["/connect", "Connect", ["Anoneurx Connect", "Connect"]],
   ["/docs", "Documentation", ["Documentation", "Docs"]],
+  ["/benchmark", "Benchmarks", ["Benchmarks", "Benchmark"]],
   ["/apps", "Apps", ["Anoneurx Apps", "Apps"]],
   ["/blogs", "Blog", ["Anoneurx Blog", "Blog"]],
   ["/pay", "Anoneurx Pay", ["Pay"]],
@@ -392,6 +393,16 @@ const routes = [
     path: "/docs/atlas",
     title: "ATLAS Documentation",
     description: "ATLAS compiler and GPU renderer documentation — toolchain setup, language reference and backend notes.",
+  },
+  {
+    path: "/benchmark",
+    title: "Benchmarks — Anoneurx",
+    description: "Reproducible benchmarks for Anoneurx systems, including LYNX search quality, latency, indexing and crawler performance.",
+  },
+  {
+    path: "/benchmark/lynx",
+    title: "LYNX Benchmarks — Anoneurx",
+    description: "Standardized benchmarks for LYNX search quality, API latency, index building, crawler throughput and hardware baselines.",
   },
   {
     path: "/blogs/all",

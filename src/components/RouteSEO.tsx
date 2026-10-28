@@ -266,6 +266,8 @@ const map: Record<string, Entry> = {
   "/docs/blackwall": { title: "Black Wall OS Documentation", description: "Black Wall OS documentation — installation, syscall bindings, architecture and the enclave security model." },
   "/docs/nexora": { title: "Nexora Documentation", description: "Nexora browser documentation — configuration, sync, extensions and network privacy controls." },
   "/docs/atlas": { title: "ATLAS Documentation", description: "ATLAS compiler and GPU renderer documentation — toolchain setup, language reference and backend notes." },
+  "/benchmark": { title: "Benchmarks — Anoneurx", description: "Reproducible benchmarks for Anoneurx systems, including LYNX search quality, latency, indexing and crawler performance." },
+  "/benchmark/lynx": { title: "LYNX Benchmarks — Anoneurx", description: "Standardized benchmarks for LYNX search quality, API latency, index building, crawler throughput and hardware baselines." },
   "/research": {
     title: "Anoneurx Research",
     description: "Applied research from Anoneurx across AI, systems, distributed compute and security.",
@@ -664,7 +666,9 @@ const patterns: { pattern: string; build: (params: Record<string, string | undef
       };
       return {
         title: `${name} — Anoneurx Open Source Project`,
-        description: `README, activity, maintainers and releases for ${name}, an Anoneurx open source project.`,
+        description: p.id === "lynx"
+          ? "LYNX is an independent, privacy-focused open source web search engine by Anoneurx, built with Rust, Tantivy, BM25F ranking and an ethical robots.txt-compliant crawler. Explore its benchmark results, privacy model and source code."
+          : `README, activity, maintainers and releases for ${name}, an Anoneurx open source project.`,
         image: imageMap[p.id] ?? undefined,
         jsonLd: {
           "@context": "https://schema.org",
@@ -672,6 +676,11 @@ const patterns: { pattern: string; build: (params: Record<string, string | undef
           name,
           url: canonicalUrl(`/opensource/${p.id}`),
           codeRepository: canonicalUrl(`/opensource/repos/${p.id}`),
+          ...(p.id === "lynx" ? {
+            keywords: "LYNX search engine, privacy-focused search, open source search engine, Rust search engine, Tantivy, BM25F, web crawler, robots.txt, Anoneurx",
+            programmingLanguage: ["Rust", "TypeScript"],
+            license: "https://www.gnu.org/licenses/agpl-3.0.html",
+          } : {}),
         },
       };
     },

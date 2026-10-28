@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
+  BarChart3,
   Check,
   Download,
   Github,
@@ -11,7 +12,6 @@ import {
   Share2,
   ShieldCheck,
   Sparkles,
-  Star,
   Users,
 } from "lucide-react";
 import ProjectShell from "@/components/project/ProjectShell";
@@ -111,9 +111,6 @@ export const OSProjectDetail: React.FC = () => {
               </span>
               <span className="rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 font-semibold text-cyan-300">{project.language}</span>
               <span className="rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3 py-1 font-semibold text-emerald-300">{project.version}</span>
-              <span className="inline-flex items-center gap-1 rounded-full border border-amber-400/30 bg-amber-500/10 px-3 py-1 font-semibold text-amber-300">
-                <Star className="h-3.5 w-3.5" /> {project.stars.toLocaleString()}
-              </span>
             </div>
 
             <h1 className="mb-3 font-brand text-3xl leading-tight text-white sm:text-4xl lg:text-5xl">{project.name}</h1>
@@ -123,7 +120,7 @@ export const OSProjectDetail: React.FC = () => {
             <div className="flex flex-wrap items-center gap-3 text-sm">
               <Link
                 to={`/opensource/${project.id}/download`}
-                className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 font-semibold text-white backdrop-blur-md hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-[5px] border border-white/15 bg-white/5 px-4 py-2.5 font-semibold text-white backdrop-blur-md hover:bg-white/10"
               >
                 <Download className="h-4 w-4" /> Download
               </Link>
@@ -131,25 +128,33 @@ export const OSProjectDetail: React.FC = () => {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 font-semibold text-white backdrop-blur-md hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-[5px] border border-white/15 bg-white/5 px-4 py-2.5 font-semibold text-white backdrop-blur-md hover:bg-white/10"
               >
                 <Github className="h-4 w-4" /> Source
               </a>
               <Link
                 to={`/opensource/${project.id}/features`}
-                className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 font-semibold text-white backdrop-blur-md hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-[5px] border border-white/15 bg-white/5 px-4 py-2.5 font-semibold text-white backdrop-blur-md hover:bg-white/10"
               >
                 Features <ArrowRight className="h-4 w-4" />
               </Link>
+              {project.id === "lynx" && (
+                <Link
+                  to="/benchmark/lynx"
+                  className="inline-flex items-center gap-2 rounded-[5px] border border-cyan-400/30 bg-cyan-500/10 px-4 py-2.5 font-semibold text-cyan-300 hover:bg-cyan-500/20"
+                >
+                  <BarChart3 className="h-4 w-4" /> Benchmarks
+                </Link>
+              )}
               <Link
                 to={`/opensource/${project.id}/privacy`}
-                className="inline-flex items-center gap-2 rounded-xl border border-emerald-400/30 bg-emerald-500/10 px-4 py-2.5 font-semibold text-emerald-300 hover:bg-emerald-500/20"
+                className="inline-flex items-center gap-2 rounded-[5px] border border-emerald-400/30 bg-emerald-500/10 px-4 py-2.5 font-semibold text-emerald-300 hover:bg-emerald-500/20"
               >
                 <ShieldCheck className="h-4 w-4" /> Privacy
               </Link>
               <button
                 onClick={copy}
-                className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 font-medium text-slate-200 hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-[5px] border border-white/15 bg-white/5 px-4 py-2.5 font-medium text-slate-200 hover:bg-white/10"
               >
                 {copied === "link" ? <Check className="h-4 w-4 text-emerald-400" /> : <Share2 className="h-4 w-4" />}
                 {copied === "link" ? "Link copied" : "Share"}

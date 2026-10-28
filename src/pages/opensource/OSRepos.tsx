@@ -19,7 +19,7 @@ const OSRepos = () => {
     <OSPage>
       <OSSectionHeader
         title="Repositories"
-        subtitle="Every public Anoneurx repository — stars, languages, activity and maintainers."
+        subtitle="Every public Anoneurx repository — languages, activity and maintainers."
         icon={FolderGit2}
       />
       <OSToolbar
@@ -49,8 +49,7 @@ const OSRepos = () => {
               </div>
             </div>
             <p className="mb-4 text-sm text-slate-300">{repo.description}</p>
-            <div className="flex items-center justify-between">
-              <span className="text-xs uppercase tracking-[0.2em] text-slate-400">{repo.stars} ★</span>
+            <div className="flex justify-end">
               <Link to={`/opensource/repos/${repo.id}`} className="text-sm font-medium text-blue-300 hover:text-blue-200">
                 View repo →
               </Link>

@@ -77,7 +77,6 @@ export function resolveProject(
     pdfPages: 6,
     abstract: basic.description,
     stats: [
-      { label: "Community Stars", value: basic.stars.toLocaleString(), subtext: "GitHub Stars", accentColor: "purple" },
       { label: "Primary Language", value: basic.language, subtext: "Core codebase", accentColor: "cyan" },
       { label: "Status", value: "Active", subtext: "Community maintained", accentColor: "emerald" },
       { label: "License", value: "Open Source", subtext: "Permissive license", accentColor: "amber" },

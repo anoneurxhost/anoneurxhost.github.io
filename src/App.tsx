@@ -34,6 +34,7 @@ const LabProblemRoute = () => {
 
 // Layouts (keep static - they wrap everything)
 import PublicLayout from './layouts/PublicLayout';
+import BenchmarkRouteLayout from './layouts/BenchmarkRouteLayout';
 import PrivateLayout from './layouts/PrivateLayout';
 import StaffLayout from './layouts/staff/StaffLayout';
 import StaffRoleGuard from './layouts/staff/StaffRoleGuard';
@@ -116,6 +117,8 @@ const DocsGettingStarted = React.lazy(() => import('./pages/docs/GettingStarted'
 const DocsApiReference = React.lazy(() => import('./pages/docs/ApiReference'));
 const DocsDeployment = React.lazy(() => import('./pages/docs/Deployment'));
 const DocsContributions = React.lazy(() => import('./pages/docs/ContributionsGuide'));
+const LynxBenchmarks = React.lazy(() => import('./pages/benchmark/LynxBenchmarks'));
+const BenchmarkHub = React.lazy(() => import('./pages/benchmark/BenchmarkHub'));
 
 // Community subpages
 const CommunityEvents = React.lazy(() => import('./pages/community/Events'));
@@ -755,6 +758,12 @@ function App() {
                   <Route path="ethics" element={<LabPolicy slug="ethics" />} />
                   <Route path="security" element={<LabPolicy slug="security" />} />
                 </Route>
+              </Route>
+
+              {/* Benchmark pages use a standalone shell without the public navigation/footer. */}
+              <Route path="/benchmark" element={<BenchmarkRouteLayout />}>
+                <Route index element={<BenchmarkHub />} />
+                <Route path="lynx" element={<LynxBenchmarks />} />
               </Route>
 
               {/* Private Routes */}
